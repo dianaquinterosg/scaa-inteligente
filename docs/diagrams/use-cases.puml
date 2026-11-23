@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+actor "Usuario administrador" as Admin
+rectangle "Sistema inteligente SCAA" {
+  package "Entrega parcial (60 % comprometido)" {
+    usecase "CU01\nGestionar perfil y contexto" as CU01
+    usecase "CU02\nGestionar pictogramas" as CU02
+    usecase "CU03\nGestionar rutinas inteligentes" as CU03
+  }
+  package "Iteraciones posteriores" {
+    usecase "CU04\nGestionar recomendaciones contextuales" as CU04
+    usecase "CU05\nNavegar y utilizar contenido validado" as CU05
+  }
+}
+Admin --> CU01
+Admin --> CU02
+Admin --> CU03
+Admin --> CU04
+Admin --> CU05
+CU03 ..> CU02 : usa los recursos gestionados en
+note bottom of CU03
+La IA propone; no aprueba ni persiste
+recursos sin confirmación humana.
+end note
+note bottom of CU02
+Categorías configurables N:M.
+RF02.3 generación de imágenes IA:
+posterior al 60 %.
+end note
+@enduml

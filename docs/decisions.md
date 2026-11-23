@@ -1,0 +1,44 @@
+# Registro de decisiones — v0.2
+
+**Propósito:** preservar decisiones conocidas y comparar planificación versus realización. Los acuerdos funcionales de diseño se documentan como **propuestos para la implementación**, no como resultados.
+
+| ID | Decisión | Motivo / impacto | Estado |
+|---|---|---|---|
+| ADR-001 | Entrega parcial incluye CU01, CU02, CU03 | Incremento de 3/5 CU para demostrar personalización, recursos y rutina con IA; no equivale a 60 % de esfuerzo demostrado | Acordado |
+| ADR-002 | Alias obligatorio, contexto opcional y tags individuales | Reducir errores y favorecer reutilización estructurada | Acordado |
+| ADR-003 | Buscar local antes de ARASAAC | Reutilización, menor dependencia y menos operaciones externas | Acordado |
+| ADR-004 | Importar imagen propia para alternativa del 60 % | Permitir completar recursos sin segundo modelo de generación de imágenes | Acordado |
+| ADR-005 | Generación de pictogramas/imágenes con IA **posterior al 60 %, prevista hacia MVP completo** | Mantiene visión inicial; requiere validación técnica y visual | Acordado en alcance; no implementado |
+| ADR-006 | Categorías configurables N:M | Un pictograma puede facilitar acceso en distintos contextos sin duplicar datos | Acordado |
+| ADR-007 | Mismo pictograma reutilizable en varias rutinas y pasos | Evitar copias y soportar repeticiones reales | Acordado |
+| ADR-008 | IA propone pasos, no aprueba datos | Validación humana y responsabilidad clara del módulo | Acordado |
+| ADR-009 | Preselección automática básica de pictogramas en CU03 | Minimizar trabajo manual; no confundir con recomendación contextual avanzada | Acordado |
+| ADR-010 | Todos los pasos necesitan pictograma aprobado para guardar rutina | Mantener utilidad visual; pasos incompletos siguen en edición | Acordado |
+| ADR-011 | Flutter + FastAPI + SQLite + archivos | Arquitectura sencilla y comprobable | Diseño propuesto |
+| ADR-012 | Ollama como adaptador de IA local, modelo por seleccionar | Control de datos e independencia de nube de IA; latencia/calidad pendientes | **Sujeto a prueba** |
+| ADR-013 | RF04/CU04, RF05/CU05 integral y voz para iteraciones posteriores | Priorizar funciones centrales del MVP parcial | Acordado |
+| ADR-014 | No confundir IA local con producto iPad totalmente offline | Backend necesita red local; ARASAAC necesita Internet | Acordado |
+| ADR-015 | Priorizar criterios P0/P1/P2 sin eliminar alcance | Evitar dispersión por plazo; registrar cualquier criterio no logrado y no declarar CU completo sin evidencia | Acordado |
+| ADR-016 | Política de preselección textual determinística | Normalización, ranking exacta/prefijo/contiene, empate sin selección y candidato ARASAAC marcado para revisión | Acordado para diseño; evaluar pertinencia real |
+| ADR-017 | Documentar UML y evidencia plan/real antes de implementación | La evaluación solicita diagramas, control de configuración, instalación y trazabilidad a código; documentación actual es solo planificación | Acordado |
+
+## Plantilla de futuras desviaciones
+
+```text
+ID:
+Fecha:
+Plan original:
+Resultado/modificación:
+Motivo y evidencia:
+RF/CU afectados:
+Impacto en criterios, pruebas y plazo:
+Decisión y responsable:
+Commit/PR/tag:
+```
+
+## Riesgos no resueltos
+
+- Modelo local, memoria/latencia, confiabilidad de estructura JSON y criterios para detectar asociaciones ambiguas.
+- Licenciamiento/atribución aplicables al almacenamiento y distribución de imágenes ARASAAC.
+- Instalación reproducible en un entorno de release/demo y accesibilidad desde iPad.
+- Fecha exacta y rúbrica de evaluación de la entrega, en caso de ajuste de la planificación académica.

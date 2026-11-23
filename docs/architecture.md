@@ -1,0 +1,113 @@
+# Arquitectura del MVP — diseño revisado v0.2
+
+> Documento de diseño, **pendiente de validación técnica**.
+
+## Componentes
+
+```mermaid
+flowchart TD
+    F[Flutter — cliente] -->|HTTP JSON| API[FastAPI]
+    API --> P[ProfileService]
+    API --> G[PictogramService]
+    API --> R[RoutineService]
+    R --> A[AssociationService]
+    R --> I[RoutineGenerator — interfaz]
+    I --> O[Adaptador Ollama — IA local]
+    G --> EXT[Adaptador ARASAAC — Internet]
+    A --> G
+    P --> DB[(SQLite)]
+    G --> DB
+    R --> DB
+    G --> FS[Archivos locales — imágenes]
+    A --> EXT
+```
+
+**Límite offline:** Ollama puede ejecutarse sin Internet en el equipo del backend; ARASAAC necesita Internet. Flutter en iPad físico necesita conectarse por red al backend. Los recursos aprobados almacenados localmente pueden reutilizarse cuando ARASAAC no esté disponible.
+
+## Responsabilidades
+
+- **Flutter:** presentación, edición guiada, validaciones de experiencia de usuario, vista previa/confirmación, navegación mínima.
+- **FastAPI:** contratos, validación independiente de frontend, coordinación de operaciones y errores.
+- **ProfileService:** CU01, perfil y contexto.
+- **PictogramService:** CU02, búsqueda local, integración ARASAAC, archivos, categorías y aprobación.
+- **RoutineService:** CU03, propuestas, edición validada y persistencia final.
+- **AssociationService:** aplicar comparación textual normalizada de acuerdo con la política siguiente; preseleccionar para revisión, **nunca aprobar autónomamente**. No requiere otro modelo de IA.
+- **RoutineGenerator:** interfaz para IA; implementación Ollama sujeto a prueba real; reemplazo controlado/fake solo para tests.
+- **SQLite/archivos:** metadatos y relaciones / imágenes; migraciones versionadas.
+
+## Política inicial verificable de asociación de pictogramas (CU03 / RF03.3)
+
+Se requiere un algoritmo **simple y reproducible** para la entrega del 60 %, sin atribuirle precisión semántica que todavía no se ha evaluado:
+
+1. **Normalización solo para comparación:** aplicar `trim`, espacios repetidos → uno, conversión a minúsculas y, para matching, comparación sin tildes; conservar etiquetas originales para la UI. Validar que el `search_term` de IA sea texto no vacío y de longitud acotada antes de consultar servicios.
+2. **Local primero:** comparar `search_term` normalizado con etiquetas de pictogramas **ya aprobados**; rango de prioridad `exacta > prefijo > contiene`. Si el máximo nivel incluye **un único resultado**, preseleccionarlo. Si incluye más de uno, **no desempatar por ID**: mostrar alternativas y dejar asociación pendiente de decisión del administrador.
+3. **ARASAAC:** si no hay coincidencias locales útiles, consultar la API. El primer resultado devuelto puede mostrarse como **candidato preseleccionado, explícitamente «Sin validar / revisar»**, acompañado de alternativas. No afirmar que es semánticamente correcto ni calcular una confianza ficticia. Si no hay resultados, el paso queda pendiente.
+4. **Corrección:** el administrador puede cambiar el candidato por otro guardado, uno obtenido de ARASAAC o una carga propia, y modificar el paso. Una respuesta externa ambigua **nunca se aprueba sola**.
+5. **Persistencia:** el candidato externo y la propuesta completa permanecen temporales hasta la confirmación de la rutina. En una única operación lógica registrar recursos nuevos aprobados **desde el formulario de rutina** y sus pasos, compensando archivos temporales si falla la BD. **Excepción intencional:** un pictograma confirmado y guardado por separado en CU02 ya es recurso definitivo aunque luego se cancele el borrador CU03.
+
+**Pruebas imprescindibles:** exacta local gana a API; prefijo gana a inclusión; empate local no se resuelve arbitrariamente; ausencia local consulta ARASAAC; candidato externo sin confirmar no se guarda; error de red deja paso pendiente y habilita resolución manual. La calidad de relevancia real debe medirse con ejemplos, no asumirse por el orden de resultados.
+
+## Contratos REST preliminares (sujetos a implementación)
+
+| Método | Ruta | Propósito |
+|---|---|---|
+| GET | `/api/v1/profile` | Obtener perfil; 404 si no existe |
+| PUT | `/api/v1/profile` | Crear/actualizar único perfil |
+| GET | `/api/v1/pictograms` | Listar/buscar recursos aprobados, filtrar categorías |
+| GET | `/api/v1/pictograms/search` | Buscar candidatos, locales y/o ARASAAC, sin guardarlos |
+| POST | `/api/v1/pictograms` | Confirmar recurso ARASAAC elegido o carga propia (multipart o JSON según origen) |
+| PATCH | `/api/v1/pictograms/{id}` | Editar etiqueta/categorías |
+| DELETE | `/api/v1/pictograms/{id}` | Eliminar si no tiene dependencias |
+| GET/POST | `/api/v1/categories` | Listar/crear categorías |
+| PATCH/DELETE | `/api/v1/categories/{id}` | Renombrar/eliminar categoría |
+| POST | `/api/v1/routines/proposals` | Generar secuencia con IA + candidatos; **no persistir** |
+| GET/POST | `/api/v1/routines` | Listar/confirmar rutina |
+| GET/PATCH/DELETE | `/api/v1/routines/{id}` | Consultar/editar/eliminar |
+| GET | `/api/v1/media/{id}` | Servir archivo de pictograma sin exponer rutas internas |
+
+Los formatos de request/response y códigos de error exactos se concretarán en OpenAPI al implementar. Evitar transformar endpoints preliminares en compromisos irrevocables sin test de integración.
+
+## Salida estructurada del modelo de IA
+
+Ejemplo **ilustrativo**, validado siempre por Pydantic en el backend:
+
+```json
+{
+  "name": "Prepararse para el colegio",
+  "steps": [
+    {"order": 1, "label": "Levantarse", "search_term": "levantarse"},
+    {"order": 2, "label": "Desayunar", "search_term": "desayunar"}
+  ]
+}
+```
+
+El modelo propone palabras/pasos, **no selecciona definitivamente imágenes ni almacena datos**.
+
+## Consistencia de guardado
+
+- Las propuestas viven en memoria/estado del cliente, no como contenido aprobado.
+- Una rutina se confirma solo si nombre/pasos/pictogramas cumplen las reglas.
+- La confirmación utiliza transacción SQLite para registros y asociaciones.
+- La escritura de imágenes se coordina mediante archivos temporales y limpieza/compensación ante falla (SQLite no transacciona archivos por sí solo).
+- `ON DELETE RESTRICT` o validación equivalente para pictogramas referenciados; categorías se disocian sin borrar recursos.
+
+## Calidad y despliegue
+
+- **Dev:** configuración local y BD de desarrollo.
+- **Test:** BD aislada, mocks/fakes para ARASAAC e IA en pruebas automatizadas; **smoke test real** aparte para Ollama y para ARASAAC cuando haya conectividad.
+- **Demo/release:** build Flutter y backend versionados, configuración definida, instrucciones reproducibles, respaldo y evidencias. No afirmar que existe «producción» real hasta que el procedimiento se haya probado.
+- Pruebas: unitarias por reglas, integración API/SQLite, integraciones externas controladas, prueba end-to-end manual y demostración de IA real.
+
+## Riesgos abiertos
+
+1. Rendimiento/calidad del modelo local en hardware disponible.
+2. Calidad de la coincidencia textual ARASAAC y ambigüedades de términos.
+3. Condiciones de uso, atribución y redistribución de los pictogramas ARASAAC (verificar en la integración).
+4. Manejo consistente de archivos + transacción BD.
+5. Compatibilidad real con iPad físico y conectividad al backend.
+
+## UML e instalación de la entrega
+
+- [Diagrama de casos de uso](diagrams/use-cases.puml) y [secuencia de CU03](diagrams/cu03-sequence.puml): archivos fuente PlantUML para incorporar a la presentación; no representan ejecución verificada.
+- [Plan de pruebas](test-plan.md): escenarios unitarios, de integración y evidencia de inferencia real.
+- La guía exacta de instalación **se redactará a partir del procedimiento probado**. El entorno «demo/release» debe distinguirse de desarrollo y de test, con variables de configuración y base de datos propias. No confundir build de demostración con una producción pública desplegada.

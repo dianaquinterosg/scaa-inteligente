@@ -1,0 +1,64 @@
+@startuml
+skinparam shadowing false
+title CU03 — Propuesta y validación de rutina (flujo objetivo)
+actor Administrador as U
+participant "Flutter" as F
+participant "FastAPI / RoutineService" as API
+participant "RoutineGenerator" as GEN
+participant "Modelo IA local" as LLM
+participant "AssociationService" as MATCH
+participant "PictogramRepository" as REPO
+participant "ARASAAC API" as AR
+entity "SQLite" as DB
+U -> F : Describe rutina y solicita propuesta
+F -> API : POST /api/v1/routines/proposals
+API -> GEN : generate(descripcion)
+GEN -> LLM : solicitud + esquema estructurado
+alt IA responde con JSON válido
+  LLM --> GEN : nombre + pasos + search_term
+  GEN --> API : propuesta validada
+  loop cada paso
+    API -> MATCH : buscar candidatos(search_term)
+    MATCH -> REPO : buscar local (exacta/prefijo/inclusión)
+    REPO -> DB : SELECT pictogramas aprobados
+    DB --> REPO : coincidencias
+    REPO --> MATCH : candidatos locales
+    alt candidato local único con mayor prioridad
+      MATCH --> API : preselección local revisable
+    else empate local
+      MATCH --> API : opciones sin selección automática
+    else sin coincidencia local
+      MATCH -> AR : buscar pictogramas
+      alt ARASAAC responde
+        AR --> MATCH : resultados ordenados
+        MATCH --> API : primer candidato provisional + alternativas
+      else error / sin resultados
+        AR --> MATCH : error/vacío
+        MATCH --> API : paso pendiente
+      end
+    end
+  end
+  API --> F : propuesta editable; NO guardada
+else IA falla o salida inválida
+  LLM --> GEN : error / salida inválida
+  GEN --> API : fallo controlado
+  API --> F : mostrar error / ofrecer creación manual
+end
+U -> F : Corrige, revisa y confirma rutina
+F -> API : POST /api/v1/routines (pasos y elecciones)
+API -> API : validar cada paso y consentimiento
+alt todos los pasos tienen pictograma aprobado
+  API -> DB : transacción: pictogramas nuevos + rutina + pasos
+  DB --> API : commit exitoso
+  API --> F : rutina persistida
+  F --> U : éxito y visualización
+else falta pictograma / error
+  API --> F : error, sin rutina parcial
+  F --> U : corregir/reintentar
+end
+note over API,DB
+Operación lógica atómica en BD.
+Archivos de imagen requieren staging/limpieza
+porque SQLite no transacciona archivos.
+end note
+@enduml
