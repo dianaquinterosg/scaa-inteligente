@@ -3,8 +3,10 @@
 from contextlib import suppress
 from io import BytesIO
 import logging
+import os
 from pathlib import Path
 import sqlite3
+import re
 from uuid import uuid4
 
 from PIL import Image, UnidentifiedImageError
@@ -14,6 +16,9 @@ from .database import Database
 
 logger = logging.getLogger(__name__)
 IMAGE_FORMATS = {"PNG": ("png", "image/png"), "JPEG": ("jpg", "image/jpeg"), "WEBP": ("webp", "image/webp")}
+
+
+MANAGED_IMAGE = re.compile(r"[0-9a-f]{32}\.(?:png|jpg|webp)(?:\.deleted)?")
 
 
 class CatalogError(Exception):
@@ -42,6 +47,25 @@ class Catalog:
     def __init__(self, database: Database):
         self.database = database
         self.directory = database.path.parent / "pictograms"
+
+    def recover_files(self):
+        """Reconciliar archivos gestionados tras una interrupción del proceso."""
+        if not self.directory.is_dir():
+            return
+        with self.database.connection() as connection:
+            connection.execute("BEGIN IMMEDIATE")
+            registered = {name for (name,) in connection.execute("SELECT image_path FROM pictogram")}
+            for path in self.directory.iterdir():
+                if not MANAGED_IMAGE.fullmatch(path.name) or not path.is_file():
+                    continue
+                if path.suffix == ".deleted":
+                    original = path.with_suffix("")
+                    if original.name in registered and not original.exists():
+                        path.rename(original)
+                    else:
+                        path.unlink()
+                elif path.name not in registered:
+                    path.unlink()
 
     @staticmethod
     def _category_ids(connection, identifier):
@@ -135,6 +159,8 @@ class Catalog:
                 with path.open("xb") as image:
                     created = True
                     image.write(data)
+                    image.flush()
+                    os.fsync(image.fileno())
                 result = self._view(connection, (identifier, label, source, external_id, attribution))
             return result
         except Exception:
@@ -193,6 +219,6 @@ class Catalog:
             raise
         if tombstone is not None:
             try:
-                tombstone.unlink()
+                tombstone.unlink(missing_ok=True)
             except OSError:
                 logger.exception("No se pudo limpiar el archivo de un pictograma eliminado")

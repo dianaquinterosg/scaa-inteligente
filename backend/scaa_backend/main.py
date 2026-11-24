@@ -30,17 +30,19 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     settings = settings or Settings.from_env()
     database = Database(settings.database_path)
     profiles = ProfileRepository(database)
+    catalog = Catalog(database)
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
         database.initialize()
         migrate(database)
+        catalog.recover_files()
         yield
 
     app = FastAPI(title="SCAA — preparación técnica", version="0.0.0", lifespan=lifespan)
     app.state.database = database
     app.state.profiles = profiles
-    app.state.catalog = Catalog(database)
+    app.state.catalog = catalog
     app.state.arasaac = ArasaacClient()
     app.include_router(catalog_router)
 

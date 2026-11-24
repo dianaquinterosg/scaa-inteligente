@@ -182,3 +182,20 @@ def test_file_write_failure_rolls_back_approval(catalog):
     app.state.catalog.directory.write_text("archivo que impide crear el directorio")
     assert client.post(PICTOGRAMS, json=custom()).status_code == 503
     assert client.get(PICTOGRAMS).json() == []
+
+
+def test_reopen_recovers_interrupted_files_without_touching_foreign_files(tmp_path):
+    settings = Settings("test", tmp_path)
+    app = create_app(settings)
+    with TestClient(app) as client:
+        saved = client.post(PICTOGRAMS, json=custom()).json()
+        directory = app.state.catalog.directory
+        original = next(directory.iterdir())
+        original.rename(original.with_suffix(".png.deleted"))
+        orphan = directory / (32 * "0" + ".png")
+        orphan.write_bytes(picture())
+        other = directory / "nota.txt"
+        other.write_text("archivo ajeno")
+    with TestClient(create_app(settings)) as restarted:
+        assert restarted.get(saved["image_url"]).content == picture()
+        assert set(directory.iterdir()) == {other, original}
