@@ -1,6 +1,6 @@
 # Arquitectura del MVP — diseño revisado v0.2
 
-> El SRS v0.2 fija el alcance. CU01 y CU02 están implementados y probados. El diseño de CU03–CU05 describe capacidades previstas. Ver [evidencias por iteración](evidence/README.md).
+> El SRS v0.2 fija el alcance. CU01–CU03 están implementados con evidencia de pruebas. El diseño de CU04–CU05 describe capacidades previstas. Ver [evidencias por iteración](evidence/README.md).
 
 ## Componentes
 
@@ -9,15 +9,17 @@ flowchart TD
     F[Flutter — cliente] -->|HTTP JSON| API[FastAPI]
     API --> P[ProfileRepository · CU01]
     API --> G[Catalog · CU02]
-    API -. previsto .-> R[RoutineService · CU03]
-    R --> A[AssociationService]
-    R --> I[RoutineGenerator — interfaz]
+    API --> R[routine_api · CU03]
+    R --> A[associate]
+    R --> I[OllamaGenerator]
     I --> O[Adaptador Ollama — IA local]
     G --> EXT[Adaptador ARASAAC — Internet]
     A --> G
     P --> DB[(SQLite)]
     G --> DB
-    R --> DB
+    R --> RP[RoutineRepository]
+    RP --> DB
+    RP --> G
     G --> FS[Archivos locales — imágenes]
     A --> EXT
 ```
@@ -32,9 +34,9 @@ En Iteración 1, `ProfileGate`/`ProfileEditor` y `ProfileApi` implementan el cli
 - **FastAPI:** contratos, validación independiente de frontend, coordinación de operaciones y errores.
 - **ProfileRepository y ProfilePayload:** CU01, perfil y contexto.
 - **Catalog, rutas de catálogo y ArasaacClient:** CU02, búsqueda local, integración ARASAAC, archivos, categorías y aprobación.
-- **RoutineService:** CU03, propuestas, edición validada y persistencia final.
-- **AssociationService:** aplicar comparación textual normalizada de acuerdo con la política siguiente; preseleccionar para revisión, **nunca aprobar autónomamente**. No requiere otro modelo de IA.
-- **RoutineGenerator:** interfaz para IA; implementación Ollama sujeto a prueba real; reemplazo controlado/fake solo para tests.
+- **routine_api, RoutineApproval y RoutineRepository:** CU03, propuestas, confirmación validada, consultas y persistencia final.
+- **associate:** aplicar comparación textual normalizada de acuerdo con la política siguiente; preseleccionar para revisión, **nunca aprobar autónomamente**. No requiere otro modelo de IA.
+- **OllamaGenerator:** generación en el servicio local con esquema JSON y validación Pydantic. Solo las pruebas controladas sustituyen el proveedor.
 - **SQLite/archivos:** metadatos y relaciones / imágenes; migraciones versionadas.
 
 ## Política inicial verificable de asociación de pictogramas (CU03 / RF03.3)
@@ -68,9 +70,15 @@ Se requiere un algoritmo **simple y reproducible** para la entrega del 60 %, sin
 
 Consultas y actualizaciones correctas devuelven 200, creaciones de catálogo devuelven 201 y borrados devuelven 204. Los detalles de validación, origen y almacenamiento se describen en los [contratos de CU01](evidence/iteration-1/design.md) y [CU02](evidence/iteration-2/design.md).
 
-## Contratos previstos de CU03
+## Contratos REST implementados de CU03
 
-El diseño prevé `POST /api/v1/routines/proposals` para generar en memoria, `GET/POST /api/v1/routines` para listar y confirmar, y `GET/PUT/DELETE /api/v1/routines/{id}` para consultar, editar y eliminar. El contrato definitivo se documentará con su implementación y pruebas.
+| Método | Ruta | Comportamiento |
+|---|---|---|
+| POST | `/api/v1/routines/proposals` | Generar y asociar en memoria desde `description`. Devuelve 200 con candidatos para revisión |
+| GET / POST | `/api/v1/routines` | Listar rutinas o crear una desde pasos con aprobación individual y confirmación explícita. Creación devuelve 201 |
+| GET / PUT / DELETE | `/api/v1/routines/{id}` | Consultar, reemplazar o eliminar una rutina guardada. Borrado devuelve 204 y preserva pictogramas |
+
+La entrada y salida, límites y errores se detallan en los [contratos de CU03](evidence/iteration-3/design.md). Las propuestas usan contexto confirmado pertinente, sin alias. El servidor devuelve 502, 503 o 504 ante salida inválida, indisponibilidad o timeout de IA.
 
 ## Salida estructurada del modelo de IA
 
@@ -92,9 +100,10 @@ El modelo propone palabras/pasos, **no selecciona definitivamente imágenes ni a
 
 - Las propuestas viven en memoria/estado del cliente, no como contenido aprobado.
 - Una rutina se confirma solo si nombre/pasos/pictogramas cumplen las reglas.
-- La confirmación utiliza transacción SQLite para registros y asociaciones.
-- La escritura de imágenes se coordina mediante archivos temporales y limpieza/compensación ante falla (SQLite no transacciona archivos por sí solo).
-- `ON DELETE RESTRICT` o validación equivalente para pictogramas referenciados; categorías se disocian sin borrar recursos.
+- Las llamadas a Ollama y ARASAAC concluyen antes de abrir la unidad de escritura.
+- La confirmación comparte conexión SQLite para rutina, pasos y pictogramas nuevos.
+- La unidad de escritura de `Catalog` registra los archivos que crea y los elimina si falla la transacción. La reconciliación de arranque trata residuos gestionados de interrupciones.
+- `ON DELETE RESTRICT` protege pictogramas referenciados por pasos. El borrado de rutina elimina pasos en cascada y conserva pictogramas. El borrado de categoría disocia sin borrar recursos.
 
 ## Calidad y despliegue
 
@@ -108,7 +117,7 @@ El modelo propone palabras/pasos, **no selecciona definitivamente imágenes ni a
 1. Rendimiento/calidad del modelo local en hardware disponible.
 2. Calidad de la coincidencia textual ARASAAC y ambigüedades de términos.
 3. Condiciones de uso, atribución y redistribución de los pictogramas ARASAAC (verificar en la integración).
-4. Manejo consistente de archivos + transacción BD.
+4. El rollback y la reconciliación de archivos se probaron con fallos controlados. El comportamiento ante fallos del dispositivo de almacenamiento sigue siendo una limitación operativa.
 5. Compatibilidad real con iPad físico y conectividad al backend.
 
 ## UML e instalación de la entrega

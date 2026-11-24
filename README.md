@@ -2,7 +2,7 @@
 
 **Proyecto:** Sistema inteligente para la personalización asistida de Sistemas de Comunicación Aumentativa y Alternativa mediante inteligencia artificial.
 
-**Línea base de requisitos:** v0.2. **Implementación:** CU01 y CU02 disponibles, con los niveles de verificación detallados en el registro de implementación.
+**Línea base de requisitos:** v0.2. **Implementación:** CU01–CU03 implementados, con los niveles de verificación detallados en el registro de implementación.
 
 La v0.2 es la primera línea base documental publicada en Git, consolidada tras revisiones locales que incluyeron una versión de trabajo v0.1.
 
@@ -25,9 +25,9 @@ La personalización de recursos de comunicación aumentativa y alternativa puede
 
 La equivalencia «3 de 5 casos de uso = 60 %» identifica el alcance planificado del incremento. La cobertura real se verifica por requisito y criterio de aceptación con las pruebas registradas.
 
-## Arquitectura prevista
+## Arquitectura
 
-Flutter (cliente) → FastAPI (API REST y reglas de negocio) → SQLite y archivos locales; FastAPI integra ARASAAC (servicio externo) y un adaptador de IA local para CU03 (Ollama como opción a validar). «IA local» significa inferencia en el equipo que ejecuta el backend, **no necesariamente en el iPad**; un dispositivo físico necesita acceso de red al backend.
+Flutter (cliente) → FastAPI (API REST y reglas de negocio) → SQLite y archivos locales; FastAPI integra ARASAAC (servicio externo) y Ollama para generar propuestas de CU03. «IA local» significa inferencia en el equipo que ejecuta el backend, **no necesariamente en el iPad**; un dispositivo físico necesita acceso de red al backend.
 
 ## Documentación
 
@@ -47,7 +47,7 @@ Flutter (cliente) → FastAPI (API REST y reglas de negocio) → SQLite y archiv
 
 ## Estado de implementación
 
-Iteración 0 cerrada funcionalmente y registrada en el commit `db312e3592648a3b620d66b2ea22af018396112e`. CU01 está implementado y versionado en Git: perfil único, alias, tres tipos de contexto, persistencia atómica y validaciones. Las pruebas automáticas de API, widgets y HTTP real están aprobadas; la persona usuaria aprobó su aspecto en el simulador de iPad y quedan pendientes los escenarios funcionales manuales. CU02 implementa el catálogo, importación y categorías de v0.2. Pasó pruebas automáticas e integración con ARASAAC. La persona usuaria confirmó el recorrido manual en el simulador de iPad. CU03–CU05 siguen pendientes.
+Iteración 0 cerrada funcionalmente y registrada en el commit `db312e3592648a3b620d66b2ea22af018396112e`. CU01 está implementado y versionado en Git: perfil único, alias, tres tipos de contexto, persistencia atómica y validaciones. Las pruebas automáticas de API, widgets y HTTP real están aprobadas; la persona usuaria aprobó su aspecto en el simulador de iPad y quedan pendientes los escenarios funcionales manuales. CU02 implementa el catálogo, importación y categorías de v0.2. Pasó pruebas automáticas e integración con ARASAAC. La persona usuaria confirmó el recorrido manual en el simulador de iPad. CU03 implementa generación, revisión, edición y guardado de rutinas. Pasó pruebas automáticas e integración con Ollama y ARASAAC. El modelo es provisional por las limitaciones de calidad observadas y queda pendiente la revisión en iPad. CU04–CU05 siguen pendientes.
 
 Ver [evidencias de CU01](docs/evidence/iteration-1/README.md) y [guía de ejecución](docs/development-setup.md). Los estados «comprometido», «implementado» y «validado» no son intercambiables; la prueba visual de salud de Iteración 0 no sustituye la aceptación manual de CU01.
 
@@ -62,3 +62,5 @@ La matriz de prioridad y aceptación está en [casos de uso](docs/use-cases.md) 
 La [referencia visual SCAA](docs/design/README.md) documenta los mockups y su adaptación a CU01 en tablet.
 
 El [registro de Iteración 2](docs/evidence/iteration-2/README.md) reúne el diseño, las pruebas y el recorrido confirmado de CU02 en el simulador de iPad.
+
+El [registro de Iteración 3](docs/evidence/iteration-3/README.md) documenta CU03 y sus verificaciones.

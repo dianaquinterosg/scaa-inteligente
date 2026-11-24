@@ -1,16 +1,16 @@
 # Plan de pruebas y evidencias — MVP 60 % (v0.2)
 
-**Estado:** T01–T03 tienen pruebas automáticas aprobadas para CU01; pruebas funcionales manuales en iPad pendientes. T08 se ejecutó como sonda técnica de inferencia real. T04–T07 se aprobaron con pruebas automáticas de CU02. T15 tiene cobertura parcial de CU02. Ver [Iteración 0](evidence/iteration-0/test-results.md) e [Iteración 1](evidence/iteration-1/results.md); CU02 tiene una [regresión específica](evidence/iteration-2/results.md) y un [recorrido manual confirmado en simulador](evidence/iteration-2/manual-check.md). CU03 sigue pendiente.
+**Estado:** T01–T03 tienen pruebas automáticas aprobadas para CU01; pruebas funcionales manuales en iPad pendientes. T08 cuenta con tres escenarios de inferencia real a través de la API de CU03. T04–T07 se aprobaron con pruebas automáticas de CU02. T15 se verificó con rutinas y pictogramas persistidos. Ver [Iteración 0](evidence/iteration-0/test-results.md) e [Iteración 1](evidence/iteration-1/results.md); CU02 tiene una [regresión específica](evidence/iteration-2/results.md) y un [recorrido manual confirmado en simulador](evidence/iteration-2/manual-check.md). CU03 completó pruebas controladas e integración real. Quedan pendientes la revisión en iPad, la validación con usuarios y el recorrido T16.
 
 ## 1. Niveles y herramientas tentativas
 
 | Nivel | Qué verificar | Implementación propuesta | Estado |
 |---|---|---|---|
-| Unitarias | Normalizaciones, validaciones, clasificación, integridad de pasos | `pytest` + `pytest-asyncio` si aplica | CU01 probado; restantes pendientes |
-| Integración API/BD | FastAPI, SQLite, transacciones, persistencia y FKs | `TestClient`/cliente ASGI, BD de test aislada | CU01 y migraciones probados |
-| Integración servicios externos controlada | Timeout/respuesta/error ARASAAC y adaptador IA | Fake/stubs en tests automatizados | Pendiente |
-| Smoke test REAL | ARASAAC conectado e IA ejecutándose localmente | Script/endpoint manual con evidencias y datos sintéticos | Sondas de Iteración 0 aprobadas; ARASAAC real integrado y probado en CU02; CU03 pendiente |
-| Sistema E2E | Flutter→FastAPI→persistencia→consulta | Recorrido manual reproducible y capturas | CU01 HTTP real probado; aspecto de CU01 aprobado en simulador; recorrido funcional manual y T16 pendientes |
+| Unitarias | Normalizaciones, validaciones, clasificación, integridad de pasos | `pytest` + `pytest-asyncio` si aplica | CU01–CU03 probados |
+| Integración API/BD | FastAPI, SQLite, transacciones, persistencia y FKs | `TestClient`/cliente ASGI, BD de test aislada | CU01–CU03 y migraciones probados |
+| Integración servicios externos controlada | Timeout/respuesta/error ARASAAC y adaptador IA | Fakes y transporte HTTP controlado | Error ARASAAC, timeout y salida inválida de Ollama probados |
+| Smoke test REAL | ARASAAC conectado e IA ejecutándose localmente | Script/endpoint manual con evidencias y datos sintéticos | ARASAAC real probado en CU02 y CU03. Inferencia Ollama real probada en CU03 con calidad semántica provisional |
+| Sistema E2E | Flutter→FastAPI→persistencia→consulta | Recorrido manual reproducible y capturas | HTTP CU01–CU03 probado. CU01 tiene aprobación visual y CU02 recorrido en simulador confirmado. Revisión de CU03 y T16 pendientes. |
 | Instalación release/demo | Instalación desde instrucciones y arranque | Procedimiento documentado tras verificación | Pendiente |
 
 ## 2. Casos mínimos concretos
@@ -24,14 +24,14 @@
 | T05 | CU02 / CA02.5–CA02.7 | Archivo propio válido se incorpora solo tras aprobar; inválido se rechaza | Aprobado automáticamente | [CU02](evidence/iteration-2/results.md) |
 | T06 | CU02 / CA02.8–CA02.9 | Pictograma ARASAAC persistido; intento duplicado no crea nueva fila | Aprobado automáticamente | [CU02](evidence/iteration-2/results.md) |
 | T07 | CU02 / CA02.13–CA02.19 | Categorías N:M y filtrado; nombre duplicado no aceptado | Aprobado automáticamente | [CU02](evidence/iteration-2/results.md) |
-| T08 | CU03 / CA03.2 | IA local REAL entrega 3 rutinas estructuradas válidas (registrar modelo, equipo y resultado) | Ejecutado como sonda técnica; integración CU03 y calidad pendientes | [Inferencia real](evidence/iteration-0/integrations/bootstrap-integrations.json), [equipo y entorno](evidence/iteration-0/environment/environment-audit.md) |
-| T09 | CU03 / CA03.4–CA03.5 | Exacta local > prefijo > contiene; empate local sin selección arbitraria | No ejecutado | — |
-| T10 | CU03 / CA03.4, CA03.15 | ARASAAC sugiere candidato temporal; cancelar propuesta no crea filas | No ejecutado | — |
-| T11 | CU03 / CA03.7, CA03.13–CA03.14 | Reordenar/repetir recurso, bloquear guardado de paso sin pictograma | No ejecutado | — |
-| T12 | CU03 / CA03.8–CA03.9 | Confirmación guarda rutina/pasos/imágenes aprobadas y permite recuperarlos | No ejecutado | — |
-| T13 | CU03 / CA03.15 | Falla simulada de persistencia deja BD consistente y limpia temporales | No ejecutado | — |
-| T14 | CU03 / CA03.11 (P1) | IA caída → posibilidad de creación manual; si no se implementa, documentar brecha | No ejecutado | — |
-| T15 | CU02/CU03 / P1 | Editar/borrar con integridad: imagen usada no se elimina; borrar rutina conserva imagen | CU02 con FK de prueba; rutina real y borrado CU03 pendientes | [CU02](evidence/iteration-2/results.md) |
+| T08 | CU03 / CA03.2 | IA local REAL entrega 3 rutinas estructuradas válidas (registrar modelo, equipo y resultado) | Tres respuestas estructuradas reales. Calidad provisional | [CU03](evidence/iteration-3/results.md) |
+| T09 | CU03 / CA03.4–CA03.5 | Exacta local > prefijo > contiene; empate local sin selección arbitraria | Aprobado automáticamente | [CU03](evidence/iteration-3/results.md) |
+| T10 | CU03 / CA03.4, CA03.15 | ARASAAC sugiere candidato temporal; cancelar propuesta no crea filas | Aprobado automáticamente | [CU03](evidence/iteration-3/results.md) |
+| T11 | CU03 / CA03.7, CA03.13–CA03.14 | Reordenar/repetir recurso, bloquear guardado de paso sin pictograma | Aprobado automáticamente | [CU03](evidence/iteration-3/results.md) |
+| T12 | CU03 / CA03.8–CA03.9 | Confirmación guarda rutina/pasos/imágenes aprobadas y permite recuperarlos | Aprobado automáticamente | [CU03](evidence/iteration-3/results.md) |
+| T13 | CU03 / CA03.15 | Falla simulada de persistencia deja BD consistente y limpia temporales | Aprobado automáticamente | [CU03](evidence/iteration-3/results.md) |
+| T14 | CU03 / CA03.11 (P1) | IA caída → posibilidad de creación manual; si no se implementa, documentar brecha | Aprobado automáticamente | [CU03](evidence/iteration-3/results.md) |
+| T15 | CU02/CU03 / P1 | Editar/borrar con integridad: imagen usada no se elimina; borrar rutina conserva imagen | Aprobado con una rutina real y comprobación de conservación de imágenes | [CU03](evidence/iteration-3/results.md) |
 | T16 | E2E | Primera configuración → incorporar pictograma → rutina IA → revisar → guardar → recuperar | No ejecutado | — |
 
 ## 3. Validación de calidad de la asociación (sin cifras inventadas)
@@ -52,6 +52,8 @@ El registro de gestión de configuración debe incluir SHA de commit, tag (por e
 |---|---|---|---|---|
 | 0 — preparación técnica | `db312e3592648a3b620d66b2ea22af018396112e` | 6 backend, 2 Flutter y sondas reales aprobadas; iPad confirmado por la persona usuaria | [Cierre](evidence/iteration-0/README.md) | Limitaciones del modelo provisional |
 | 1 — CU01 | Implementación funcional `854180f` y adaptación visual `bca2e58` | 45 backend, 17 Flutter y 7 escenarios HTTP reales aprobados. Análisis sin incidencias | [Regresión visual](evidence/iteration-1/visual.md) | Aspecto aprobado en simulador; pruebas funcionales manuales pendientes |
+| 2 — CU02 | `c311854`, `7a0acd5`, `3e256e8` | 68 backend, 21 Flutter, 4 escenarios HTTP y recorrido de iPad confirmado | [Iteración 2](evidence/iteration-2/README.md) | CA02.12 resuelto en Iteración 3 |
+| 3 — CU03 | `51c191b`, `0212ce4`, `c3ad225` | 95 backend, 25 Flutter, 11 verificaciones HTTP CU03 y regresiones HTTP CU01/CU02 | [Iteración 3](evidence/iteration-3/results.md) | Calidad semántica provisional, simulador y T16 pendientes |
 
 Los registros documentales excluyen metadatos temporales. Los resultados se asocian al alcance y al código real, sin atribuir un commit inexistente.
 

@@ -1,12 +1,12 @@
 # Preparación y ejecución de desarrollo
 
-Flutter iOS → FastAPI → SQLite. CU01 implementado y probado automáticamente; aspecto aprobado por la persona usuaria en el simulador de iPad; pruebas funcionales manuales pendientes. CU02 está implementado y el recorrido manual en el simulador de iPad fue confirmado por la persona usuaria. CU03 sigue pendiente. La documentación mantiene su identificación v0.2; el valor de desarrollo `0.0.0` del código no representa una release.
+Flutter iOS → FastAPI → SQLite. CU01 implementado y probado automáticamente; aspecto aprobado por la persona usuaria en el simulador de iPad; pruebas funcionales manuales pendientes. CU02 está implementado y el recorrido manual en el simulador de iPad fue confirmado por la persona usuaria. CU03 está implementado con Ollama local y creación manual. La validación de CU03 en iPad sigue pendiente. La documentación mantiene su identificación v0.2; el valor de desarrollo `0.0.0` del código no representa una release.
 
 ## Estructura
 
 ```text
 backend/
-  scaa_backend/   # configuración, migraciones, perfil/contexto y salud
+  scaa_backend/   # configuración, migraciones, perfil, catálogo, rutinas y salud
   tests/         # pruebas de la base técnica
   scripts/       # sondas reales de ARASAAC y Ollama
 frontend/        # cliente Flutter con destino iOS
@@ -35,7 +35,7 @@ Desde la raíz:
 
 Durante la comprobación inicial se utilizó `backend/.env.example` directamente con `--env-file`; no se necesita información secreta. Se comprobó HTTP 200 en `http://127.0.0.1:8000/api/v1/health`, con estado y SQLite disponibles. La API expone GET y PUT `/api/v1/profile` para CU01; Para CU02, las rutas de pictogramas y categorías se describen en el [contrato](evidence/iteration-2/design.md).
 
-`SCAA_ENV` admite `dev`, `test` o `demo`. Bajo `SCAA_DATA_ROOT` se crea un directorio por entorno y una base `scaa.sqlite3` distinta. Por defecto se utiliza `.localdata/` en la raíz. La migración SQL 1 crea `profile` y `context_item` al iniciar. No hay tablas de los casos de uso posteriores. Las conexiones activan claves foráneas y cierran la transacción con commit o rollback.
+`SCAA_ENV` admite `dev`, `test` o `demo`. Bajo `SCAA_DATA_ROOT` se crea un directorio por entorno y una base `scaa.sqlite3` distinta. Por defecto se utiliza `.localdata/` en la raíz. Al iniciar se aplican las migraciones 001 de perfil, 002 de catálogo y 003 de rutinas, según la versión de la base. Las conexiones activan claves foráneas y cierran la transacción con commit o rollback.
 
 Para una configuración de demo, establecer explícitamente `SCAA_ENV=demo`; eso separa sus archivos, pero no certifica una instalación de liberación. Las pruebas utilizan directorios temporales aislados.
 
@@ -115,3 +115,15 @@ El ejecutor crea un backend de prueba y datos temporales aislados, usa el client
 Para probar manualmente CU01, reiniciar el backend anterior y realizar hot restart (`R`) en la Terminal de Flutter. Seguir la [lista de aceptación manual](evidence/iteration-1/manual-check.md). Las versiones de dependencias no cambiaron respecto a Iteración 0.
 
 Para el selector nativo de archivos y el recorrido de CU02, consultar la [lista de iPad](evidence/iteration-2/manual-check.md). Es necesario volver a ejecutar Flutter con el plugin instalado.
+
+## Ejecutar CU03
+
+Configurar `OLLAMA_BASE_URL` con una dirección local de loopback. `OLLAMA_MODEL` selecciona el modelo y `OLLAMA_TIMEOUT` admite entre 1 y 120 segundos para la respuesta de inferencia. Usar el modelo provisional disponible `qwen2.5:1.5b` o uno configurado y verificado por el equipo. Arrancar Ollama en Terminal del sistema si no está en ejecución. La migración 003 se aplica al reiniciar FastAPI. La opción manual funciona también cuando el servicio de IA está caído.
+
+Desde la raíz, la sonda usa un proceso HTTP y una base aislados:
+
+```sh
+.venv/bin/python backend/scripts/run_profile_probe.py --flow routine --output work/cu03/http-reproduccion.json
+```
+
+La revisión de la UI se realiza con el [protocolo del simulador](evidence/iteration-3/manual-check.md).

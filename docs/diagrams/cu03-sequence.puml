@@ -1,64 +1,65 @@
 @startuml
 skinparam shadowing false
-title CU03 — Propuesta y validación de rutina (flujo objetivo)
-actor Administrador as U
-participant "Flutter" as F
-participant "FastAPI / RoutineService" as API
-participant "RoutineGenerator" as GEN
-participant "Modelo IA local" as LLM
-participant "AssociationService" as MATCH
-participant "PictogramRepository" as REPO
-participant "ARASAAC API" as AR
-entity "SQLite" as DB
-U -> F : Describe rutina y solicita propuesta
+title CU03 — Propuesta, revisión y confirmación de rutina
+actor Cuidador as U
+participant Flutter as F
+participant "FastAPI / routine_api" as API
+participant "ProfileRepository" as P
+participant "OllamaGenerator" as GEN
+participant "Modelo Ollama local" as LLM
+participant "Asociación / Catalog" as MATCH
+participant ARASAAC as AR
+participant "RoutineRepository / Catalog" as STORE
+database SQLite as DB
+participant "Archivos locales" as FS
+
+U -> F : Escribir descripción
 F -> API : POST /api/v1/routines/proposals
-API -> GEN : generate(descripcion)
-GEN -> LLM : solicitud + esquema estructurado
-alt IA responde con JSON válido
-  LLM --> GEN : nombre + pasos + search_term
-  GEN --> API : propuesta validada
-  loop cada paso
-    API -> MATCH : buscar candidatos(search_term)
-    MATCH -> REPO : buscar local (exacta/prefijo/inclusión)
-    REPO -> DB : SELECT pictogramas aprobados
-    DB --> REPO : coincidencias
-    REPO --> MATCH : candidatos locales
-    alt candidato local único con mayor prioridad
-      MATCH --> API : preselección local revisable
-    else empate local
-      MATCH --> API : opciones sin selección automática
-    else sin coincidencia local
-      MATCH -> AR : buscar pictogramas
-      alt ARASAAC responde
-        AR --> MATCH : resultados ordenados
-        MATCH --> API : primer candidato provisional + alternativas
-      else error / sin resultados
-        AR --> MATCH : error/vacío
-        MATCH --> API : paso pendiente
-      end
-    end
+API -> P : Leer perfil confirmado
+P --> API : Contexto persistido
+API -> GEN : Generar con contexto pertinente sin alias
+GEN -> LLM : POST /api/chat y JSON Schema
+alt Propuesta válida
+  LLM --> GEN : Nombre y pasos ordenados
+  GEN --> API : Contrato Pydantic validado
+  API -> MATCH : Cargar catálogo y construir coincidencias
+  MATCH -> DB : Leer pictogramas aprobados
+  alt Coincidencia local única
+    MATCH --> API : Preselección local revisable
+  else Empate en el nivel local más alto
+    MATCH --> API : Opciones sin preselección
+  else Sin coincidencia local
+    MATCH -> AR : Consultar términos únicos con límite de concurrencia
+    AR --> MATCH : Alternativas o error del paso
+    MATCH --> API : Candidato provisional o paso pendiente
   end
-  API --> F : propuesta editable; NO guardada
-else IA falla o salida inválida
-  LLM --> GEN : error / salida inválida
-  GEN --> API : fallo controlado
-  API --> F : mostrar error / ofrecer creación manual
+  API --> F : Borrador sin aprobación ni persistencia
+else Ollama inaccesible, timeout o salida inválida
+  GEN --> API : Fallo controlado
+  API --> F : Mensaje y creación manual disponible
 end
-U -> F : Corrige, revisa y confirma rutina
-F -> API : POST /api/v1/routines (pasos y elecciones)
-API -> API : validar cada paso y consentimiento
-alt todos los pasos tienen pictograma aprobado
-  API -> DB : transacción: pictogramas nuevos + rutina + pasos
-  DB --> API : commit exitoso
-  API --> F : rutina persistida
-  F --> U : éxito y visualización
-else falta pictograma / error
-  API --> F : error, sin rutina parcial
-  F --> U : corregir/reintentar
+
+U -> F : Editar y aprobar pictogramas por paso
+opt Incorporar un recurso de forma independiente en CU02
+  F -> API : POST /api/v1/pictograms con confirmación
+  API --> F : Recurso definitivo independiente
 end
-note over API,DB
-Operación lógica atómica en BD.
-Archivos de imagen requieren staging/limpieza
-porque SQLite no transacciona archivos.
-end note
+alt Cancelar
+  F --> U : Descartar borrador y conservar catálogo previo
+else Confirmar
+  F -> API : POST o PUT /api/v1/routines con confirmación
+  API -> API : Validar pasos y selección por paso
+  API -> AR : Descargar y validar imágenes externas nuevas fuera de la transacción
+  API -> STORE : Guardar rutina y recursos aprobados
+  STORE -> DB : BEGIN IMMEDIATE, comprobar referencias y escribir
+  STORE -> FS : Escribir imágenes nuevas y registrar rutas
+  alt Guardado correcto
+    STORE -> DB : COMMIT
+    API --> F : Rutina definitiva y pasos ordenados
+  else Falla la escritura
+    STORE -> DB : ROLLBACK
+    STORE -> FS : Compensar imágenes nuevas
+    API --> F : Error y borrador disponible para reintento
+  end
+end
 @enduml

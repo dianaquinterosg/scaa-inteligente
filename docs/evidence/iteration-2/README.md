@@ -1,6 +1,6 @@
 # Iteración 2 — CU02, gestión de pictogramas
 
-CU02 está implementado y cuenta con pruebas automáticas en API, widgets e integración HTTP real. La persona usuaria confirmó el recorrido manual en el simulador de iPad, incluida la importación de un PNG desde Archivos. La comprobación con rutinas reales queda para CU03.
+CU02 está implementado y cuenta con pruebas automáticas en API, widgets e integración HTTP real. La persona usuaria confirmó el recorrido manual en el simulador de iPad, incluida la importación de un PNG desde Archivos. La comprobación con rutinas reales se registró en [Iteración 3](../iteration-3/results.md).
 
 | Unidad | Commit | Evidencia |
 |---|---|---|

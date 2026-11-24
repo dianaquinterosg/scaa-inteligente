@@ -1,0 +1,1291 @@
+{
+  "iteration": 3,
+  "functionality": "CU03",
+  "backend": {
+    "commit": "51c191b",
+    "command": "../.venv/bin/python -m pytest -q",
+    "directory": "backend",
+    "exit_code": 0,
+    "passed": 95,
+    "warnings": [
+      "Deprecación de HTTPX con Starlette TestClient"
+    ],
+    "tests": [
+      {
+        "case": "test_health_initializes_profile_schema",
+        "module": "tests.test_bootstrap",
+        "result": "passed"
+      },
+      {
+        "case": "test_database_transactions_and_foreign_keys",
+        "module": "tests.test_bootstrap",
+        "result": "passed"
+      },
+      {
+        "case": "test_environments_use_different_database_files",
+        "module": "tests.test_bootstrap",
+        "result": "passed"
+      },
+      {
+        "case": "test_initialize_preserves_existing_schema_version",
+        "module": "tests.test_bootstrap",
+        "result": "passed"
+      },
+      {
+        "case": "test_settings_read_and_validate_environment",
+        "module": "tests.test_bootstrap",
+        "result": "passed"
+      },
+      {
+        "case": "test_health_does_not_expose_storage_paths",
+        "module": "tests.test_bootstrap",
+        "result": "passed"
+      },
+      {
+        "case": "test_local_first_remote_alternatives_preview_and_no_implicit_save",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_arasaac_outage_offers_manual_path_and_distinguishes_no_results",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_approved_files_are_local_and_keep_detected_formats[PNG-png]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_approved_files_are_local_and_keep_detected_formats[JPEG-jpeg]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_approved_files_are_local_and_keep_detected_formats[WEBP-webp]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch0]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch1]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch2]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch3]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch4]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch5]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch6]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch7]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch8]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch9]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch10]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_missing_confirmation_and_oversize_are_rejected",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_arasaac_attribution_unique_reference_and_reopen",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_category_lifecycle_relationships_filter_and_reopen",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_delete_removes_file_and_respects_foreign_key_dependency",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_file_write_failure_rolls_back_approval",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_reopen_recovers_interrupted_files_without_touching_foreign_files",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_failed_migration_is_atomic",
+        "module": "tests.test_migrations",
+        "result": "passed"
+      },
+      {
+        "case": "test_newer_schema_is_not_downgraded",
+        "module": "tests.test_migrations",
+        "result": "passed"
+      },
+      {
+        "case": "test_upgrade_preserves_confirmed_profile_and_enforces_category_relationships",
+        "module": "tests.test_migrations",
+        "result": "passed"
+      },
+      {
+        "case": "test_upgrade_to_routines_preserves_profile_catalog_and_categories",
+        "module": "tests.test_migrations",
+        "result": "passed"
+      },
+      {
+        "case": "test_first_use_requires_alias_and_has_no_profile",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_create_normalize_and_recover_all_context_types",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_edit_and_delete_individual_items[interests]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_edit_and_delete_individual_items[activities]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_edit_and_delete_individual_items[frequent_routines]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_alias_does_not_replace_saved_profile[]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_alias_does_not_replace_saved_profile[  ]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_alias_does_not_replace_saved_profile[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_alias_does_not_replace_saved_profile[None]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_alias_does_not_replace_saved_profile[123]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_alias_does_not_replace_saved_profile[\\ud800]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items0-interests]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items0-activities]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items0-frequent_routines]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items1-interests]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items1-activities]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items1-frequent_routines]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items2-interests]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items2-activities]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items2-frequent_routines]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items3-interests]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items3-activities]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items3-frequent_routines]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items4-interests]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items4-activities]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items4-frequent_routines]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items5-interests]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items5-activities]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items5-frequent_routines]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[None-interests]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[None-activities]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[None-frequent_routines]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_boundaries_unicode_and_single_profile",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_database_failure_rolls_back_alias_deletion_and_partial_insert",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_profile_persists_across_application_restart",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_only_confirmed_context_is_available",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_failed_read_is_not_reported_as_first_use",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_ollama_uses_schema_and_strictly_validates_messages",
+        "module": "tests.test_routine_generation",
+        "result": "passed"
+      },
+      {
+        "case": "test_rejects_invalid_model_content[no es JSON]",
+        "module": "tests.test_routine_generation",
+        "result": "passed"
+      },
+      {
+        "case": "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[]}]",
+        "module": "tests.test_routine_generation",
+        "result": "passed"
+      },
+      {
+        "case": "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[{\"order\":\"1\",\"label\":\"A\",\"search_term\":\"a\"}]}]",
+        "module": "tests.test_routine_generation",
+        "result": "passed"
+      },
+      {
+        "case": "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[{\"order\":2,\"label\":\"A\",\"search_term\":\"a\"}]}]",
+        "module": "tests.test_routine_generation",
+        "result": "passed"
+      },
+      {
+        "case": "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[{\"order\":1,\"label\":\"A\",\"search_term\":\" \" }]}]",
+        "module": "tests.test_routine_generation",
+        "result": "passed"
+      },
+      {
+        "case": "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[{\"order\":1,\"label\":\"A\",\"search_term\":\"a\",\"id\":3}]}]",
+        "module": "tests.test_routine_generation",
+        "result": "passed"
+      },
+      {
+        "case": "test_ollama_classifies_timeout_and_truncated_response",
+        "module": "tests.test_routine_generation",
+        "result": "passed"
+      },
+      {
+        "case": "test_limits_steps_and_rejects_remote_inference_host",
+        "module": "tests.test_routine_generation",
+        "result": "passed"
+      },
+      {
+        "case": "test_association_ranks_and_respects_ambiguity",
+        "module": "tests.test_routine_generation",
+        "result": "passed"
+      },
+      {
+        "case": "test_association_deduplicates_queries_and_isolates_remote_failure",
+        "module": "tests.test_routine_generation",
+        "result": "passed"
+      },
+      {
+        "case": "test_proposal_uses_persisted_context_without_alias_or_unconfirmed_draft",
+        "module": "tests.test_routines",
+        "result": "passed"
+      },
+      {
+        "case": "test_ai_errors_allow_manual_creation[timeout-504]",
+        "module": "tests.test_routines",
+        "result": "passed"
+      },
+      {
+        "case": "test_ai_errors_allow_manual_creation[invalid_output-502]",
+        "module": "tests.test_routines",
+        "result": "passed"
+      },
+      {
+        "case": "test_ai_errors_allow_manual_creation[unavailable-503]",
+        "module": "tests.test_routines",
+        "result": "passed"
+      },
+      {
+        "case": "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch0]",
+        "module": "tests.test_routines",
+        "result": "passed"
+      },
+      {
+        "case": "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch1]",
+        "module": "tests.test_routines",
+        "result": "passed"
+      },
+      {
+        "case": "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch2]",
+        "module": "tests.test_routines",
+        "result": "passed"
+      },
+      {
+        "case": "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch3]",
+        "module": "tests.test_routines",
+        "result": "passed"
+      },
+      {
+        "case": "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch4]",
+        "module": "tests.test_routines",
+        "result": "passed"
+      },
+      {
+        "case": "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch5]",
+        "module": "tests.test_routines",
+        "result": "passed"
+      },
+      {
+        "case": "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch6]",
+        "module": "tests.test_routines",
+        "result": "passed"
+      },
+      {
+        "case": "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch7]",
+        "module": "tests.test_routines",
+        "result": "passed"
+      },
+      {
+        "case": "test_reuses_external_and_local_pictures_then_reopens_edits_and_deletes",
+        "module": "tests.test_routines",
+        "result": "passed"
+      },
+      {
+        "case": "test_rolls_back_new_images_and_preserves_independently_approved_picture",
+        "module": "tests.test_routines",
+        "result": "passed"
+      },
+      {
+        "case": "test_failed_update_keeps_previously_approved_steps_and_files",
+        "module": "tests.test_routines",
+        "result": "passed"
+      }
+    ]
+  },
+  "flutter": {
+    "commit": "0212ce4",
+    "command": "flutter test --machine",
+    "directory": "frontend",
+    "exit_code": 0,
+    "passed": 25,
+    "tests": [
+      {
+        "case": "Muestra carga y confirma la conexión",
+        "result": "passed"
+      },
+      {
+        "case": "Un fallo permite reintentar y recuperar la conexión",
+        "result": "passed"
+      },
+      {
+        "case": "CU01: tablet 820 px y texto ampliado",
+        "result": "passed"
+      },
+      {
+        "case": "CU01: tablet 1180 px y texto ampliado",
+        "result": "passed"
+      },
+      {
+        "case": "Un fallo de guardado queda visible al editar desde el final del formulario",
+        "result": "passed"
+      },
+      {
+        "case": "CU03 valida descripción, muestra generación y cancela propuesta sin guardar",
+        "result": "passed"
+      },
+      {
+        "case": "CU02 busca primero en catálogo, ofrece ARASAAC y rechaza sin guardar",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.3: editar y eliminar interests preserva los otros tipos",
+        "result": "passed"
+      },
+      {
+        "case": "CU02 importa durante fallo remoto, valida, conserva borrador y confirma",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.3: editar y eliminar activities preserva los otros tipos",
+        "result": "passed"
+      },
+      {
+        "case": "CU03 pasa de un fallo IA al editor manual y confirma con pictograma local",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.3: editar y eliminar frequent_routines preserva los otros tipos",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.1/4/6: alias obligatorio normalizado y contexto opcional",
+        "result": "passed"
+      },
+      {
+        "case": "CU02 permite filtrar, editar asociaciones y eliminar con confirmación",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.2/3/6/8: añadir, editar, eliminar y recuperar los tres tipos",
+        "result": "passed"
+      },
+      {
+        "case": "CU03 edita, reemplaza, reordena y conserva el borrador si falla el guardado",
+        "result": "passed"
+      },
+      {
+        "case": "CU02 crea, valida, renombra y confirma eliminación de categoría",
+        "result": "passed"
+      },
+      {
+        "case": "CU03 consulta y elimina con confirmación en tablet horizontal",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.5: vacíos y duplicados normalizados en interests",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.5: vacíos y duplicados normalizados en activities",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.5: vacíos y duplicados normalizados en frequent_routines",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.7: límite 50 para alias y cada tipo, con Unicode",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.9: fallo conserva borrador y datos confirmados, permite reintentar",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.10: cancelar descarta cambios no confirmados",
+        "result": "passed"
+      },
+      {
+        "case": "Un fallo de lectura no permite confundirlo con primer uso",
+        "result": "passed"
+      }
+    ]
+  },
+  "analyze": {
+    "commit": "0212ce4",
+    "command": "flutter analyze",
+    "directory": "frontend",
+    "exit_code": 0,
+    "result": "Sin incidencias"
+  },
+  "model": {
+    "name": "qwen2.5:1.5b",
+    "ollama_version": "0.40.17",
+    "quantization": "Q4_K_M",
+    "digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+    "status": "Provisional por calidad de contenido",
+    "restricted_runtime_attempt": "HTTP 500 durante carga por fallo de asignación Metal",
+    "initial_prompt_commit": "7456158",
+    "initial_scenarios": [
+      {
+        "description": "Lavarse las manos",
+        "context": {},
+        "proposal": {
+          "name": "Lavado de manos",
+          "steps": [
+            {
+              "order": 1,
+              "label": "Abrir grifo",
+              "search_term": "grifo"
+            },
+            {
+              "order": 2,
+              "label": "Mojar manos",
+              "search_term": "manos"
+            },
+            {
+              "order": 3,
+              "label": "Aplicar jabón",
+              "search_term": "jabón"
+            },
+            {
+              "order": 4,
+              "label": "Frotar",
+              "search_term": "frotar"
+            },
+            {
+              "order": 5,
+              "label": "Enjuagar",
+              "search_term": "enjuagar"
+            },
+            {
+              "order": 6,
+              "label": "Secar",
+              "search_term": "secar"
+            }
+          ]
+        }
+      },
+      {
+        "description": "Preparar la mochila para el colegio",
+        "context": {
+          "activities": [
+            "Mochila azul"
+          ]
+        },
+        "proposal": {
+          "name": "Preparar la mochila para el colegio",
+          "steps": [
+            {
+              "order": 1,
+              "label": "Encender la computadora",
+              "search_term": "Mochila azul"
+            },
+            {
+              "order": 2,
+              "label": "Abrir la carpeta de la tarea",
+              "search_term": "Mochila azul"
+            },
+            {
+              "order": 3,
+              "label": "Copiar el material necesario",
+              "search_term": "Mochila azul"
+            },
+            {
+              "order": 4,
+              "label": "Revisar la lista de materiales",
+              "search_term": "Mochila azul"
+            },
+            {
+              "order": 5,
+              "label": "Añadir el material a la mochila",
+              "search_term": "Mochila azul"
+            },
+            {
+              "order": 6,
+              "label": "Verificar la lista de materiales",
+              "search_term": "Mochila azul"
+            },
+            {
+              "order": 7,
+              "label": "Cerrar la carpeta de la tarea",
+              "search_term": "Mochila azul"
+            }
+          ]
+        }
+      },
+      {
+        "description": "Preparar una colación de manzana y agua",
+        "context": {
+          "interests": [
+            "Manzana"
+          ]
+        },
+        "proposal": {
+          "name": "Preparación de colación de manzana y agua",
+          "steps": [
+            {
+              "order": 1,
+              "label": "Poner la manzana en un recipiente",
+              "search_term": "manzana"
+            },
+            {
+              "order": 2,
+              "label": "Lavar las manos",
+              "search_term": "lavar manos"
+            },
+            {
+              "order": 3,
+              "label": "Poner agua en un recipiente",
+              "search_term": "agua"
+            },
+            {
+              "order": 4,
+              "label": "Hervir el agua",
+              "search_term": "hervir agua"
+            },
+            {
+              "order": 5,
+              "label": "Colar la manzana",
+              "search_term": "colar manzana"
+            },
+            {
+              "order": 6,
+              "label": "Incorporar la manzana en el agua hirviendo",
+              "search_term": "incorporar manzana"
+            },
+            {
+              "order": 7,
+              "label": "Dejar cocinar durante 10 minutos",
+              "search_term": "cocinar manzana"
+            },
+            {
+              "order": 8,
+              "label": "Servir la colación",
+              "search_term": "servir colación"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "http": {
+    "commit": "c3ad225",
+    "directory": "raíz",
+    "command": ".venv/bin/python backend/scripts/run_profile_probe.py --flow routine --output work/cu03/http-reproduccion.json",
+    "status": "passed",
+    "tests": [
+      {
+        "id": "I3-HTTP-Ollama-1",
+        "result": "passed"
+      },
+      {
+        "id": "I3-HTTP-Ollama-2",
+        "result": "passed"
+      },
+      {
+        "id": "I3-HTTP-Ollama-3",
+        "result": "passed"
+      },
+      {
+        "id": "I3-HTTP-propuestas-sin-escrituras",
+        "result": "passed"
+      },
+      {
+        "id": "I3-HTTP-ARASAAC-real-en-asociacion",
+        "result": "passed"
+      },
+      {
+        "id": "I3-HTTP-vista-previa-externa",
+        "result": "passed"
+      },
+      {
+        "id": "I3-HTTP-confirmacion-y-reutilizacion",
+        "result": "passed"
+      },
+      {
+        "id": "I3-HTTP-CA02.12-rutina-real",
+        "result": "passed"
+      },
+      {
+        "id": "I3-HTTP-recuperacion",
+        "result": "passed"
+      },
+      {
+        "id": "I3-HTTP-edicion",
+        "result": "passed"
+      },
+      {
+        "id": "I3-HTTP-borrado-conserva-pictograma",
+        "result": "passed"
+      }
+    ],
+    "model_scenarios": [
+      {
+        "description": "Lavarse las manos",
+        "name": "Lavado de manos",
+        "steps": [
+          {
+            "order": 1,
+            "label": "Aplicar jabón",
+            "search_term": "jabón",
+            "association": "arasaac",
+            "candidates": 8,
+            "proposed_external_id": 8094,
+            "approved": false
+          },
+          {
+            "order": 2,
+            "label": "Lavarse las manos",
+            "search_term": "manos",
+            "association": "arasaac",
+            "candidates": 8,
+            "proposed_external_id": 2928,
+            "approved": false
+          },
+          {
+            "order": 3,
+            "label": "Secar las manos",
+            "search_term": "manos",
+            "association": "arasaac",
+            "candidates": 8,
+            "proposed_external_id": 2928,
+            "approved": false
+          }
+        ],
+        "structure": "passed",
+        "semantic_review": "Requiere correcciones",
+        "review_observation": "La secuencia comienza con jabón, omite mojar y enjuagar y usa «manos» para dos acciones distintas."
+      },
+      {
+        "description": "Preparar la mochila para el colegio",
+        "name": "Mochila azul",
+        "steps": [
+          {
+            "order": 1,
+            "label": "Encolir la mochila",
+            "search_term": "mochila",
+            "association": "arasaac",
+            "candidates": 8,
+            "proposed_external_id": 2475,
+            "approved": false
+          },
+          {
+            "order": 2,
+            "label": "Añadir uniforme",
+            "search_term": "uniforme",
+            "association": "arasaac",
+            "candidates": 0,
+            "proposed_external_id": null,
+            "approved": false
+          },
+          {
+            "order": 3,
+            "label": "Incluir libros",
+            "search_term": "libros",
+            "association": "arasaac",
+            "candidates": 8,
+            "proposed_external_id": 25191,
+            "approved": false
+          },
+          {
+            "order": 4,
+            "label": "Colocar bolígrafos",
+            "search_term": "bolígrafos",
+            "association": "arasaac",
+            "candidates": 2,
+            "proposed_external_id": 2282,
+            "approved": false
+          },
+          {
+            "order": 5,
+            "label": "Añadir regalos",
+            "search_term": "regalos",
+            "association": "arasaac",
+            "candidates": 3,
+            "proposed_external_id": 25381,
+            "approved": false
+          },
+          {
+            "order": 6,
+            "label": "Verificar",
+            "search_term": "mochila",
+            "association": "arasaac",
+            "candidates": 8,
+            "proposed_external_id": 2475,
+            "approved": false
+          }
+        ],
+        "structure": "passed",
+        "semantic_review": "Requiere correcciones",
+        "review_observation": "Incluye libros y bolígrafos. La etiqueta «Encolir» es ininteligible, se sugieren regalos y el uniforme carece de candidato."
+      },
+      {
+        "description": "Preparar una colación de manzana y agua",
+        "name": "Preparar colación",
+        "steps": [
+          {
+            "order": 1,
+            "label": "Poner la manzana en agua",
+            "search_term": "manzana, agua",
+            "association": "arasaac",
+            "candidates": 8,
+            "proposed_external_id": 38529,
+            "approved": false
+          },
+          {
+            "order": 2,
+            "label": "Colar la manzana",
+            "search_term": "manzana",
+            "association": "arasaac",
+            "candidates": 7,
+            "proposed_external_id": 2462,
+            "approved": false
+          },
+          {
+            "order": 3,
+            "label": "Servir la colación",
+            "search_term": "colación",
+            "association": "arasaac",
+            "candidates": 0,
+            "proposed_external_id": null,
+            "approved": false
+          }
+        ],
+        "structure": "passed",
+        "semantic_review": "Requiere correcciones",
+        "review_observation": "La secuencia supone poner la manzana en agua y colarla. No separa la preparación de la fruta y el servicio de agua."
+      }
+    ],
+    "arasaac_sample": {
+      "external_id": 8094,
+      "image_bytes": 9593
+    },
+    "exit_code": 0,
+    "isolation": "Proceso local y directorio temporal; datos dev/demo sin modificar",
+    "scope": "Cliente Dart real → API FastAPI → SQLite; interfaz visual separada"
+  },
+  "catalog_regression": {
+    "commit": "c3ad225",
+    "directory": "raíz",
+    "command": ".venv/bin/python backend/scripts/run_profile_probe.py --flow catalog --output work/cu03/catalog-reproduccion.json",
+    "status": "passed",
+    "tests": [
+      {
+        "id": "I2-HTTP-01-importacion-filtro-local",
+        "result": "passed"
+      },
+      {
+        "id": "I2-HTTP-02-arasaac-real-vista-previa",
+        "result": "passed"
+      },
+      {
+        "id": "I2-HTTP-03-confirmacion-recuperacion-duplicado",
+        "result": "passed"
+      },
+      {
+        "id": "I2-HTTP-04-edicion-y-eliminacion",
+        "result": "passed"
+      }
+    ],
+    "arasaac": {
+      "query": "agua",
+      "candidate_count": 24,
+      "sample_id": 32464,
+      "image_bytes": 5566
+    },
+    "exit_code": 0,
+    "isolation": "Proceso local y directorio temporal; datos dev/demo sin modificar",
+    "scope": "Cliente Dart real → API FastAPI → SQLite; interfaz visual separada"
+  },
+  "profile_regression": {
+    "commit": "c3ad225",
+    "directory": "raíz",
+    "command": ".venv/bin/python backend/scripts/run_profile_probe.py --output work/cu03/profile-reproduccion.json",
+    "status": "passed",
+    "tests": [
+      {
+        "id": "I1-LIVE-01-perfil-ausente",
+        "result": "passed"
+      },
+      {
+        "id": "I1-LIVE-02-creacion-normalizada",
+        "result": "passed"
+      },
+      {
+        "id": "I1-LIVE-03-recuperacion",
+        "result": "passed"
+      },
+      {
+        "id": "I1-LIVE-04-edicion-eliminacion",
+        "result": "passed"
+      },
+      {
+        "id": "I1-LIVE-05-rechazo-duplicados",
+        "result": "passed"
+      },
+      {
+        "id": "I1-LIVE-06-estado-confirmado-intacto",
+        "result": "passed"
+      },
+      {
+        "id": "I1-LIVE-07-cliente-nuevo",
+        "result": "passed"
+      }
+    ],
+    "exit_code": 0,
+    "isolation": "Proceso local y directorio temporal; datos dev/demo sin modificar",
+    "scope": "Cliente Dart real → API FastAPI → SQLite; interfaz visual separada"
+  },
+  "ios_build": {
+    "commit": "0212ce4",
+    "directory": "frontend",
+    "command": "flutter build ios --simulator --debug",
+    "exit_code": 1,
+    "result": "No se completó la resolución de paquetes. CoreSimulatorService inaccesible. sandbox_apply: Operation not permitted."
+  },
+  "previous_pending": {
+    "RF01.2": "Contexto persistido pertinente y exclusión de borrador probados en solicitud al adaptador con transporte controlado.",
+    "CA02.12": "HTTP 409 con pictograma referenciado por una rutina real en I3-HTTP-CA02.12."
+  },
+  "acceptance": [
+    {
+      "criterion": "CA03.1",
+      "backend_cases": [
+        "test_proposal_uses_persisted_context_without_alias_or_unconfirmed_draft",
+        "test_ai_errors_allow_manual_creation[timeout-504]",
+        "test_ai_errors_allow_manual_creation[invalid_output-502]",
+        "test_ai_errors_allow_manual_creation[unavailable-503]"
+      ],
+      "widget_cases": [
+        "CU03 valida descripción, muestra generación y cancela propuesta sin guardar"
+      ],
+      "http_cases": [
+        "I3-HTTP-Ollama-1"
+      ],
+      "result": "Aprobado en las pruebas indicadas.",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA03.2",
+      "backend_cases": [
+        "test_ollama_uses_schema_and_strictly_validates_messages",
+        "test_rejects_invalid_model_content[no es JSON]",
+        "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[]}]",
+        "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[{\"order\":\"1\",\"label\":\"A\",\"search_term\":\"a\"}]}]",
+        "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[{\"order\":2,\"label\":\"A\",\"search_term\":\"a\"}]}]",
+        "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[{\"order\":1,\"label\":\"A\",\"search_term\":\" \" }]}]",
+        "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[{\"order\":1,\"label\":\"A\",\"search_term\":\"a\",\"id\":3}]}]",
+        "test_proposal_uses_persisted_context_without_alias_or_unconfirmed_draft"
+      ],
+      "widget_cases": [
+        "CU03 valida descripción, muestra generación y cancela propuesta sin guardar"
+      ],
+      "http_cases": [
+        "I3-HTTP-Ollama-1",
+        "I3-HTTP-Ollama-2",
+        "I3-HTTP-Ollama-3"
+      ],
+      "result": "Estructura verificada con tres inferencias reales. Calidad semántica provisional.",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA03.3",
+      "backend_cases": [
+        "test_ollama_uses_schema_and_strictly_validates_messages",
+        "test_rejects_invalid_model_content[no es JSON]",
+        "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[]}]",
+        "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[{\"order\":\"1\",\"label\":\"A\",\"search_term\":\"a\"}]}]",
+        "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[{\"order\":2,\"label\":\"A\",\"search_term\":\"a\"}]}]",
+        "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[{\"order\":1,\"label\":\"A\",\"search_term\":\" \" }]}]",
+        "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[{\"order\":1,\"label\":\"A\",\"search_term\":\"a\",\"id\":3}]}]",
+        "test_reuses_external_and_local_pictures_then_reopens_edits_and_deletes"
+      ],
+      "widget_cases": [],
+      "http_cases": [
+        "I3-HTTP-Ollama-1",
+        "I3-HTTP-Ollama-2",
+        "I3-HTTP-Ollama-3"
+      ],
+      "result": "Aprobado en las pruebas indicadas.",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA03.4",
+      "backend_cases": [
+        "test_association_ranks_and_respects_ambiguity",
+        "test_association_deduplicates_queries_and_isolates_remote_failure"
+      ],
+      "widget_cases": [
+        "CU03 valida descripción, muestra generación y cancela propuesta sin guardar",
+        "CU03 edita, reemplaza, reordena y conserva el borrador si falla el guardado"
+      ],
+      "http_cases": [
+        "I3-HTTP-ARASAAC-real-en-asociacion",
+        "I3-HTTP-vista-previa-externa"
+      ],
+      "result": "Aprobado en las pruebas indicadas.",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA03.5",
+      "backend_cases": [
+        "test_association_ranks_and_respects_ambiguity"
+      ],
+      "widget_cases": [],
+      "http_cases": [],
+      "result": "Aprobado en las pruebas indicadas.",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA03.6",
+      "backend_cases": [
+        "test_reuses_external_and_local_pictures_then_reopens_edits_and_deletes"
+      ],
+      "widget_cases": [
+        "CU03 edita, reemplaza, reordena y conserva el borrador si falla el guardado"
+      ],
+      "http_cases": [
+        "I3-HTTP-edicion"
+      ],
+      "result": "Aprobado en las pruebas indicadas.",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA03.7",
+      "backend_cases": [
+        "test_reuses_external_and_local_pictures_then_reopens_edits_and_deletes"
+      ],
+      "widget_cases": [
+        "CU03 edita, reemplaza, reordena y conserva el borrador si falla el guardado"
+      ],
+      "http_cases": [
+        "I3-HTTP-edicion"
+      ],
+      "result": "Aprobado en las pruebas indicadas.",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA03.8",
+      "backend_cases": [
+        "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch0]",
+        "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch1]",
+        "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch2]",
+        "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch3]",
+        "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch4]",
+        "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch5]",
+        "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch6]",
+        "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch7]",
+        "test_rolls_back_new_images_and_preserves_independently_approved_picture"
+      ],
+      "widget_cases": [
+        "CU03 pasa de un fallo IA al editor manual y confirma con pictograma local",
+        "CU03 edita, reemplaza, reordena y conserva el borrador si falla el guardado"
+      ],
+      "http_cases": [
+        "I3-HTTP-confirmacion-y-reutilizacion"
+      ],
+      "result": "Aprobado en las pruebas indicadas.",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA03.9",
+      "backend_cases": [
+        "test_reuses_external_and_local_pictures_then_reopens_edits_and_deletes"
+      ],
+      "widget_cases": [],
+      "http_cases": [
+        "I3-HTTP-recuperacion"
+      ],
+      "result": "Aprobado en las pruebas indicadas.",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA03.10",
+      "backend_cases": [
+        "test_reuses_external_and_local_pictures_then_reopens_edits_and_deletes",
+        "test_failed_update_keeps_previously_approved_steps_and_files"
+      ],
+      "widget_cases": [
+        "CU03 consulta y elimina con confirmación en tablet horizontal"
+      ],
+      "http_cases": [
+        "I3-HTTP-edicion",
+        "I3-HTTP-borrado-conserva-pictograma"
+      ],
+      "result": "Aprobado en las pruebas indicadas.",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA03.11",
+      "backend_cases": [
+        "test_rejects_invalid_model_content[no es JSON]",
+        "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[]}]",
+        "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[{\"order\":\"1\",\"label\":\"A\",\"search_term\":\"a\"}]}]",
+        "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[{\"order\":2,\"label\":\"A\",\"search_term\":\"a\"}]}]",
+        "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[{\"order\":1,\"label\":\"A\",\"search_term\":\" \" }]}]",
+        "test_rejects_invalid_model_content[{\"name\":\"X\",\"steps\":[{\"order\":1,\"label\":\"A\",\"search_term\":\"a\",\"id\":3}]}]",
+        "test_ollama_classifies_timeout_and_truncated_response",
+        "test_ai_errors_allow_manual_creation[timeout-504]",
+        "test_ai_errors_allow_manual_creation[invalid_output-502]",
+        "test_ai_errors_allow_manual_creation[unavailable-503]"
+      ],
+      "widget_cases": [
+        "CU03 pasa de un fallo IA al editor manual y confirma con pictograma local"
+      ],
+      "http_cases": [],
+      "result": "Aprobado en las pruebas indicadas.",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA03.12",
+      "backend_cases": [
+        "test_reuses_external_and_local_pictures_then_reopens_edits_and_deletes"
+      ],
+      "widget_cases": [
+        "CU03 consulta y elimina con confirmación en tablet horizontal"
+      ],
+      "http_cases": [
+        "I3-HTTP-borrado-conserva-pictograma"
+      ],
+      "result": "Aprobado en las pruebas indicadas.",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA03.13",
+      "backend_cases": [
+        "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch0]",
+        "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch1]",
+        "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch2]",
+        "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch3]",
+        "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch4]",
+        "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch5]",
+        "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch6]",
+        "test_save_rejects_incomplete_unapproved_or_invalid_draft[patch7]"
+      ],
+      "widget_cases": [
+        "CU03 valida descripción, muestra generación y cancela propuesta sin guardar"
+      ],
+      "http_cases": [],
+      "result": "Aprobado en las pruebas indicadas.",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA03.14",
+      "backend_cases": [
+        "test_reuses_external_and_local_pictures_then_reopens_edits_and_deletes"
+      ],
+      "widget_cases": [
+        "CU03 edita, reemplaza, reordena y conserva el borrador si falla el guardado"
+      ],
+      "http_cases": [
+        "I3-HTTP-confirmacion-y-reutilizacion"
+      ],
+      "result": "Aprobado en las pruebas indicadas.",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA03.15",
+      "backend_cases": [
+        "test_proposal_uses_persisted_context_without_alias_or_unconfirmed_draft",
+        "test_rolls_back_new_images_and_preserves_independently_approved_picture",
+        "test_failed_update_keeps_previously_approved_steps_and_files"
+      ],
+      "widget_cases": [
+        "CU03 valida descripción, muestra generación y cancela propuesta sin guardar"
+      ],
+      "http_cases": [
+        "I3-HTTP-propuestas-sin-escrituras",
+        "I3-HTTP-confirmacion-y-reutilizacion"
+      ],
+      "result": "Aprobado en las pruebas indicadas.",
+      "manual_ipad": "Pendiente"
+    }
+  ]
+}

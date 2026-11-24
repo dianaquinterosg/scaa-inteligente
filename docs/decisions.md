@@ -23,6 +23,8 @@
 | ADR-017 | Documentar UML y evidencia plan/real antes de implementación | Los diagramas, el control de configuración, el procedimiento de instalación y la trazabilidad permiten contrastar la implementación verificada con lo planificado | Acordado |
 | ADR-018 | CU01 usa sqlite3 y migraciones SQL numeradas con PRAGMA user_version | Reutiliza SQLite sin incorporar ORM; cada migración se aplica en transacción y se rechaza un esquema posterior al soportado | Implementado y probado en Iteración 1 |
 | ADR-019 | Validación independiente en Flutter y API; unicidad por tipo mediante clave casefold | El backend es autoridad sobre entradas y duplicados Unicode; el borrador no se incorpora hasta guardar íntegramente | Implementado y probado en Iteración 1 |
+| ADR-020 | Compartir unidad de escritura de SQLite y archivos para catálogo y rutinas | Completar red y validación antes de la transacción, reutilizar referencias y compensar nuevos archivos en un rollback | Implementado y probado en Iteración 3 |
+| ADR-021 | Usar Ollama local con esquema y mantener creación manual | Validar respuestas estrictamente, limitar contexto y exigir revisión humana. La calidad observada no justifica consolidar el modelo provisional | Implementado y probado con modelo provisional |
 
 ## Plantilla de futuras desviaciones
 

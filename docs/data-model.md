@@ -1,6 +1,6 @@
 # Modelo de datos del MVP — diseño conceptual v0.2
 
-**Estado:** Profile y ContextItem implementados y probados automáticamente en Iteración 1. Pictogram, Category y PictogramCategory se incorporaron en la migración 002 de CU02. Routine y RoutineStep permanecen en el modelo conceptual para CU03.
+**Estado:** Profile y ContextItem implementados y probados automáticamente en Iteración 1. Pictogram, Category y PictogramCategory se incorporaron en la migración 002 de CU02. Routine y RoutineStep se incorporaron en la migración 003 de CU03.
 
 ```mermaid
 erDiagram
@@ -85,9 +85,9 @@ erDiagram
 
 «Agua» es un solo registro `Pictogram`; puede asociarse con «Alimentación» e «Higiene» mediante dos filas `PictogramCategory` y aparecer en dos pasos de una rutina mediante referencias de `RoutineStep`.
 
-## Pendiente técnico
+## Realización en SQLite
 
-CU01 utiliza sqlite3 y migraciones SQL numeradas, registradas mediante PRAGMA user_version (ADR-018). La migración `backend/scaa_backend/migrations/001_profile_context.sql` crea el perfil único y sus elementos de contexto. La clave `value_key` utiliza casefold y un índice único por perfil, tipo y valor normalizado. Las convenciones del resto del modelo y el manejo de archivos se concretarán al implementar los siguientes casos de uso.
+CU01 utiliza sqlite3 y migraciones SQL numeradas, registradas mediante PRAGMA user_version (ADR-018). La migración `backend/scaa_backend/migrations/001_profile_context.sql` crea el perfil único y sus elementos de contexto. La clave `value_key` utiliza casefold y un índice único por perfil, tipo y valor normalizado. CU02 y CU03 comparten el almacenamiento administrado de archivos según ADR-020.
 
 El contrato de perfil devuelve solo `id`, `alias`, `interests`, `activities` y `frequent_routines`. Los metadatos operacionales internos de la tabla no se exportan como registros documentales. `ContextItem(type='ROUTINE')` sigue representando contexto declarado; no es una rutina visual de CU03.
 
@@ -105,3 +105,5 @@ El contrato de perfil devuelve solo `id`, `alias`, `interests`, `activities` y `
 **Aclaración:** `Pictogram` almacenado equivale a recurso aprobado; el modelo no contiene una «aprobación» automática. Una preselección de ARASAAC es dato transitorio, no una fila definitiva.
 
 La [implementación de CU02](evidence/iteration-2/design.md) detalla la representación del origen, la atribución, el archivo local y las asociaciones.
+
+La migración `003_routines.sql` conserva perfil y catálogo. `routine_step` impone posiciones 1 a 12 únicas por rutina, admite repetir el pictograma, usa `ON DELETE RESTRICT` para el recurso y `ON DELETE CASCADE` al eliminar la rutina. `RoutineRepository` devuelve pasos ordenados y coordina los nuevos archivos con la unidad de escritura del catálogo. [Detalles de CU03](evidence/iteration-3/design.md).
