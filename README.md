@@ -47,7 +47,7 @@ Flutter (cliente) → FastAPI (API REST y reglas de negocio) → SQLite y archiv
 
 ## Estado de implementación
 
-Iteración 0 cerrada funcionalmente y registrada en el commit `db312e3592648a3b620d66b2ea22af018396112e`. CU01 está implementado y versionado en commits locales: perfil único, alias, tres tipos de contexto, persistencia atómica y validaciones. Las pruebas automáticas de API, widgets y HTTP real están aprobadas; la persona usuaria aprobó su aspecto en el simulador de iPad y quedan pendientes los escenarios funcionales manuales. CU02–CU05 no están implementados.
+Iteración 0 cerrada funcionalmente y registrada en el commit `db312e3592648a3b620d66b2ea22af018396112e`. CU01 está implementado y versionado en commits locales: perfil único, alias, tres tipos de contexto, persistencia atómica y validaciones. Las pruebas automáticas de API, widgets y HTTP real están aprobadas; la persona usuaria aprobó su aspecto en el simulador de iPad y quedan pendientes los escenarios funcionales manuales. CU02 implementa el catálogo, importación y categorías de v0.2. Pasó pruebas automáticas e integración con ARASAAC; está pendiente la revisión en iPad. CU03–CU05 siguen pendientes.
 
 Ver [evidencias de CU01](docs/evidence/iteration-1/README.md) y [guía de ejecución](docs/development-setup.md). Los estados «comprometido», «implementado» y «validado» no son intercambiables; la prueba visual de salud de Iteración 0 no sustituye la aceptación manual de CU01.
 
@@ -60,3 +60,5 @@ Ver [evidencias de CU01](docs/evidence/iteration-1/README.md) y [guía de ejecuc
 La matriz de prioridad y aceptación está en [casos de uso](docs/use-cases.md) y el [plan de iteraciones](docs/iteration-plan.md). **P0 no es sinónimo de 60 % aprobado**: la cobertura final se calcula a partir de evidencia y rubricación académica.
 
 La [referencia visual SCAA](docs/design/README.md) documenta los mockups y su adaptación a CU01 en tablet.
+
+El [registro de Iteración 2](docs/evidence/iteration-2/README.md) reúne el diseño, pruebas y revisión pendiente de CU02.

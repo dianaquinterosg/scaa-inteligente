@@ -1,0 +1,47 @@
+@startuml
+title CU02 — Buscar, revisar y confirmar pictograma
+actor Cuidador as U
+participant "Flutter" as F
+participant "FastAPI" as API
+database SQLite as DB
+participant ARASAAC as A
+participant "Archivos locales" as FS
+U -> F : ingresar descripción
+F -> API : buscar
+API -> DB : etiquetas confirmadas y filtro
+alt hay coincidencias locales sin pedir alternativas
+  API --> F : recursos locales
+else se necesitan alternativas
+  API -> A : buscar en español
+  alt disponible
+    A --> API : candidatos
+    API --> F : resultados y atribución
+  else indisponible
+    API --> F : estado de fallo y recursos locales
+  end
+end
+alt revisar candidato remoto
+  F -> API : pedir imagen de vista previa
+  API -> A : obtener imagen por identificador
+  A --> F : imagen a través de la API
+else importar imagen propia
+  U -> F : elegir archivo y revisar vista previa
+end
+U -> F : editar etiqueta y categorías opcionales
+alt rechazar
+  F --> U : regresar al catálogo
+else aprobar
+  F -> API : POST con confirmación explícita
+  API -> API : validar etiqueta, imagen y origen
+  API -> DB : insertar dentro de transacción
+  API -> FS : escribir imagen local
+  alt guardado correcto
+    API -> DB : commit
+    API --> F : recurso confirmado
+  else error
+    API -> DB : rollback
+    API -> FS : limpiar archivo parcial si corresponde
+    API --> F : informar y conservar borrador
+  end
+end
+@enduml

@@ -1,6 +1,6 @@
 # Modelo de datos del MVP — diseño conceptual v0.2
 
-**Estado:** Profile y ContextItem implementados y probados automáticamente en Iteración 1. Las entidades de pictogramas, categorías y rutinas permanecen propuestas y sin migrar.
+**Estado:** Profile y ContextItem implementados y probados automáticamente en Iteración 1. Pictogram, Category y PictogramCategory se incorporaron en la migración 002 de CU02. Routine y RoutineStep permanecen en el modelo conceptual para CU03.
 
 ```mermaid
 erDiagram
@@ -103,3 +103,5 @@ El contrato de perfil devuelve solo `id`, `alias`, `interests`, `activities` y `
 | Confirmar rutina con pictograma externo | Crear recurso validado y pasos en transacción; limpiar archivo temporal ante error |
 
 **Aclaración:** `Pictogram` almacenado equivale a recurso aprobado; el modelo no contiene una «aprobación» automática. Una preselección de ARASAAC es dato transitorio, no una fila definitiva.
+
+La [implementación de CU02](evidence/iteration-2/design.md) detalla la representación del origen, la atribución, el archivo local y las asociaciones.

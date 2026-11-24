@@ -1,6 +1,6 @@
 # Plan de pruebas y evidencias — MVP 60 % (v0.2)
 
-**Estado:** T01–T03 tienen pruebas automáticas aprobadas para CU01; pruebas funcionales manuales en iPad pendientes. T08 se ejecutó como sonda técnica de inferencia real. Los demás casos funcionales siguen sin ejecutar. Ver [Iteración 0](evidence/iteration-0/test-results.md) e [Iteración 1](evidence/iteration-1/results.md); no se declara CU02 ni CU03 completo.
+**Estado:** T01–T03 tienen pruebas automáticas aprobadas para CU01; pruebas funcionales manuales en iPad pendientes. T08 se ejecutó como sonda técnica de inferencia real. T04–T07 se aprobaron con pruebas automáticas de CU02. T15 tiene cobertura parcial de CU02. Ver [Iteración 0](evidence/iteration-0/test-results.md) e [Iteración 1](evidence/iteration-1/results.md); CU02 tiene una [regresión específica](evidence/iteration-2/results.md) y revisión en iPad pendiente. CU03 sigue pendiente.
 
 ## 1. Niveles y herramientas tentativas
 
@@ -9,7 +9,7 @@
 | Unitarias | Normalizaciones, validaciones, clasificación, integridad de pasos | `pytest` + `pytest-asyncio` si aplica | CU01 probado; restantes pendientes |
 | Integración API/BD | FastAPI, SQLite, transacciones, persistencia y FKs | `TestClient`/cliente ASGI, BD de test aislada | CU01 y migraciones probados |
 | Integración servicios externos controlada | Timeout/respuesta/error ARASAAC y adaptador IA | Fake/stubs en tests automatizados | Pendiente |
-| Smoke test REAL | ARASAAC conectado e IA ejecutándose localmente | Script/endpoint manual con evidencias y datos sintéticos | Sondas de Iteración 0 aprobadas; integración funcional CU02/CU03 pendiente |
+| Smoke test REAL | ARASAAC conectado e IA ejecutándose localmente | Script/endpoint manual con evidencias y datos sintéticos | Sondas de Iteración 0 aprobadas; ARASAAC real integrado y probado en CU02; CU03 pendiente |
 | Sistema E2E | Flutter→FastAPI→persistencia→consulta | Recorrido manual reproducible y capturas | CU01 HTTP real probado; aspecto de CU01 aprobado en simulador; recorrido funcional manual y T16 pendientes |
 | Instalación release/demo | Instalación desde instrucciones y arranque | Procedimiento documentado tras verificación | Pendiente |
 
@@ -20,10 +20,10 @@
 | T01 | CU01 / CA01.1, CA01.8 | Guardar perfil y recuperar alias/tags | Aprobado automáticamente; prueba funcional manual pendiente | [Criterios y pruebas CU01](evidence/iteration-1/cu01/acceptance.json) |
 | T02 | CU01 / CA01.4–CA01.7 | Rechazar alias vacío, tags inválidos y duplicados normalizados | Aprobado automáticamente; prueba funcional manual pendiente | [Criterios y pruebas CU01](evidence/iteration-1/cu01/acceptance.json) |
 | T03 | CU01 / CA01.9 | Error simulado de BD no reemplaza perfil existente | Aprobado automáticamente; prueba funcional manual pendiente | [Criterios y pruebas CU01](evidence/iteration-1/cu01/acceptance.json) |
-| T04 | CU02 / CA02.2–CA02.3 | Coincidencia local sin llamada externa; ausencia local consulta ARASAAC | No ejecutado | — |
-| T05 | CU02 / CA02.5–CA02.7 | Archivo propio válido se incorpora solo tras aprobar; inválido se rechaza | No ejecutado | — |
-| T06 | CU02 / CA02.8–CA02.9 | Pictograma ARASAAC persistido; intento duplicado no crea nueva fila | No ejecutado | — |
-| T07 | CU02 / CA02.13–CA02.19 | Categorías N:M y filtrado; nombre duplicado no aceptado | No ejecutado | — |
+| T04 | CU02 / CA02.2–CA02.3 | Coincidencia local sin llamada externa; ausencia local consulta ARASAAC | Aprobado automáticamente | [CU02](evidence/iteration-2/results.md) |
+| T05 | CU02 / CA02.5–CA02.7 | Archivo propio válido se incorpora solo tras aprobar; inválido se rechaza | Aprobado automáticamente | [CU02](evidence/iteration-2/results.md) |
+| T06 | CU02 / CA02.8–CA02.9 | Pictograma ARASAAC persistido; intento duplicado no crea nueva fila | Aprobado automáticamente | [CU02](evidence/iteration-2/results.md) |
+| T07 | CU02 / CA02.13–CA02.19 | Categorías N:M y filtrado; nombre duplicado no aceptado | Aprobado automáticamente | [CU02](evidence/iteration-2/results.md) |
 | T08 | CU03 / CA03.2 | IA local REAL entrega 3 rutinas estructuradas válidas (registrar modelo, equipo y resultado) | Ejecutado como sonda técnica; integración CU03 y calidad pendientes | [Inferencia real](evidence/iteration-0/integrations/bootstrap-integrations.json), [equipo y entorno](evidence/iteration-0/environment/environment-audit.md) |
 | T09 | CU03 / CA03.4–CA03.5 | Exacta local > prefijo > contiene; empate local sin selección arbitraria | No ejecutado | — |
 | T10 | CU03 / CA03.4, CA03.15 | ARASAAC sugiere candidato temporal; cancelar propuesta no crea filas | No ejecutado | — |
@@ -31,7 +31,7 @@
 | T12 | CU03 / CA03.8–CA03.9 | Confirmación guarda rutina/pasos/imágenes aprobadas y permite recuperarlos | No ejecutado | — |
 | T13 | CU03 / CA03.15 | Falla simulada de persistencia deja BD consistente y limpia temporales | No ejecutado | — |
 | T14 | CU03 / CA03.11 (P1) | IA caída → posibilidad de creación manual; si no se implementa, documentar brecha | No ejecutado | — |
-| T15 | CU02/CU03 / P1 | Editar/borrar con integridad: imagen usada no se elimina; borrar rutina conserva imagen | No ejecutado | — |
+| T15 | CU02/CU03 / P1 | Editar/borrar con integridad: imagen usada no se elimina; borrar rutina conserva imagen | CU02 con FK de prueba; rutina real y borrado CU03 pendientes | [CU02](evidence/iteration-2/results.md) |
 | T16 | E2E | Primera configuración → incorporar pictograma → rutina IA → revisar → guardar → recuperar | No ejecutado | — |
 
 ## 3. Validación de calidad de la asociación (sin cifras inventadas)

@@ -1,23 +1,23 @@
 # Matriz de trazabilidad — diseño v0.2
 
-**Estado:** especificación prevista en la línea base documental v0.2. Existe una base técnica y se ejecutaron sondas de servicios y pruebas de infraestructura; CU01 está implementado con pruebas automáticas aprobadas y aprobación visual confirmada por la persona usuaria; CU02–CU03 siguen pendientes. No hay release de software verificada. `P0/P1/P2` son prioridades, **no resultados**.
+**Estado:** especificación prevista en la línea base documental v0.2. Existe una base técnica y se ejecutaron sondas de servicios y pruebas de infraestructura; CU01 está implementado con pruebas automáticas aprobadas y aprobación visual confirmada por la persona usuaria; CU02 está implementado y probado automáticamente, con revisión en iPad pendiente. CU03 sigue pendiente. No hay release de software verificada. `P0/P1/P2` son prioridades, **no resultados**.
 
 | Requisito | CU | CA vinculados | Prioridad | Componente real de CU01 / previsto para otros CU | Prueba/evidencia esperada | Resultado/commit |
 |---|---|---|---|---|---|---|
 | RF01.1 | CU01 | CA01.1–CA01.3, CA01.8 | P0 | `ProfileGate`, `ProfileEditor`, `ProfileApi`; `ProfileRepository` | API, widgets y HTTP real; recuperación tras reiniciar | [Pruebas aprobadas](evidence/iteration-1/cu01/acceptance.json); aprobación visual en iPad; pruebas funcionales manuales pendientes; API `89647a9`, Flutter `f81d180` |
 | RF01.2 | CU01 | CA01.10 | P0 | `ProfileRepository.load`, estado confirmado de `ProfileGate` | Borrador/cancelación sin persistencia; solo contexto confirmado disponible | [Exposición de contexto probada](evidence/iteration-1/cu01/acceptance.json); consumo por IA pendiente de CU03 |
 | RF01.3 | CU01 | CA01.4–CA01.7, CA01.9 | P0 | `ProfilePayload`, validadores de `ProfileEditor`, transacción de `ProfileRepository.save` | Entradas, límites, duplicados y rollback real SQLite | [Pruebas aprobadas](evidence/iteration-1/cu01/acceptance.json); API `89647a9`, Flutter `f81d180` |
-| RF02.1 | CU02 | CA02.1 | P0 | PictogramPage | Búsqueda textual en UI/API | Pendiente |
-| RF02.2 | CU02 | CA02.2–CA02.3, CA02.10 | P0 | PictogramSearchService / ArasaacClient | Local primero; ARASAAC real y mock/error | Pendiente |
+| RF02.1 | CU02 | CA02.1 | P0 | `PictogramScreen`, `Catalog.list` | Búsqueda textual en UI/API | Aprobado automáticamente · [Iteración 2](evidence/iteration-2/results.md) |
+| RF02.2 | CU02 | CA02.2–CA02.3, CA02.10 | P0 | `Catalog`, `ArasaacClient`, `PictogramScreen` | Local primero; ARASAAC real y mock/error | Aprobado automáticamente · [Iteración 2](evidence/iteration-2/results.md) |
 | RF02.3 | CU02 (extensión futura) | Por definir | P2 | ImageGenerator futuro | Calidad visual/integración IA por planificar | Posterior al 60 % |
-| RF02.4 | CU02 | CA02.5–CA02.6 | P0 | MediaUploadService | Archivo válido, inválido y tamaño máximo | Pendiente |
-| RF02.5 | CU02 | CA02.4, CA02.7 | P0 | PictogramForm / PictogramService | No guardar sin confirmación; etiqueta editable | Pendiente |
-| RF02.6 | CU02 | CA02.8–CA02.9 | P0 | PictogramRepository / MediaStorage | Persistencia y no duplicado ARASAAC | Pendiente |
-| RF02.6 (eliminación) | CU02 | CA02.11–CA02.12 | P1 | PictogramService / RoutineStepRepository | Eliminación protegida por dependencia | Pendiente |
-| RF02.7 (crear) | CU02 | CA02.13–CA02.14 | P0 | CategoryService | Categoría válida y duplicados | Pendiente |
-| RF02.7 (editar/borrar) | CU02 | CA02.15, CA02.18 | P1 | CategoryService | Renombrar y borrar preservando pictogramas | Pendiente |
-| RF02.8 | CU02 | CA02.16, CA02.19 | P0 | PictogramCategoryRepository | N:M y persistencia asociaciones | Pendiente |
-| RF02.9 | CU02 | CA02.17 | P0 | PictogramSearchService | Filtro por categoría | Pendiente |
+| RF02.4 | CU02 | CA02.5–CA02.6 | P0 | `choosePictogramFile`, `image_format` | Archivo válido, inválido y tamaño máximo | Aprobado automáticamente con archivo sintético; selector nativo pendiente · [Iteración 2](evidence/iteration-2/results.md) |
+| RF02.5 | CU02 | CA02.4, CA02.7 | P0 | `PictogramEditor`, `PictogramApproval` | No guardar sin confirmación; etiqueta editable | Aprobado automáticamente · [Iteración 2](evidence/iteration-2/results.md) |
+| RF02.6 | CU02 | CA02.8–CA02.9 | P0 | `Catalog`, archivos locales | Persistencia y no duplicado ARASAAC | Aprobado automáticamente · [Iteración 2](evidence/iteration-2/results.md) |
+| RF02.6 (eliminación) | CU02 | CA02.11–CA02.12 | P1 | `Catalog.delete`, FK restrictiva | Eliminación protegida por dependencia | CA02.11 aprobado; CA02.12 con FK de prueba, rutina real pendiente · [Iteración 2](evidence/iteration-2/results.md) |
+| RF02.7 (crear) | CU02 | CA02.13–CA02.14 | P0 | `CategoryScreen`, `Catalog.save_category` | Categoría válida y duplicados | Aprobado automáticamente · [Iteración 2](evidence/iteration-2/results.md) |
+| RF02.7 (editar/borrar) | CU02 | CA02.15, CA02.18 | P1 | `CategoryScreen`, `Catalog` | Renombrar y borrar preservando pictogramas | Aprobado automáticamente · [Iteración 2](evidence/iteration-2/results.md) |
+| RF02.8 | CU02 | CA02.16, CA02.19 | P0 | Tabla `pictogram_category`, `Catalog._assign` | N:M y persistencia asociaciones | Aprobado automáticamente · [Iteración 2](evidence/iteration-2/results.md) |
+| RF02.9 | CU02 | CA02.17 | P0 | `PictogramScreen`, `Catalog.list` | Filtro por categoría | Aprobado automáticamente · [Iteración 2](evidence/iteration-2/results.md) |
 | RF03.1 | CU03 | CA03.1 | P0 | RoutinePage | Descripción escrita válida | Pendiente |
 | RF03.2 | CU03 | CA03.2–CA03.3 | P0 | RoutineGenerator / OllamaAdapter | 3 salidas JSON IA real + esquema válido | Pendiente |
 | RF03.3 | CU03 | CA03.4–CA03.5, CA03.15 | P0 | AssociationService / ArasaacClient | Reglas de ranking, preselección provisional | Pendiente |
@@ -34,7 +34,7 @@
 | Referencia | Código real | Evidencia | Límite |
 |---|---|---|---|
 | Preparación de persistencia | `backend/scaa_backend/database.py:Database`, `backend/tests/test_bootstrap.py` | [Resultados de la base técnica](evidence/iteration-0/test-results.md) | Conexiones, rollback y entornos; no verifica persistencia de perfiles, pictogramas ni rutinas |
-| RF02.2 / CA02.3 | `backend/scripts/probe_integrations.py:probe_arasaac` | [Consulta e imagen reales](evidence/iteration-0/integrations/bootstrap-integrations.json) | Viabilidad del servicio externo; CU02 no implementado |
+| RF02.2 / CA02.3 | `backend/scripts/probe_integrations.py:probe_arasaac` | [Consulta e imagen reales](evidence/iteration-0/integrations/bootstrap-integrations.json) | Viabilidad externa en Iteración 0; integración real registrada en Iteración 2 |
 | RF03.2 / CA03.2–CA03.3 | `backend/scripts/probe_integrations.py:probe_ollama` | [Tres propuestas reales](evidence/iteration-0/integrations/bootstrap-integrations.json) | JSON y orden verificados en sonda; calidad e integración CU03 pendientes |
 | Conectividad del cliente | `frontend/lib/backend_client.dart:BackendClient.check`, `backend/scaa_backend/main.py:create_app` | [Petición real desde Dart](evidence/iteration-0/flutter/bootstrap-dart-backend-http.log) | Endpoint técnico de salud; no es T16 ni el recorrido de los casos de uso |
 

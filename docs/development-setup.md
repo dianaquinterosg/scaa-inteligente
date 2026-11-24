@@ -1,6 +1,6 @@
 # Preparación y ejecución de desarrollo
 
-Flutter iOS → FastAPI → SQLite. CU01 implementado y probado automáticamente; aspecto aprobado por la persona usuaria en el simulador de iPad; pruebas funcionales manuales pendientes. CU02–CU03 siguen pendientes. La documentación mantiene su identificación v0.2; el valor de desarrollo `0.0.0` del código no representa una release.
+Flutter iOS → FastAPI → SQLite. CU01 implementado y probado automáticamente; aspecto aprobado por la persona usuaria en el simulador de iPad; pruebas funcionales manuales pendientes. CU02 está implementado con revisión nativa en iPad pendiente. CU03 sigue pendiente. La documentación mantiene su identificación v0.2; el valor de desarrollo `0.0.0` del código no representa una release.
 
 ## Estructura
 
@@ -33,7 +33,7 @@ Desde la raíz:
 .venv/bin/python -m uvicorn scaa_backend.main:app --app-dir backend --env-file backend/.env --host 127.0.0.1 --port 8000
 ```
 
-Durante la comprobación inicial se utilizó `backend/.env.example` directamente con `--env-file`; no se necesita información secreta. Se comprobó HTTP 200 en `http://127.0.0.1:8000/api/v1/health`, con estado y SQLite disponibles. La API expone GET y PUT `/api/v1/profile` para CU01; CU02–CU03 todavía no tienen endpoints funcionales.
+Durante la comprobación inicial se utilizó `backend/.env.example` directamente con `--env-file`; no se necesita información secreta. Se comprobó HTTP 200 en `http://127.0.0.1:8000/api/v1/health`, con estado y SQLite disponibles. La API expone GET y PUT `/api/v1/profile` para CU01; Para CU02, las rutas de pictogramas y categorías se describen en el [contrato](evidence/iteration-2/design.md).
 
 `SCAA_ENV` admite `dev`, `test` o `demo`. Bajo `SCAA_DATA_ROOT` se crea un directorio por entorno y una base `scaa.sqlite3` distinta. Por defecto se utiliza `.localdata/` en la raíz. La migración SQL 1 crea `profile` y `context_item` al iniciar. No hay tablas de los casos de uso posteriores. Las conexiones activan claves foráneas y cierran la transacción con commit o rollback.
 
@@ -113,3 +113,5 @@ Desde la raíz:
 El ejecutor crea un backend de prueba y datos temporales aislados, usa el cliente Dart real y detiene su propio proceso al terminar. No modifica el perfil dev/demo ni el backend que la persona usuaria tenga abierto. Rechaza sobrescribir resultados anteriores.
 
 Para probar manualmente CU01, reiniciar el backend anterior y realizar hot restart (`R`) en la Terminal de Flutter. Seguir la [lista de aceptación manual](evidence/iteration-1/manual-check.md). Las versiones de dependencias no cambiaron respecto a Iteración 0.
+
+Para el selector nativo de archivos y el recorrido de CU02, consultar la [lista de iPad](evidence/iteration-2/manual-check.md). Es necesario volver a ejecutar Flutter con el plugin instalado.

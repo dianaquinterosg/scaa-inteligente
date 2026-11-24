@@ -1,0 +1,822 @@
+{
+  "iteration": 2,
+  "functionality": "CU02",
+  "backend": {
+    "commit": "7bc35fc",
+    "directory": "backend",
+    "command": "../.venv/bin/python -m pytest -q",
+    "exit_code": 0,
+    "passed": 68,
+    "warnings": [
+      "Deprecación de HTTPX con Starlette TestClient"
+    ],
+    "tests": [
+      {
+        "case": "test_health_initializes_profile_schema",
+        "module": "tests.test_bootstrap",
+        "result": "passed"
+      },
+      {
+        "case": "test_database_transactions_and_foreign_keys",
+        "module": "tests.test_bootstrap",
+        "result": "passed"
+      },
+      {
+        "case": "test_environments_use_different_database_files",
+        "module": "tests.test_bootstrap",
+        "result": "passed"
+      },
+      {
+        "case": "test_initialize_preserves_existing_schema_version",
+        "module": "tests.test_bootstrap",
+        "result": "passed"
+      },
+      {
+        "case": "test_settings_read_and_validate_environment",
+        "module": "tests.test_bootstrap",
+        "result": "passed"
+      },
+      {
+        "case": "test_health_does_not_expose_storage_paths",
+        "module": "tests.test_bootstrap",
+        "result": "passed"
+      },
+      {
+        "case": "test_local_first_remote_alternatives_preview_and_no_implicit_save",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_arasaac_outage_offers_manual_path_and_distinguishes_no_results",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_approved_files_are_local_and_keep_detected_formats[PNG-png]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_approved_files_are_local_and_keep_detected_formats[JPEG-jpeg]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_approved_files_are_local_and_keep_detected_formats[WEBP-webp]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch0]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch1]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch2]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch3]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch4]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch5]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch6]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch7]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch8]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch9]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_approval_leaves_no_metadata_or_file[patch10]",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_missing_confirmation_and_oversize_are_rejected",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_arasaac_attribution_unique_reference_and_reopen",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_category_lifecycle_relationships_filter_and_reopen",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_delete_removes_file_and_respects_foreign_key_dependency",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_file_write_failure_rolls_back_approval",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_reopen_recovers_interrupted_files_without_touching_foreign_files",
+        "module": "tests.test_catalog",
+        "result": "passed"
+      },
+      {
+        "case": "test_failed_migration_is_atomic",
+        "module": "tests.test_migrations",
+        "result": "passed"
+      },
+      {
+        "case": "test_newer_schema_is_not_downgraded",
+        "module": "tests.test_migrations",
+        "result": "passed"
+      },
+      {
+        "case": "test_upgrade_preserves_confirmed_profile_and_enforces_category_relationships",
+        "module": "tests.test_migrations",
+        "result": "passed"
+      },
+      {
+        "case": "test_first_use_requires_alias_and_has_no_profile",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_create_normalize_and_recover_all_context_types",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_edit_and_delete_individual_items[interests]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_edit_and_delete_individual_items[activities]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_edit_and_delete_individual_items[frequent_routines]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_alias_does_not_replace_saved_profile[]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_alias_does_not_replace_saved_profile[  ]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_alias_does_not_replace_saved_profile[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_alias_does_not_replace_saved_profile[None]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_alias_does_not_replace_saved_profile[123]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_alias_does_not_replace_saved_profile[\\ud800]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items0-interests]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items0-activities]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items0-frequent_routines]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items1-interests]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items1-activities]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items1-frequent_routines]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items2-interests]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items2-activities]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items2-frequent_routines]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items3-interests]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items3-activities]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items3-frequent_routines]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items4-interests]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items4-activities]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items4-frequent_routines]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items5-interests]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items5-activities]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[items5-frequent_routines]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[None-interests]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[None-activities]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_invalid_items_are_rejected_per_type[None-frequent_routines]",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_boundaries_unicode_and_single_profile",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_database_failure_rolls_back_alias_deletion_and_partial_insert",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_profile_persists_across_application_restart",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_only_confirmed_context_is_available",
+        "module": "tests.test_profile",
+        "result": "passed"
+      },
+      {
+        "case": "test_failed_read_is_not_reported_as_first_use",
+        "module": "tests.test_profile",
+        "result": "passed"
+      }
+    ]
+  },
+  "flutter": {
+    "commit": "c311854",
+    "directory": "frontend",
+    "command": "flutter test --machine",
+    "exit_code": 0,
+    "passed": 21,
+    "tests": [
+      {
+        "case": "Muestra carga y confirma la conexión",
+        "result": "passed"
+      },
+      {
+        "case": "Un fallo permite reintentar y recuperar la conexión",
+        "result": "passed"
+      },
+      {
+        "case": "CU01: tablet 820 px y texto ampliado",
+        "result": "passed"
+      },
+      {
+        "case": "CU01: tablet 1180 px y texto ampliado",
+        "result": "passed"
+      },
+      {
+        "case": "Un fallo de guardado queda visible al editar desde el final del formulario",
+        "result": "passed"
+      },
+      {
+        "case": "CU02 busca primero en catálogo, ofrece ARASAAC y rechaza sin guardar",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.3: editar y eliminar interests preserva los otros tipos",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.3: editar y eliminar activities preserva los otros tipos",
+        "result": "passed"
+      },
+      {
+        "case": "CU02 importa durante fallo remoto, valida, conserva borrador y confirma",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.3: editar y eliminar frequent_routines preserva los otros tipos",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.1/4/6: alias obligatorio normalizado y contexto opcional",
+        "result": "passed"
+      },
+      {
+        "case": "CU02 permite filtrar, editar asociaciones y eliminar con confirmación",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.2/3/6/8: añadir, editar, eliminar y recuperar los tres tipos",
+        "result": "passed"
+      },
+      {
+        "case": "CU02 crea, valida, renombra y confirma eliminación de categoría",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.5: vacíos y duplicados normalizados en interests",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.5: vacíos y duplicados normalizados en activities",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.5: vacíos y duplicados normalizados en frequent_routines",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.7: límite 50 para alias y cada tipo, con Unicode",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.9: fallo conserva borrador y datos confirmados, permite reintentar",
+        "result": "passed"
+      },
+      {
+        "case": "CA01.10: cancelar descarta cambios no confirmados",
+        "result": "passed"
+      },
+      {
+        "case": "Un fallo de lectura no permite confundirlo con primer uso",
+        "result": "passed"
+      }
+    ]
+  },
+  "analyze": {
+    "commit": "c311854",
+    "directory": "frontend",
+    "command": "flutter analyze",
+    "exit_code": 0,
+    "result": "Sin incidencias"
+  },
+  "http": {
+    "commit": "7a0acd5",
+    "directory": "raíz",
+    "command": ".venv/bin/python backend/scripts/run_profile_probe.py --flow catalog --output work/cu02/http-reproduccion.json",
+    "status": "passed",
+    "tests": [
+      {
+        "id": "I2-HTTP-01-importacion-filtro-local",
+        "result": "passed"
+      },
+      {
+        "id": "I2-HTTP-02-arasaac-real-vista-previa",
+        "result": "passed"
+      },
+      {
+        "id": "I2-HTTP-03-confirmacion-recuperacion-duplicado",
+        "result": "passed"
+      },
+      {
+        "id": "I2-HTTP-04-edicion-y-eliminacion",
+        "result": "passed"
+      }
+    ],
+    "arasaac": {
+      "query": "agua",
+      "candidate_count": 24,
+      "sample_id": 32464,
+      "image_bytes": 5566
+    },
+    "exit_code": 0,
+    "isolation": "Proceso local y directorio temporal; datos dev/demo sin modificar",
+    "scope": "Cliente Dart real → API FastAPI → SQLite; interfaz visual separada"
+  },
+  "profile_regression": {
+    "commit": "7a0acd5",
+    "directory": "raíz",
+    "command": ".venv/bin/python backend/scripts/run_profile_probe.py --output work/cu02/perfil-reproduccion.json",
+    "status": "passed",
+    "tests": [
+      {
+        "id": "I1-LIVE-01-perfil-ausente",
+        "result": "passed"
+      },
+      {
+        "id": "I1-LIVE-02-creacion-normalizada",
+        "result": "passed"
+      },
+      {
+        "id": "I1-LIVE-03-recuperacion",
+        "result": "passed"
+      },
+      {
+        "id": "I1-LIVE-04-edicion-eliminacion",
+        "result": "passed"
+      },
+      {
+        "id": "I1-LIVE-05-rechazo-duplicados",
+        "result": "passed"
+      },
+      {
+        "id": "I1-LIVE-06-estado-confirmado-intacto",
+        "result": "passed"
+      },
+      {
+        "id": "I1-LIVE-07-cliente-nuevo",
+        "result": "passed"
+      }
+    ],
+    "exit_code": 0,
+    "isolation": "Proceso local y directorio temporal; datos dev/demo sin modificar",
+    "scope": "Cliente Dart real → API FastAPI → SQLite; interfaz visual separada"
+  },
+  "ios_build": {
+    "commit": "d89abad",
+    "directory": "frontend",
+    "command": "flutter build ios --simulator --debug",
+    "exit_code": 1,
+    "result": "No se completó la resolución Swift Package Manager. sandbox-exec: sandbox_apply: Operation not permitted. CoreSimulatorService inaccesible."
+  },
+  "acceptance": [
+    {
+      "criterion": "CA02.1",
+      "backend_cases": [
+        "test_local_first_remote_alternatives_preview_and_no_implicit_save"
+      ],
+      "widget_cases": [
+        "CU02 busca primero en catálogo, ofrece ARASAAC y rechaza sin guardar"
+      ],
+      "http_cases": [
+        "I2-HTTP-01-importacion-filtro-local"
+      ],
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA02.2",
+      "backend_cases": [
+        "test_local_first_remote_alternatives_preview_and_no_implicit_save"
+      ],
+      "widget_cases": [
+        "CU02 busca primero en catálogo, ofrece ARASAAC y rechaza sin guardar"
+      ],
+      "http_cases": [
+        "I2-HTTP-01-importacion-filtro-local"
+      ],
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA02.3",
+      "backend_cases": [
+        "test_local_first_remote_alternatives_preview_and_no_implicit_save"
+      ],
+      "widget_cases": [
+        "CU02 busca primero en catálogo, ofrece ARASAAC y rechaza sin guardar"
+      ],
+      "http_cases": [
+        "I2-HTTP-02-arasaac-real-vista-previa"
+      ],
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA02.4",
+      "backend_cases": [
+        "test_local_first_remote_alternatives_preview_and_no_implicit_save"
+      ],
+      "widget_cases": [
+        "CU02 busca primero en catálogo, ofrece ARASAAC y rechaza sin guardar"
+      ],
+      "http_cases": [
+        "I2-HTTP-02-arasaac-real-vista-previa"
+      ],
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA02.5",
+      "backend_cases": [
+        "test_approved_files_are_local_and_keep_detected_formats[PNG-png]",
+        "test_approved_files_are_local_and_keep_detected_formats[JPEG-jpeg]",
+        "test_approved_files_are_local_and_keep_detected_formats[WEBP-webp]"
+      ],
+      "widget_cases": [
+        "CU02 importa durante fallo remoto, valida, conserva borrador y confirma"
+      ],
+      "http_cases": [
+        "I2-HTTP-01-importacion-filtro-local"
+      ],
+      "result": "Importación sintética aprobada. Selector nativo pendiente.",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA02.6",
+      "backend_cases": [
+        "test_approved_files_are_local_and_keep_detected_formats[PNG-png]",
+        "test_approved_files_are_local_and_keep_detected_formats[JPEG-jpeg]",
+        "test_approved_files_are_local_and_keep_detected_formats[WEBP-webp]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch0]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch1]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch2]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch3]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch4]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch5]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch6]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch7]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch8]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch9]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch10]",
+        "test_missing_confirmation_and_oversize_are_rejected"
+      ],
+      "widget_cases": [
+        "CU02 importa durante fallo remoto, valida, conserva borrador y confirma"
+      ],
+      "http_cases": [],
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA02.7",
+      "backend_cases": [
+        "test_local_first_remote_alternatives_preview_and_no_implicit_save",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch0]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch1]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch2]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch3]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch4]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch5]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch6]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch7]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch8]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch9]",
+        "test_invalid_approval_leaves_no_metadata_or_file[patch10]",
+        "test_missing_confirmation_and_oversize_are_rejected"
+      ],
+      "widget_cases": [
+        "CU02 busca primero en catálogo, ofrece ARASAAC y rechaza sin guardar",
+        "CU02 importa durante fallo remoto, valida, conserva borrador y confirma"
+      ],
+      "http_cases": [
+        "I2-HTTP-03-confirmacion-recuperacion-duplicado"
+      ],
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA02.8",
+      "backend_cases": [
+        "test_arasaac_attribution_unique_reference_and_reopen",
+        "test_reopen_recovers_interrupted_files_without_touching_foreign_files"
+      ],
+      "widget_cases": [],
+      "http_cases": [
+        "I2-HTTP-03-confirmacion-recuperacion-duplicado"
+      ],
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA02.9",
+      "backend_cases": [
+        "test_arasaac_attribution_unique_reference_and_reopen"
+      ],
+      "widget_cases": [],
+      "http_cases": [
+        "I2-HTTP-03-confirmacion-recuperacion-duplicado"
+      ],
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA02.10",
+      "backend_cases": [
+        "test_arasaac_outage_offers_manual_path_and_distinguishes_no_results"
+      ],
+      "widget_cases": [
+        "CU02 importa durante fallo remoto, valida, conserva borrador y confirma"
+      ],
+      "http_cases": [],
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA02.11",
+      "backend_cases": [
+        "test_delete_removes_file_and_respects_foreign_key_dependency"
+      ],
+      "widget_cases": [
+        "CU02 permite filtrar, editar asociaciones y eliminar con confirmación"
+      ],
+      "http_cases": [
+        "I2-HTTP-04-edicion-y-eliminacion"
+      ],
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA02.12",
+      "backend_cases": [
+        "test_delete_removes_file_and_respects_foreign_key_dependency"
+      ],
+      "widget_cases": [
+        "CU02 permite filtrar, editar asociaciones y eliminar con confirmación"
+      ],
+      "http_cases": [],
+      "result": "Protección verificada con FK de prueba. Integración con rutina real pendiente.",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA02.13",
+      "backend_cases": [
+        "test_category_lifecycle_relationships_filter_and_reopen"
+      ],
+      "widget_cases": [
+        "CU02 crea, valida, renombra y confirma eliminación de categoría"
+      ],
+      "http_cases": [
+        "I2-HTTP-01-importacion-filtro-local"
+      ],
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA02.14",
+      "backend_cases": [
+        "test_category_lifecycle_relationships_filter_and_reopen"
+      ],
+      "widget_cases": [
+        "CU02 crea, valida, renombra y confirma eliminación de categoría"
+      ],
+      "http_cases": [],
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA02.15",
+      "backend_cases": [
+        "test_category_lifecycle_relationships_filter_and_reopen"
+      ],
+      "widget_cases": [
+        "CU02 crea, valida, renombra y confirma eliminación de categoría"
+      ],
+      "http_cases": [
+        "I2-HTTP-04-edicion-y-eliminacion"
+      ],
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA02.16",
+      "backend_cases": [
+        "test_category_lifecycle_relationships_filter_and_reopen"
+      ],
+      "widget_cases": [
+        "CU02 importa durante fallo remoto, valida, conserva borrador y confirma",
+        "CU02 permite filtrar, editar asociaciones y eliminar con confirmación"
+      ],
+      "http_cases": [
+        "I2-HTTP-01-importacion-filtro-local",
+        "I2-HTTP-04-edicion-y-eliminacion"
+      ],
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA02.17",
+      "backend_cases": [
+        "test_category_lifecycle_relationships_filter_and_reopen"
+      ],
+      "widget_cases": [
+        "CU02 permite filtrar, editar asociaciones y eliminar con confirmación"
+      ],
+      "http_cases": [
+        "I2-HTTP-01-importacion-filtro-local"
+      ],
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA02.18",
+      "backend_cases": [
+        "test_category_lifecycle_relationships_filter_and_reopen"
+      ],
+      "widget_cases": [
+        "CU02 crea, valida, renombra y confirma eliminación de categoría"
+      ],
+      "http_cases": [
+        "I2-HTTP-04-edicion-y-eliminacion"
+      ],
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "manual_ipad": "Pendiente"
+    },
+    {
+      "criterion": "CA02.19",
+      "backend_cases": [
+        "test_category_lifecycle_relationships_filter_and_reopen"
+      ],
+      "widget_cases": [],
+      "http_cases": [
+        "I2-HTTP-03-confirmacion-recuperacion-duplicado",
+        "I2-HTTP-04-edicion-y-eliminacion"
+      ],
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "manual_ipad": "Pendiente"
+    }
+  ]
+}

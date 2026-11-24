@@ -15,7 +15,7 @@
 | Confirmación | Borradores sin incorporar y cancelación segura | Cancelar conserva datos previos; errores conservan edición; solo GET devuelve contexto confirmado | Probado automáticamente |
 | Aceptación visual | Revisar el aspecto de CU01 en el simulador de iPad | La persona usuaria revisó y aprobó la interfaz | [Aprobación visual](visual.md); escenarios funcionales manuales pendientes |
 
-CU02 y CU03 no se implementaron ni se iniciaron. El acceso a contexto confirmado está probado para CU01; su consumo por personalización IA debe verificarse al implementar CU03.
+La Iteración 1 se limitó a CU01. El acceso a contexto confirmado está probado para CU01; su consumo por personalización IA debe verificarse al implementar CU03.
 
 ## Evidencias por requisito y prueba
 

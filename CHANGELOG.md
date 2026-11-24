@@ -1,5 +1,10 @@
 # Registro de cambios
 
+## Desarrollo local — Iteración 2 CU02
+
+- Búsqueda local y ARASAAC, selección y revisión, importación, catálogo con archivos locales y categorías N:M.
+- Regresión automática aprobada y sonda HTTP con ARASAAC real. Revisión nativa en iPad pendiente.
+
 ## Desarrollo local — Iteración 1, CU01 (sin release)
 
 - Perfil único y contexto: frontend, GET/PUT, validaciones y persistencia atómica con migración SQL.

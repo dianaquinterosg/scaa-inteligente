@@ -113,3 +113,5 @@ El modelo propone palabras/pasos, **no selecciona definitivamente imágenes ni a
 - [Diagrama de casos de uso](diagrams/use-cases.puml) y [secuencia de CU03](diagrams/cu03-sequence.puml): archivos fuente PlantUML para incorporar a la presentación; no representan ejecución verificada.
 - [Plan de pruebas](test-plan.md): escenarios unitarios, de integración y evidencia de inferencia real.
 - La guía exacta de instalación **se redactará a partir del procedimiento probado**. El entorno «demo/release» debe distinguirse de desarrollo y de test, con variables de configuración y base de datos propias. No confundir build de demostración con una producción pública desplegada.
+
+La [implementación de CU02](evidence/iteration-2/design.md) incorpora el catálogo, el adaptador ARASAAC y el almacenamiento de imágenes junto a la base de cada entorno.
