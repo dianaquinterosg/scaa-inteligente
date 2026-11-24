@@ -9,6 +9,7 @@ from pydantic import BaseModel
 
 from .database import Database
 from .settings import Settings
+from .migrate import migrate
 
 logger = logging.getLogger(__name__)
 
@@ -26,6 +27,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @asynccontextmanager
     async def lifespan(app: FastAPI):
         database.initialize()
+        migrate(database)
         yield
 
     app = FastAPI(title="SCAA — preparación técnica", version="0.0.0", lifespan=lifespan)

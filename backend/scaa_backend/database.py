@@ -1,4 +1,4 @@
-"""Conexiones SQLite; el esquema funcional y sus migraciones están pendientes."""
+"""Conexiones SQLite compartidas por la API y las migraciones versionadas."""
 
 from contextlib import contextmanager
 from pathlib import Path
