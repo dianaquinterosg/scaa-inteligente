@@ -1,6 +1,6 @@
 # Matriz de trazabilidad — diseño v0.2
 
-**Estado:** especificación prevista en la línea base documental v0.2. Existe una base técnica y se ejecutaron sondas de servicios y pruebas de infraestructura; CU01 está implementado con pruebas automáticas aprobadas y aprobación visual confirmada por la persona usuaria; CU02 está implementado y probado automáticamente, con revisión en iPad pendiente. CU03 sigue pendiente. No hay release de software verificada. `P0/P1/P2` son prioridades, **no resultados**.
+**Estado:** especificación prevista en la línea base documental v0.2. Existe una base técnica y se ejecutaron sondas de servicios y pruebas de infraestructura; CU01 está implementado con pruebas automáticas aprobadas y aprobación visual confirmada por la persona usuaria; CU02 está implementado y probado automáticamente. La persona usuaria confirmó el recorrido manual en el simulador de iPad. CU03 sigue pendiente. No hay release de software verificada. `P0/P1/P2` son prioridades, **no resultados**.
 
 | Requisito | CU | CA vinculados | Prioridad | Componente real de CU01 / previsto para otros CU | Prueba/evidencia esperada | Resultado/commit |
 |---|---|---|---|---|---|---|
@@ -10,7 +10,7 @@
 | RF02.1 | CU02 | CA02.1 | P0 | `PictogramScreen`, `Catalog.list` | Búsqueda textual en UI/API | Aprobado automáticamente · [Iteración 2](evidence/iteration-2/results.md) |
 | RF02.2 | CU02 | CA02.2–CA02.3, CA02.10 | P0 | `Catalog`, `ArasaacClient`, `PictogramScreen` | Local primero; ARASAAC real y mock/error | Aprobado automáticamente · [Iteración 2](evidence/iteration-2/results.md) |
 | RF02.3 | CU02 (extensión futura) | Por definir | P2 | ImageGenerator futuro | Calidad visual/integración IA por planificar | Posterior al 60 % |
-| RF02.4 | CU02 | CA02.5–CA02.6 | P0 | `choosePictogramFile`, `image_format` | Archivo válido, inválido y tamaño máximo | Aprobado automáticamente con archivo sintético; selector nativo pendiente · [Iteración 2](evidence/iteration-2/results.md) |
+| RF02.4 | CU02 | CA02.5–CA02.6 | P0 | `choosePictogramFile`, `image_format` | Archivo válido, inválido y tamaño máximo | Aprobado automáticamente. Importación de un PNG desde Archivos confirmada por la persona usuaria · [Iteración 2](evidence/iteration-2/results.md) |
 | RF02.5 | CU02 | CA02.4, CA02.7 | P0 | `PictogramEditor`, `PictogramApproval` | No guardar sin confirmación; etiqueta editable | Aprobado automáticamente · [Iteración 2](evidence/iteration-2/results.md) |
 | RF02.6 | CU02 | CA02.8–CA02.9 | P0 | `Catalog`, archivos locales | Persistencia y no duplicado ARASAAC | Aprobado automáticamente · [Iteración 2](evidence/iteration-2/results.md) |
 | RF02.6 (eliminación) | CU02 | CA02.11–CA02.12 | P1 | `Catalog.delete`, FK restrictiva | Eliminación protegida por dependencia | CA02.11 aprobado; CA02.12 con FK de prueba, rutina real pendiente · [Iteración 2](evidence/iteration-2/results.md) |

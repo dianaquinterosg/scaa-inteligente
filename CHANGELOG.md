@@ -3,7 +3,7 @@
 ## Desarrollo local — Iteración 2 CU02
 
 - Búsqueda local y ARASAAC, selección y revisión, importación, catálogo con archivos locales y categorías N:M.
-- Regresión automática aprobada y sonda HTTP con ARASAAC real. Revisión nativa en iPad pendiente.
+- Regresión automática aprobada y sonda HTTP con ARASAAC real. Recorrido manual de CU02 confirmado en el simulador de iPad.
 
 ## Desarrollo local — Iteración 1, CU01 (sin release)
 

@@ -545,7 +545,7 @@
         "I2-HTTP-01-importacion-filtro-local"
       ],
       "result": "Aprobado en las pruebas automáticas indicadas",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Confirmado en el recorrido I2-IPAD-01"
     },
     {
       "criterion": "CA02.2",
@@ -559,7 +559,7 @@
         "I2-HTTP-01-importacion-filtro-local"
       ],
       "result": "Aprobado en las pruebas automáticas indicadas",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Confirmado en el recorrido I2-IPAD-02"
     },
     {
       "criterion": "CA02.3",
@@ -573,7 +573,7 @@
         "I2-HTTP-02-arasaac-real-vista-previa"
       ],
       "result": "Aprobado en las pruebas automáticas indicadas",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Confirmado en el recorrido I2-IPAD-01"
     },
     {
       "criterion": "CA02.4",
@@ -587,7 +587,7 @@
         "I2-HTTP-02-arasaac-real-vista-previa"
       ],
       "result": "Aprobado en las pruebas automáticas indicadas",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Confirmado en el recorrido I2-IPAD-01"
     },
     {
       "criterion": "CA02.5",
@@ -602,8 +602,8 @@
       "http_cases": [
         "I2-HTTP-01-importacion-filtro-local"
       ],
-      "result": "Importación sintética aprobada. Selector nativo pendiente.",
-      "manual_ipad": "Pendiente"
+      "result": "Importación sintética aprobada y selector nativo confirmado con PNG.",
+      "manual_ipad": "Confirmado en el recorrido I2-IPAD-03"
     },
     {
       "criterion": "CA02.6",
@@ -629,7 +629,7 @@
       ],
       "http_cases": [],
       "result": "Aprobado en las pruebas automáticas indicadas",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado manual específico reportado"
     },
     {
       "criterion": "CA02.7",
@@ -656,7 +656,7 @@
         "I2-HTTP-03-confirmacion-recuperacion-duplicado"
       ],
       "result": "Aprobado en las pruebas automáticas indicadas",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Confirmado en el recorrido I2-IPAD-02"
     },
     {
       "criterion": "CA02.8",
@@ -669,7 +669,7 @@
         "I2-HTTP-03-confirmacion-recuperacion-duplicado"
       ],
       "result": "Aprobado en las pruebas automáticas indicadas",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Confirmado en el recorrido I2-IPAD-02 (consulta tras guardar; reinicio cubierto por pruebas automáticas)"
     },
     {
       "criterion": "CA02.9",
@@ -681,7 +681,7 @@
         "I2-HTTP-03-confirmacion-recuperacion-duplicado"
       ],
       "result": "Aprobado en las pruebas automáticas indicadas",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado manual específico reportado"
     },
     {
       "criterion": "CA02.10",
@@ -693,7 +693,7 @@
       ],
       "http_cases": [],
       "result": "Aprobado en las pruebas automáticas indicadas",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado manual específico reportado"
     },
     {
       "criterion": "CA02.11",
@@ -707,7 +707,7 @@
         "I2-HTTP-04-edicion-y-eliminacion"
       ],
       "result": "Aprobado en las pruebas automáticas indicadas",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado manual específico reportado"
     },
     {
       "criterion": "CA02.12",
@@ -719,7 +719,7 @@
       ],
       "http_cases": [],
       "result": "Protección verificada con FK de prueba. Integración con rutina real pendiente.",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado manual específico reportado"
     },
     {
       "criterion": "CA02.13",
@@ -733,7 +733,7 @@
         "I2-HTTP-01-importacion-filtro-local"
       ],
       "result": "Aprobado en las pruebas automáticas indicadas",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Confirmado en el recorrido I2-IPAD-04"
     },
     {
       "criterion": "CA02.14",
@@ -745,7 +745,7 @@
       ],
       "http_cases": [],
       "result": "Aprobado en las pruebas automáticas indicadas",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado manual específico reportado"
     },
     {
       "criterion": "CA02.15",
@@ -759,7 +759,7 @@
         "I2-HTTP-04-edicion-y-eliminacion"
       ],
       "result": "Aprobado en las pruebas automáticas indicadas",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado manual específico reportado"
     },
     {
       "criterion": "CA02.16",
@@ -775,7 +775,7 @@
         "I2-HTTP-04-edicion-y-eliminacion"
       ],
       "result": "Aprobado en las pruebas automáticas indicadas",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Confirmado en el recorrido I2-IPAD-04 (una categoría; múltiples asociaciones cubiertas por pruebas automáticas)"
     },
     {
       "criterion": "CA02.17",
@@ -789,7 +789,7 @@
         "I2-HTTP-01-importacion-filtro-local"
       ],
       "result": "Aprobado en las pruebas automáticas indicadas",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Confirmado en el recorrido I2-IPAD-04"
     },
     {
       "criterion": "CA02.18",
@@ -803,7 +803,7 @@
         "I2-HTTP-04-edicion-y-eliminacion"
       ],
       "result": "Aprobado en las pruebas automáticas indicadas",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Confirmado en el recorrido I2-IPAD-04"
     },
     {
       "criterion": "CA02.19",
@@ -816,7 +816,38 @@
         "I2-HTTP-04-edicion-y-eliminacion"
       ],
       "result": "Aprobado en las pruebas automáticas indicadas",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado manual específico reportado"
     }
-  ]
+  ],
+  "manual_ipad": {
+    "source": "Confirmación de la persona usuaria en el simulador de iPad",
+    "interface_commit": "c311854",
+    "tests": [
+      {
+        "id": "I2-IPAD-01",
+        "result": "passed",
+        "scenario": "Búsqueda, vista previa ARASAAC y rechazo"
+      },
+      {
+        "id": "I2-IPAD-02",
+        "result": "passed",
+        "scenario": "Aprobación y recuperación en catálogo local"
+      },
+      {
+        "id": "I2-IPAD-03",
+        "result": "passed",
+        "scenario": "Importación de vaso-prueba.png desde Archivos, vista previa y guardado"
+      },
+      {
+        "id": "I2-IPAD-04",
+        "result": "passed",
+        "scenario": "Creación, asignación, filtro y eliminación de categoría"
+      },
+      {
+        "id": "I2-IPAD-05",
+        "result": "passed",
+        "scenario": "Revisión en ambas orientaciones"
+      }
+    ]
+  }
 }

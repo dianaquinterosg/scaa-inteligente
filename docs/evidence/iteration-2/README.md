@@ -1,6 +1,6 @@
 # Iteración 2 — CU02, gestión de pictogramas
 
-CU02 está implementado y cuenta con pruebas automáticas en API, widgets e integración HTTP real. Quedan pendientes el recorrido en el simulador de iPad con el selector nativo y la comprobación de dependencias con rutinas reales de CU03.
+CU02 está implementado y cuenta con pruebas automáticas en API, widgets e integración HTTP real. La persona usuaria confirmó el recorrido manual en el simulador de iPad, incluida la importación de un PNG desde Archivos. La comprobación con rutinas reales queda para CU03.
 
 | Unidad | Commit | Evidencia |
 |---|---|---|
@@ -11,6 +11,6 @@ CU02 está implementado y cuenta con pruebas automáticas en API, widgets e inte
 
 - **AINC421.** [Diseño, modelo, contrato y flujo](design.md).
 - **AINC422.** [Plan frente a implementación, cobertura y resultados](results.md).
-- **Revisión.** [Comprobación manual en iPad](manual-check.md).
+- **Revisión.** [Resultados de la comprobación manual en iPad](manual-check.md).
 
 El SRS v0.2 define el alcance. Los registros técnicos de esta iteración se organizan por caso de uso, criterio, prueba y commit.

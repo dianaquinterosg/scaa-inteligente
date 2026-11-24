@@ -1,6 +1,6 @@
 # Plan de pruebas y evidencias — MVP 60 % (v0.2)
 
-**Estado:** T01–T03 tienen pruebas automáticas aprobadas para CU01; pruebas funcionales manuales en iPad pendientes. T08 se ejecutó como sonda técnica de inferencia real. T04–T07 se aprobaron con pruebas automáticas de CU02. T15 tiene cobertura parcial de CU02. Ver [Iteración 0](evidence/iteration-0/test-results.md) e [Iteración 1](evidence/iteration-1/results.md); CU02 tiene una [regresión específica](evidence/iteration-2/results.md) y revisión en iPad pendiente. CU03 sigue pendiente.
+**Estado:** T01–T03 tienen pruebas automáticas aprobadas para CU01; pruebas funcionales manuales en iPad pendientes. T08 se ejecutó como sonda técnica de inferencia real. T04–T07 se aprobaron con pruebas automáticas de CU02. T15 tiene cobertura parcial de CU02. Ver [Iteración 0](evidence/iteration-0/test-results.md) e [Iteración 1](evidence/iteration-1/results.md); CU02 tiene una [regresión específica](evidence/iteration-2/results.md) y un [recorrido manual confirmado en simulador](evidence/iteration-2/manual-check.md). CU03 sigue pendiente.
 
 ## 1. Niveles y herramientas tentativas
 
