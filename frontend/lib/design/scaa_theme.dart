@@ -9,6 +9,9 @@ abstract final class ScaaLayout {
   static const formWidth = 760.0;
   static const contentWidth = 1000.0;
   static const twoColumns = 680.0;
+  static const routineStepWide = 216.0;
+  static const routineStepNarrow = 184.0;
+  static const routinePicture = 140.0;
 }
 
 abstract final class ScaaTheme {

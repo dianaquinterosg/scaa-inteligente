@@ -139,3 +139,29 @@ class ScaaConfirmButton extends StatelessWidget {
     label: Text(label, textAlign: TextAlign.center),
   );
 }
+
+class ScaaModeBanner extends StatelessWidget {
+  const ScaaModeBanner({super.key, required this.administration});
+  final bool administration;
+
+  @override
+  Widget build(BuildContext context) => ScaaNotice(
+    administration ? 'Modo administración' : 'Modo visualización',
+    kind: administration ? ScaaNoticeKind.success : ScaaNoticeKind.info,
+  );
+}
+
+class ScaaExitAdministration extends StatelessWidget {
+  const ScaaExitAdministration({super.key, required this.onExit});
+  final VoidCallback onExit;
+
+  @override
+  Widget build(BuildContext context) => IconButton(
+    tooltip: 'Volver a visualización',
+    onPressed: () {
+      onExit();
+      Navigator.pop(context);
+    },
+    icon: const Icon(Icons.visibility_outlined),
+  );
+}

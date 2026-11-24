@@ -130,7 +130,11 @@ Future<void> open(
   await tester.pumpWidget(
     MaterialApp(
       theme: ScaaTheme.light,
-      home: PictogramScreen(store: store, chooseFile: () async => png),
+      home: PictogramScreen(
+        store: store,
+        administration: true,
+        chooseFile: () async => png,
+      ),
     ),
   );
   await tester.pumpAndSettle();

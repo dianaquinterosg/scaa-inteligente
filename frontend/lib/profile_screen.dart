@@ -11,8 +11,15 @@ import 'routines/routine_api.dart';
 import 'routines/routines_screen.dart';
 
 class ProfileGate extends StatefulWidget {
-  const ProfileGate({super.key, required this.store});
+  const ProfileGate({
+    super.key,
+    required this.store,
+    required this.catalog,
+    required this.routines,
+  });
   final ProfileStore store;
+  final CatalogStore catalog;
+  final RoutineStore routines;
   @override
   State<ProfileGate> createState() => _ProfileGateState();
 }
@@ -21,6 +28,7 @@ class _ProfileGateState extends State<ProfileGate> {
   ProfileData? _profile;
   bool _loading = true;
   bool _failed = false;
+  bool _administration = false;
   bool _editing = false;
   bool _saved = false;
 
@@ -40,7 +48,7 @@ class _ProfileGateState extends State<ProfileGate> {
       if (mounted) {
         setState(() {
           _profile = profile;
-          _editing = profile == null;
+          _editing = _administration && profile == null;
           _loading = false;
         });
       }
@@ -54,48 +62,50 @@ class _ProfileGateState extends State<ProfileGate> {
     }
   }
 
+  Future<void> _enterAdministration() async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Entrar a administración'),
+        content: const Text(
+          'Desde este modo se pueden modificar el perfil, los pictogramas y las rutinas.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancelar'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Confirmar acceso'),
+          ),
+        ],
+      ),
+    );
+    if (confirmed == true && mounted) {
+      setState(() {
+        _administration = true;
+        _editing = !_loading && !_failed && _profile == null;
+      });
+    }
+  }
+
+  void _exitAdministration() => setState(() {
+    _administration = false;
+    _editing = false;
+    _saved = false;
+  });
+
   @override
   Widget build(BuildContext context) {
-    if (_loading || _failed) {
-      return Scaffold(
-        appBar: AppBar(title: const Text('SCAA Inteligente')),
-        body: SafeArea(
-          child: ScaaWidth(
-            child: ListView(
-              padding: const EdgeInsets.all(ScaaLayout.section),
-              children: [
-                if (_loading) ...[
-                  const ScaaNotice('Cargando tu perfil…'),
-                  const SizedBox(height: ScaaLayout.gap),
-                  const LinearProgressIndicator(),
-                ] else ...[
-                  const ScaaNotice(
-                    'No pudimos cargar tu perfil.',
-                    kind: ScaaNoticeKind.error,
-                  ),
-                  const SizedBox(height: ScaaLayout.gap),
-                  FilledButton.icon(
-                    onPressed: _load,
-                    icon: const Icon(Icons.refresh),
-                    label: const Text('Reintentar'),
-                  ),
-                ],
-              ],
-            ),
-          ),
-        ),
-      );
-    }
-    if (_editing) {
+    if (_administration && _editing) {
       return ProfileEditor(
         store: widget.store,
         initial: _profile,
-        onCancel: _profile == null
-            ? null
-            : () => setState(() {
-                _editing = false;
-                _saved = false;
-              }),
+        onCancel: () => setState(() {
+          _editing = false;
+          _saved = false;
+        }),
         onSaved: (profile) => setState(() {
           _profile = profile;
           _editing = false;
@@ -103,20 +113,61 @@ class _ProfileGateState extends State<ProfileGate> {
         }),
       );
     }
-    final profile = _profile!;
+    final profile = _profile;
+    final administration = _administration;
     return Scaffold(
-      appBar: AppBar(title: const Text('SCAA · Inicio')),
+      appBar: AppBar(
+        title: const Text('SCAA · Inicio'),
+        actions: [
+          Padding(
+            padding: const EdgeInsetsDirectional.only(end: ScaaLayout.small),
+            child: TextButton.icon(
+              style: TextButton.styleFrom(
+                foregroundColor: Theme.of(context).colorScheme.onPrimary,
+              ),
+              onPressed: _administration
+                  ? _exitAdministration
+                  : _enterAdministration,
+              icon: Icon(
+                _administration
+                    ? Icons.visibility_outlined
+                    : Icons.lock_outline,
+              ),
+              label: Text(
+                _administration
+                    ? 'Volver a visualización'
+                    : 'Acceso de administración',
+              ),
+            ),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: ScaaWidth(
           maxWidth: ScaaLayout.contentWidth,
           child: ListView(
             padding: const EdgeInsets.all(ScaaLayout.section),
             children: [
-              Text(
-                'Hola, ${profile.alias}',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
+              ScaaModeBanner(administration: _administration),
               const SizedBox(height: ScaaLayout.gap),
+              if (profile != null) ...[
+                Text(
+                  'Hola, ${profile.alias}',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+                const SizedBox(height: ScaaLayout.gap),
+              ],
+              if (_administration && _loading)
+                const LinearProgressIndicator(
+                  semanticsLabel: 'Cargando perfil',
+                ),
+              if (_administration && _failed) ...[
+                const ScaaNotice(
+                  'No pudimos cargar tu perfil.',
+                  kind: ScaaNoticeKind.error,
+                ),
+                TextButton(onPressed: _load, child: const Text('Reintentar')),
+              ],
               if (_saved) ...[
                 const ScaaNotice(
                   'Perfil guardado',
@@ -128,21 +179,29 @@ class _ProfileGateState extends State<ProfileGate> {
                 spacing: ScaaLayout.small,
                 runSpacing: ScaaLayout.small,
                 children: [
-                  FilledButton.icon(
-                    key: const ValueKey('edit-profile'),
-                    onPressed: () => setState(() {
-                      _editing = true;
-                      _saved = false;
-                    }),
-                    icon: const Icon(Icons.person_outline),
-                    label: const Text('Perfil y contexto'),
-                  ),
+                  if (_administration && !_loading && !_failed)
+                    FilledButton.icon(
+                      key: const ValueKey('edit-profile'),
+                      onPressed: () => setState(() {
+                        _editing = true;
+                        _saved = false;
+                      }),
+                      icon: const Icon(Icons.person_outline),
+                      label: Text(
+                        profile == null
+                            ? 'Configurar perfil'
+                            : 'Perfil y contexto',
+                      ),
+                    ),
                   OutlinedButton.icon(
                     onPressed: () => Navigator.push<void>(
                       context,
                       MaterialPageRoute(
-                        builder: (context) =>
-                            PictogramScreen(store: CatalogApi()),
+                        builder: (context) => PictogramScreen(
+                          store: widget.catalog,
+                          administration: administration,
+                          onExitAdministration: _exitAdministration,
+                        ),
                       ),
                     ),
                     icon: const Icon(Icons.collections_outlined),
@@ -153,8 +212,10 @@ class _ProfileGateState extends State<ProfileGate> {
                       context,
                       MaterialPageRoute(
                         builder: (_) => RoutinesScreen(
-                          store: RoutineApi(),
-                          catalog: CatalogApi(),
+                          store: widget.routines,
+                          catalog: widget.catalog,
+                          administration: administration,
+                          onExitAdministration: _exitAdministration,
                         ),
                       ),
                     ),
@@ -164,38 +225,41 @@ class _ProfileGateState extends State<ProfileGate> {
                 ],
               ),
               const SizedBox(height: ScaaLayout.section),
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  final width = constraints.maxWidth;
-                  final cardWidth = width >= ScaaLayout.twoColumns
-                      ? (width - ScaaLayout.gap) / 2
-                      : width;
-                  return Wrap(
-                    spacing: ScaaLayout.gap,
-                    runSpacing: ScaaLayout.gap,
-                    children: [
-                      for (final kind in ContextKind.values)
-                        SizedBox(
-                          width: cardWidth,
-                          child: ScaaSection(
-                            title: kind.title,
-                            icon: _contextIcon(kind),
-                            child: profile.values(kind).isEmpty
-                                ? const Text('Sin elementos registrados')
-                                : Wrap(
-                                    spacing: ScaaLayout.small,
-                                    runSpacing: ScaaLayout.small,
-                                    children: [
-                                      for (final value in profile.values(kind))
-                                        Chip(label: Text(value)),
-                                    ],
-                                  ),
+              if (_administration && profile != null)
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    final width = constraints.maxWidth;
+                    final cardWidth = width >= ScaaLayout.twoColumns
+                        ? (width - ScaaLayout.gap) / 2
+                        : width;
+                    return Wrap(
+                      spacing: ScaaLayout.gap,
+                      runSpacing: ScaaLayout.gap,
+                      children: [
+                        for (final kind in ContextKind.values)
+                          SizedBox(
+                            width: cardWidth,
+                            child: ScaaSection(
+                              title: kind.title,
+                              icon: _contextIcon(kind),
+                              child: profile.values(kind).isEmpty
+                                  ? const Text('Sin elementos registrados')
+                                  : Wrap(
+                                      spacing: ScaaLayout.small,
+                                      runSpacing: ScaaLayout.small,
+                                      children: [
+                                        for (final value in profile.values(
+                                          kind,
+                                        ))
+                                          Chip(label: Text(value)),
+                                      ],
+                                    ),
+                            ),
                           ),
-                        ),
-                    ],
-                  );
-                },
-              ),
+                      ],
+                    );
+                  },
+                ),
             ],
           ),
         ),

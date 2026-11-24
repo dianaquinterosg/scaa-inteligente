@@ -127,7 +127,7 @@ void main() {
       final store = FakeRoutines();
       await showScreen(
         tester,
-        RoutinesScreen(store: store, catalog: catalog()),
+        RoutinesScreen(store: store, administration: true, catalog: catalog()),
       );
       await hitText(tester, 'Crear rutina');
       await hitText(tester, 'Generar propuesta');
@@ -158,7 +158,7 @@ void main() {
       final store = FakeRoutines();
       await showScreen(
         tester,
-        RoutinesScreen(store: store, catalog: catalog()),
+        RoutinesScreen(store: store, administration: true, catalog: catalog()),
       );
       await hitText(tester, 'Crear rutina');
       await tester.enterText(find.byType(TextFormField), 'Higiene');
@@ -288,7 +288,7 @@ void main() {
     final pictures = catalog();
     await showScreen(
       tester,
-      RoutinesScreen(store: store, catalog: pictures),
+      RoutinesScreen(store: store, administration: true, catalog: pictures),
       size: const Size(1180, 820),
     );
     await hitText(tester, 'Rutina guardada de prueba');

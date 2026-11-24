@@ -92,7 +92,10 @@ class _RoutinePictogramsState extends State<RoutinePictograms> {
   Future<void> _openCatalog() async {
     await Navigator.push<void>(
       context,
-      MaterialPageRoute(builder: (_) => PictogramScreen(store: widget.catalog)),
+      MaterialPageRoute(
+        builder: (_) =>
+            PictogramScreen(store: widget.catalog, administration: true),
+      ),
     );
     if (mounted) await _load();
   }

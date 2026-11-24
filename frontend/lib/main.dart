@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
 
 import 'design/scaa_theme.dart';
+import 'pictograms/catalog_api.dart';
 import 'profile.dart';
 import 'profile_screen.dart';
+import 'routines/routine_api.dart';
 
 void main() => runApp(const ScaaApp());
 
 class ScaaApp extends StatelessWidget {
-  const ScaaApp({super.key, this.checkConnection, this.profileStore});
+  const ScaaApp({
+    super.key,
+    this.checkConnection,
+    this.profileStore,
+    this.catalogStore,
+    this.routineStore,
+  });
 
   final Future<void> Function()? checkConnection;
   final ProfileStore? profileStore;
+  final CatalogStore? catalogStore;
+  final RoutineStore? routineStore;
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -18,7 +28,11 @@ class ScaaApp extends StatelessWidget {
     debugShowCheckedModeBanner: false,
     theme: ScaaTheme.light,
     home: checkConnection == null
-        ? ProfileGate(store: profileStore ?? ProfileApi())
+        ? ProfileGate(
+            store: profileStore ?? ProfileApi(),
+            catalog: catalogStore ?? CatalogApi(),
+            routines: routineStore ?? RoutineApi(),
+          )
         : ConnectionScreen(check: checkConnection!),
   );
 }

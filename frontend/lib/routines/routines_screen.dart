@@ -6,11 +6,20 @@ import '../pictograms/catalog_api.dart';
 import '../pictograms/catalog_controls.dart';
 import 'routine_api.dart';
 import 'routine_editor.dart';
+import 'routine_viewer.dart';
 
 class RoutinesScreen extends StatefulWidget {
-  const RoutinesScreen({super.key, required this.store, required this.catalog});
+  const RoutinesScreen({
+    super.key,
+    required this.store,
+    required this.catalog,
+    required this.administration,
+    this.onExitAdministration,
+  });
   final RoutineStore store;
   final CatalogStore catalog;
+  final bool administration;
+  final VoidCallback? onExitAdministration;
 
   @override
   State<RoutinesScreen> createState() => _RoutinesScreenState();
@@ -48,6 +57,7 @@ class _RoutinesScreenState extends State<RoutinesScreen> {
   }
 
   Future<void> _open({int? id}) async {
+    if (_busy || (id == null && !widget.administration)) return;
     Widget screen;
     if (id == null) {
       screen = _RoutineStart(store: widget.store, catalog: widget.catalog);
@@ -58,12 +68,14 @@ class _RoutinesScreenState extends State<RoutinesScreen> {
       });
       try {
         final data = await widget.store.get(id);
-        screen = RoutineEditor(
-          store: widget.store,
-          catalog: widget.catalog,
-          initial: data,
-          generated: false,
-        );
+        screen = widget.administration
+            ? RoutineEditor(
+                store: widget.store,
+                catalog: widget.catalog,
+                initial: data,
+                generated: false,
+              )
+            : RoutineViewer(routine: data, catalog: widget.catalog);
       } catch (error) {
         if (mounted) {
           setState(
@@ -75,7 +87,7 @@ class _RoutinesScreenState extends State<RoutinesScreen> {
         if (mounted) setState(() => _busy = false);
       }
     }
-    if (!mounted) return;
+    if (!mounted || ModalRoute.of(context)?.isCurrent != true) return;
     final result = await Navigator.push<String>(
       context,
       MaterialPageRoute(builder: (_) => screen),
@@ -88,7 +100,13 @@ class _RoutinesScreenState extends State<RoutinesScreen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('SCAA · Rutinas')),
+    appBar: AppBar(
+      title: const Text('SCAA · Rutinas'),
+      actions: [
+        if (widget.administration && widget.onExitAdministration != null)
+          ScaaExitAdministration(onExit: widget.onExitAdministration!),
+      ],
+    ),
     body: SafeArea(
       top: false,
       child: ScaaWidth(
@@ -96,14 +114,17 @@ class _RoutinesScreenState extends State<RoutinesScreen> {
         child: ListView(
           padding: const EdgeInsets.all(ScaaLayout.section),
           children: [
-            Align(
-              alignment: Alignment.centerLeft,
-              child: FilledButton.icon(
-                onPressed: _busy ? null : () => _open(),
-                icon: const Icon(Icons.add),
-                label: const Text('Crear rutina'),
+            ScaaModeBanner(administration: widget.administration),
+            const SizedBox(height: ScaaLayout.gap),
+            if (widget.administration)
+              Align(
+                alignment: Alignment.centerLeft,
+                child: FilledButton.icon(
+                  onPressed: _busy ? null : () => _open(),
+                  icon: const Icon(Icons.add),
+                  label: const Text('Crear rutina'),
+                ),
               ),
-            ),
             const SizedBox(height: ScaaLayout.gap),
             if (_success != null) ...[
               ScaaNotice(_success!, kind: ScaaNoticeKind.success),
@@ -131,7 +152,11 @@ class _RoutinesScreenState extends State<RoutinesScreen> {
                       ListTile(
                         contentPadding: EdgeInsets.zero,
                         title: Text(routine.name),
-                        subtitle: Text('${routine.steps.length} pasos'),
+                        subtitle: Text(
+                          routine.steps.length == 1
+                              ? '1 paso'
+                              : '${routine.steps.length} pasos',
+                        ),
                         trailing: const Icon(Icons.chevron_right),
                         onTap: () => _open(id: routine.id),
                       ),

@@ -25,11 +25,19 @@ class FakeStore implements ProfileStore {
   }
 }
 
+Future<void> enterAdministration(WidgetTester tester) async {
+  await tester.tap(find.text('Acceso de administración'));
+  await tester.pumpAndSettle();
+  await tester.tap(find.text('Confirmar acceso'));
+  await tester.pumpAndSettle();
+}
+
 Future<void> openApp(WidgetTester tester, FakeStore store) async {
   await tester.binding.setSurfaceSize(const Size(1000, 1800));
   addTearDown(() => tester.binding.setSurfaceSize(null));
   await tester.pumpWidget(ScaaApp(key: UniqueKey(), profileStore: store));
   await tester.pumpAndSettle();
+  await enterAdministration(tester);
 }
 
 Future<void> save(WidgetTester tester) async {
@@ -67,6 +75,7 @@ void main() {
       await tester.pumpWidget(ScaaApp(profileStore: store));
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
+      await enterAdministration(tester);
       await tester.tap(find.byKey(const ValueKey('edit-profile')));
       await tester.pumpAndSettle();
       final form = find.byType(Form);
@@ -157,7 +166,7 @@ void main() {
     final store = FakeStore();
     await openApp(tester, store);
     expect(find.text('Configurar perfil'), findsOneWidget);
-    expect(find.text('Cancelar'), findsNothing);
+    expect(find.text('Cancelar'), findsOneWidget);
     await save(tester);
     expect(find.text('Ingresa un alias.'), findsOneWidget);
     expect(store.saves, 0);
@@ -199,6 +208,7 @@ void main() {
       expect(store.current!.interests, isEmpty);
       await tester.pumpWidget(ScaaApp(key: UniqueKey(), profileStore: store));
       await tester.pumpAndSettle();
+      await enterAdministration(tester);
       expect(find.text('Caminar'), findsOneWidget);
       expect(find.text('Lectura'), findsOneWidget);
     },
