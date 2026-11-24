@@ -41,11 +41,13 @@ Flutter (cliente) → FastAPI (API REST y reglas de negocio) → SQLite y archiv
 - [Decisiones y cambios](docs/decisions.md)
 - [Matriz de trazabilidad](docs/traceability.md)
 - [Plan de pruebas y evidencias](docs/test-plan.md)
+- [Preparación y ejecución del entorno de desarrollo](docs/development-setup.md)
+- [Registro de implementación](docs/evidence/iteration-0/implementation-log.md)
 - [Registro de cambios documentales](CHANGELOG.md)
 
 ## Estado de implementación
 
-Pendiente. Los estados «comprometido», «previsto» y «validado» no son intercambiables. Los comandos de instalación y ejecución se agregarán y comprobarán después de crear el código.
+Base técnica inicial en desarrollo: cliente Flutter iOS, endpoint de salud FastAPI y conexión SQLite con entornos separados. Las sondas de ARASAAC e IA local y las pruebas de esta base están registradas en [resultados técnicos](docs/evidence/iteration-0/test-results.md). CU01–CU03 todavía no están implementados. Los estados «comprometido», «previsto» y «validado» no son intercambiables. El cliente compiló y arrancó en iPad simulado; la persona usuaria confirmó «Servidor disponible» y FastAPI registró HTTP 200 en la comprobación de salud. Esto verifica la base técnica, no los casos de uso del MVP.
 
 ## Prioridades de implementación
 

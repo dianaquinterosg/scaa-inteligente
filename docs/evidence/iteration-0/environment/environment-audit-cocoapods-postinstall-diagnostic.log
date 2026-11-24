@@ -1,0 +1,32 @@
+$ HOMEBREW_DEVELOPER=1 brew postinstall ca-certificates
+exit=1
+==> Postinstalling ca-certificates
+You can try again using:
+  brew postinstall ca-certificates
+Warning: The post-install step did not complete successfully
+==> An exception occurred within a child process:
+  Errno::EPERM: Operation not permitted @ rb_sysopen - /dev/tty
+/opt/homebrew/Library/Homebrew/extend/os/mac/sandbox.rb:118:in 'File#initialize'
+/opt/homebrew/Library/Homebrew/extend/os/mac/sandbox.rb:118:in 'IO.open'
+/opt/homebrew/Library/Homebrew/extend/os/mac/sandbox.rb:118:in 'OS::Mac::Sandbox#ensure_child_tty_available'
+/opt/homebrew/Library/Homebrew/sandbox.rb:607:in 'block (4 levels) in Sandbox#run'
+/opt/homebrew/Library/Homebrew/utils/fork.rb:155:in 'block (3 levels) in Utils.safe_fork'
+/opt/homebrew/Library/Homebrew/utils/fork.rb:137:in 'Kernel#fork'
+/opt/homebrew/Library/Homebrew/utils/fork.rb:137:in 'block (2 levels) in Utils.safe_fork'
+/opt/homebrew/Library/Homebrew/utils/fork.rb:131:in 'IO.open'
+/opt/homebrew/Library/Homebrew/utils/fork.rb:131:in 'block in Utils.safe_fork'
+/opt/homebrew/Library/Homebrew/utils/fork.rb:226:in 'Utils.safe_fork'
+/opt/homebrew/Library/Homebrew/sandbox.rb:600:in 'block (3 levels) in Sandbox#run'
+/opt/homebrew/Library/Homebrew/sandbox.rb:659:in 'block (2 levels) in Sandbox#run'
+/opt/homebrew/Library/Homebrew/sandbox.rb:566:in 'PTY.open'
+/opt/homebrew/Library/Homebrew/sandbox.rb:566:in 'block in Sandbox#run'
+/opt/homebrew/Library/Homebrew/vendor/portable-ruby/4.0.6/lib/ruby/4.0.0/tmpdir.rb:105:in 'Dir.mktmpdir'
+/opt/homebrew/Library/Homebrew/sandbox.rb:559:in 'Sandbox#run'
+/opt/homebrew/Library/Homebrew/sandbox.rb:150:in 'Sandbox.run_or_fork'
+/opt/homebrew/Library/Homebrew/formula_installer.rb:1472:in 'block in FormulaInstaller#post_install'
+/opt/homebrew/Library/Homebrew/sandbox.rb:160:in 'Sandbox.with_preserved_brew_file'
+/opt/homebrew/Library/Homebrew/formula_installer.rb:1471:in 'FormulaInstaller#post_install'
+/opt/homebrew/Library/Homebrew/cmd/postinstall.rb:28:in 'block in Homebrew::Cmd::Postinstall#run'
+/opt/homebrew/Library/Homebrew/cmd/postinstall.rb:20:in 'Array#each'
+/opt/homebrew/Library/Homebrew/cmd/postinstall.rb:20:in 'Homebrew::Cmd::Postinstall#run'
+/opt/homebrew/Library/Homebrew/brew.rb:142:in '<main>'

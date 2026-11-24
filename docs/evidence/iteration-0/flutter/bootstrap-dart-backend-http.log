@@ -1,0 +1,3 @@
+$ cd frontend && dart run tool/check_backend.dart
+exit=0
+Conexión Dart → FastAPI → SQLite verificada.

@@ -1,0 +1,7 @@
+$ cd frontend && flutter test --reporter expanded
+exit=0
+[metadato omitido] +0: loading /Users/diana/Documents/Codex/scaa-inteligente/frontend/test/widget_test.dart
+[metadato omitido] +0: Muestra carga y confirma la conexión
+[metadato omitido] +1: Un fallo permite reintentar y recuperar la conexión
+[metadato omitido] +2: All tests passed!
+Waiting for another flutter command to release the startup lock...

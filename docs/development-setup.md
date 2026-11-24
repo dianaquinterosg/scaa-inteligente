@@ -1,0 +1,103 @@
+# Preparación y ejecución de desarrollo
+
+Base técnica inicial: Flutter iOS → FastAPI → SQLite. CU01–CU03 siguen pendientes. La documentación mantiene su identificación v0.2; el valor de desarrollo `0.0.0` del código no representa una release.
+
+## Estructura
+
+```text
+backend/
+  scaa_backend/   # configuración, conexiones SQLite y salud del servicio
+  tests/         # pruebas de la base técnica
+  scripts/       # sondas reales de ARASAAC y Ollama
+frontend/        # cliente Flutter con destino iOS
+docs/evidence/   # comandos, resultados y limitaciones observadas
+```
+
+## Entorno Python
+
+Solo en un checkout nuevo que todavía no tenga `.venv`, desde la raíz del repositorio y con Python 3.13 (verificado con 3.13.7 ARM64):
+
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -r backend/requirements-lock.txt
+cp backend/.env.example backend/.env
+```
+
+El entorno `.venv` ya existe en este Mac. No volver a crearlo para ejecutar los comandos siguientes. El archivo de versiones fijadas incluye dependencias de desarrollo y pruebas. Para instalar por separado, las dependencias directas están en `requirements.txt` y `requirements-dev.txt`. La reconstrucción desde cero con el archivo de versiones todavía no se ejecutó en una segunda máquina.
+
+## Backend
+
+Desde la raíz:
+
+```sh
+.venv/bin/python -m uvicorn scaa_backend.main:app --app-dir backend --env-file backend/.env --host 127.0.0.1 --port 8000
+```
+
+Durante la comprobación inicial se utilizó `backend/.env.example` directamente con `--env-file`; no se necesita información secreta. Se comprobó HTTP 200 en `http://127.0.0.1:8000/api/v1/health`, con estado y SQLite disponibles. La API no tiene endpoints funcionales de CU01–CU03 todavía.
+
+`SCAA_ENV` admite `dev`, `test` o `demo`. Bajo `SCAA_DATA_ROOT` se crea un directorio por entorno y una base `scaa.sqlite3` distinta. Por defecto se utiliza `.localdata/` en la raíz. No existen tablas de dominio ni migraciones funcionales todavía. Las conexiones activan claves foráneas y cierran la transacción con commit o rollback.
+
+Para una configuración de demo, establecer explícitamente `SCAA_ENV=demo`; eso separa sus archivos, pero no certifica una instalación de liberación. Las pruebas utilizan directorios temporales aislados.
+
+```sh
+cd backend
+../.venv/bin/python -m pytest -q
+```
+
+## Flutter
+
+```sh
+cd frontend
+flutter pub get
+flutter analyze
+flutter test --reporter expanded
+```
+
+Estos tres comandos pasaron en este entorno. Se conserva `pubspec.lock`. El cliente usa `dart:io` para HTTP y tiene destino iOS; no se preparó una versión web.
+
+Con el backend abierto en otra Terminal, desde `frontend`:
+
+```sh
+dart run tool/check_backend.dart
+```
+
+Esta sonda usa el mismo cliente HTTP que la pantalla y pasó contra el backend real. No sustituye la ejecución de la aplicación Flutter en iPad.
+
+Para compilar y ejecutar en el simulador existente desde Terminal normal:
+
+```sh
+flutter build ios --simulator --debug --no-codesign
+flutter run -d A8EF03DC-81E7-4B9A-AD7E-F9E4235468FC --dart-define=API_BASE_URL=http://localhost:8000
+```
+
+La compilación iOS encontró bloqueos de cachés y CoreSimulatorService dentro de la sesión restringida. La persona usuaria ejecutó después `flutter run` desde Terminal normal y confirmó mediante su salida el build y el arranque, junto con HTTP 200 en el backend. Consultar los [resultados](evidence/iteration-0/test-results.md). La persona usuaria confirmó que la aplicación muestra «Servidor disponible» con FastAPI activo. La evidencia procede de su salida de Terminal y confirmación explícita; no se recibió captura.
+
+El identificador `com.example.scaaInteligente` es el valor provisional del generador Flutter; debe definirse el identificador definitivo antes de distribución. Los iconos son los del esqueleto generado, no una identidad gráfica final.
+
+## Conectividad local
+
+Por defecto, el cliente consulta `http://localhost:8000`. En el simulador iOS corresponde al Mac anfitrión. Para otro servidor se utiliza `--dart-define=API_BASE_URL=...`.
+
+En un iPad físico, localhost corresponde al propio iPad. Ese escenario requiere un backend accesible en la red local, la dirección del Mac, confianza/firma y los permisos del dispositivo; no se ha verificado todavía. No utilizar una IP inventada ni exponer el servidor a Internet para resolver esta conexión.
+
+El cliente declara acceso a red local y `NSAllowsLocalNetworking`; no se habilitó una excepción general para todas las conexiones HTTP. El arranque comprobado del backend se limita a `127.0.0.1`.
+
+## Sondas reales de servicios
+
+Con Ollama abierto y el modelo descargado:
+
+```sh
+.venv/bin/python backend/scripts/probe_integrations.py --output docs/evidence/otra-ejecucion-integraciones.json
+```
+
+Ejecutar desde la raíz; el ejemplo permite elegir un archivo nuevo. La sonda rechaza sobrescribir evidencia existente. `--service arasaac` o `--service ollama` permite comprobar un solo servicio. Carga `backend/.env` si existe, respetando las variables de entorno explícitas.
+
+La ejecución real inicial está en [bootstrap-integrations.json](evidence/iteration-0/integrations/bootstrap-integrations.json): búsqueda ARASAAC y descarga de imagen, más tres generaciones Ollama con validación Pydantic y posiciones consecutivas. Ningún resultado se incorpora al catálogo ni se guarda como rutina aprobada. El modelo es provisional; la evaluación de calidad continúa pendiente.
+
+## Gestión de configuración
+
+`.env`, bases SQLite, cachés, builds, `.venv` y trabajo temporal están excluidos de Git. Los archivos de ejemplo y versiones quedan disponibles para revisión. La preparación no modifica el alcance del SRS ni crea tags o releases.
+
+## Cierre de Iteración 0
+
+La persona usuaria cerró funcionalmente la preparación técnica tras confirmar «Servidor disponible» en el iPad. Las [evidencias de Iteración 0](evidence/iteration-0/README.md) organizan versiones, comandos, pruebas y limitaciones por alcance y commit asociado.

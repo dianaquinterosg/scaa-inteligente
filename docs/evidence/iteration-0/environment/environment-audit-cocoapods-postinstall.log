@@ -1,0 +1,14 @@
+$ brew postinstall --verbose ca-certificates openssl@4 ruby
+exit=1
+==> Postinstalling ca-certificates
+You can try again using:
+  brew postinstall ca-certificates
+==> Postinstalling openssl@4
+You can try again using:
+  brew postinstall openssl@4
+==> Postinstalling ruby
+You can try again using:
+  brew postinstall ruby
+Warning: The post-install step did not complete successfully
+Warning: The post-install step did not complete successfully
+Warning: The post-install step did not complete successfully

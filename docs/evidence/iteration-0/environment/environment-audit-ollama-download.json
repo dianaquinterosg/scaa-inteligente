@@ -1,0 +1,8 @@
+{
+  "name": "Ollama-darwin.zip",
+  "size": 230778782,
+  "browser_download_url": "https://github.com/ollama/ollama/releases/download/v0.40.17/Ollama-darwin.zip",
+  "digest": "sha256:86756dc45f30e1447fc9626f828ab6098c26d8c5cc3620bab689f4cbb5411469",
+  "sha256_observado": "86756dc45f30e1447fc9626f828ab6098c26d8c5cc3620bab689f4cbb5411469",
+  "firma_codesign_verificada": true
+}

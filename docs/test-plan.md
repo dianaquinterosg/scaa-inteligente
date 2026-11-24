@@ -1,6 +1,6 @@
 # Plan de pruebas y evidencias — MVP 60 % (v0.2)
 
-**Estado:** plan previo a implementación. Los casos siguientes **NO han sido ejecutados**. Servirá para preparar pruebas unitarias, integración y evidencia para la presentación académica.
+**Estado:** plan de pruebas del MVP. T08 se ejecutó como sonda técnica de inferencia real; los demás casos funcionales siguientes **NO han sido ejecutados**. Las pruebas de la base técnica se registran por separado en [test-results.md](evidence/iteration-0/test-results.md) y no acreditan CU01–CU03 completos.
 
 ## 1. Niveles y herramientas tentativas
 
@@ -24,7 +24,7 @@
 | T05 | CU02 / CA02.5–CA02.7 | Archivo propio válido se incorpora solo tras aprobar; inválido se rechaza | No ejecutado | — |
 | T06 | CU02 / CA02.8–CA02.9 | Pictograma ARASAAC persistido; intento duplicado no crea nueva fila | No ejecutado | — |
 | T07 | CU02 / CA02.13–CA02.19 | Categorías N:M y filtrado; nombre duplicado no aceptado | No ejecutado | — |
-| T08 | CU03 / CA03.2 | IA local REAL entrega 3 rutinas estructuradas válidas (registrar modelo, equipo, tiempos) | No ejecutado | — |
+| T08 | CU03 / CA03.2 | IA local REAL entrega 3 rutinas estructuradas válidas (registrar modelo, equipo, tiempos) | Ejecutado como sonda técnica; integración CU03 y calidad pendientes | [Inferencia real](evidence/iteration-0/integrations/bootstrap-integrations.json), [equipo y entorno](evidence/iteration-0/environment/environment-audit.md) |
 | T09 | CU03 / CA03.4–CA03.5 | Exacta local > prefijo > contiene; empate local sin selección arbitraria | No ejecutado | — |
 | T10 | CU03 / CA03.4, CA03.15 | ARASAAC sugiere candidato temporal; cancelar propuesta no crea filas | No ejecutado | — |
 | T11 | CU03 / CA03.7, CA03.13–CA03.14 | Reordenar/repetir recurso, bloquear guardado de paso sin pictograma | No ejecutado | — |

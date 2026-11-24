@@ -1,6 +1,6 @@
 # Matriz de trazabilidad — diseño v0.2
 
-**Estado:** especificación prevista en la línea base documental v0.2, incorporada al repositorio. **Sin código, pruebas ejecutadas ni release de software verificados.** No completar referencias de implementación hasta comprobarlas en repositorio. `P0/P1/P2` son prioridades, **no resultados**.
+**Estado:** especificación prevista en la línea base documental v0.2. Existe una base técnica y se ejecutaron sondas de servicios y pruebas de infraestructura; las funcionalidades CU01–CU03 siguen pendientes. No hay release de software verificada. `P0/P1/P2` son prioridades, **no resultados**.
 
 | Requisito | CU | CA vinculados | Prioridad | Componente previsto (no código existente) | Prueba/evidencia esperada | Resultado/commit |
 |---|---|---|---|---|---|---|
@@ -28,6 +28,17 @@
 | RF03.8 | CU03 | CA03.11 | P1 | RoutinePage / RoutineService | IA indisponible → edición manual | Pendiente |
 | RF04.1–RF04.3 | CU04 | Por definir | P2 | RecommendationService futuro | Pertinencia ≥70 % tras implementación | Posterior al 60 % |
 | RF05.1–RF05.2 | CU05 | Por definir | P2 | CommunicationView futuro | Navegación/comunicación con recursos aprobados | Posterior al 60 % |
+
+## Evidencia técnica previa a la implementación funcional
+
+| Referencia | Código real | Evidencia | Límite |
+|---|---|---|---|
+| Preparación de persistencia | `backend/scaa_backend/database.py:Database`, `backend/tests/test_bootstrap.py` | [Resultados de la base técnica](evidence/iteration-0/test-results.md) | Conexiones, rollback y entornos; no verifica persistencia de perfiles, pictogramas ni rutinas |
+| RF02.2 / CA02.3 | `backend/scripts/probe_integrations.py:probe_arasaac` | [Consulta e imagen reales](evidence/iteration-0/integrations/bootstrap-integrations.json) | Viabilidad del servicio externo; CU02 no implementado |
+| RF03.2 / CA03.2–CA03.3 | `backend/scripts/probe_integrations.py:probe_ollama` | [Tres propuestas reales](evidence/iteration-0/integrations/bootstrap-integrations.json) | JSON y orden verificados en sonda; calidad e integración CU03 pendientes |
+| Conectividad del cliente | `frontend/lib/backend_client.dart:BackendClient.check`, `backend/scaa_backend/main.py:create_app` | [Petición real desde Dart](evidence/iteration-0/flutter/bootstrap-dart-backend-http.log) | Endpoint técnico de salud; no es T16 ni el recorrido de los casos de uso |
+
+Las filas funcionales anteriores permanecen pendientes: estas sondas no equivalen a implementar sus RF ni a aprobar todos sus CA.
 
 ## Cómo completar la trazabilidad con Codex
 

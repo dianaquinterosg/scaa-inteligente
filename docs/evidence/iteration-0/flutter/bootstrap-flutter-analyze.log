@@ -1,0 +1,4 @@
+$ cd frontend && flutter analyze
+exit=0
+Analyzing frontend...
+No issues found! (ran in [metadato omitido])

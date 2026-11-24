@@ -1,0 +1,240 @@
+(base) diana@192 Downloads % xcrun simctl boot A8EF03DC-81E7-4B9A-AD7E-F9E4235468FC
+xcrun simctl bootstatus A8EF03DC-81E7-4B9A-AD7E-F9E4235468FC -b
+xcrun simctl list devices booted
+Monitoring boot status for iPad (A16) (A8EF03DC-81E7-4B9A-AD7E-F9E4235468FC).
+[[metadato omitido] [metadato omitido]] Status=1, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on BackBoard
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:(null)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.MobileContainerManager.ContainerMigrator (ContainerMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.securityd.KeychainMigrator (KeychainMigrator.migrator, user-agnostic) (Concurrent: Running plugin com.apple.appleaccount.mergebuddyprovisioningresponse.migrator (MergeBuddyProvisioningResponse.migrator, concurrent after com.apple.-0LaunchServicesMigrator))
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.managedconfiguration.migrator (MCProfile.migrator, user-agnostic) (Concurrent: Running plugin com.apple.MobileSlideShow (MobileSlideShow.migrator, concurrent after com.apple.accounts.migrator))
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.managedconfiguration.migrator (MCProfile.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.managedconfiguration.migrator (MCProfile.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.managedconfiguration.migrator (MCProfile.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.managedconfiguration.migrator (MCProfile.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.managedconfiguration.migrator (MCProfile.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.managedconfiguration.migrator (MCProfile.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.managedconfiguration.migrator (MCProfile.migrator, user-agnostic)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.MobileSafari.migrator (MobileSafari.migrator)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.MobileSafari.migrator (MobileSafari.migrator)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.MobileSafari.migrator (MobileSafari.migrator)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.message.LegacyAccountsMigrator (LegacyMessageAccountsMigrator.migrator)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=2, isTerminal=NO, Elapsed=[metadato omitido].
+	Waiting on Data Migration
+		Reason:Running plugin com.apple.PreferencesMigrator (PreferencesMigrator.migrator)
+		Migration Elapsed:[metadato omitido] seconds
+
+[[metadato omitido] [metadato omitido]] Status=4294967295, isTerminal=YES, Elapsed=[metadato omitido].
+	Finished
+
+== Devices ==
+-- iOS 27.2 --
+    iPad (A16) (A8EF03DC-81E7-4B9A-AD7E-F9E4235468FC) (Booted)
+-- iOS 27.2 --
+(base) diana@192 Downloads %

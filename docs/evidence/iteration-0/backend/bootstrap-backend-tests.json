@@ -1,0 +1,33 @@
+{
+  "command": "../.venv/bin/python -m pytest -q",
+  "working_directory": "backend",
+  "exit_code": 0,
+  "observed_summary": "6 passed, 1 warning",
+  "warning": "StarletteDeprecationWarning: Using httpx with starlette.testclient is deprecated; install httpx2 instead.",
+  "tests": [
+    {
+      "id": "test_health_creates_database_without_domain_tables",
+      "result": "passed"
+    },
+    {
+      "id": "test_database_transactions_and_foreign_keys",
+      "result": "passed"
+    },
+    {
+      "id": "test_environments_use_different_database_files",
+      "result": "passed"
+    },
+    {
+      "id": "test_initialize_preserves_existing_schema_version",
+      "result": "passed"
+    },
+    {
+      "id": "test_settings_read_and_validate_environment",
+      "result": "passed"
+    },
+    {
+      "id": "test_health_does_not_expose_storage_paths",
+      "result": "passed"
+    }
+  ]
+}

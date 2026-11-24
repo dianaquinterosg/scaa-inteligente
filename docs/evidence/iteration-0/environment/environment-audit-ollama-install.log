@@ -1,0 +1,24 @@
+$ /Applications/Ollama.app/Contents/Resources/ollama --version
+exit=0
+Warning: could not connect to a running Ollama instance
+Warning: client version is 0.40.17
+
+$ codesign -dv --verbose=2 /Applications/Ollama.app
+exit=0
+Executable=/Applications/Ollama.app/Contents/MacOS/Ollama
+Identifier=com.electron.ollama
+Format=app bundle with Mach-O universal (x86_64 arm64)
+CodeDirectory v=20500 size=57503 flags=0x10000(runtime) hashes=1790+3 location=embedded
+Signature size=9066
+Authority=Developer ID Application: Infra Technologies, Inc (3MU9H2V9Y9)
+Authority=Developer ID Certification Authority
+Authority=Apple Root CA
+[metadato omitido]
+Notarization Ticket=stapled
+Info.plist entries=18
+TeamIdentifier=3MU9H2V9Y9
+Runtime Version=26.4.0
+Sealed Resources version=2 rules=13 files=70
+Internal requirements count=1 size=180
+Total signatures=1
+Chosen signature=1

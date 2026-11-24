@@ -1,0 +1,9 @@
+{
+  "url": "http://127.0.0.[metadato omitido]00/api/v1/health",
+  "status": 200,
+  "body": {
+    "status": "ok",
+    "database": "ok",
+    "environment": "dev"
+  }
+}

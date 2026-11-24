@@ -1,0 +1,30 @@
+$ git --version
+exit=0
+git version 2.39.5 (Apple Git-154)
+
+$ /opt/homebrew/bin/python3 --version
+exit=0
+Python 3.13.7
+
+$ /opt/anaconda3/bin/python --version
+exit=0
+Python 3.13.5
+
+$ /usr/bin/python3 --version
+exit=0
+Python 3.9.6
+
+$ xcode-select -p
+exit=0
+/Library/Developer/CommandLineTools
+
+$ xcodebuild -version
+exit=1
+xcode-select: error: tool 'xcodebuild' requires Xcode, but active developer directory '/Library/Developer/CommandLineTools' is a command line tools instance
+
+$ xcrun simctl list runtimes --json
+exit=72
+xcrun: error: unable to find utility "simctl", not a developer tool or in PATH
+
+$ /opt/homebrew/bin/python3 -m venv .venv
+exit=0
