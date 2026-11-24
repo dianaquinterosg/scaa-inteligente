@@ -9,8 +9,8 @@ CU02 está implementado y cuenta con pruebas automáticas en API, widgets e inte
 | Flutter y pruebas de widgets | `d89abad`, `c311854` | [Regresión](results.md) |
 | Sonda Dart → FastAPI → SQLite y ARASAAC real | `7a0acd5` | [Resultados reproducibles](results.json) |
 
-- **AINC421.** [Diseño, modelo, contrato y flujo](design.md).
-- **AINC422.** [Plan frente a implementación, cobertura y resultados](results.md).
+- **Diseño.** [Modelo, contrato y flujo](design.md).
+- **Verificación.** [Plan frente a implementación, cobertura y resultados](results.md).
 - **Revisión.** [Resultados de la comprobación manual en iPad](manual-check.md).
 
 El SRS v0.2 define el alcance. Los registros técnicos de esta iteración se organizan por caso de uso, criterio, prueba y commit.

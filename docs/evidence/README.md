@@ -3,8 +3,7 @@
 | Iteración | Funcionalidad | Estado | Evidencias y commit asociado |
 |---|---|---|---|
 | 0 | Preparación técnica y viabilidad de integraciones | Cerrada funcionalmente | [Cierre y pruebas](iteration-0/README.md); `db312e3592648a3b620d66b2ea22af018396112e` |
-
 | 1 | CU01 — perfil y contexto | Implementado y probado automáticamente; aspecto aprobado en simulador; pruebas funcionales manuales pendientes | [Criterios, pruebas y límites](iteration-1/README.md); commits funcionales asociados por prueba |
 | 2 | CU02 — pictogramas | Automatización aprobada y recorrido manual en simulador confirmado | [Diseño y resultados](iteration-2/README.md) |
 
-Cada carpeta organiza alcance planificado e implementado, referencias RF/CU/CA, pruebas, resultados, limitaciones y commit real. Los registros documentales omiten metadatos temporales. La salida bruta local se mantiene fuera de Git. Los resultados reales no se sustituyen por una reconstrucción histórica.
+Cada carpeta organiza alcance planificado e implementado, referencias RF/CU/CA, pruebas, resultados, limitaciones y commit real. Los títulos y enlaces identifican su función técnica: diseño, arquitectura, implementación, trazabilidad, gestión de configuración o verificación. Los registros documentales omiten metadatos temporales. La salida bruta local se mantiene fuera de Git. Los resultados reales no se sustituyen por una reconstrucción histórica.

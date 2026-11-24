@@ -13,7 +13,7 @@
 | Ollama | Inferencia local estructurada | Tres propuestas reales con JSON y orden válidos | [Sonda real](integrations/bootstrap-integrations.json) | RF03.2 / CA03.2–CA03.3: viabilidad, CU03 pendiente |
 | iPad | Compilar, arrancar y conectar | Build y arranque reportados; HTTP 200 y texto «Servidor disponible» confirmados por la persona usuaria | [Confirmación iPad](flutter/bootstrap-ipad-run-user.json) | Recorrido de salud, no T16 |
 
-Los resultados no acreditan CU01–CU03 ni los indicadores académicos. El diseño y análisis de la línea base permanecen como referencia; esta carpeta utiliza la numeración de Iteración 0 solicitada para el cierre técnico.
+Los resultados corresponden a la preparación técnica y a las sondas de integración. La verificación de CU01–CU03 y de los objetivos del SRS requiere pruebas específicas. El diseño y análisis de la línea base permanecen como referencia; esta carpeta utiliza la numeración de Iteración 0 solicitada para el cierre técnico.
 
 ## Organización y procedencia
 

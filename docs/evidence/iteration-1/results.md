@@ -1,4 +1,4 @@
-# Iteración 1 — resultados y evidencias para AINC422
+# Iteración 1 — Resultados de pruebas y evidencias de CU01
 
 **Funcionalidad:** CU01. **Commit base:** `db312e3592648a3b620d66b2ea22af018396112e`. **Commits asociados:** API `89647a9`, widgets `f81d180`, integración `854180f`.
 
@@ -42,6 +42,6 @@ Las asociaciones concretas entre criterio y nombre de prueba están en [acceptan
 
 La persona usuaria aprobó el aspecto de CU01 en el simulador de iPad. Los escenarios funcionales de la lista manual siguen pendientes porque no se reportaron resultados individuales.
 
-El consumo del perfil confirmado por la personalización IA será probado al integrar CU03. No se midieron indicadores académicos, no se ejecutó el recorrido T16 y no se avanzó a CU02. La implementación de CU01 está versionada localmente.
+El consumo del perfil confirmado por la personalización IA será probado al integrar CU03. No se midieron los objetivos de calidad y usabilidad del SRS, no se ejecutó el recorrido T16 y no se avanzó a CU02. La implementación de CU01 está versionada localmente.
 
 La [regresión del incremento visual](visual.md) conserva por separado los resultados de las pruebas sobre `bca2e58`, incluida la comprobación de los enlaces entre criterios y pruebas.

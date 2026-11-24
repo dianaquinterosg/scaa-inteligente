@@ -23,7 +23,7 @@ La personalización de recursos de comunicación aumentativa y alternativa puede
 - Generación de imágenes/pictogramas mediante IA, después de probar su viabilidad y adecuación visual (extensión de RF02). La carga de imágenes propias **no reemplaza definitivamente** esta funcionalidad.
 - Entrada por voz y mejoras de asociación contextual, según priorización.
 
-La equivalencia «3 de 5 casos de uso = 60 %» es una **convención de alcance de planificación**, no una medición comprobada de esfuerzo o cobertura de funcionalidades. Debe verificarse frente a la rúbrica y las pruebas.
+La equivalencia «3 de 5 casos de uso = 60 %» identifica el alcance planificado del incremento. La cobertura real se verifica por requisito y criterio de aceptación con las pruebas registradas.
 
 ## Arquitectura prevista
 
@@ -57,8 +57,8 @@ Ver [evidencias de CU01](docs/evidence/iteration-1/README.md) y [guía de ejecuc
 - **P1 (complementos comprometidos):** administración avanzada, manejo de dependencias, recuperación y errores adicionales. Forman parte de la especificación; si no se terminan, **el caso de uso se declara parcial**, no completo.
 - **P2:** funcionalidades explícitamente posteriores al 60 %, entre ellas generación de imágenes por IA, CU04, CU05 integral y voz.
 
-La matriz de prioridad y aceptación está en [casos de uso](docs/use-cases.md) y el [plan de iteraciones](docs/iteration-plan.md). **P0 no es sinónimo de 60 % aprobado**: la cobertura final se calcula a partir de evidencia y rubricación académica.
+La matriz de prioridad y aceptación está en [casos de uso](docs/use-cases.md) y el [plan de iteraciones](docs/iteration-plan.md). P0 indica prioridad de implementación. La cobertura se determina con la matriz de trazabilidad y los resultados de las pruebas de P0 y P1.
 
 La [referencia visual SCAA](docs/design/README.md) documenta los mockups y su adaptación a CU01 en tablet.
 
-El [registro de Iteración 2](docs/evidence/iteration-2/README.md) reúne el diseño, pruebas y revisión pendiente de CU02.
+El [registro de Iteración 2](docs/evidence/iteration-2/README.md) reúne el diseño, las pruebas y el recorrido confirmado de CU02 en el simulador de iPad.

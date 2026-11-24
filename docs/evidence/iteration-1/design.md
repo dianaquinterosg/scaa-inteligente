@@ -1,4 +1,4 @@
-# Iteración 1 — diseño de CU01 para AINC421
+# Iteración 1 — Diseño y contratos de CU01
 
 **Identificación documental:** v0.2. **Estado:** diseño implementado en `8486582`, `89647a9` y `f81d180`.
 
@@ -41,4 +41,4 @@ El editor mantiene un borrador independiente. Primer uso no permite continuar si
 
 El UML se comprobó estructuralmente; no se ejecutó un renderizador PlantUML. La conformidad funcional está respaldada por pruebas automáticas y por los contratos efectivamente implementados; la persona usuaria aprobó el aspecto de CU01 en el simulador de iPad.
 
-La [referencia visual del anteproyecto](../../design/README.md) y la [adaptación de CU01](visual.md) complementan este diseño funcional para AINC421.
+La [referencia visual inicial](../../design/README.md) y la [adaptación de CU01](visual.md) complementan este diseño funcional.

@@ -20,7 +20,7 @@
 | ADR-014 | No confundir IA local con producto iPad totalmente offline | Backend necesita red local; ARASAAC necesita Internet | Acordado |
 | ADR-015 | Priorizar criterios P0/P1/P2 sin eliminar alcance | Evitar dispersión por plazo; registrar cualquier criterio no logrado y no declarar CU completo sin evidencia | Acordado |
 | ADR-016 | Política de preselección textual determinística | Normalización, ranking exacta/prefijo/contiene, empate sin selección y candidato ARASAAC marcado para revisión | Acordado para diseño; evaluar pertinencia real |
-| ADR-017 | Documentar UML y evidencia plan/real antes de implementación | La evaluación solicita diagramas, control de configuración, instalación y trazabilidad a código; documentación actual es solo planificación | Acordado |
+| ADR-017 | Documentar UML y evidencia plan/real antes de implementación | Los diagramas, el control de configuración, el procedimiento de instalación y la trazabilidad permiten contrastar la implementación verificada con lo planificado | Acordado |
 | ADR-018 | CU01 usa sqlite3 y migraciones SQL numeradas con PRAGMA user_version | Reutiliza SQLite sin incorporar ORM; cada migración se aplica en transacción y se rechaza un esquema posterior al soportado | Implementado y probado en Iteración 1 |
 | ADR-019 | Validación independiente en Flutter y API; unicidad por tipo mediante clave casefold | El backend es autoridad sobre entradas y duplicados Unicode; el borrador no se incorpora hasta guardar íntegramente | Implementado y probado en Iteración 1 |
 
@@ -43,4 +43,3 @@ Commit/PR/tag:
 - Modelo local, memoria/latencia, confiabilidad de estructura JSON y criterios para detectar asociaciones ambiguas.
 - Licenciamiento/atribución aplicables al almacenamiento y distribución de imágenes ARASAAC.
 - Instalación reproducible en un entorno de release/demo y accesibilidad desde iPad.
-- Rúbrica y condiciones de evaluación de la entrega pendientes de confirmación académica.

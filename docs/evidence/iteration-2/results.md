@@ -1,4 +1,4 @@
-# AINC422 · Resultados de CU02
+# Iteración 2 — Resultados de pruebas y evidencias de CU02
 
 | Alcance planificado | Alcance implementado | Verificación real |
 |---|---|---|
@@ -29,4 +29,4 @@ En la primera corrida backend, Pydantic aceptó el número 1 como equivalente al
 | CA02.12 | Protección de FK y respuesta 409 verificadas con dependencia de prueba. Falta validar con una rutina real de CU03 |
 | CA02.13–CA02.19 | Creación, validación de nombre, renombrado, asociación N:M, filtro, eliminación que preserva recursos y recuperación |
 
-[Comandos, pruebas y cobertura por criterio](results.json) · [Diseño AINC421](design.md) · [Resultados manuales confirmados](manual-check.md). T16 y los indicadores académicos del recorrido completo corresponden a la evaluación integrada.
+[Comandos, pruebas y cobertura por criterio](results.json) · [Diseño y contratos](design.md) · [Resultados manuales confirmados](manual-check.md). T16 y la medición de los objetivos de calidad y usabilidad del recorrido completo corresponden a la verificación integrada.

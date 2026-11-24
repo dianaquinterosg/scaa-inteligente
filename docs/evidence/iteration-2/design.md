@@ -1,4 +1,4 @@
-# AINC421 · Diseño de CU02
+# Iteración 2 — Diseño, modelo y contratos de CU02
 
 **Iteración 2.** [SRS v0.2](../../SRS.md), [criterios CU02](../../use-cases.md), [modelo conceptual](../../data-model.md), [secuencia](../../diagrams/cu02-sequence.puml) y [mockups originales](../../design/mockups-originales.png).
 

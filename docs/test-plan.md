@@ -44,7 +44,7 @@ Preparar una lista identificada por iteración y prueba, con descripciones y pas
 - **Test:** BD de test aislada, pruebas con fakes y servicios reales **solo** en smoke tests identificados.
 - **Release/demo:** ejecutables/servicios y BD separada de prueba; publicar únicamente cuando se haya verificado procedimiento de instalación y haya resultados de tests documentados.
 
-El entregable de control debe incluir: SHA de commit, tag (por ejemplo `v0.6.0-mvp` **solo cuando exista**), contenido de release notes, versión de Python/Flutter/modelo, comandos de instalación *probados*, variables de entorno necesarias sin secretos, resultados de suite y capturas identificadas por iteración, funcionalidad, requisito, prueba y commit. No afirmar «producción desplegada» si solo existe demo local.
+El registro de gestión de configuración debe incluir SHA de commit, tag (por ejemplo `v0.6.0-mvp` **solo cuando exista**), contenido de release notes, versión de Python/Flutter/modelo, comandos de instalación *probados*, variables de entorno necesarias sin secretos, resultados de suite y capturas identificadas por iteración, funcionalidad, requisito, prueba y commit. No afirmar «producción desplegada» si solo existe demo local.
 
 ## 5. Registro de ejecución por alcance
 
@@ -55,6 +55,6 @@ El entregable de control debe incluir: SHA de commit, tag (por ejemplo `v0.6.0-m
 
 Los registros documentales excluyen metadatos temporales. Los resultados se asocian al alcance y al código real, sin atribuir un commit inexistente.
 
-## 6. Evaluación de objetivos
+## 6. Verificación de objetivos de calidad y usabilidad
 
 OE1/OE2 requieren comparar tareas equivalentes del proceso de referencia y del prototipo en condiciones definidas y registrar **tiempo e interacciones**. OE4 requiere participantes y tareas de usabilidad con asistencia observada. No usar porcentajes como «resultados» mientras no hayan sido medidos.

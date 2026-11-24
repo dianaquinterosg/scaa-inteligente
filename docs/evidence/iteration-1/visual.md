@@ -2,11 +2,11 @@
 
 La [lámina original](../../design/mockups-originales.png) y sus [lineamientos](../../design/README.md) se incorporaron en `44a420c`. El tema y los componentes compartidos corresponden a `6eb2d40`. Las pantallas y sus pruebas de adaptación corresponden a `bca2e58`. La persona usuaria confirmó que revisó CU01 en el simulador de iPad y aprobó su aspecto visual. La confirmación corresponde a la interfaz de `bca2e58`. No se reportaron resultados por escenario funcional, orientación, teclado ni VoiceOver.
 
-## AINC421 · diseño
+## Diseño visual y alcance
 
 | Planificado | Implementado |
 |---|---|
-| Identidad de los flujos del anteproyecto | Material 3 con cabeceras azules, fondo celeste, tarjetas blancas, paneles de estado, acciones azules y confirmación verde |
+| Identidad de los flujos del diseño visual inicial | Material 3 con cabeceras azules, fondo celeste, tarjetas blancas, paneles de estado, acciones azules y confirmación verde |
 | Aplicar la identidad a perfil y contexto | Alias en bloque propio, tres tarjetas de contexto, acciones visibles y avisos con icono y texto |
 | Tablet vertical y horizontal | Ancho máximo para lectura y edición, dos columnas en el resumen amplio, formulario desplazable y barra de acciones adaptable |
 | Navegación coherente con los módulos | Acceso real desde Inicio al perfil y regreso al resumen confirmado. Las demás entradas de la lámina quedan para sus iteraciones |
@@ -14,7 +14,7 @@ La [lámina original](../../design/mockups-originales.png) y sus [lineamientos](
 
 La lámina muestra flujos de teléfono y carece de una pantalla de CU01. Su contraste y jerarquía guiaron un diseño propio para el formulario. La API, las validaciones de dominio y las migraciones son las de los commits funcionales de CU01.
 
-## AINC422 · verificación ejecutada
+## Pruebas de regresión y resultados
 
 | Prueba | Resultado real |
 |---|---|

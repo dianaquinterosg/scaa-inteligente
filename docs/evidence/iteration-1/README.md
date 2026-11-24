@@ -21,8 +21,8 @@ La Iteración 1 se limitó a CU01. El acceso a contexto confirmado está probado
 
 [CA01.1–CA01.10](cu01/acceptance.json), [45 pruebas backend](cu01/backend-tests.json), [15 pruebas Flutter](cu01/flutter-tests.json), [7 escenarios HTTP reales](cu01/live-http.json), [análisis Dart](cu01/analyze.json).
 
-- [Diseño y contratos para AINC421](design.md).
-- [Planificado frente a implementado y evidencias para AINC422](results.md).
+- [Diseño y contratos de CU01](design.md).
+- [Alcance planificado e implementado, resultados y evidencias de verificación](results.md).
 - [Comprobación manual pendiente](manual-check.md).
 - [Código entregado](cu01/source-snapshot.json): hashes de la base funcional `854180f`.
 

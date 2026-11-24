@@ -9,7 +9,7 @@
 
 ### 1.1 Propósito
 
-Definir requisitos verificables del prototipo y el alcance de la entrega parcial, dando una fuente de referencia a desarrollo, pruebas, trazabilidad y presentación académica.
+Definir los requisitos verificables del prototipo y el alcance del incremento. La especificación sirve de referencia para diseño, implementación, pruebas, trazabilidad y aceptación.
 
 ### 1.2 Problema
 
@@ -112,14 +112,14 @@ CU04, CU05 integral, generación de nuevas imágenes con IA y entrada por voz qu
 - **ARASAAC:** búsqueda externa y recuperación de imágenes con referencia/atribución; manejo de timeout y error.
 - **Motor IA local:** adaptador para generación de estructura de rutinas. La especificación del JSON debe ser validada por el servidor, independientemente del modelo.
 
-## 7. Indicadores de evaluación (objetivos, no resultados)
+## 7. Objetivos medibles de calidad y usabilidad
 
 - OE1: aspiración de reducción ≥50 % del tiempo e interacciones para incorporar un pictograma frente al proceso manual de referencia.
 - OE2: aspiración de reducción ≥50 % del tiempo e interacciones para crear una rutina.
 - OE3: pertinencia ≥70 % de recomendaciones, evaluable tras implementar CU04.
 - OE4: ≥80 % de tareas de usabilidad completadas sin asistencia, sujeto a pruebas reales.
 
-**No reportar como obtenidos** estos valores sin medición y evidencia. Registrar línea base, protocolo y muestra cuando se ejecuten las evaluaciones.
+Estos valores son objetivos. Para informar resultados, registrar la línea base, el protocolo, la muestra y las mediciones obtenidas.
 
 ## 8. Casos de uso, trazabilidad y aceptación
 

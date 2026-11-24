@@ -15,7 +15,7 @@ Mostrar un recorrido funcional integrado de CU01, CU02 y CU03; demostrar inferen
 - **P1 — complementario comprometido:** mantenimiento avanzado de categorías, edición/borrado protegido de pictogramas y rutinas, y algunos fallbacks. Si queda pendiente, declarar **CU parcial**, aunque P0 pase.
 - **P2 — posterior:** CU04, CU05 integral, voz, generación de imágenes IA y asociación contextual avanzada. RF02.3 permanece en la visión del MVP completo.
 
-La lista precisa de criterios se encuentra en [use-cases.md](use-cases.md), sección «Matriz de prioridad». De los **44 criterios de CU01–CU03**, **37 son P0 y 7 son P1**; este conteo es para control interno y **no equivale** a una ponderación académica o a porcentajes de esfuerzo.
+La lista precisa de criterios se encuentra en [use-cases.md](use-cases.md), sección «Matriz de prioridad». De los **44 criterios de CU01–CU03**, **37 son P0 y 7 son P1**; este conteo describe la distribución de prioridades. El esfuerzo y la cobertura se verifican por separado.
 
 ## 3. Iteraciones funcionales propuestas
 
@@ -59,9 +59,9 @@ Registrar el motivo y la evidencia de cada desviación, el RF/CU/CA afectado y s
 - Priorizar flujos de valor completos: búsqueda de pictograma y generación visual de rutina. **No declarar cumplimiento del 60 % simplemente por contar tres CU**.
 - Si falla la IA local, validar alternativa técnica y documentar desviación antes de sustituir el componente; no presentar un generador fijo como IA.
 - Si quedan criterios P1 pendientes, registrar la desviación y reportar los casos de uso afectados como **parciales**, sin retirar esos criterios del compromiso. No ocultar restricciones offline/de instalación.
-- La producción solicitada por la pauta se documentará como ambiente **release/demo** si no existe despliegue público real, con procedimiento verificable; no falsificar un entorno productivo existente.
+- Mientras el incremento se ejecute localmente, documentar el entorno **release/demo** con un procedimiento de instalación verificable. Registrar un despliegue de producción únicamente cuando se haya comprobado.
 
-## 7. Material de evidencia para la entrega
+## 7. Artefactos de verificación y liberación
 
 - Alcance y diagramas UML; modelo de datos y funcionalidades realmente evaluadas.
 - Planificación propuesta, registro de resultados reales y desviaciones respaldadas por evidencia.

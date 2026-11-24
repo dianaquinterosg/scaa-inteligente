@@ -1,6 +1,6 @@
 # Referencia visual SCAA
 
-[Mockups originales](mockups-originales.png) conserva la lámina del anteproyecto con los flujos de pictogramas, rutinas y recomendaciones. Se usa como referencia de composición, jerarquía y estilo. El [SRS v0.2](../SRS.md) define el comportamiento y el alcance.
+[Mockups originales](mockups-originales.png) conserva la lámina del diseño visual inicial con los flujos de pictogramas, rutinas y recomendaciones. Se usa como referencia de composición, jerarquía y estilo. El [SRS v0.2](../SRS.md) define el comportamiento y el alcance.
 
 | Rasgo de la lámina | Aplicación en Flutter |
 |---|---|

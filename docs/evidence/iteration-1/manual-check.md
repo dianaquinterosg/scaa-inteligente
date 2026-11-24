@@ -37,4 +37,4 @@ Probar en vertical y horizontal, con teclado abierto y texto ampliado desde los 
 | Reiniciar cliente/backend | Recuperar el perfil y contexto guardados | Pendiente |
 | Backend no disponible | Informar y conservar borrador si estaba en edición | Pendiente |
 
-Usar datos sintéticos para las capturas académicas. Asociar las evidencias a CU01, CA y commit real. No registrar datos personales innecesarios ni metadatos temporales.
+Usar datos sintéticos para las capturas de verificación. Asociar las evidencias a CU01, CA y commit real. No registrar datos personales innecesarios ni metadatos temporales.
