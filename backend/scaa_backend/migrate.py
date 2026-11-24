@@ -8,6 +8,7 @@ DIRECTORY = Path(__file__).parent / "migrations"
 MIGRATIONS = [
     (1, DIRECTORY / "001_profile_context.sql"),
     (2, DIRECTORY / "002_pictograms.sql"),
+    (3, DIRECTORY / "003_routines.sql"),
 ]
 
 

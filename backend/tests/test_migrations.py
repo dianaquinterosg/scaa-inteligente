@@ -56,3 +56,34 @@ def test_upgrade_preserves_confirmed_profile_and_enforces_category_relationships
         connection.execute("DELETE FROM category WHERE id=1")
         assert connection.execute("SELECT label FROM pictogram").fetchone() == ("Agua",)
         assert connection.execute("SELECT * FROM pictogram_category").fetchall() == []
+
+
+def test_upgrade_to_routines_preserves_profile_catalog_and_categories(tmp_path, monkeypatch):
+    database = Database(tmp_path / "scaa.sqlite3")
+    database.initialize()
+    with monkeypatch.context() as scoped:
+        scoped.setattr(migrations, "MIGRATIONS", migrations.MIGRATIONS[:2])
+        migrations.migrate(database)
+    with database.connection() as connection:
+        connection.execute("INSERT INTO profile(id,alias) VALUES (1,'Ana')")
+        connection.execute("INSERT INTO category VALUES (1,'Casa','casa')")
+        connection.execute(
+            "INSERT INTO pictogram(label,label_key,source,image_path,media_type) "
+            "VALUES ('Agua','agua','CUSTOM','file.png','image/png')"
+        )
+        connection.execute("INSERT INTO pictogram_category VALUES (1,1)")
+    migrations.migrate(database)
+    with database.connection() as connection:
+        assert connection.execute("SELECT alias FROM profile").fetchone() == ("Ana",)
+        assert connection.execute("SELECT label FROM pictogram").fetchone() == ("Agua",)
+        assert connection.execute("SELECT * FROM pictogram_category").fetchall() == [(1, 1)]
+        connection.execute("INSERT INTO routine(id,profile_id,name,description) VALUES (1,1,'Beber','')")
+        connection.execute("INSERT INTO routine_step(routine_id,pictogram_id,position,label) VALUES (1,1,1,'Verter')")
+        connection.execute("INSERT INTO routine_step(routine_id,pictogram_id,position,label) VALUES (1,1,2,'Beber')")
+        with pytest.raises(sqlite3.IntegrityError):
+            connection.execute("INSERT INTO routine_step(routine_id,pictogram_id,position,label) VALUES (1,1,2,'Duplicado')")
+        with pytest.raises(sqlite3.IntegrityError):
+            connection.execute("DELETE FROM pictogram WHERE id=1")
+        connection.execute("DELETE FROM routine WHERE id=1")
+        assert connection.execute("SELECT * FROM routine_step").fetchall() == []
+        assert connection.execute("SELECT label FROM pictogram").fetchone() == ("Agua",)

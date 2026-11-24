@@ -18,9 +18,9 @@ def test_health_initializes_profile_schema(tmp_path):
     with sqlite3.connect(settings.database_path) as connection:
         assert set(connection.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()) == {
             ("profile",), ("context_item",), ("pictogram",), ("category",),
-            ("pictogram_category",), ("sqlite_sequence",),
+            ("pictogram_category",), ("sqlite_sequence",), ("routine",), ("routine_step",),
         }
-        assert connection.execute("PRAGMA user_version").fetchone() == (2,)
+        assert connection.execute("PRAGMA user_version").fetchone() == (3,)
 
 
 def test_database_transactions_and_foreign_keys(tmp_path):
