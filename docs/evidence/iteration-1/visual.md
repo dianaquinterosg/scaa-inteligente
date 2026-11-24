@@ -1,6 +1,6 @@
 # Iteración 1 — diseño visual y regresión de CU01
 
-La [lámina original](../../design/mockups-originales.png) y sus [lineamientos](../../design/README.md) se incorporaron en `44a420c`. El tema y los componentes compartidos corresponden a `6eb2d40`. Las pantallas y sus pruebas de adaptación corresponden a `bca2e58`. La validación visual en iPad queda pendiente de confirmación.
+La [lámina original](../../design/mockups-originales.png) y sus [lineamientos](../../design/README.md) se incorporaron en `44a420c`. El tema y los componentes compartidos corresponden a `6eb2d40`. Las pantallas y sus pruebas de adaptación corresponden a `bca2e58`. La persona usuaria confirmó que revisó CU01 en el simulador de iPad y aprobó su aspecto visual. La confirmación corresponde a la interfaz de `bca2e58`. No se reportaron resultados por escenario funcional, orientación, teclado ni VoiceOver.
 
 ## AINC421 · diseño
 

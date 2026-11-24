@@ -1,6 +1,6 @@
 # Plan de pruebas y evidencias — MVP 60 % (v0.2)
 
-**Estado:** T01–T03 tienen pruebas automáticas aprobadas para CU01; revisión manual iPad pendiente. T08 se ejecutó como sonda técnica de inferencia real. Los demás casos funcionales siguen sin ejecutar. Ver [Iteración 0](evidence/iteration-0/test-results.md) e [Iteración 1](evidence/iteration-1/results.md); no se declara CU02 ni CU03 completo.
+**Estado:** T01–T03 tienen pruebas automáticas aprobadas para CU01; pruebas funcionales manuales en iPad pendientes. T08 se ejecutó como sonda técnica de inferencia real. Los demás casos funcionales siguen sin ejecutar. Ver [Iteración 0](evidence/iteration-0/test-results.md) e [Iteración 1](evidence/iteration-1/results.md); no se declara CU02 ni CU03 completo.
 
 ## 1. Niveles y herramientas tentativas
 
@@ -10,16 +10,16 @@
 | Integración API/BD | FastAPI, SQLite, transacciones, persistencia y FKs | `TestClient`/cliente ASGI, BD de test aislada | CU01 y migraciones probados |
 | Integración servicios externos controlada | Timeout/respuesta/error ARASAAC y adaptador IA | Fake/stubs en tests automatizados | Pendiente |
 | Smoke test REAL | ARASAAC conectado e IA ejecutándose localmente | Script/endpoint manual con evidencias y datos sintéticos | Sondas de Iteración 0 aprobadas; integración funcional CU02/CU03 pendiente |
-| Sistema E2E | Flutter→FastAPI→persistencia→consulta | Recorrido manual reproducible y capturas | CU01 HTTP real probado; revisión visual iPad y T16 pendientes |
+| Sistema E2E | Flutter→FastAPI→persistencia→consulta | Recorrido manual reproducible y capturas | CU01 HTTP real probado; aspecto de CU01 aprobado en simulador; recorrido funcional manual y T16 pendientes |
 | Instalación release/demo | Instalación desde instrucciones y arranque | Procedimiento documentado tras verificación | Pendiente |
 
 ## 2. Casos mínimos concretos
 
 | ID de prueba | CU / CA | Escenario y resultado esperado | Estado | Evidencia |
 |---|---|---|---|---|
-| T01 | CU01 / CA01.1, CA01.8 | Guardar perfil y recuperar alias/tags | Aprobado automáticamente; revisión iPad pendiente | [Criterios y pruebas CU01](evidence/iteration-1/cu01/acceptance.json) |
-| T02 | CU01 / CA01.4–CA01.7 | Rechazar alias vacío, tags inválidos y duplicados normalizados | Aprobado automáticamente; revisión iPad pendiente | [Criterios y pruebas CU01](evidence/iteration-1/cu01/acceptance.json) |
-| T03 | CU01 / CA01.9 | Error simulado de BD no reemplaza perfil existente | Aprobado automáticamente; revisión iPad pendiente | [Criterios y pruebas CU01](evidence/iteration-1/cu01/acceptance.json) |
+| T01 | CU01 / CA01.1, CA01.8 | Guardar perfil y recuperar alias/tags | Aprobado automáticamente; prueba funcional manual pendiente | [Criterios y pruebas CU01](evidence/iteration-1/cu01/acceptance.json) |
+| T02 | CU01 / CA01.4–CA01.7 | Rechazar alias vacío, tags inválidos y duplicados normalizados | Aprobado automáticamente; prueba funcional manual pendiente | [Criterios y pruebas CU01](evidence/iteration-1/cu01/acceptance.json) |
+| T03 | CU01 / CA01.9 | Error simulado de BD no reemplaza perfil existente | Aprobado automáticamente; prueba funcional manual pendiente | [Criterios y pruebas CU01](evidence/iteration-1/cu01/acceptance.json) |
 | T04 | CU02 / CA02.2–CA02.3 | Coincidencia local sin llamada externa; ausencia local consulta ARASAAC | No ejecutado | — |
 | T05 | CU02 / CA02.5–CA02.7 | Archivo propio válido se incorpora solo tras aprobar; inválido se rechaza | No ejecutado | — |
 | T06 | CU02 / CA02.8–CA02.9 | Pictograma ARASAAC persistido; intento duplicado no crea nueva fila | No ejecutado | — |
@@ -51,7 +51,7 @@ El entregable de control debe incluir: SHA de commit, tag (por ejemplo `v0.6.0-m
 | Iteración / funcionalidad | Commit asociado | Pruebas y resultado | Evidencia | Pendiente |
 |---|---|---|---|---|
 | 0 — preparación técnica | `db312e3592648a3b620d66b2ea22af018396112e` | 6 backend, 2 Flutter y sondas reales aprobadas; iPad confirmado por la persona usuaria | [Cierre](evidence/iteration-0/README.md) | Limitaciones del modelo provisional |
-| 1 — CU01 | Implementación funcional `854180f` y adaptación visual `bca2e58` | 45 backend, 17 Flutter y 7 escenarios HTTP reales aprobados. Análisis sin incidencias | [Regresión visual](evidence/iteration-1/visual.md) | Aceptación manual en iPad |
+| 1 — CU01 | Implementación funcional `854180f` y adaptación visual `bca2e58` | 45 backend, 17 Flutter y 7 escenarios HTTP reales aprobados. Análisis sin incidencias | [Regresión visual](evidence/iteration-1/visual.md) | Aspecto aprobado en simulador; pruebas funcionales manuales pendientes |
 
 Los registros documentales excluyen metadatos temporales. Los resultados se asocian al alcance y al código real, sin atribuir un commit inexistente.
 

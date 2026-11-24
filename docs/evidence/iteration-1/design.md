@@ -39,6 +39,6 @@ El editor mantiene un borrador independiente. Primer uso no permite continuar si
 
 [Secuencia CU01](../../diagrams/cu01-sequence.puml), [modelo de datos](../../data-model.md), [arquitectura](../../architecture.md), [matriz de criterios](cu01/acceptance.json).
 
-El UML se comprobó estructuralmente; no se ejecutó un renderizador PlantUML. La conformidad funcional está respaldada por pruebas automáticas y por los contratos efectivamente implementados; la revisión visual en iPad de CU01 sigue pendiente.
+El UML se comprobó estructuralmente; no se ejecutó un renderizador PlantUML. La conformidad funcional está respaldada por pruebas automáticas y por los contratos efectivamente implementados; la persona usuaria aprobó el aspecto de CU01 en el simulador de iPad.
 
 La [referencia visual del anteproyecto](../../design/README.md) y la [adaptación de CU01](visual.md) complementan este diseño funcional para AINC421.

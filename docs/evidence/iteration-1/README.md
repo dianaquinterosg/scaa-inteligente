@@ -1,6 +1,6 @@
 # Iteración 1 — CU01, perfil y contexto
 
-**Estado:** implementado y probado automáticamente; revisión visual de CU01 en iPad pendiente.
+**Estado:** implementado y probado automáticamente; aspecto de CU01 aprobado por la persona usuaria en el simulador de iPad; pruebas funcionales manuales pendientes.
 **Commit base real:** `db312e3592648a3b620d66b2ea22af018396112e` (cierre de Iteración 0).
 **Commits de CU01:** esquema y migraciones `8486582`, API y validaciones `89647a9`, interfaz y widgets `f81d180`, prueba de integración `854180f`.
 
@@ -13,7 +13,7 @@
 | Validaciones | Trim, límite 50 y duplicados por tipo | Validación independiente en API y Flutter; unicidad casefold en backend | Casos válidos e inválidos probados |
 | Persistencia | Guardado íntegro | Migración SQL, transacción de perfil/contexto y rollback | Fallo real mediante trigger SQLite y recuperación tras reiniciar probados |
 | Confirmación | Borradores sin incorporar y cancelación segura | Cancelar conserva datos previos; errores conservan edición; solo GET devuelve contexto confirmado | Probado automáticamente |
-| Aceptación visual | Recorrido en iPad de CU01 | Pendiente ejecutar la nueva pantalla con el backend reiniciado | No se declara validado manualmente |
+| Aceptación visual | Revisar el aspecto de CU01 en el simulador de iPad | La persona usuaria revisó y aprobó la interfaz | [Aprobación visual](visual.md); escenarios funcionales manuales pendientes |
 
 CU02 y CU03 no se implementaron ni se iniciaron. El acceso a contexto confirmado está probado para CU01; su consumo por personalización IA debe verificarse al implementar CU03.
 

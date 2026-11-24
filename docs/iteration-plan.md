@@ -38,7 +38,7 @@ Los campos se completarán únicamente con hechos y evidencia verificable. Los g
 | Iteración | Ejecución real / resultado | Estado (`Logrado/Parcial/No logrado`) | Evidencia (commit, issue, test) | Desviación / causa | RF/CU/CA afectados | Decisión / responsable |
 |---|---|---|---|---|---|---|
 | 0 — Análisis, requisitos y diseño | Línea base y preparación técnica cerradas funcionalmente por la persona usuaria | Logrado para el cierre técnico autorizado | [Iteración 0](evidence/iteration-0/README.md), `db312e3592648a3b620d66b2ea22af018396112e` | El cierre técnico usa la numeración solicitada sin reconstruir la elaboración local | Preparación previa a CU01–CU03 | Cierre funcional confirmado por la persona usuaria |
-| 1 — CU01: perfil y contexto | Frontend, API, persistencia, validaciones y pruebas automáticas implementados | Parcial en validación: revisión visual pendiente | [Iteración 1](evidence/iteration-1/README.md); base funcional `854180f` y adaptación visual `bca2e58` | Aceptación manual del nuevo formulario todavía no ejecutada | RF01.1–RF01.3 / CA01.1–CA01.10 | CU02 sujeto a la confirmación visual de CU01 en iPad |
+| 1 — CU01: perfil y contexto | Frontend, API, persistencia, validaciones y pruebas automáticas implementados | Cierre documental: aspecto aprobado en simulador | [Iteración 1](evidence/iteration-1/README.md); base funcional `854180f` y adaptación visual `bca2e58` | Escenarios funcionales manuales pendientes | RF01.1–RF01.3 / CA01.1–CA01.10 | Aprobación visual registrada; CU02 habilitado |
 | 2 — CU02: pictogramas y ARASAAC | — | — | — | — | — | — |
 | 3 — CU03: rutinas asistidas por IA | — | — | — | — | — | — |
 | 4 — Integración, pruebas y liberación | — | — | — | — | — | — |

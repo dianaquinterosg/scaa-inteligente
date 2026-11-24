@@ -1,10 +1,10 @@
 # Matriz de trazabilidad — diseño v0.2
 
-**Estado:** especificación prevista en la línea base documental v0.2. Existe una base técnica y se ejecutaron sondas de servicios y pruebas de infraestructura; CU01 está implementado con pruebas automáticas aprobadas y aceptación visual pendiente; CU02–CU03 siguen pendientes. No hay release de software verificada. `P0/P1/P2` son prioridades, **no resultados**.
+**Estado:** especificación prevista en la línea base documental v0.2. Existe una base técnica y se ejecutaron sondas de servicios y pruebas de infraestructura; CU01 está implementado con pruebas automáticas aprobadas y aprobación visual confirmada por la persona usuaria; CU02–CU03 siguen pendientes. No hay release de software verificada. `P0/P1/P2` son prioridades, **no resultados**.
 
 | Requisito | CU | CA vinculados | Prioridad | Componente real de CU01 / previsto para otros CU | Prueba/evidencia esperada | Resultado/commit |
 |---|---|---|---|---|---|---|
-| RF01.1 | CU01 | CA01.1–CA01.3, CA01.8 | P0 | `ProfileGate`, `ProfileEditor`, `ProfileApi`; `ProfileRepository` | API, widgets y HTTP real; recuperación tras reiniciar | [Pruebas aprobadas](evidence/iteration-1/cu01/acceptance.json); revisión iPad pendiente; API `89647a9`, Flutter `f81d180` |
+| RF01.1 | CU01 | CA01.1–CA01.3, CA01.8 | P0 | `ProfileGate`, `ProfileEditor`, `ProfileApi`; `ProfileRepository` | API, widgets y HTTP real; recuperación tras reiniciar | [Pruebas aprobadas](evidence/iteration-1/cu01/acceptance.json); aprobación visual en iPad; pruebas funcionales manuales pendientes; API `89647a9`, Flutter `f81d180` |
 | RF01.2 | CU01 | CA01.10 | P0 | `ProfileRepository.load`, estado confirmado de `ProfileGate` | Borrador/cancelación sin persistencia; solo contexto confirmado disponible | [Exposición de contexto probada](evidence/iteration-1/cu01/acceptance.json); consumo por IA pendiente de CU03 |
 | RF01.3 | CU01 | CA01.4–CA01.7, CA01.9 | P0 | `ProfilePayload`, validadores de `ProfileEditor`, transacción de `ProfileRepository.save` | Entradas, límites, duplicados y rollback real SQLite | [Pruebas aprobadas](evidence/iteration-1/cu01/acceptance.json); API `89647a9`, Flutter `f81d180` |
 | RF02.1 | CU02 | CA02.1 | P0 | PictogramPage | Búsqueda textual en UI/API | Pendiente |
@@ -38,7 +38,7 @@
 | RF03.2 / CA03.2–CA03.3 | `backend/scripts/probe_integrations.py:probe_ollama` | [Tres propuestas reales](evidence/iteration-0/integrations/bootstrap-integrations.json) | JSON y orden verificados en sonda; calidad e integración CU03 pendientes |
 | Conectividad del cliente | `frontend/lib/backend_client.dart:BackendClient.check`, `backend/scaa_backend/main.py:create_app` | [Petición real desde Dart](evidence/iteration-0/flutter/bootstrap-dart-backend-http.log) | Endpoint técnico de salud; no es T16 ni el recorrido de los casos de uso |
 
-Las sondas de Iteración 0 no equivalen a completar los RF de CU02/CU03. CU01 tiene [cobertura específica por criterio](evidence/iteration-1/cu01/acceptance.json), [código y pruebas](evidence/iteration-1/README.md); la aceptación manual en iPad sigue pendiente. Los commits funcionales se enumeran en el índice de Iteración 1.
+Las sondas de Iteración 0 no equivalen a completar los RF de CU02/CU03. CU01 tiene [cobertura específica por criterio](evidence/iteration-1/cu01/acceptance.json), [código y pruebas](evidence/iteration-1/README.md); los escenarios funcionales manuales en iPad siguen pendientes. Los commits funcionales se enumeran en el índice de Iteración 1.
 
 ## Cómo completar la trazabilidad con Codex
 
@@ -55,4 +55,4 @@ Por cada subrequisito implementado, registrar **ruta y símbolo reales** (`archi
 
 Estos umbrales son **metas, no resultados**. No afirmar mejora cuantitativa sin protocolo, muestra y evidencia.
 
-Para RF01.1–RF01.3 / CA01.1–CA01.10, la [regresión de CU01 con el diseño SCAA](evidence/iteration-1/visual.md) vincula el tema `6eb2d40` y las pantallas `bca2e58` con los mismos casos de aceptación. La validación visual en iPad y el consumo del contexto por CU03 siguen pendientes.
+Para RF01.1–RF01.3 / CA01.1–CA01.10, la [regresión de CU01 con el diseño SCAA](evidence/iteration-1/visual.md) vincula el tema `6eb2d40` y las pantallas `bca2e58` con los mismos casos de aceptación. La persona usuaria aprobó el aspecto visual en el simulador de iPad. Los escenarios funcionales manuales y el consumo del contexto por CU03 siguen pendientes.

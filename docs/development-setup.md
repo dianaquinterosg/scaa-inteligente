@@ -1,6 +1,6 @@
 # Preparación y ejecución de desarrollo
 
-Flutter iOS → FastAPI → SQLite. CU01 implementado y probado automáticamente; revisión visual del formulario pendiente. CU02–CU03 siguen pendientes. La documentación mantiene su identificación v0.2; el valor de desarrollo `0.0.0` del código no representa una release.
+Flutter iOS → FastAPI → SQLite. CU01 implementado y probado automáticamente; aspecto aprobado por la persona usuaria en el simulador de iPad; pruebas funcionales manuales pendientes. CU02–CU03 siguen pendientes. La documentación mantiene su identificación v0.2; el valor de desarrollo `0.0.0` del código no representa una release.
 
 ## Estructura
 

@@ -1,6 +1,6 @@
-# Iteración 1 — aceptación manual pendiente de CU01
+# Iteración 1 — pruebas funcionales manuales de CU01
 
-**Estado:** pendiente. **Commit base:** `db312e3592648a3b620d66b2ea22af018396112e`; implementación funcional `854180f` y visual `bca2e58`.
+**Estado:** aspecto visual aprobado por la persona usuaria en simulador de iPad. Las pruebas funcionales manuales de la tabla permanecen pendientes. **Commit base:** `db312e3592648a3b620d66b2ea22af018396112e`; implementación funcional `854180f` y visual `bca2e58`.
 
 La Iteración 0 tiene confirmación visual de conectividad. Esta lista corresponde al nuevo CU01 y no se marca realizada sin su resultado real.
 

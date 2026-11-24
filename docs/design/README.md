@@ -14,7 +14,7 @@ CU01 no tiene un mockup propio en la lámina. Se deriva un formulario con alias 
 
 Las acciones tienen etiquetas en español. El control compacto de eliminar tiene nombre accesible y área táctil mínima de 48 puntos lógicos. El significado de cada estado se comunica por texto e icono además del color. Los mensajes de resultado se anuncian a tecnologías de asistencia y las secciones permiten que el texto se ajuste.
 
-Los flujos de pictogramas y rutinas guiarán CU02 y CU03 según el SRS. Los controles de voz, generación de imágenes y recomendaciones representados en la lámina quedan sujetos al alcance y prioridades del MVP. La confirmación visual en iPad permanece pendiente.
+Los flujos de pictogramas y rutinas guiarán CU02 y CU03 según el SRS. Los controles de voz, generación de imágenes y recomendaciones representados en la lámina quedan sujetos al alcance y prioridades del MVP. La persona usuaria aprobó el aspecto de CU01 en el simulador de iPad.
 
 Los cambios se versionan por responsabilidad con Conventional Commits. Las pruebas unitarias y de widgets acompañan a la unidad que validan. Las pruebas de sistema, la evidencia y los incrementos visuales se registran por separado cuando constituyen unidades independientes.
 

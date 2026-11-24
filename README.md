@@ -47,7 +47,7 @@ Flutter (cliente) → FastAPI (API REST y reglas de negocio) → SQLite y archiv
 
 ## Estado de implementación
 
-Iteración 0 cerrada funcionalmente y registrada en el commit local `db312e3592648a3b620d66b2ea22af018396112e`, sin push. CU01 está implementado y versionado en commits locales: perfil único, alias, tres tipos de contexto, persistencia atómica y validaciones. Las pruebas automáticas de API, widgets y HTTP real están aprobadas; la revisión visual del nuevo formulario en iPad sigue pendiente. CU02–CU05 no están implementados.
+Iteración 0 cerrada funcionalmente y registrada en el commit `db312e3592648a3b620d66b2ea22af018396112e`. CU01 está implementado y versionado en commits locales: perfil único, alias, tres tipos de contexto, persistencia atómica y validaciones. Las pruebas automáticas de API, widgets y HTTP real están aprobadas; la persona usuaria aprobó su aspecto en el simulador de iPad y quedan pendientes los escenarios funcionales manuales. CU02–CU05 no están implementados.
 
 Ver [evidencias de CU01](docs/evidence/iteration-1/README.md) y [guía de ejecución](docs/development-setup.md). Los estados «comprometido», «implementado» y «validado» no son intercambiables; la prueba visual de salud de Iteración 0 no sustituye la aceptación manual de CU01.
 
