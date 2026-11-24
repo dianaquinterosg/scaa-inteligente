@@ -1,1 +1,1 @@
-"""Base técnica del backend SCAA; sin casos de uso implementados todavía."""
+"""Backend SCAA: infraestructura y gestión del perfil y contexto CU01."""
