@@ -47,9 +47,9 @@ Flutter (cliente) → FastAPI (API REST y reglas de negocio) → SQLite y archiv
 
 ## Estado de implementación
 
-Iteración 0 cerrada funcionalmente y registrada en el commit `db312e3592648a3b620d66b2ea22af018396112e`. CU01 está implementado y versionado en Git: perfil único, alias, tres tipos de contexto, persistencia atómica y validaciones. Las pruebas automáticas de API, widgets y HTTP real están aprobadas; la persona usuaria aprobó su aspecto en el simulador de iPad y quedan pendientes los escenarios funcionales manuales. CU02 implementa el catálogo, importación y categorías de v0.2. Pasó pruebas automáticas e integración con ARASAAC. La persona usuaria confirmó el recorrido manual en el simulador de iPad. CU03 implementa generación, revisión, edición y guardado de rutinas. Pasó pruebas automáticas e integración con Ollama y ARASAAC. El modelo es provisional por las limitaciones de calidad observadas y la persona usuaria informó que realizó las pruebas en el simulador. Los resultados individuales quedan sin calificar. CU04–CU05 siguen pendientes.
+La Iteración 0 cerró funcionalmente en `db312e3592648a3b620d66b2ea22af018396112e`. CU01–CU03 cuentan con pruebas automatizadas y recorridos manuales aprobados por la persona usuaria en el simulador para el incremento anterior. La calidad semántica del modelo local continúa bajo evaluación independiente. La Iteración 4 añadió controles de administración y visualización básica de recursos aprobados como avance parcial de CU05. Su recorrido manual en iPad y la liberación están pendientes.
 
-Ver [evidencias de CU01](docs/evidence/iteration-1/README.md) y [guía de ejecución](docs/development-setup.md). Los estados «comprometido», «implementado» y «validado» no son intercambiables; la prueba visual de salud de Iteración 0 no sustituye la aceptación manual de CU01.
+Consulta las [evidencias por iteración](docs/evidence/README.md) y la [guía de ejecución](docs/development-setup.md).
 
 ## Prioridades de implementación
 
@@ -64,3 +64,5 @@ La [referencia visual SCAA](docs/design/README.md) documenta los mockups y su ad
 El [registro de Iteración 2](docs/evidence/iteration-2/README.md) reúne el diseño, las pruebas y el recorrido confirmado de CU02 en el simulador de iPad.
 
 El [registro de Iteración 3](docs/evidence/iteration-3/README.md) documenta CU03 y sus verificaciones.
+
+El [registro de Iteración 4](docs/evidence/iteration-4/README.md) describe el modo visualización predeterminado, la administración deliberada, el visor de rutinas y el detalle de dependencias al eliminar pictogramas. La navegación de contenido aprobado es un avance parcial de CU05. CU04, CU05 integral y la liberación permanecen pendientes.

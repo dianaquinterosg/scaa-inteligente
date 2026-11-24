@@ -1,0 +1,25 @@
+@startuml
+title Iteración 4 — Modos locales y consulta de una rutina
+actor "Persona usuaria" as U
+participant "Flutter" as F
+participant "FastAPI" as API
+
+U -> F : iniciar aplicación
+F --> U : mostrar modo visualización
+opt acceso deliberado a administración
+  U -> F : abrir acceso de administración
+  F --> U : pedir confirmación
+  alt confirmar
+    U -> F : confirmar acceso
+    F --> U : mostrar administración y habilitar editores
+    U -> F : volver a visualización
+    F --> U : cerrar acceso de administración
+  else cancelar
+    F --> U : conservar visualización
+  end
+end
+U -> F : seleccionar rutina guardada
+F -> API : GET /api/v1/routines/{id}
+API --> F : rutina y pasos en orden
+F --> U : mostrar paso e imagen en secuencia horizontal
+@enduml

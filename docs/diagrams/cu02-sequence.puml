@@ -44,4 +44,17 @@ else aprobar
     API --> F : informar y conservar borrador
   end
 end
+opt eliminar pictograma guardado en administración
+  F -> API : DELETE /api/v1/pictograms/{id}
+  API -> DB : consultar rutinas dentro de la transacción
+  alt hay rutinas dependientes
+    API -> DB : rollback
+    API --> F : 409 con IDs y nombres de rutinas
+    F --> U : indicar dónde se usa el pictograma
+  else sin referencias activas
+    API -> DB : eliminar con FK activa
+    API -> FS : retirar imagen gestionada
+    API --> F : 204
+  end
+end
 @enduml

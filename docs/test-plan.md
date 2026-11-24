@@ -1,6 +1,6 @@
 # Plan de pruebas y evidencias — MVP 60 % (v0.2)
 
-**Estado:** T01–T03 tienen pruebas automáticas aprobadas para CU01; pruebas funcionales manuales en iPad pendientes. T08 cuenta con tres escenarios de inferencia real a través de la API de CU03. T04–T07 se aprobaron con pruebas automáticas de CU02. T15 se verificó con rutinas y pictogramas persistidos. Ver [Iteración 0](evidence/iteration-0/test-results.md) e [Iteración 1](evidence/iteration-1/results.md); CU02 tiene una [regresión específica](evidence/iteration-2/results.md) y un [recorrido manual confirmado en simulador](evidence/iteration-2/manual-check.md). CU03 completó pruebas controladas e integración real. La persona usuaria informó que ejecutó las pruebas manuales de CU03 en el simulador. La validación con usuarios y T16 siguen pendientes.
+**Estado:** T01–T03 tienen pruebas automáticas aprobadas para CU01; pruebas funcionales manuales en iPad aprobadas según la persona usuaria. T08 cuenta con tres escenarios de inferencia real a través de la API de CU03. T04–T07 se aprobaron con pruebas automáticas de CU02. T15 se verificó con rutinas y pictogramas persistidos. Ver [Iteración 0](evidence/iteration-0/test-results.md) e [Iteración 1](evidence/iteration-1/results.md); CU02 tiene una [regresión específica](evidence/iteration-2/results.md) y un [recorrido manual confirmado en simulador](evidence/iteration-2/manual-check.md). CU03 completó pruebas controladas e integración real. La persona usuaria confirmó la aprobación de los escenarios manuales de CU03 en el simulador. La validación con usuarios y T16 siguen pendientes.
 
 ## 1. Niveles y herramientas tentativas
 
@@ -10,16 +10,16 @@
 | Integración API/BD | FastAPI, SQLite, transacciones, persistencia y FKs | `TestClient`/cliente ASGI, BD de test aislada | CU01–CU03 y migraciones probados |
 | Integración servicios externos controlada | Timeout/respuesta/error ARASAAC y adaptador IA | Fakes y transporte HTTP controlado | Error ARASAAC, timeout y salida inválida de Ollama probados |
 | Smoke test REAL | ARASAAC conectado e IA ejecutándose localmente | Script/endpoint manual con evidencias y datos sintéticos | ARASAAC real probado en CU02 y CU03. Inferencia Ollama real probada en CU03 con calidad semántica provisional |
-| Sistema E2E | Flutter→FastAPI→persistencia→consulta | Recorrido manual reproducible y capturas | HTTP CU01–CU03 probado. CU01 tiene aprobación visual y CU02 recorrido en simulador confirmado. La ejecución manual de CU03 fue reportada sin resultados individuales. T16 sigue pendiente. |
+| Sistema E2E | Flutter→FastAPI→persistencia→consulta | Recorrido manual reproducible y capturas | HTTP CU01–CU03 probado. CU01 tiene aprobación visual y CU02 recorrido en simulador confirmado. Los escenarios manuales de CU03 fueron aprobados según la persona usuaria. T16 sigue pendiente. |
 | Instalación release/demo | Instalación desde instrucciones y arranque | Procedimiento documentado tras verificación | Pendiente |
 
 ## 2. Casos mínimos concretos
 
 | ID de prueba | CU / CA | Escenario y resultado esperado | Estado | Evidencia |
 |---|---|---|---|---|
-| T01 | CU01 / CA01.1, CA01.8 | Guardar perfil y recuperar alias/tags | Aprobado automáticamente; prueba funcional manual pendiente | [Criterios y pruebas CU01](evidence/iteration-1/cu01/acceptance.json) |
-| T02 | CU01 / CA01.4–CA01.7 | Rechazar alias vacío, tags inválidos y duplicados normalizados | Aprobado automáticamente; prueba funcional manual pendiente | [Criterios y pruebas CU01](evidence/iteration-1/cu01/acceptance.json) |
-| T03 | CU01 / CA01.9 | Error simulado de BD no reemplaza perfil existente | Aprobado automáticamente; prueba funcional manual pendiente | [Criterios y pruebas CU01](evidence/iteration-1/cu01/acceptance.json) |
+| T01 | CU01 / CA01.1, CA01.8 | Guardar perfil y recuperar alias/tags | Aprobado automáticamente; prueba funcional manual aprobada según la persona usuaria | [Criterios y pruebas CU01](evidence/iteration-1/cu01/acceptance.json) |
+| T02 | CU01 / CA01.4–CA01.7 | Rechazar alias vacío, tags inválidos y duplicados normalizados | Aprobado automáticamente; prueba funcional manual aprobada según la persona usuaria | [Criterios y pruebas CU01](evidence/iteration-1/cu01/acceptance.json) |
+| T03 | CU01 / CA01.9 | Error simulado de BD no reemplaza perfil existente | Aprobado automáticamente; prueba funcional manual aprobada según la persona usuaria | [Criterios y pruebas CU01](evidence/iteration-1/cu01/acceptance.json) |
 | T04 | CU02 / CA02.2–CA02.3 | Coincidencia local sin llamada externa; ausencia local consulta ARASAAC | Aprobado automáticamente | [CU02](evidence/iteration-2/results.md) |
 | T05 | CU02 / CA02.5–CA02.7 | Archivo propio válido se incorpora solo tras aprobar; inválido se rechaza | Aprobado automáticamente | [CU02](evidence/iteration-2/results.md) |
 | T06 | CU02 / CA02.8–CA02.9 | Pictograma ARASAAC persistido; intento duplicado no crea nueva fila | Aprobado automáticamente | [CU02](evidence/iteration-2/results.md) |
@@ -33,6 +33,18 @@
 | T14 | CU03 / CA03.11 (P1) | IA caída → posibilidad de creación manual; si no se implementa, documentar brecha | Aprobado automáticamente | [CU03](evidence/iteration-3/results.md) |
 | T15 | CU02/CU03 / P1 | Editar/borrar con integridad: imagen usada no se elimina; borrar rutina conserva imagen | Aprobado con una rutina real y comprobación de conservación de imágenes | [CU03](evidence/iteration-3/results.md) |
 | T16 | E2E | Primera configuración → incorporar pictograma → rutina IA → revisar → guardar → recuperar | No ejecutado | — |
+
+### Regresión de Iteración 4
+
+| Prueba | Criterio | Escenario |
+|---|---|---|
+| I4-01 | CA-I4.1 | Entrar, cancelar, volver a visualización y reiniciar con controles restringidos. Verificar salida con una consulta administrativa en curso. |
+| I4-02 | CA-I4.2 | Filtrar por categoría en ambos modos y comprobar que perfil y editores se abren desde administración. |
+| I4-03 | CA-I4.3 | Comprobar 1 y 12 pasos, coordenadas de izquierda a derecha, acceso al último paso y editor administrativo. Usar tamaños tablet en vertical y horizontal. |
+| I4-04 | CA-I4.4–CA-I4.5 | Asegurar 409 con una y varias rutinas, deduplicación, conservación de imágenes y bloqueo SQLite. Flutter muestra nombres e identificadores. |
+| I4-05 | CA-I4.5 | Ejecutar suite backend, suite Flutter y análisis estático. |
+
+[Resultados y validación manual de la Iteración 4](evidence/iteration-4/README.md).
 
 ## 3. Validación de calidad de la asociación (sin cifras inventadas)
 
@@ -51,9 +63,10 @@ El registro de gestión de configuración debe incluir SHA de commit, tag (por e
 | Iteración / funcionalidad | Commit asociado | Pruebas y resultado | Evidencia | Pendiente |
 |---|---|---|---|---|
 | 0 — preparación técnica | `db312e3592648a3b620d66b2ea22af018396112e` | 6 backend, 2 Flutter y sondas reales aprobadas; iPad confirmado por la persona usuaria | [Cierre](evidence/iteration-0/README.md) | Limitaciones del modelo provisional |
-| 1 — CU01 | Implementación funcional `854180f` y adaptación visual `bca2e58` | 45 backend, 17 Flutter y 7 escenarios HTTP reales aprobados. Análisis sin incidencias | [Regresión visual](evidence/iteration-1/visual.md) | Aspecto aprobado en simulador; pruebas funcionales manuales pendientes |
+| 1 — CU01 | Implementación funcional `854180f` y adaptación visual `bca2e58` | 45 backend, 17 Flutter y 7 escenarios HTTP reales aprobados. Análisis sin incidencias | [Regresión visual](evidence/iteration-1/visual.md) | Aspecto y escenarios funcionales aprobados en simulador según reporte |
 | 2 — CU02 | `c311854`, `7a0acd5`, `3e256e8` | 68 backend, 21 Flutter, 4 escenarios HTTP y recorrido de iPad confirmado | [Iteración 2](evidence/iteration-2/README.md) | CA02.12 resuelto en Iteración 3 |
-| 3 — CU03 | `51c191b`, `0212ce4`, `c3ad225` | 95 backend, 25 Flutter, 11 verificaciones HTTP CU03 y regresiones HTTP CU01/CU02 | [Iteración 3](evidence/iteration-3/results.md) | Calidad semántica provisional. Ejecución en simulador reportada. T16 pendiente |
+| 3 — CU03 | `51c191b`, `0212ce4`, `c3ad225` | 95 backend, 25 Flutter, 11 verificaciones HTTP CU03 y regresiones HTTP CU01/CU02 | [Iteración 3](evidence/iteration-3/results.md) | Calidad semántica provisional. Escenarios en simulador aprobados según reporte. T16 pendiente |
+| 4 — Usabilidad y estabilización | `0849ffb`, `0fbf0dc` | 95 backend, 33 Flutter, análisis estático y verificación HTTP de dependencias | [Iteración 4](evidence/iteration-4/README.md) | Validación manual de los refinamientos y liberación pendientes |
 
 Los registros documentales excluyen metadatos temporales. Los resultados se asocian al alcance y al código real, sin atribuir un commit inexistente.
 

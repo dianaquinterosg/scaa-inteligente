@@ -1,6 +1,6 @@
 # Preparación y ejecución de desarrollo
 
-Flutter iOS → FastAPI → SQLite. CU01 implementado y probado automáticamente; aspecto aprobado por la persona usuaria en el simulador de iPad; pruebas funcionales manuales pendientes. CU02 está implementado y el recorrido manual en el simulador de iPad fue confirmado por la persona usuaria. CU03 está implementado con Ollama local y creación manual. La persona usuaria informó que realizó las pruebas de CU03 en el simulador de iPad. No se registraron resultados por escenario. La documentación mantiene su identificación v0.2; el valor de desarrollo `0.0.0` del código no representa una release.
+Flutter iOS → FastAPI → SQLite. CU01 implementado y probado automáticamente; aspecto aprobado por la persona usuaria en el simulador de iPad; pruebas funcionales manuales aprobadas según la persona usuaria. CU02 está implementado y el recorrido manual en el simulador de iPad fue confirmado por la persona usuaria. CU03 está implementado con Ollama local y creación manual. La persona usuaria confirmó la aprobación de los escenarios de CU03 en el simulador de iPad. La validación del incremento de Iteración 4 sigue pendiente. La documentación mantiene su identificación v0.2; el valor de desarrollo `0.0.0` del código no representa una release.
 
 ## Estructura
 
@@ -70,7 +70,7 @@ flutter build ios --simulator --debug --no-codesign
 flutter run -d A8EF03DC-81E7-4B9A-AD7E-F9E4235468FC --dart-define=API_BASE_URL=http://localhost:8000
 ```
 
-La compilación iOS encontró bloqueos de cachés y CoreSimulatorService dentro de la sesión restringida. La persona usuaria ejecutó después `flutter run` desde Terminal normal y confirmó mediante su salida el build y el arranque, junto con HTTP 200 en el backend. Consultar los [resultados](evidence/iteration-0/test-results.md). La persona usuaria confirmó «Servidor disponible» en la pantalla de salud de Iteración 0. La pantalla predeterminada de CU01 ahora carga el perfil o muestra «Configurar perfil» si no existe. La aceptación manual de esta nueva interfaz sigue pendiente.
+La compilación iOS encontró bloqueos de cachés y CoreSimulatorService dentro de la sesión restringida. La persona usuaria ejecutó después `flutter run` desde Terminal normal y confirmó mediante su salida el build y el arranque, junto con HTTP 200 en el backend. Consultar los [resultados](evidence/iteration-0/test-results.md). La persona usuaria confirmó «Servidor disponible» en la pantalla de salud de Iteración 0. La aplicación inicia en visualización. Para configurar el perfil por primera vez, abre «Acceso de administración» y pulsa «Confirmar acceso». Consulta el [recorrido de Iteración 4](evidence/iteration-4/manual-check.md) para validar el incremento.
 
 El identificador `com.example.scaaInteligente` es el valor provisional del generador Flutter; debe definirse el identificador definitivo antes de distribución. Los iconos son los del esqueleto generado, no una identidad gráfica final.
 

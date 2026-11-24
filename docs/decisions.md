@@ -26,6 +26,10 @@
 | ADR-020 | Compartir unidad de escritura de SQLite y archivos para catálogo y rutinas | Completar red y validación antes de la transacción, reutilizar referencias y compensar nuevos archivos en un rollback | Implementado y probado en Iteración 3 |
 | ADR-021 | Usar Ollama local con esquema y mantener creación manual | Validar respuestas estrictamente, limitar contexto y exigir revisión humana. La calidad observada no justifica consolidar el modelo provisional | Implementado y probado con modelo provisional |
 
+| ADR-022 | Arrancar en visualización y pedir confirmación para administrar | Reducir modificaciones accidentales tras la validación del incremento anterior. El estado vive en Flutter y los editores se reutilizan | Implementado en Iteración 4 |
+| ADR-023 | Visor horizontal independiente del editor vertical | Facilitar seguimiento visual de la secuencia aprobada en ambas orientaciones. Reutiliza catálogo y contrato de rutinas. Avance parcial de CU05 | Implementado en Iteración 4 |
+| ADR-024 | Devolver dependencias de rutina en el conflicto de borrado | Informar al usuario qué debe revisar. Reutiliza relaciones e índice de SQLite y conserva la protección referencial | Implementado en Iteración 4 |
+
 ## Plantilla de futuras desviaciones
 
 ```text

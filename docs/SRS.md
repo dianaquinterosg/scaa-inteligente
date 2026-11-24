@@ -128,3 +128,16 @@ Las especificaciones completas, prioridades y criterios están en [`use-cases.md
 ## 9. Control de cambios
 
 Los cambios de alcance se registran en [`decisions.md`](decisions.md). La línea base documental se versiona antes de implementar; modificaciones posteriores deberán indicar motivo, impacto, RF/CU/CA afectados y commit asociado.
+
+### Refinamientos de la Iteración 4
+
+Los siguientes refinamientos proceden de la validación del incremento anterior. Se registran sobre la línea base v0.2 y mantienen los identificadores y prioridades originales.
+
+| Referencia | Requisitos y casos de uso relacionados | Comportamiento requerido |
+|---|---|---|
+| RF-I4.1 | RF01.1, RF02.6–RF02.9 y RF03.7 | Iniciar en visualización. Pedir una confirmación explícita para entrar a administración y ofrecer una salida visible. Reservar creación, edición, eliminación y configuración al modo administración. El control actúa en Flutter. |
+| RF-I4.2 | RF02.9 y avance parcial de RF05.1 | Navegar por las categorías del catálogo aprobado y mostrar tarjetas con imagen y etiqueta en visualización. |
+| RF-I4.3 | RF03.7 y avance parcial de RF05.2 | Mostrar de izquierda a derecha los pasos aprobados de una rutina en un visor horizontal de solo lectura, con desplazamiento cuando corresponda y compatibilidad vertical y horizontal. Mantener de 1 a 12 pasos y conservar el editor vertical en administración. |
+| RF-I4.4 | RF02.6 y RF03.7 | Ante un borrado bloqueado por rutinas dependientes, devolver HTTP 409 con sus identificadores y nombres, mostrar el detalle a la persona administradora y conservar todas las referencias y archivos. |
+
+El estado de administración vive en memoria del cliente. El incremento incorpora consulta básica de contenido aprobado como avance parcial de CU05. CU04 y CU05 integral permanecen planificados. La política vigente de Ollama y de asociación textual continúa en CU03.

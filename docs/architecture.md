@@ -1,6 +1,6 @@
 # Arquitectura del MVP — diseño revisado v0.2
 
-> El SRS v0.2 fija el alcance. CU01–CU03 están implementados con evidencia de pruebas. El diseño de CU04–CU05 describe capacidades previstas. Ver [evidencias por iteración](evidence/README.md).
+> El SRS v0.2 fija el alcance. CU01–CU03 están implementados con evidencia de pruebas. CU04 y CU05 integral siguen previstos. La Iteración 4 incorpora visualización básica como avance parcial de CU05. Ver [evidencias por iteración](evidence/README.md).
 
 ## Componentes
 
@@ -39,6 +39,12 @@ En Iteración 1, `ProfileGate`/`ProfileEditor` y `ProfileApi` implementan el cli
 - **OllamaGenerator:** generación en el servicio local con esquema JSON y validación Pydantic. Solo las pruebas controladas sustituyen el proveedor.
 - **SQLite/archivos:** metadatos y relaciones / imágenes; migraciones versionadas.
 
+### Separación de modos y visor
+
+`ProfileGate` inicia en visualización y controla la transición local mediante un diálogo de confirmación. La consulta reutiliza `CatalogStore` y `RoutineStore`. `RoutineViewer` presenta los pasos en el orden devuelto por FastAPI y ajusta el ancho de tarjetas para tablet. El editor vertical y las operaciones de catálogo continúan disponibles desde administración. La distinción de modos protege de acciones accidentales en la interfaz. Las rutas REST mantienen sus contratos de acceso y la iteración excluye PIN, autenticación y autorización de backend.
+
+[Flujo de modos y consulta](diagrams/iteration-4-modes.puml).
+
 ## Política inicial verificable de asociación de pictogramas (CU03 / RF03.3)
 
 Se requiere un algoritmo **simple y reproducible** para la entrega del 60 %, sin atribuirle precisión semántica que todavía no se ha evaluado:
@@ -64,7 +70,7 @@ Se requiere un algoritmo **simple y reproducible** para la entrega del 60 %, sin
 | POST | `/api/v1/pictograms` | Incorporar mediante JSON con `confirmed: true`, etiqueta, categorías opcionales y una referencia `external_id` o un archivo `image_base64` |
 | PUT | `/api/v1/pictograms/{id}` | Reemplazar etiqueta y asociaciones de categorías |
 | GET | `/api/v1/pictograms/{id}/image` | Servir el archivo administrado por el catálogo |
-| DELETE | `/api/v1/pictograms/{id}` | Eliminar recurso y archivo. Devuelve 409 ante una dependencia restrictiva |
+| DELETE | `/api/v1/pictograms/{id}` | Eliminar recurso y archivo. Devuelve 409 si existen referencias activas. Para dependencias de rutinas devuelve `detail.code = pictogram_in_use`, `detail.message` y `detail.routines = [{id, name}]`. |
 | GET / POST | `/api/v1/categories` | Listar o crear categorías |
 | PUT / DELETE | `/api/v1/categories/{id}` | Renombrar o eliminar una categoría. El borrado conserva los pictogramas |
 
@@ -103,7 +109,7 @@ El modelo propone palabras/pasos, **no selecciona definitivamente imágenes ni a
 - Las llamadas a Ollama y ARASAAC concluyen antes de abrir la unidad de escritura.
 - La confirmación comparte conexión SQLite para rutina, pasos y pictogramas nuevos.
 - La unidad de escritura de `Catalog` registra los archivos que crea y los elimina si falla la transacción. La reconciliación de arranque trata residuos gestionados de interrupciones.
-- `ON DELETE RESTRICT` protege pictogramas referenciados por pasos. El borrado de rutina elimina pasos en cascada y conserva pictogramas. El borrado de categoría disocia sin borrar recursos.
+- `Catalog.delete` consulta las rutinas dependientes mediante el índice existente de pasos y deduplica por rutina dentro de la misma transacción `BEGIN IMMEDIATE`. Se conserva la FK `ON DELETE RESTRICT` como garantía de integridad. El conflicto deja intactos el registro y su archivo. El borrado de rutina elimina pasos en cascada y conserva pictogramas. El borrado de categoría disocia sin borrar recursos.
 
 ## Calidad y despliegue
 

@@ -196,3 +196,15 @@ Los criterios mantienen los IDs de v0.1. Un criterio en **P1** no se elimina del
 - **CU03 — ARASAAC:** el primer resultado de la API se puede **preseleccionar como candidato**, con etiqueta «revisar»; el orden de la API **no equivale a pertinencia comprobada**.
 - **CU03 — repetición:** no hay restricción `UNIQUE(routine_id, pictogram_id)`; sí hay `UNIQUE(routine_id, position)`.
 - **CU03 — fallos IA:** el modo manual es comportamiento especificado (P1); si no se alcanza, documentar explícitamente como brecha.
+
+## Refinamientos y criterios de la Iteración 4
+
+| Criterio | Requisito / CU | Resultado observable |
+|---|---|---|
+| CA-I4.1 | RF-I4.1 / CU01–CU03 | Un arranque muestra visualización, incluso con perfil ausente. Abrir el acceso y cancelar preserva el modo. Confirmar activa administración e identifica el modo. Volver a visualización oculta los controles de modificación. Un nuevo arranque vuelve a visualización. |
+| CA-I4.2 | RF-I4.1–RF-I4.2 / CU01, CU02 y CU05 parcial | Visualización permite filtrar pictogramas aprobados por categoría y muestra imagen y etiqueta. La configuración del perfil y las acciones de búsqueda externa, alta, edición y borrado se abren desde administración. |
+| CA-I4.3 | RF-I4.1, RF-I4.3 / CU03 y CU05 parcial | Una rutina de 1 o 12 pasos abre un visor con etiquetas e imágenes ordenadas en una fila horizontal. El último paso es alcanzable al desplazar en la orientación que lo requiera. En administración se conserva el editor vertical. |
+| CA-I4.4 | RF-I4.4 / CU02–CU03 | HTTP 409 devuelve una entrada por rutina, con ID y nombre, incluso si comparte la imagen en varios pasos. Flutter muestra el detalle y conserva el editor y el recurso. |
+| CA-I4.5 | RF-I4.4 / CU02–CU03 | Se conserva la prohibición de borrar referencias activas y se admite el borrado después de retirar la última dependencia. Las pruebas de regresión cubren los flujos de CU01–CU03. |
+
+La experiencia de visualización permite consultar secuencias guardadas. El alcance de esta iteración se limita a navegación y lectura y excluye seguimiento de ejecución.

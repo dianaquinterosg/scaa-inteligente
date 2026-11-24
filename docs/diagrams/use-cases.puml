@@ -3,12 +3,14 @@ left to right direction
 skinparam packageStyle rectangle
 skinparam shadowing false
 actor "Usuario administrador" as Admin
+actor "Persona usuaria de visualización" as Visual
 rectangle "Sistema inteligente SCAA" {
   package "Entrega parcial (60 % comprometido)" {
     usecase "CU01\nGestionar perfil y contexto" as CU01
     usecase "CU02\nGestionar pictogramas" as CU02
     usecase "CU03\nGestionar rutinas inteligentes" as CU03
   }
+  usecase "Consultar catálogo y rutinas aprobadas\nIteración 4 · CU05 parcial" as View
   package "Iteraciones posteriores" {
     usecase "CU04\nGestionar recomendaciones contextuales" as CU04
     usecase "CU05\nNavegar y utilizar contenido validado" as CU05
@@ -19,6 +21,8 @@ Admin --> CU02
 Admin --> CU03
 Admin --> CU04
 Admin --> CU05
+Visual --> View
+View ..> CU05 : avance parcial
 CU03 ..> CU02 : usa los recursos gestionados en
 note bottom of CU03
 La IA propone; no aprueba ni persiste

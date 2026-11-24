@@ -1,0 +1,56 @@
+{
+  "test": "I4-04-HTTP",
+  "environment": "Uvicorn loopback con SQLite y archivos de prueba aislados",
+  "step_orders": [
+    [
+      1
+    ],
+    [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  ],
+  "two_dependencies": {
+    "status": 409,
+    "detail": {
+      "message": "Retira este pictograma de las rutinas que lo usan antes de eliminarlo.",
+      "code": "pictogram_in_use",
+      "routines": [
+        {
+          "id": 1,
+          "name": "Secuencia de un paso"
+        },
+        {
+          "id": 2,
+          "name": "Secuencia de doce pasos"
+        }
+      ]
+    }
+  },
+  "one_dependency": {
+    "status": 409,
+    "detail": {
+      "message": "Retira este pictograma de las rutinas que lo usan antes de eliminarlo.",
+      "code": "pictogram_in_use",
+      "routines": [
+        {
+          "id": 2,
+          "name": "Secuencia de doce pasos"
+        }
+      ]
+    }
+  },
+  "linked_routines_preserved": true,
+  "image_after_rejected_delete_status": 200,
+  "delete_after_last_dependency_status": 204
+}
