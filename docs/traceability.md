@@ -1,8 +1,8 @@
-# Matriz de trazabilidad — diseño v0.2
+# Matriz de trazabilidad — requisitos v0.2 e implementación
 
-**Estado:** especificación prevista en la línea base documental v0.2. Existe una base técnica y se ejecutaron sondas de servicios y pruebas de infraestructura; CU01 está implementado con pruebas automáticas aprobadas y aprobación visual confirmada por la persona usuaria; CU02 está implementado y probado automáticamente. La persona usuaria confirmó el recorrido manual en el simulador de iPad. CU03 sigue pendiente. No hay release de software verificada. `P0/P1/P2` son prioridades, **no resultados**.
+**Línea base:** los requisitos y prioridades proceden del SRS v0.2. **Estado de implementación:** Existe una base técnica y se ejecutaron sondas de servicios y pruebas de infraestructura; CU01 está implementado con pruebas automáticas aprobadas y aprobación visual confirmada por la persona usuaria; CU02 está implementado y probado automáticamente. La persona usuaria confirmó el recorrido manual en el simulador de iPad. CU03 sigue pendiente. No hay release de software verificada. `P0/P1/P2` son prioridades, **no resultados**.
 
-| Requisito | CU | CA vinculados | Prioridad | Componente real de CU01 / previsto para otros CU | Prueba/evidencia esperada | Resultado/commit |
+| Requisito | CU | CA vinculados | Prioridad | Componente implementado o planificado | Verificación prevista o ejecutada | Estado y evidencia vinculada |
 |---|---|---|---|---|---|---|
 | RF01.1 | CU01 | CA01.1–CA01.3, CA01.8 | P0 | `ProfileGate`, `ProfileEditor`, `ProfileApi`; `ProfileRepository` | API, widgets y HTTP real; recuperación tras reiniciar | [Pruebas aprobadas](evidence/iteration-1/cu01/acceptance.json); aprobación visual en iPad; pruebas funcionales manuales pendientes; API `89647a9`, Flutter `f81d180` |
 | RF01.2 | CU01 | CA01.10 | P0 | `ProfileRepository.load`, estado confirmado de `ProfileGate` | Borrador/cancelación sin persistencia; solo contexto confirmado disponible | [Exposición de contexto probada](evidence/iteration-1/cu01/acceptance.json); consumo por IA pendiente de CU03 |
@@ -40,7 +40,7 @@
 
 Las sondas de Iteración 0 no equivalen a completar los RF de CU02/CU03. CU01 tiene [cobertura específica por criterio](evidence/iteration-1/cu01/acceptance.json), [código y pruebas](evidence/iteration-1/README.md); los escenarios funcionales manuales en iPad siguen pendientes. Los commits funcionales se enumeran en el índice de Iteración 1.
 
-## Cómo completar la trazabilidad con Codex
+## Procedimiento de trazabilidad de cambios
 
 Por cada subrequisito implementado, registrar **ruta y símbolo reales** (`archivo:función/clase`), ID de test, resultado, enlace/captura, commit SHA y versión/tag verificados. Si se modifica un RF, actualizar CU y test asociado antes de aceptar el cambio. Evitar registrar paths inventados como si fuesen reales.
 

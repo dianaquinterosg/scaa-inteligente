@@ -2,7 +2,7 @@
 
 **Proyecto:** Sistema inteligente para la personalización asistida de Sistemas de Comunicación Aumentativa y Alternativa mediante inteligencia artificial.
 
-**Estado:** Línea base documental revisada `docs-v0.2`. **No representa software implementado ni validado.**
+**Línea base de requisitos:** v0.2. **Implementación:** CU01 y CU02 disponibles, con los niveles de verificación detallados en el registro de implementación.
 
 La v0.2 es la primera línea base documental publicada en Git, consolidada tras revisiones locales que incluyeron una versión de trabajo v0.1.
 
@@ -47,7 +47,7 @@ Flutter (cliente) → FastAPI (API REST y reglas de negocio) → SQLite y archiv
 
 ## Estado de implementación
 
-Iteración 0 cerrada funcionalmente y registrada en el commit `db312e3592648a3b620d66b2ea22af018396112e`. CU01 está implementado y versionado en commits locales: perfil único, alias, tres tipos de contexto, persistencia atómica y validaciones. Las pruebas automáticas de API, widgets y HTTP real están aprobadas; la persona usuaria aprobó su aspecto en el simulador de iPad y quedan pendientes los escenarios funcionales manuales. CU02 implementa el catálogo, importación y categorías de v0.2. Pasó pruebas automáticas e integración con ARASAAC. La persona usuaria confirmó el recorrido manual en el simulador de iPad. CU03–CU05 siguen pendientes.
+Iteración 0 cerrada funcionalmente y registrada en el commit `db312e3592648a3b620d66b2ea22af018396112e`. CU01 está implementado y versionado en Git: perfil único, alias, tres tipos de contexto, persistencia atómica y validaciones. Las pruebas automáticas de API, widgets y HTTP real están aprobadas; la persona usuaria aprobó su aspecto en el simulador de iPad y quedan pendientes los escenarios funcionales manuales. CU02 implementa el catálogo, importación y categorías de v0.2. Pasó pruebas automáticas e integración con ARASAAC. La persona usuaria confirmó el recorrido manual en el simulador de iPad. CU03–CU05 siguen pendientes.
 
 Ver [evidencias de CU01](docs/evidence/iteration-1/README.md) y [guía de ejecución](docs/development-setup.md). Los estados «comprometido», «implementado» y «validado» no son intercambiables; la prueba visual de salud de Iteración 0 no sustituye la aceptación manual de CU01.
 

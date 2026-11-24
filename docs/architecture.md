@@ -1,15 +1,15 @@
 # Arquitectura del MVP — diseño revisado v0.2
 
-> Diseño v0.2 con implementación parcial de CU01. Los componentes de CU02–CU05 y su integración funcional siguen pendientes. Ver [evidencias por iteración](evidence/README.md).
+> El SRS v0.2 fija el alcance. CU01 y CU02 están implementados y probados. El diseño de CU03–CU05 describe capacidades previstas. Ver [evidencias por iteración](evidence/README.md).
 
 ## Componentes
 
 ```mermaid
 flowchart TD
     F[Flutter — cliente] -->|HTTP JSON| API[FastAPI]
-    API --> P[ProfileService]
-    API --> G[PictogramService]
-    API --> R[RoutineService]
+    API --> P[ProfileRepository · CU01]
+    API --> G[Catalog · CU02]
+    API -. previsto .-> R[RoutineService · CU03]
     R --> A[AssociationService]
     R --> I[RoutineGenerator — interfaz]
     I --> O[Adaptador Ollama — IA local]
@@ -30,8 +30,8 @@ En Iteración 1, `ProfileGate`/`ProfileEditor` y `ProfileApi` implementan el cli
 
 - **Flutter:** presentación, edición guiada, validaciones de experiencia de usuario, vista previa/confirmación, navegación mínima.
 - **FastAPI:** contratos, validación independiente de frontend, coordinación de operaciones y errores.
-- **ProfileService:** CU01, perfil y contexto.
-- **PictogramService:** CU02, búsqueda local, integración ARASAAC, archivos, categorías y aprobación.
+- **ProfileRepository y ProfilePayload:** CU01, perfil y contexto.
+- **Catalog, rutas de catálogo y ArasaacClient:** CU02, búsqueda local, integración ARASAAC, archivos, categorías y aprobación.
 - **RoutineService:** CU03, propuestas, edición validada y persistencia final.
 - **AssociationService:** aplicar comparación textual normalizada de acuerdo con la política siguiente; preseleccionar para revisión, **nunca aprobar autónomamente**. No requiere otro modelo de IA.
 - **RoutineGenerator:** interfaz para IA; implementación Ollama sujeto a prueba real; reemplazo controlado/fake solo para tests.
@@ -49,25 +49,28 @@ Se requiere un algoritmo **simple y reproducible** para la entrega del 60 %, sin
 
 **Pruebas imprescindibles:** exacta local gana a API; prefijo gana a inclusión; empate local no se resuelve arbitrariamente; ausencia local consulta ARASAAC; candidato externo sin confirmar no se guarda; error de red deja paso pendiente y habilita resolución manual. La calidad de relevancia real debe medirse con ejemplos, no asumirse por el orden de resultados.
 
-## Contratos REST preliminares (sujetos a implementación)
+## Contratos REST implementados de CU01 y CU02
 
-| Método | Ruta | Propósito |
+| Método | Ruta | Comportamiento |
 |---|---|---|
-| GET | `/api/v1/profile` | Obtener perfil; 404 si no existe |
-| PUT | `/api/v1/profile` | Crear/actualizar único perfil |
-| GET | `/api/v1/pictograms` | Listar/buscar recursos aprobados, filtrar categorías |
-| GET | `/api/v1/pictograms/search` | Buscar candidatos, locales y/o ARASAAC, sin guardarlos |
-| POST | `/api/v1/pictograms` | Confirmar recurso ARASAAC elegido o carga propia (multipart o JSON según origen) |
-| PATCH | `/api/v1/pictograms/{id}` | Editar etiqueta/categorías |
-| DELETE | `/api/v1/pictograms/{id}` | Eliminar si no tiene dependencias |
-| GET/POST | `/api/v1/categories` | Listar/crear categorías |
-| PATCH/DELETE | `/api/v1/categories/{id}` | Renombrar/eliminar categoría |
-| POST | `/api/v1/routines/proposals` | Generar secuencia con IA + candidatos; **no persistir** |
-| GET/POST | `/api/v1/routines` | Listar/confirmar rutina |
-| GET/PATCH/DELETE | `/api/v1/routines/{id}` | Consultar/editar/eliminar |
-| GET | `/api/v1/media/{id}` | Servir archivo de pictograma sin exponer rutas internas |
+| GET | `/api/v1/health` | Salud, SQLite y entorno |
+| GET | `/api/v1/profile` | Consultar perfil confirmado. Devuelve 404 si aún no existe |
+| PUT | `/api/v1/profile` | Reemplazar alias y contexto del perfil único |
+| GET | `/api/v1/pictograms` | Listar recursos aprobados, con filtro opcional `category_id` |
+| GET | `/api/v1/pictograms/search` | Buscar con `q`, `category_id` y `alternatives`. Devuelve `local`, `alternatives` y `remote_status` |
+| GET | `/api/v1/pictograms/arasaac/{id}/image` | Obtener vista previa externa sin incorporar el candidato |
+| POST | `/api/v1/pictograms` | Incorporar mediante JSON con `confirmed: true`, etiqueta, categorías opcionales y una referencia `external_id` o un archivo `image_base64` |
+| PUT | `/api/v1/pictograms/{id}` | Reemplazar etiqueta y asociaciones de categorías |
+| GET | `/api/v1/pictograms/{id}/image` | Servir el archivo administrado por el catálogo |
+| DELETE | `/api/v1/pictograms/{id}` | Eliminar recurso y archivo. Devuelve 409 ante una dependencia restrictiva |
+| GET / POST | `/api/v1/categories` | Listar o crear categorías |
+| PUT / DELETE | `/api/v1/categories/{id}` | Renombrar o eliminar una categoría. El borrado conserva los pictogramas |
 
-Los formatos de request/response y códigos de error exactos se concretarán en OpenAPI al implementar. Evitar transformar endpoints preliminares en compromisos irrevocables sin test de integración.
+Consultas y actualizaciones correctas devuelven 200, creaciones de catálogo devuelven 201 y borrados devuelven 204. Los detalles de validación, origen y almacenamiento se describen en los [contratos de CU01](evidence/iteration-1/design.md) y [CU02](evidence/iteration-2/design.md).
+
+## Contratos previstos de CU03
+
+El diseño prevé `POST /api/v1/routines/proposals` para generar en memoria, `GET/POST /api/v1/routines` para listar y confirmar, y `GET/PUT/DELETE /api/v1/routines/{id}` para consultar, editar y eliminar. El contrato definitivo se documentará con su implementación y pruebas.
 
 ## Salida estructurada del modelo de IA
 
