@@ -1,4 +1,4 @@
-"""API SCAA: salud del servicio y CU01, perfil y contexto."""
+"""API SCAA: perfil, catálogo y rutinas."""
 
 from contextlib import asynccontextmanager
 import logging
@@ -14,6 +14,9 @@ from .catalog import Catalog, CatalogError
 from .catalog_api import router as catalog_router
 from .database import Database
 from .settings import Settings
+from .routine_api import router as routine_router
+from .routine_generation import OllamaGenerator
+from .routine_repository import RoutineRepository
 from .migrate import migrate
 from .profile import ProfilePayload, ProfileRepository, ProfileResponse
 
@@ -44,7 +47,12 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.profiles = profiles
     app.state.catalog = catalog
     app.state.arasaac = ArasaacClient()
+    app.state.generator = OllamaGenerator(
+        settings.ollama_base_url, settings.ollama_model, settings.ollama_timeout,
+    )
+    app.state.routines = RoutineRepository(database, catalog)
     app.include_router(catalog_router)
+    app.include_router(routine_router)
 
     @app.exception_handler(CatalogError)
     async def catalog_error(request, error: CatalogError):
