@@ -18,11 +18,12 @@ ROOT = Path(__file__).resolve().parents[2]
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--flow", choices=("profile", "catalog"), default="profile")
     args = parser.parse_args()
     if args.output.exists():
         parser.error("Elige una ruta nueva; no se sobrescribe evidencia")
     result = {"status": "failed"}
-    with TemporaryDirectory(prefix="scaa-cu01-") as directory:
+    with TemporaryDirectory(prefix=f"scaa-{args.flow}-") as directory:
         with socket.socket() as listener:
             listener.bind(("127.0.0.1", 0))
             port = listener.getsockname()[1]
@@ -45,11 +46,14 @@ def main() -> int:
                     time.sleep(0.1)
                 else:
                     raise RuntimeError("El backend de prueba no respondió")
-                probe = subprocess.run(["dart", "run", "tool/check_profile.dart", base],
+                probe = subprocess.run(["dart", "run", f"tool/check_{args.flow}.dart", base],
                                        cwd=ROOT / "frontend", capture_output=True, text=True, timeout=60)
+                if probe.returncode != 0:
+                    lines = probe.stderr.strip().splitlines()
+                    raise RuntimeError(next((line for line in lines if line.startswith("Bad state:")), "La sonda Dart falló"))
                 result = json.loads(probe.stdout.strip())
                 result["exit_code"] = probe.returncode
-                result["isolation"] = "Proceso local y directorio temporal; perfil real dev/demo sin modificar"
+                result["isolation"] = "Proceso local y directorio temporal; datos dev/demo sin modificar"
                 result["scope"] = "Cliente Dart real → API FastAPI → SQLite; interfaz visual separada"
             except Exception as error:
                 result = {"status": "failed", "error": str(error)}
