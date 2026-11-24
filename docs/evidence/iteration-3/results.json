@@ -1050,7 +1050,7 @@
         "I3-HTTP-Ollama-1"
       ],
       "result": "Aprobado en las pruebas indicadas.",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado individual reportado"
     },
     {
       "criterion": "CA03.2",
@@ -1073,7 +1073,7 @@
         "I3-HTTP-Ollama-3"
       ],
       "result": "Estructura verificada con tres inferencias reales. Calidad semántica provisional.",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado individual reportado"
     },
     {
       "criterion": "CA03.3",
@@ -1094,7 +1094,7 @@
         "I3-HTTP-Ollama-3"
       ],
       "result": "Aprobado en las pruebas indicadas.",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado individual reportado"
     },
     {
       "criterion": "CA03.4",
@@ -1111,7 +1111,7 @@
         "I3-HTTP-vista-previa-externa"
       ],
       "result": "Aprobado en las pruebas indicadas.",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado individual reportado"
     },
     {
       "criterion": "CA03.5",
@@ -1121,7 +1121,7 @@
       "widget_cases": [],
       "http_cases": [],
       "result": "Aprobado en las pruebas indicadas.",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado individual reportado"
     },
     {
       "criterion": "CA03.6",
@@ -1135,7 +1135,7 @@
         "I3-HTTP-edicion"
       ],
       "result": "Aprobado en las pruebas indicadas.",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado individual reportado"
     },
     {
       "criterion": "CA03.7",
@@ -1149,7 +1149,7 @@
         "I3-HTTP-edicion"
       ],
       "result": "Aprobado en las pruebas indicadas.",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado individual reportado"
     },
     {
       "criterion": "CA03.8",
@@ -1172,7 +1172,7 @@
         "I3-HTTP-confirmacion-y-reutilizacion"
       ],
       "result": "Aprobado en las pruebas indicadas.",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado individual reportado"
     },
     {
       "criterion": "CA03.9",
@@ -1184,7 +1184,7 @@
         "I3-HTTP-recuperacion"
       ],
       "result": "Aprobado en las pruebas indicadas.",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado individual reportado"
     },
     {
       "criterion": "CA03.10",
@@ -1200,7 +1200,7 @@
         "I3-HTTP-borrado-conserva-pictograma"
       ],
       "result": "Aprobado en las pruebas indicadas.",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado individual reportado"
     },
     {
       "criterion": "CA03.11",
@@ -1221,7 +1221,7 @@
       ],
       "http_cases": [],
       "result": "Aprobado en las pruebas indicadas.",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado individual reportado"
     },
     {
       "criterion": "CA03.12",
@@ -1235,7 +1235,7 @@
         "I3-HTTP-borrado-conserva-pictograma"
       ],
       "result": "Aprobado en las pruebas indicadas.",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado individual reportado"
     },
     {
       "criterion": "CA03.13",
@@ -1254,7 +1254,7 @@
       ],
       "http_cases": [],
       "result": "Aprobado en las pruebas indicadas.",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado individual reportado"
     },
     {
       "criterion": "CA03.14",
@@ -1268,7 +1268,7 @@
         "I3-HTTP-confirmacion-y-reutilizacion"
       ],
       "result": "Aprobado en las pruebas indicadas.",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado individual reportado"
     },
     {
       "criterion": "CA03.15",
@@ -1285,7 +1285,13 @@
         "I3-HTTP-confirmacion-y-reutilizacion"
       ],
       "result": "Aprobado en las pruebas indicadas.",
-      "manual_ipad": "Pendiente"
+      "manual_ipad": "Sin resultado individual reportado"
     }
-  ]
+  ],
+  "manual_ipad": {
+    "execution": "Realizada según la persona usuaria en el simulador de iPad",
+    "interface_commit": "0212ce4",
+    "scenario_results": "Sin resultados individuales reportados",
+    "follow_up": "Mejoras previstas para la siguiente iteración, sin detalle reportado"
+  }
 }

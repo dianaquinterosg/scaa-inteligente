@@ -1,6 +1,6 @@
 # Iteración 3 — CU03, gestión de rutinas inteligentes
 
-CU03 cuenta con pruebas de backend, widgets e integración HTTP con Ollama y ARASAAC reales. El modelo sigue siendo provisional. Quedan pendientes la revisión manual de CU03 en el simulador y la verificación integrada T16.
+CU03 cuenta con pruebas de backend, widgets e integración HTTP con Ollama y ARASAAC reales. El modelo sigue siendo provisional. La persona usuaria informó que realizó las pruebas manuales en el simulador de iPad. No se registraron resultados por escenario. La verificación integrada T16 sigue pendiente.
 
 | Unidad | Commit | Alcance |
 |---|---|---|

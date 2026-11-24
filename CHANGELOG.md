@@ -4,7 +4,7 @@
 
 - Generación estructurada con Ollama y contexto de perfil confirmado. Asociación determinística y revisión humana por paso.
 - Editor guiado, creación manual, confirmación transaccional, recuperación, edición y borrado de rutinas.
-- Regresión del catálogo con bloqueo de borrado por rutina real e integración con ARASAAC. Modelo provisional y revisión en iPad pendiente.
+- Regresión del catálogo con bloqueo de borrado por rutina real e integración con ARASAAC. Modelo provisional. Ejecución manual en simulador reportada por la persona usuaria.
 
 ## Desarrollo local — Iteración 2 CU02
 

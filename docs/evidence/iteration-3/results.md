@@ -14,7 +14,7 @@
 - **25 pruebas Flutter aprobadas**, con 4 de CU03 y 21 de regresión. El análisis estático terminó sin incidencias.
 - **11 verificaciones HTTP de CU03 aprobadas** con proceso FastAPI, SQLite temporal, Ollama y ARASAAC reales. Se obtuvieron los bytes de vista previa de la referencia 8094 (9.593 bytes), se confirmó una sola incorporación para dos pasos y se volvió a leer el recurso desde disco.
 - **7 verificaciones HTTP de CU01 y 4 de CU02 aprobadas** en bases separadas. La comprobación de recuperación tras reiniciar la aplicación backend de CU03 se realizó con una segunda instancia sobre la misma base en pruebas automatizadas.
-- La compilación para simulador no terminó en este entorno. Xcode informó falta de conexión con CoreSimulator y `sandbox_apply: Operation not permitted` al resolver paquetes Swift. La revisión de CU03 en iPad sigue pendiente.
+- La compilación para simulador no terminó en este entorno. Xcode informó falta de conexión con CoreSimulator y `sandbox_apply: Operation not permitted` al resolver paquetes Swift. Por separado, la persona usuaria informó que realizó las pruebas de CU03 en el simulador. No comunicó resultados por escenario y reservó las mejoras para la siguiente iteración.
 
 El cierre de RF01.2 confirma el consumo del contexto persistido y pertinente en generación. La prueba inspeccionó la solicitud HTTP construida para Ollama con transporte controlado. La integración real usó un perfil sintético persistido. La prueba funcional manual de CU01 permanece pendiente. Para CA02.12 se guardó una rutina con el pictograma y se intentó eliminarlo desde la API de CU02. Se obtuvo 409 y se conservó la imagen. Al eliminar la rutina también se conservó el pictograma.
 
@@ -42,4 +42,4 @@ La primera ejecución del servidor desde el entorno restringido falló al asigna
 | CA03.12–CA03.14 | Conservación de imágenes, rechazo de pasos incompletos y repetición de pictogramas |
 | CA03.15 | Propuestas sin escritura, deduplicación, rollback de imágenes y preservación de recursos aprobados en CU02 |
 
-[Casos, salidas y comandos reproducibles](results.json) · [Protocolo manual pendiente](manual-check.md). T16 requiere el recorrido completo con la interfaz y permanece pendiente.
+[Casos, salidas y comandos reproducibles](results.json) · [Registro y protocolo manual](manual-check.md). T16 requiere el recorrido completo con la interfaz y permanece pendiente.

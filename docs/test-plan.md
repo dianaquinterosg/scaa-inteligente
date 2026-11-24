@@ -1,6 +1,6 @@
 # Plan de pruebas y evidencias — MVP 60 % (v0.2)
 
-**Estado:** T01–T03 tienen pruebas automáticas aprobadas para CU01; pruebas funcionales manuales en iPad pendientes. T08 cuenta con tres escenarios de inferencia real a través de la API de CU03. T04–T07 se aprobaron con pruebas automáticas de CU02. T15 se verificó con rutinas y pictogramas persistidos. Ver [Iteración 0](evidence/iteration-0/test-results.md) e [Iteración 1](evidence/iteration-1/results.md); CU02 tiene una [regresión específica](evidence/iteration-2/results.md) y un [recorrido manual confirmado en simulador](evidence/iteration-2/manual-check.md). CU03 completó pruebas controladas e integración real. Quedan pendientes la revisión en iPad, la validación con usuarios y el recorrido T16.
+**Estado:** T01–T03 tienen pruebas automáticas aprobadas para CU01; pruebas funcionales manuales en iPad pendientes. T08 cuenta con tres escenarios de inferencia real a través de la API de CU03. T04–T07 se aprobaron con pruebas automáticas de CU02. T15 se verificó con rutinas y pictogramas persistidos. Ver [Iteración 0](evidence/iteration-0/test-results.md) e [Iteración 1](evidence/iteration-1/results.md); CU02 tiene una [regresión específica](evidence/iteration-2/results.md) y un [recorrido manual confirmado en simulador](evidence/iteration-2/manual-check.md). CU03 completó pruebas controladas e integración real. La persona usuaria informó que ejecutó las pruebas manuales de CU03 en el simulador. La validación con usuarios y T16 siguen pendientes.
 
 ## 1. Niveles y herramientas tentativas
 
@@ -10,7 +10,7 @@
 | Integración API/BD | FastAPI, SQLite, transacciones, persistencia y FKs | `TestClient`/cliente ASGI, BD de test aislada | CU01–CU03 y migraciones probados |
 | Integración servicios externos controlada | Timeout/respuesta/error ARASAAC y adaptador IA | Fakes y transporte HTTP controlado | Error ARASAAC, timeout y salida inválida de Ollama probados |
 | Smoke test REAL | ARASAAC conectado e IA ejecutándose localmente | Script/endpoint manual con evidencias y datos sintéticos | ARASAAC real probado en CU02 y CU03. Inferencia Ollama real probada en CU03 con calidad semántica provisional |
-| Sistema E2E | Flutter→FastAPI→persistencia→consulta | Recorrido manual reproducible y capturas | HTTP CU01–CU03 probado. CU01 tiene aprobación visual y CU02 recorrido en simulador confirmado. Revisión de CU03 y T16 pendientes. |
+| Sistema E2E | Flutter→FastAPI→persistencia→consulta | Recorrido manual reproducible y capturas | HTTP CU01–CU03 probado. CU01 tiene aprobación visual y CU02 recorrido en simulador confirmado. La ejecución manual de CU03 fue reportada sin resultados individuales. T16 sigue pendiente. |
 | Instalación release/demo | Instalación desde instrucciones y arranque | Procedimiento documentado tras verificación | Pendiente |
 
 ## 2. Casos mínimos concretos
@@ -53,7 +53,7 @@ El registro de gestión de configuración debe incluir SHA de commit, tag (por e
 | 0 — preparación técnica | `db312e3592648a3b620d66b2ea22af018396112e` | 6 backend, 2 Flutter y sondas reales aprobadas; iPad confirmado por la persona usuaria | [Cierre](evidence/iteration-0/README.md) | Limitaciones del modelo provisional |
 | 1 — CU01 | Implementación funcional `854180f` y adaptación visual `bca2e58` | 45 backend, 17 Flutter y 7 escenarios HTTP reales aprobados. Análisis sin incidencias | [Regresión visual](evidence/iteration-1/visual.md) | Aspecto aprobado en simulador; pruebas funcionales manuales pendientes |
 | 2 — CU02 | `c311854`, `7a0acd5`, `3e256e8` | 68 backend, 21 Flutter, 4 escenarios HTTP y recorrido de iPad confirmado | [Iteración 2](evidence/iteration-2/README.md) | CA02.12 resuelto en Iteración 3 |
-| 3 — CU03 | `51c191b`, `0212ce4`, `c3ad225` | 95 backend, 25 Flutter, 11 verificaciones HTTP CU03 y regresiones HTTP CU01/CU02 | [Iteración 3](evidence/iteration-3/results.md) | Calidad semántica provisional, simulador y T16 pendientes |
+| 3 — CU03 | `51c191b`, `0212ce4`, `c3ad225` | 95 backend, 25 Flutter, 11 verificaciones HTTP CU03 y regresiones HTTP CU01/CU02 | [Iteración 3](evidence/iteration-3/results.md) | Calidad semántica provisional. Ejecución en simulador reportada. T16 pendiente |
 
 Los registros documentales excluyen metadatos temporales. Los resultados se asocian al alcance y al código real, sin atribuir un commit inexistente.
 

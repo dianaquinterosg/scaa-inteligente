@@ -1,6 +1,6 @@
 # Preparación y ejecución de desarrollo
 
-Flutter iOS → FastAPI → SQLite. CU01 implementado y probado automáticamente; aspecto aprobado por la persona usuaria en el simulador de iPad; pruebas funcionales manuales pendientes. CU02 está implementado y el recorrido manual en el simulador de iPad fue confirmado por la persona usuaria. CU03 está implementado con Ollama local y creación manual. La validación de CU03 en iPad sigue pendiente. La documentación mantiene su identificación v0.2; el valor de desarrollo `0.0.0` del código no representa una release.
+Flutter iOS → FastAPI → SQLite. CU01 implementado y probado automáticamente; aspecto aprobado por la persona usuaria en el simulador de iPad; pruebas funcionales manuales pendientes. CU02 está implementado y el recorrido manual en el simulador de iPad fue confirmado por la persona usuaria. CU03 está implementado con Ollama local y creación manual. La persona usuaria informó que realizó las pruebas de CU03 en el simulador de iPad. No se registraron resultados por escenario. La documentación mantiene su identificación v0.2; el valor de desarrollo `0.0.0` del código no representa una release.
 
 ## Estructura
 
