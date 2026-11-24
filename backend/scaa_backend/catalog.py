@@ -23,9 +23,10 @@ MANAGED_IMAGE = re.compile(r"[0-9a-f]{32}\.(?:png|jpg|webp)(?:\.deleted)?")
 
 
 class CatalogError(Exception):
-    def __init__(self, status: int, message: str):
+    def __init__(self, status: int, message: str, *, detail: dict | None = None):
         super().__init__(message)
         self.status = status
+        self.detail = message if detail is None else {"message": message, **detail}
 
 
 def image_format(data: bytes) -> tuple[str, str]:
@@ -234,6 +235,18 @@ class Catalog:
                 ).fetchone()
                 if row is None:
                     raise CatalogError(404, "No encontramos el pictograma.")
+                dependencies = connection.execute(
+                    "SELECT DISTINCT r.id, r.name FROM routine_step AS s "
+                    "JOIN routine AS r ON r.id = s.routine_id "
+                    "WHERE s.pictogram_id = ? ORDER BY r.id", (identifier,),
+                ).fetchall()
+                if dependencies:
+                    raise CatalogError(
+                        409, "Retira este pictograma de las rutinas que lo usan antes de eliminarlo.",
+                        detail={"code": "pictogram_in_use", "routines": [
+                            {"id": routine_id, "name": name} for routine_id, name in dependencies
+                        ]},
+                    )
                 connection.execute("DELETE FROM pictogram WHERE id=?", (identifier,))
                 path = self.directory / row[0]
                 pending = path.with_suffix(path.suffix + ".deleted")

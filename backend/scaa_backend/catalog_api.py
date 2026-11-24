@@ -193,6 +193,6 @@ def delete(identifier: Identifier, request: Request):
         request.app.state.catalog.delete(identifier)
     except sqlite3.IntegrityError as error:
         if error.sqlite_errorcode in (sqlite3.SQLITE_CONSTRAINT_FOREIGNKEY, sqlite3.SQLITE_CONSTRAINT_TRIGGER):
-            raise CatalogError(409, "Una rutina usa este pictograma. Retira esa referencia antes de eliminarlo.") from error
+            raise CatalogError(409, "El pictograma tiene referencias activas y no se puede eliminar.") from error
         raise
     return Response(status_code=204)

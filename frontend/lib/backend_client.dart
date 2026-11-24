@@ -2,9 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 
 class ApiException implements Exception {
-  const ApiException(this.statusCode, this.message);
+  const ApiException(this.statusCode, this.message, {this.detail});
   final int statusCode;
   final String message;
+  final Map<String, dynamic>? detail;
   @override
   String toString() => message;
 }
@@ -48,6 +49,8 @@ class BackendClient {
         final detail = data is Map<String, dynamic> ? data['detail'] : null;
         final message = detail is String
             ? detail
+            : detail is Map<String, dynamic> && detail['message'] is String
+            ? detail['message'] as String
             : detail is List
             ? detail
                   .map(
@@ -57,7 +60,11 @@ class BackendClient {
                   )
                   .join('. ')
             : 'No se pudo completar la solicitud';
-        throw ApiException(response.statusCode, message);
+        throw ApiException(
+          response.statusCode,
+          message,
+          detail: detail is Map<String, dynamic> ? detail : null,
+        );
       }
       return data;
     } finally {

@@ -56,7 +56,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @app.exception_handler(CatalogError)
     async def catalog_error(request, error: CatalogError):
-        return JSONResponse(status_code=error.status, content={"detail": str(error)})
+        return JSONResponse(status_code=error.status, content={"detail": error.detail})
 
     @app.exception_handler(sqlite3.Error)
     @app.exception_handler(OSError)

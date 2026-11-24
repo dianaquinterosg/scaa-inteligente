@@ -48,6 +48,13 @@ class CatalogSearch {
   final String remoteStatus;
 }
 
+class PictogramInUse implements Exception {
+  const PictogramInUse(this.message, this.routines);
+
+  final String message;
+  final List<({int id, String name})> routines;
+}
+
 abstract interface class CatalogStore {
   Future<List<Category>> categories();
   Future<List<Pictogram>> list({int? categoryId});
@@ -175,7 +182,22 @@ class CatalogApi implements CatalogStore {
 
   @override
   Future<void> delete(int id) async {
-    await _client.requestJson('DELETE', '$_catalog/$id');
+    try {
+      await _client.requestJson('DELETE', '$_catalog/$id');
+    } on ApiException catch (error) {
+      final detail = error.detail;
+      final routines = detail?['routines'];
+      if (error.statusCode == 409 &&
+          detail?['code'] == 'pictogram_in_use' &&
+          routines is List) {
+        throw PictogramInUse(error.message, [
+          for (final routine in routines)
+            if (routine case {'id': final int id, 'name': final String name})
+              (id: id, name: name),
+        ]);
+      }
+      rethrow;
+    }
   }
 
   @override

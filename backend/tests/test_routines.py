@@ -1,5 +1,6 @@
 import base64
 import json
+import sqlite3
 
 from fastapi.testclient import TestClient
 import httpx
@@ -143,7 +144,15 @@ def test_reuses_external_and_local_pictures_then_reopens_edits_and_deletes(app_c
     assert second["steps"][0]["pictogram"]["id"] == imported
     assert len(client.get(P).json()) == 2 and app.state.arasaac.downloads == [777]
     path = f"{R}/{routine['id']}"
-    assert client.delete(f"{P}/{imported}").status_code == 409
+    conflict = client.delete(f"{P}/{imported}")
+    assert conflict.status_code == 409
+    detail = conflict.json()["detail"]
+    assert detail["code"] == "pictogram_in_use"
+    assert detail["routines"] == [
+        {"id": routine["id"], "name": routine["name"]},
+        {"id": second["id"], "name": second["name"]},
+    ]
+    assert client.get(path).json() == routine
     assert client.get(routine["steps"][0]["pictogram"]["image_url"]).status_code == 200
     with TestClient(create_app(settings)) as restarted:
         assert restarted.get(path).json() == routine
@@ -154,7 +163,11 @@ def test_reuses_external_and_local_pictures_then_reopens_edits_and_deletes(app_c
         assert [step["label"] for step in edited["steps"]] == ["Confirmar", "Abrir"]
         assert restarted.delete(path).status_code == 204
         assert restarted.get(path).status_code == 404
-        assert restarted.delete(f"{P}/{imported}").status_code == 409
+        conflict = restarted.delete(f"{P}/{imported}")
+        assert conflict.status_code == 409
+        assert conflict.json()["detail"]["routines"] == [{"id": second["id"], "name": second["name"]}]
+        with app.state.database.connection() as connection, pytest.raises(sqlite3.IntegrityError):
+            connection.execute("DELETE FROM pictogram WHERE id=?", (imported,))
         assert restarted.delete(f"{R}/{second['id']}").status_code == 204
         assert len(restarted.get(P).json()) == 2
         assert restarted.delete(f"{P}/{imported}").status_code == 204

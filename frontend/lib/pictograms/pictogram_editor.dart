@@ -33,6 +33,7 @@ class _PictogramEditorState extends State<PictogramEditor> {
   late Future<Uint8List> _image;
   bool _busy = false;
   String? _error;
+  List<({int id, String name})> _dependentRoutines = [];
 
   bool get _editing => widget.item?.id != null;
 
@@ -86,6 +87,7 @@ class _PictogramEditorState extends State<PictogramEditor> {
     if (!_form.currentState!.validate()) return;
     setState(() {
       _error = null;
+      _dependentRoutines = [];
       _busy = true;
     });
     try {
@@ -120,6 +122,7 @@ class _PictogramEditorState extends State<PictogramEditor> {
     }
     setState(() {
       _error = null;
+      _dependentRoutines = [];
       _busy = true;
     });
     try {
@@ -128,10 +131,15 @@ class _PictogramEditorState extends State<PictogramEditor> {
     } catch (error) {
       if (mounted) {
         setState(() {
-          _error = catalogError(
-            error,
-            'No pudimos eliminar el pictograma. Reintenta.',
-          );
+          if (error is PictogramInUse) {
+            _error = error.message;
+            _dependentRoutines = error.routines;
+          } else {
+            _error = catalogError(
+              error,
+              'No pudimos eliminar el pictograma. Reintenta.',
+            );
+          }
           _busy = false;
         });
       }
@@ -234,6 +242,21 @@ class _PictogramEditorState extends State<PictogramEditor> {
                   const SizedBox(height: ScaaLayout.gap),
                   if (_error != null) ...[
                     ScaaNotice(_error!, kind: ScaaNoticeKind.error),
+                    if (_dependentRoutines.isNotEmpty)
+                      ScaaSection(
+                        title: 'Rutinas que usan este pictograma',
+                        icon: Icons.event_note_outlined,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            for (final routine in _dependentRoutines)
+                              ListTile(
+                                title: Text(routine.name),
+                                subtitle: Text('Rutina #${routine.id}'),
+                              ),
+                          ],
+                        ),
+                      ),
                     const SizedBox(height: ScaaLayout.gap),
                   ],
                   OverflowBar(
