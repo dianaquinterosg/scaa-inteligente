@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'backend_client.dart';
+import 'profile.dart';
+import 'profile_screen.dart';
 
 void main() => runApp(const ScaaApp());
 
 class ScaaApp extends StatelessWidget {
-  const ScaaApp({super.key, this.checkConnection});
+  const ScaaApp({super.key, this.checkConnection, this.profileStore});
 
   final Future<void> Function()? checkConnection;
+  final ProfileStore? profileStore;
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -18,7 +20,9 @@ class ScaaApp extends StatelessWidget {
       scaffoldBackgroundColor: const Color(0xFFF4F7F7),
       useMaterial3: true,
     ),
-    home: ConnectionScreen(check: checkConnection ?? BackendClient().check),
+    home: checkConnection == null
+        ? ProfileGate(store: profileStore ?? ProfileApi())
+        : ConnectionScreen(check: checkConnection!),
   );
 }
 
