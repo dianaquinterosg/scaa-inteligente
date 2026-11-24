@@ -47,7 +47,9 @@ Flutter (cliente) → FastAPI (API REST y reglas de negocio) → SQLite y archiv
 
 ## Estado de implementación
 
-Base técnica inicial en desarrollo: cliente Flutter iOS, endpoint de salud FastAPI y conexión SQLite con entornos separados. Las sondas de ARASAAC e IA local y las pruebas de esta base están registradas en [resultados técnicos](docs/evidence/iteration-0/test-results.md). CU01–CU03 todavía no están implementados. Los estados «comprometido», «previsto» y «validado» no son intercambiables. El cliente compiló y arrancó en iPad simulado; la persona usuaria confirmó «Servidor disponible» y FastAPI registró HTTP 200 en la comprobación de salud. Esto verifica la base técnica, no los casos de uso del MVP.
+Iteración 0 cerrada funcionalmente y registrada en el commit local `db312e3592648a3b620d66b2ea22af018396112e`, sin push. CU01 está implementado y versionado en commits locales: perfil único, alias, tres tipos de contexto, persistencia atómica y validaciones. Las pruebas automáticas de API, widgets y HTTP real están aprobadas; la revisión visual del nuevo formulario en iPad sigue pendiente. CU02–CU05 no están implementados.
+
+Ver [evidencias de CU01](docs/evidence/iteration-1/README.md) y [guía de ejecución](docs/development-setup.md). Los estados «comprometido», «implementado» y «validado» no son intercambiables; la prueba visual de salud de Iteración 0 no sustituye la aceptación manual de CU01.
 
 ## Prioridades de implementación
 

@@ -1,0 +1,80 @@
+{
+  "iteration": 1,
+  "functionality": "CU01",
+  "base_commit": "db312e3592648a3b620d66b2ea22af018396112e",
+  "implementation_commit": "854180fc0364c40af37dfc85b6e08b8669f943fc",
+  "sources": [
+    {
+      "path": "backend/scaa_backend/__init__.py",
+      "sha256": "560752880b1aa2c74ac25b6ee88c4fd149288f403bfc3576912ca43d80f22cc3"
+    },
+    {
+      "path": "backend/scaa_backend/database.py",
+      "sha256": "2e7ab727abbb66c32ad2edd309a7dfcbf0515472770e9de9e108723a0cc5e2d3"
+    },
+    {
+      "path": "backend/scaa_backend/main.py",
+      "sha256": "fc54e6071ce88f1f30fe0a9181ff9a3b9d77eb469827cee0ca5cb9d158738c23"
+    },
+    {
+      "path": "backend/scaa_backend/migrate.py",
+      "sha256": "d92909787235d2015d83068b78665a099da75cefb24cf2b7fd3e7338f8840f7b"
+    },
+    {
+      "path": "backend/scaa_backend/migrations/001_profile_context.sql",
+      "sha256": "9af56d3f1ce179955d9041e85593cf0546f1e6b2f03f73807d409a452c987ee2"
+    },
+    {
+      "path": "backend/scaa_backend/profile.py",
+      "sha256": "f14426e8e04b1d97ad2265d29174a5dd0ae3d9eaffbc4eaed58b8cb63262051c"
+    },
+    {
+      "path": "backend/scaa_backend/settings.py",
+      "sha256": "e95210e8b77aa97d2a771a471b6045ea3968707d5488248b2accfb6f4d672c23"
+    },
+    {
+      "path": "backend/scripts/run_profile_probe.py",
+      "sha256": "4526582f8d031b6b7db648bb17e20b7ff983443c81e2a8db5d6338ab45d2b6f9"
+    },
+    {
+      "path": "backend/tests/test_bootstrap.py",
+      "sha256": "152773d9c965a0621be95c0d1fd2a7bd6d3baf1b6905de52175ea3c81f6195b6"
+    },
+    {
+      "path": "backend/tests/test_migrations.py",
+      "sha256": "ac3db58e5eb662203a01ce1c1e07a37fdde51aa96c1d85e2bcf0b3b48a328c2f"
+    },
+    {
+      "path": "backend/tests/test_profile.py",
+      "sha256": "ed8aa1734bf9f56de338f7a4ebf067c12e93b2b43e887826acf4c430a541a1db"
+    },
+    {
+      "path": "frontend/lib/backend_client.dart",
+      "sha256": "67900f89b3dbdf2b8bdc5c7c75ace2190e01eb2258a1030626b06078fe03fe75"
+    },
+    {
+      "path": "frontend/lib/main.dart",
+      "sha256": "7580467db1c05cea4ab2ddc321fc4e4d19c2c7d530dec3ba947b38c65d048745"
+    },
+    {
+      "path": "frontend/lib/profile.dart",
+      "sha256": "3b90f99f06d64ebd18bf38d4ce780bba81e5c78f87429ad720b92d753746aa7a"
+    },
+    {
+      "path": "frontend/lib/profile_screen.dart",
+      "sha256": "c7756892eb76fd85885798efcb16b234eede851fd880182a91566b4fe917260e"
+    },
+    {
+      "path": "frontend/test/profile_test.dart",
+      "sha256": "aba7ce106ab2027ce22332010c4b02180781f8d177d13486e0012dea99ad49fc"
+    },
+    {
+      "path": "frontend/test/widget_test.dart",
+      "sha256": "9cd88bea4d55eb563818174ff2dfffa2de9b77f7b3a073671c0706eb8a44d943"
+    },
+    {
+      "path": "frontend/tool/check_profile.dart",
+      "sha256": "6aa3918846c934aad5e94af7a903be0e0b1ade0bb7f8fc762377033b35c65681"
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # Cliente Flutter SCAA
 
-Cliente iOS inicial para comprobar conectividad con FastAPI. No implementa CU01–CU03.
+Cliente iOS con primer uso, perfil y contexto CU01. CU02–CU03 permanecen pendientes.
 
-La instalación y los comandos del proyecto se describen en [la guía de desarrollo](../docs/development-setup.md).
+Las pruebas automáticas del formulario están aprobadas. La aceptación manual del nuevo CU01 en iPad debe registrarse por separado de la conexión de Iteración 0.
+
+[Guía de ejecución](../docs/development-setup.md) y [criterios y pruebas](../docs/evidence/iteration-1/README.md).

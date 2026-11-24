@@ -1,12 +1,12 @@
 # Preparación y ejecución de desarrollo
 
-Base técnica inicial: Flutter iOS → FastAPI → SQLite. CU01–CU03 siguen pendientes. La documentación mantiene su identificación v0.2; el valor de desarrollo `0.0.0` del código no representa una release.
+Flutter iOS → FastAPI → SQLite. CU01 implementado y probado automáticamente; revisión visual del formulario pendiente. CU02–CU03 siguen pendientes. La documentación mantiene su identificación v0.2; el valor de desarrollo `0.0.0` del código no representa una release.
 
 ## Estructura
 
 ```text
 backend/
-  scaa_backend/   # configuración, conexiones SQLite y salud del servicio
+  scaa_backend/   # configuración, migraciones, perfil/contexto y salud
   tests/         # pruebas de la base técnica
   scripts/       # sondas reales de ARASAAC y Ollama
 frontend/        # cliente Flutter con destino iOS
@@ -33,9 +33,9 @@ Desde la raíz:
 .venv/bin/python -m uvicorn scaa_backend.main:app --app-dir backend --env-file backend/.env --host 127.0.0.1 --port 8000
 ```
 
-Durante la comprobación inicial se utilizó `backend/.env.example` directamente con `--env-file`; no se necesita información secreta. Se comprobó HTTP 200 en `http://127.0.0.1:8000/api/v1/health`, con estado y SQLite disponibles. La API no tiene endpoints funcionales de CU01–CU03 todavía.
+Durante la comprobación inicial se utilizó `backend/.env.example` directamente con `--env-file`; no se necesita información secreta. Se comprobó HTTP 200 en `http://127.0.0.1:8000/api/v1/health`, con estado y SQLite disponibles. La API expone GET y PUT `/api/v1/profile` para CU01; CU02–CU03 todavía no tienen endpoints funcionales.
 
-`SCAA_ENV` admite `dev`, `test` o `demo`. Bajo `SCAA_DATA_ROOT` se crea un directorio por entorno y una base `scaa.sqlite3` distinta. Por defecto se utiliza `.localdata/` en la raíz. No existen tablas de dominio ni migraciones funcionales todavía. Las conexiones activan claves foráneas y cierran la transacción con commit o rollback.
+`SCAA_ENV` admite `dev`, `test` o `demo`. Bajo `SCAA_DATA_ROOT` se crea un directorio por entorno y una base `scaa.sqlite3` distinta. Por defecto se utiliza `.localdata/` en la raíz. La migración SQL 1 crea `profile` y `context_item` al iniciar. No hay tablas de los casos de uso posteriores. Las conexiones activan claves foráneas y cierran la transacción con commit o rollback.
 
 Para una configuración de demo, establecer explícitamente `SCAA_ENV=demo`; eso separa sus archivos, pero no certifica una instalación de liberación. Las pruebas utilizan directorios temporales aislados.
 
@@ -61,7 +61,7 @@ Con el backend abierto en otra Terminal, desde `frontend`:
 dart run tool/check_backend.dart
 ```
 
-Esta sonda usa el mismo cliente HTTP que la pantalla y pasó contra el backend real. No sustituye la ejecución de la aplicación Flutter en iPad.
+Esta sonda usa el transporte HTTP compartido y pasó contra el backend real. El recorrido de salud se comprobó en iPad en Iteración 0; CU01 tiene además una sonda HTTP real aislada, descrita más abajo.
 
 Para compilar y ejecutar en el simulador existente desde Terminal normal:
 
@@ -70,7 +70,7 @@ flutter build ios --simulator --debug --no-codesign
 flutter run -d A8EF03DC-81E7-4B9A-AD7E-F9E4235468FC --dart-define=API_BASE_URL=http://localhost:8000
 ```
 
-La compilación iOS encontró bloqueos de cachés y CoreSimulatorService dentro de la sesión restringida. La persona usuaria ejecutó después `flutter run` desde Terminal normal y confirmó mediante su salida el build y el arranque, junto con HTTP 200 en el backend. Consultar los [resultados](evidence/iteration-0/test-results.md). La persona usuaria confirmó que la aplicación muestra «Servidor disponible» con FastAPI activo. La evidencia procede de su salida de Terminal y confirmación explícita; no se recibió captura.
+La compilación iOS encontró bloqueos de cachés y CoreSimulatorService dentro de la sesión restringida. La persona usuaria ejecutó después `flutter run` desde Terminal normal y confirmó mediante su salida el build y el arranque, junto con HTTP 200 en el backend. Consultar los [resultados](evidence/iteration-0/test-results.md). La persona usuaria confirmó «Servidor disponible» en la pantalla de salud de Iteración 0. La pantalla predeterminada de CU01 ahora carga el perfil o muestra «Configurar perfil» si no existe. La aceptación manual de esta nueva interfaz sigue pendiente.
 
 El identificador `com.example.scaaInteligente` es el valor provisional del generador Flutter; debe definirse el identificador definitivo antes de distribución. Los iconos son los del esqueleto generado, no una identidad gráfica final.
 
@@ -101,3 +101,15 @@ La ejecución real inicial está en [bootstrap-integrations.json](evidence/itera
 ## Cierre de Iteración 0
 
 La persona usuaria cerró funcionalmente la preparación técnica tras confirmar «Servidor disponible» en el iPad. Las [evidencias de Iteración 0](evidence/iteration-0/README.md) organizan versiones, comandos, pruebas y limitaciones por alcance y commit asociado.
+
+## Comprobar CU01 sin modificar el perfil real
+
+Desde la raíz:
+
+```sh
+.venv/bin/python backend/scripts/run_profile_probe.py --output docs/evidence/iteration-1/cu01/otra-sonda-http.json
+```
+
+El ejecutor crea un backend de prueba y datos temporales aislados, usa el cliente Dart real y detiene su propio proceso al terminar. No modifica el perfil dev/demo ni el backend que la persona usuaria tenga abierto. Rechaza sobrescribir resultados anteriores.
+
+Para probar manualmente CU01, reiniciar el backend anterior y realizar hot restart (`R`) en la Terminal de Flutter. Seguir la [lista de aceptación manual](evidence/iteration-1/manual-check.md). Las versiones de dependencias no cambiaron respecto a Iteración 0.

@@ -1,0 +1,56 @@
+@startuml
+title CU01 — Perfil y contexto (implementación de Iteración 1)
+actor Administrador as U
+participant "Flutter / ProfileGate" as F
+participant "ProfileEditor" as E
+participant "FastAPI" as API
+participant "ProfilePayload" as V
+participant "ProfileRepository" as R
+database "SQLite" as DB
+
+F -> API : GET /api/v1/profile
+API -> R : load()
+R -> DB : consultar perfil único y contexto confirmado
+alt perfil ausente
+  API --> F : 404 Perfil no configurado
+  F -> E : configuración inicial, alias obligatorio
+else perfil existente
+  API --> F : perfil confirmado
+  F --> U : Inicio / Perfil y contexto
+  U -> F : editar perfil
+  F -> E : copia local del perfil
+end
+U -> E : editar alias y elementos de los tres tipos
+note over E
+El borrador permanece local.
+Intereses, actividades y rutinas frecuentes
+son elementos individuales opcionales.
+end note
+alt cancelar edición posterior
+  E -> F : descartar borrador
+  F --> U : mostrar perfil confirmado anterior
+else guardar
+  E -> E : validar campos, límites y duplicados
+  alt validación local inválida
+    E --> U : mostrar errores, sin enviar el borrador
+  else validación local válida
+  E -> API : PUT /api/v1/profile
+  API -> V : trim, tipos, 1–50 caracteres y duplicados por tipo
+  alt entrada inválida
+    API --> E : 422, sin modificación persistida
+  else entrada válida
+    API -> R : save(payload)
+    R -> DB : transacción: actualizar perfil y reemplazar contexto
+    alt guardado íntegro
+      DB --> R : commit
+      API --> E : 200 perfil confirmado
+      E -> F : mostrar Inicio y confirmación
+    else fallo de almacenamiento
+      R -> DB : rollback
+      API --> E : 503
+      E --> U : informar, conservar borrador y permitir reintento
+    end
+  end
+  end
+end
+@enduml

@@ -1,0 +1,240 @@
+{
+  "iteration": 1,
+  "functionality": "CU01 y regresión de infraestructura",
+  "base_commit": "db312e3592648a3b620d66b2ea22af018396112e",
+  "implementation_commit": "89647a987331ce120c9b199ced4d82fcc9e2257d",
+  "command": "../.venv/bin/python -m pytest -q",
+  "working_directory": "backend",
+  "exit_code": 0,
+  "tests": [
+    {
+      "test": "test_health_initializes_profile_schema",
+      "source": "tests.test_bootstrap",
+      "result": "passed"
+    },
+    {
+      "test": "test_database_transactions_and_foreign_keys",
+      "source": "tests.test_bootstrap",
+      "result": "passed"
+    },
+    {
+      "test": "test_environments_use_different_database_files",
+      "source": "tests.test_bootstrap",
+      "result": "passed"
+    },
+    {
+      "test": "test_initialize_preserves_existing_schema_version",
+      "source": "tests.test_bootstrap",
+      "result": "passed"
+    },
+    {
+      "test": "test_settings_read_and_validate_environment",
+      "source": "tests.test_bootstrap",
+      "result": "passed"
+    },
+    {
+      "test": "test_health_does_not_expose_storage_paths",
+      "source": "tests.test_bootstrap",
+      "result": "passed"
+    },
+    {
+      "test": "test_failed_migration_is_atomic",
+      "source": "tests.test_migrations",
+      "result": "passed"
+    },
+    {
+      "test": "test_newer_schema_is_not_downgraded",
+      "source": "tests.test_migrations",
+      "result": "passed"
+    },
+    {
+      "test": "test_first_use_requires_alias_and_has_no_profile",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_create_normalize_and_recover_all_context_types",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_edit_and_delete_individual_items[interests]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_edit_and_delete_individual_items[activities]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_edit_and_delete_individual_items[frequent_routines]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_alias_does_not_replace_saved_profile[]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_alias_does_not_replace_saved_profile[  ]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_alias_does_not_replace_saved_profile[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_alias_does_not_replace_saved_profile[None]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_alias_does_not_replace_saved_profile[123]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_alias_does_not_replace_saved_profile[\\ud800]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[items0-interests]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[items0-activities]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[items0-frequent_routines]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[items1-interests]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[items1-activities]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[items1-frequent_routines]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[items2-interests]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[items2-activities]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[items2-frequent_routines]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[items3-interests]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[items3-activities]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[items3-frequent_routines]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[items4-interests]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[items4-activities]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[items4-frequent_routines]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[items5-interests]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[items5-activities]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[items5-frequent_routines]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[None-interests]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[None-activities]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_invalid_items_are_rejected_per_type[None-frequent_routines]",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_boundaries_unicode_and_single_profile",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_database_failure_rolls_back_alias_deletion_and_partial_insert",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_profile_persists_across_application_restart",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_only_confirmed_context_is_available",
+      "source": "tests.test_profile",
+      "result": "passed"
+    },
+    {
+      "test": "test_failed_read_is_not_reported_as_first_use",
+      "source": "tests.test_profile",
+      "result": "passed"
+    }
+  ],
+  "passed": 45,
+  "warnings": [
+    "Deprecación de HTTPX con Starlette TestClient; pruebas ejecutadas sin ocultar el aviso."
+  ]
+}

@@ -127,4 +127,4 @@ Las especificaciones completas, prioridades y criterios están en [`use-cases.md
 
 ## 9. Control de cambios
 
-Los cambios de alcance se registran en [`decisions.md`](decisions.md). La línea base documental se versiona antes de implementar; modificaciones posteriores deberán indicar motivo, impacto y fecha.
+Los cambios de alcance se registran en [`decisions.md`](decisions.md). La línea base documental se versiona antes de implementar; modificaciones posteriores deberán indicar motivo, impacto, RF/CU/CA afectados y commit asociado.

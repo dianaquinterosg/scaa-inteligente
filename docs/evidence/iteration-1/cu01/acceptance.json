@@ -1,0 +1,221 @@
+{
+  "iteration": 1,
+  "functionality": "CU01",
+  "base_commit": "db312e3592648a3b620d66b2ea22af018396112e",
+  "implementation_commit": "854180fc0364c40af37dfc85b6e08b8669f943fc",
+  "criteria": [
+    {
+      "criterion": "CA01.1",
+      "description": "Crear perfil con alias válido",
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "backend_tests": [
+        "test_first_use_requires_alias_and_has_no_profile",
+        "test_create_normalize_and_recover_all_context_types"
+      ],
+      "flutter_tests": [
+        "CA01.1/4/6: alias obligatorio normalizado y contexto opcional"
+      ],
+      "live_http_tests": [
+        "I1-LIVE-01-perfil-ausente",
+        "I1-LIVE-02-creacion-normalizada"
+      ],
+      "manual_ipad_acceptance": "Pendiente para CU01"
+    },
+    {
+      "criterion": "CA01.2",
+      "description": "Elementos individuales de los tres tipos",
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "backend_tests": [
+        "test_create_normalize_and_recover_all_context_types"
+      ],
+      "flutter_tests": [
+        "CA01.2/3/6/8: añadir, editar, eliminar y recuperar los tres tipos"
+      ],
+      "live_http_tests": [
+        "I1-LIVE-02-creacion-normalizada"
+      ],
+      "manual_ipad_acceptance": "Pendiente para CU01"
+    },
+    {
+      "criterion": "CA01.3",
+      "description": "Editar y eliminar elementos",
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "backend_tests": [
+        "test_edit_and_delete_individual_items[interests]",
+        "test_edit_and_delete_individual_items[activities]",
+        "test_edit_and_delete_individual_items[frequent_routines]"
+      ],
+      "flutter_tests": [
+        "CA01.3: editar y eliminar interests preserva los otros tipos",
+        "CA01.3: editar y eliminar activities preserva los otros tipos",
+        "CA01.3: editar y eliminar frequent_routines preserva los otros tipos",
+        "CA01.2/3/6/8: añadir, editar, eliminar y recuperar los tres tipos"
+      ],
+      "live_http_tests": [
+        "I1-LIVE-04-edicion-eliminacion"
+      ],
+      "manual_ipad_acceptance": "Pendiente para CU01"
+    },
+    {
+      "criterion": "CA01.4",
+      "description": "Bloquear alias vacío",
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "backend_tests": [
+        "test_first_use_requires_alias_and_has_no_profile",
+        "test_invalid_alias_does_not_replace_saved_profile[]",
+        "test_invalid_alias_does_not_replace_saved_profile[  ]",
+        "test_invalid_alias_does_not_replace_saved_profile[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa]",
+        "test_invalid_alias_does_not_replace_saved_profile[None]",
+        "test_invalid_alias_does_not_replace_saved_profile[123]",
+        "test_invalid_alias_does_not_replace_saved_profile[\\ud800]"
+      ],
+      "flutter_tests": [
+        "CA01.1/4/6: alias obligatorio normalizado y contexto opcional"
+      ],
+      "live_http_tests": [],
+      "manual_ipad_acceptance": "Pendiente para CU01"
+    },
+    {
+      "criterion": "CA01.5",
+      "description": "Rechazar elementos vacíos o duplicados por tipo",
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "backend_tests": [
+        "test_invalid_items_are_rejected_per_type[items0-interests]",
+        "test_invalid_items_are_rejected_per_type[items0-activities]",
+        "test_invalid_items_are_rejected_per_type[items0-frequent_routines]",
+        "test_invalid_items_are_rejected_per_type[items1-interests]",
+        "test_invalid_items_are_rejected_per_type[items1-activities]",
+        "test_invalid_items_are_rejected_per_type[items1-frequent_routines]",
+        "test_invalid_items_are_rejected_per_type[items2-interests]",
+        "test_invalid_items_are_rejected_per_type[items2-activities]",
+        "test_invalid_items_are_rejected_per_type[items2-frequent_routines]",
+        "test_invalid_items_are_rejected_per_type[items3-interests]",
+        "test_invalid_items_are_rejected_per_type[items3-activities]",
+        "test_invalid_items_are_rejected_per_type[items3-frequent_routines]",
+        "test_invalid_items_are_rejected_per_type[items4-interests]",
+        "test_invalid_items_are_rejected_per_type[items4-activities]",
+        "test_invalid_items_are_rejected_per_type[items4-frequent_routines]",
+        "test_invalid_items_are_rejected_per_type[items5-interests]",
+        "test_invalid_items_are_rejected_per_type[items5-activities]",
+        "test_invalid_items_are_rejected_per_type[items5-frequent_routines]",
+        "test_invalid_items_are_rejected_per_type[None-interests]",
+        "test_invalid_items_are_rejected_per_type[None-activities]",
+        "test_invalid_items_are_rejected_per_type[None-frequent_routines]"
+      ],
+      "flutter_tests": [
+        "CA01.5: vacíos y duplicados normalizados en interests",
+        "CA01.5: vacíos y duplicados normalizados en activities",
+        "CA01.5: vacíos y duplicados normalizados en frequent_routines"
+      ],
+      "live_http_tests": [
+        "I1-LIVE-05-rechazo-duplicados",
+        "I1-LIVE-06-estado-confirmado-intacto"
+      ],
+      "manual_ipad_acceptance": "Pendiente para CU01"
+    },
+    {
+      "criterion": "CA01.6",
+      "description": "Normalizar espacios externos",
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "backend_tests": [
+        "test_create_normalize_and_recover_all_context_types"
+      ],
+      "flutter_tests": [
+        "CA01.1/4/6: alias obligatorio normalizado y contexto opcional",
+        "CA01.2/3/6/8: añadir, editar, eliminar y recuperar los tres tipos"
+      ],
+      "live_http_tests": [
+        "I1-LIVE-02-creacion-normalizada"
+      ],
+      "manual_ipad_acceptance": "Pendiente para CU01"
+    },
+    {
+      "criterion": "CA01.7",
+      "description": "Límite de 50 caracteres",
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "backend_tests": [
+        "test_invalid_alias_does_not_replace_saved_profile[]",
+        "test_invalid_alias_does_not_replace_saved_profile[  ]",
+        "test_invalid_alias_does_not_replace_saved_profile[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa]",
+        "test_invalid_alias_does_not_replace_saved_profile[None]",
+        "test_invalid_alias_does_not_replace_saved_profile[123]",
+        "test_invalid_alias_does_not_replace_saved_profile[\\ud800]",
+        "test_invalid_items_are_rejected_per_type[items0-interests]",
+        "test_invalid_items_are_rejected_per_type[items0-activities]",
+        "test_invalid_items_are_rejected_per_type[items0-frequent_routines]",
+        "test_invalid_items_are_rejected_per_type[items1-interests]",
+        "test_invalid_items_are_rejected_per_type[items1-activities]",
+        "test_invalid_items_are_rejected_per_type[items1-frequent_routines]",
+        "test_invalid_items_are_rejected_per_type[items2-interests]",
+        "test_invalid_items_are_rejected_per_type[items2-activities]",
+        "test_invalid_items_are_rejected_per_type[items2-frequent_routines]",
+        "test_invalid_items_are_rejected_per_type[items3-interests]",
+        "test_invalid_items_are_rejected_per_type[items3-activities]",
+        "test_invalid_items_are_rejected_per_type[items3-frequent_routines]",
+        "test_invalid_items_are_rejected_per_type[items4-interests]",
+        "test_invalid_items_are_rejected_per_type[items4-activities]",
+        "test_invalid_items_are_rejected_per_type[items4-frequent_routines]",
+        "test_invalid_items_are_rejected_per_type[items5-interests]",
+        "test_invalid_items_are_rejected_per_type[items5-activities]",
+        "test_invalid_items_are_rejected_per_type[items5-frequent_routines]",
+        "test_invalid_items_are_rejected_per_type[None-interests]",
+        "test_invalid_items_are_rejected_per_type[None-activities]",
+        "test_invalid_items_are_rejected_per_type[None-frequent_routines]",
+        "test_boundaries_unicode_and_single_profile"
+      ],
+      "flutter_tests": [
+        "CA01.7: límite 50 para alias y cada tipo, con Unicode"
+      ],
+      "live_http_tests": [],
+      "manual_ipad_acceptance": "Pendiente para CU01"
+    },
+    {
+      "criterion": "CA01.8",
+      "description": "Persistir y recuperar el perfil",
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "backend_tests": [
+        "test_create_normalize_and_recover_all_context_types",
+        "test_profile_persists_across_application_restart"
+      ],
+      "flutter_tests": [
+        "CA01.2/3/6/8: añadir, editar, eliminar y recuperar los tres tipos"
+      ],
+      "live_http_tests": [
+        "I1-LIVE-03-recuperacion",
+        "I1-LIVE-07-cliente-nuevo"
+      ],
+      "manual_ipad_acceptance": "Pendiente para CU01"
+    },
+    {
+      "criterion": "CA01.9",
+      "description": "Fallo de guardado sin reemplazar datos anteriores",
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "backend_tests": [
+        "test_database_failure_rolls_back_alias_deletion_and_partial_insert"
+      ],
+      "flutter_tests": [
+        "Un fallo de guardado queda visible al editar desde el final del formulario",
+        "CA01.9: fallo conserva borrador y datos confirmados, permite reintentar"
+      ],
+      "live_http_tests": [],
+      "manual_ipad_acceptance": "Pendiente para CU01"
+    },
+    {
+      "criterion": "CA01.10",
+      "description": "Solo contexto confirmado disponible",
+      "result": "Aprobado en las pruebas automáticas indicadas",
+      "backend_tests": [
+        "test_only_confirmed_context_is_available"
+      ],
+      "flutter_tests": [
+        "CA01.9: fallo conserva borrador y datos confirmados, permite reintentar",
+        "CA01.10: cancelar descarta cambios no confirmados"
+      ],
+      "live_http_tests": [
+        "I1-LIVE-05-rechazo-duplicados",
+        "I1-LIVE-06-estado-confirmado-intacto"
+      ],
+      "manual_ipad_acceptance": "Pendiente para CU01"
+    }
+  ]
+}

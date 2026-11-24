@@ -1,6 +1,6 @@
 # Arquitectura del MVP — diseño revisado v0.2
 
-> Documento de diseño, **pendiente de validación técnica**.
+> Diseño v0.2 con implementación parcial de CU01. Los componentes de CU02–CU05 y su integración funcional siguen pendientes. Ver [evidencias por iteración](evidence/README.md).
 
 ## Componentes
 
@@ -25,6 +25,8 @@ flowchart TD
 **Límite offline:** Ollama puede ejecutarse sin Internet en el equipo del backend; ARASAAC necesita Internet. Flutter en iPad físico necesita conectarse por red al backend. Los recursos aprobados almacenados localmente pueden reutilizarse cuando ARASAAC no esté disponible.
 
 ## Responsabilidades
+
+En Iteración 1, `ProfileGate`/`ProfileEditor` y `ProfileApi` implementan el cliente de CU01; FastAPI expone GET/PUT `/api/v1/profile`. `ProfilePayload` concentra la validación del contrato y `ProfileRepository` el guardado atómico en SQLite. Es la realización inicial de las responsabilidades de perfil del diseño; no se añadieron servicios vacíos para representar componentes futuros. Ver [secuencia CU01](diagrams/cu01-sequence.puml).
 
 - **Flutter:** presentación, edición guiada, validaciones de experiencia de usuario, vista previa/confirmación, navegación mínima.
 - **FastAPI:** contratos, validación independiente de frontend, coordinación de operaciones y errores.

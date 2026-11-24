@@ -8,6 +8,7 @@
 
 - **RF:** RF01.1–RF01.3.
 - **Objetivo:** Registrar información mínima para personalización posterior.
+- **Diseño de Iteración 1:** [Secuencia de CU01](diagrams/cu01-sequence.puml), con contrato y evidencias en [Iteración 1](evidence/iteration-1/README.md).
 - **Disparador:** Primer inicio sin perfil o acceso a «Perfil y contexto» desde Inicio.
 - **Precondiciones:** Aplicación y backend disponibles. Primer inicio permite configurar el perfil sin autenticación.
 - **Datos:** Alias obligatorio (1–50 caracteres); intereses, actividades y rutinas frecuentes opcionales, como tags individuales (máx. 50 caracteres por tag).

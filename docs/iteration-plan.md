@@ -1,6 +1,6 @@
 # Plan de iteraciones funcionales — línea base documental v0.2
 
-**Estado:** planificación funcional propuesta para guiar el desarrollo incremental; no acredita ejecución de las iteraciones. La v0.2 es la primera línea base documental publicada en Git.  
+**Estado:** planificación funcional con resultados reales registrados por alcance en la sección 4; las actividades propuestas no se consideran ejecutadas sin evidencia. La v0.2 es la primera línea base documental publicada en Git.
 **Método:** iteraciones funcionales con dependencias técnicas, entregables y criterios de salida, sin fechas ni estimaciones horarias.
 
 Esta organización no reconstruye la cronología del proyecto ni atribuye un calendario a las revisiones locales anteriores. La publicación de la línea base documental no demuestra la ejecución de las actividades de desarrollo y pruebas previstas aquí.
@@ -37,8 +37,8 @@ Los campos se completarán únicamente con hechos y evidencia verificable. Los g
 
 | Iteración | Ejecución real / resultado | Estado (`Logrado/Parcial/No logrado`) | Evidencia (commit, issue, test) | Desviación / causa | RF/CU/CA afectados | Decisión / responsable |
 |---|---|---|---|---|---|---|
-| 0 — Análisis, requisitos y diseño | — | — | — | — | — | — |
-| 1 — CU01: perfil y contexto | — | — | — | — | — | — |
+| 0 — Análisis, requisitos y diseño | Línea base y preparación técnica cerradas funcionalmente por la persona usuaria | Logrado para el cierre técnico autorizado | [Iteración 0](evidence/iteration-0/README.md), `db312e3592648a3b620d66b2ea22af018396112e` | El cierre técnico usa la numeración solicitada sin reconstruir la elaboración local | Preparación previa a CU01–CU03 | Cierre funcional confirmado por la persona usuaria |
+| 1 — CU01: perfil y contexto | Frontend, API, persistencia, validaciones y pruebas automáticas implementados | Parcial en validación: revisión visual pendiente | [Iteración 1](evidence/iteration-1/README.md); árbol local sobre `db312e3592648a3b620d66b2ea22af018396112e` | Aceptación manual del nuevo formulario todavía no ejecutada | RF01.1–RF01.3 / CA01.1–CA01.10 | No iniciar CU02 antes de presentar resultados y pendientes |
 | 2 — CU02: pictogramas y ARASAAC | — | — | — | — | — | — |
 | 3 — CU03: rutinas asistidas por IA | — | — | — | — | — | — |
 | 4 — Integración, pruebas y liberación | — | — | — | — | — | — |

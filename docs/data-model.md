@@ -1,6 +1,6 @@
 # Modelo de datos del MVP — diseño conceptual v0.2
 
-**Estado:** propuesto, no migrado ni probado.
+**Estado:** Profile y ContextItem implementados y probados automáticamente en Iteración 1. Las entidades de pictogramas, categorías y rutinas permanecen propuestas y sin migrar.
 
 ```mermaid
 erDiagram
@@ -87,7 +87,9 @@ erDiagram
 
 ## Pendiente técnico
 
-Seleccionar ORM o SQL directo y herramienta de migración, convenciones de timestamp, normalización/collation y manejo seguro de rutas/archivos. Debe quedar trazado como decisión técnica antes de generar las primeras migraciones.
+CU01 utiliza sqlite3 y migraciones SQL numeradas, registradas mediante PRAGMA user_version (ADR-018). La migración `backend/scaa_backend/migrations/001_profile_context.sql` crea el perfil único y sus elementos de contexto. La clave `value_key` utiliza casefold y un índice único por perfil, tipo y valor normalizado. Las convenciones del resto del modelo y el manejo de archivos se concretarán al implementar los siguientes casos de uso.
+
+El contrato de perfil devuelve solo `id`, `alias`, `interests`, `activities` y `frequent_routines`. Los metadatos operacionales internos de la tabla no se exportan como registros documentales. `ContextItem(type='ROUTINE')` sigue representando contexto declarado; no es una rutina visual de CU03.
 
 ## Escenarios de integridad a verificar
 

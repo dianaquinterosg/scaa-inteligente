@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "tests": [
+    {
+      "id": "I1-LIVE-01-perfil-ausente",
+      "result": "passed"
+    },
+    {
+      "id": "I1-LIVE-02-creacion-normalizada",
+      "result": "passed"
+    },
+    {
+      "id": "I1-LIVE-03-recuperacion",
+      "result": "passed"
+    },
+    {
+      "id": "I1-LIVE-04-edicion-eliminacion",
+      "result": "passed"
+    },
+    {
+      "id": "I1-LIVE-05-rechazo-duplicados",
+      "result": "passed"
+    },
+    {
+      "id": "I1-LIVE-06-estado-confirmado-intacto",
+      "result": "passed"
+    },
+    {
+      "id": "I1-LIVE-07-cliente-nuevo",
+      "result": "passed"
+    }
+  ],
+  "exit_code": 0,
+  "isolation": "Proceso local y directorio temporal; perfil real dev/demo sin modificar",
+  "scope": "Cliente Dart real → API FastAPI → SQLite; interfaz visual separada",
+  "iteration": 1,
+  "functionality": "CU01",
+  "base_commit": "db312e3592648a3b620d66b2ea22af018396112e",
+  "implementation_commit": "854180fc0364c40af37dfc85b6e08b8669f943fc"
+}

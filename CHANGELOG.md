@@ -1,5 +1,12 @@
 # Registro de cambios
 
+## Desarrollo local — Iteración 1, CU01 (sin release)
+
+- Perfil único y contexto: frontend, GET/PUT, validaciones y persistencia atómica con migración SQL.
+- Evidencias automáticas de API, widgets y HTTP real organizadas por criterio; aceptación manual iPad pendiente.
+- Iteración 0 cerrada en un commit local; CU01 se conserva en commits locales por responsabilidad.
+- La identificación documental sigue siendo v0.2; no se declara el MVP completo ni CU02/CU03 implementados.
+
 ## docs-v0.2 — revisión de consistencia, sin implementación
 
 Primera línea base documental publicada en Git, consolidada tras revisiones locales.
