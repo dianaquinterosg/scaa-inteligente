@@ -4,6 +4,8 @@ import 'backend_client.dart';
 import 'design/scaa_components.dart';
 import 'design/scaa_theme.dart';
 import 'profile.dart';
+import 'pictograms/catalog_api.dart';
+import 'pictograms/pictogram_screen.dart';
 
 class ProfileGate extends StatefulWidget {
   const ProfileGate({super.key, required this.store});
@@ -119,17 +121,31 @@ class _ProfileGateState extends State<ProfileGate> {
                 ),
                 const SizedBox(height: ScaaLayout.gap),
               ],
-              Align(
-                alignment: Alignment.centerLeft,
-                child: FilledButton.icon(
-                  key: const ValueKey('edit-profile'),
-                  onPressed: () => setState(() {
-                    _editing = true;
-                    _saved = false;
-                  }),
-                  icon: const Icon(Icons.person_outline),
-                  label: const Text('Perfil y contexto'),
-                ),
+              Wrap(
+                spacing: ScaaLayout.small,
+                runSpacing: ScaaLayout.small,
+                children: [
+                  FilledButton.icon(
+                    key: const ValueKey('edit-profile'),
+                    onPressed: () => setState(() {
+                      _editing = true;
+                      _saved = false;
+                    }),
+                    icon: const Icon(Icons.person_outline),
+                    label: const Text('Perfil y contexto'),
+                  ),
+                  OutlinedButton.icon(
+                    onPressed: () => Navigator.push<void>(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            PictogramScreen(store: CatalogApi()),
+                      ),
+                    ),
+                    icon: const Icon(Icons.collections_outlined),
+                    label: const Text('Pictogramas'),
+                  ),
+                ],
               ),
               const SizedBox(height: ScaaLayout.section),
               LayoutBuilder(

@@ -43,6 +43,7 @@ class BackendClient {
           .bind(response)
           .join()
           .timeout(const Duration(seconds: 5));
+      if (response.statusCode == HttpStatus.noContent) return null;
       final data = jsonDecode(text);
       if (response.statusCode < 200 || response.statusCode >= 300) {
         final detail = data is Map<String, dynamic> ? data['detail'] : null;
