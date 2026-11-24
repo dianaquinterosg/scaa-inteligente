@@ -1,6 +1,7 @@
 """Persistencia del catálogo. Cada registro corresponde a una imagen confirmada."""
 
-from contextlib import suppress
+from contextlib import contextmanager, suppress
+from dataclasses import dataclass
 from io import BytesIO
 import logging
 import os
@@ -41,6 +42,17 @@ def image_format(data: bytes) -> tuple[str, str]:
     except (UnidentifiedImageError, OSError, ValueError, SyntaxError, Image.DecompressionBombError) as error:
         raise CatalogError(422, "Selecciona una imagen válida en formato PNG, JPG o WebP.") from error
     return fmt
+
+
+@dataclass(frozen=True)
+class PreparedImage:
+    data: bytes
+    extension: str
+    media_type: str
+
+    @classmethod
+    def validate(cls, data: bytes):
+        return cls(data, *image_format(data))
 
 
 class Catalog:
@@ -134,42 +146,57 @@ class Catalog:
             [(identifier, category_id) for category_id in category_ids],
         )
 
+    @staticmethod
+    def arasaac_id(connection, external_id):
+        row = connection.execute(
+            "SELECT id FROM pictogram WHERE source='ARASAAC' AND external_id=?", (external_id,),
+        ).fetchone()
+        return row[0] if row else None
+
     def includes_arasaac(self, external_id):
         with self.database.connection() as connection:
-            return connection.execute(
-                "SELECT 1 FROM pictogram WHERE source='ARASAAC' AND external_id=?", (external_id,),
-            ).fetchone() is not None
+            return self.arasaac_id(connection, external_id) is not None
 
-    def create(self, label, category_ids, data, external_id=None):
-        extension, mime_type = image_format(data)
-        source = "ARASAAC" if external_id is not None else "CUSTOM"
-        attribution = ATTRIBUTION if external_id is not None else None
-        basename = f"{uuid4().hex}.{extension}"
-        path = self.directory / basename
-        created = False
+    @contextmanager
+    def write_transaction(self):
+        """Una unidad de trabajo para las escrituras del catálogo y sus archivos."""
+        created = []
         try:
             with self.database.connection() as connection:
-                identifier = connection.execute(
-                    "INSERT INTO pictogram(label,label_key,source,external_id,image_path,media_type,attribution) "
-                    "VALUES (?,?,?,?,?,?,?)",
-                    (label, label.casefold(), source, external_id, basename, mime_type, attribution),
-                ).lastrowid
-                self._assign(connection, identifier, category_ids)
-                self.directory.mkdir(exist_ok=True)
-                with path.open("xb") as image:
-                    created = True
-                    image.write(data)
-                    image.flush()
-                    os.fsync(image.fileno())
-                result = self._view(connection, (identifier, label, source, external_id, attribution))
-            return result
-        except Exception:
-            if created:
+                connection.execute("BEGIN IMMEDIATE")
+                yield connection, created
+        except BaseException:
+            for path in created:
                 try:
                     path.unlink(missing_ok=True)
                 except OSError:
                     logger.exception("No se pudo limpiar una imagen sin registro")
             raise
+
+    def insert(self, connection, created, label, category_ids, image, external_id=None):
+        """Inserta en la unidad de trabajo del llamador, sin confirmar ni hacer I/O remoto."""
+        source = "ARASAAC" if external_id is not None else "CUSTOM"
+        attribution = ATTRIBUTION if external_id is not None else None
+        basename = f"{uuid4().hex}.{image.extension}"
+        identifier = connection.execute(
+            "INSERT INTO pictogram(label,label_key,source,external_id,image_path,media_type,attribution) "
+            "VALUES (?,?,?,?,?,?,?)",
+            (label, label.casefold(), source, external_id, basename, image.media_type, attribution),
+        ).lastrowid
+        self._assign(connection, identifier, category_ids)
+        self.directory.mkdir(exist_ok=True)
+        path = self.directory / basename
+        with path.open("xb") as file:
+            created.append(path)
+            file.write(image.data)
+            file.flush()
+            os.fsync(file.fileno())
+        return self._view(connection, (identifier, label, source, external_id, attribution))
+
+    def create(self, label, category_ids, data, external_id=None):
+        image = PreparedImage.validate(data)
+        with self.write_transaction() as (connection, created):
+            return self.insert(connection, created, label, category_ids, image, external_id)
 
     def update(self, identifier, label, category_ids):
         with self.database.connection() as connection:
