@@ -1,8 +1,8 @@
 # Iteración 1 — pruebas funcionales manuales de CU01
 
-**Estado:** aspecto visual aprobado por la persona usuaria en simulador de iPad. Las pruebas funcionales manuales de la tabla permanecen pendientes. **Commit base:** `db312e3592648a3b620d66b2ea22af018396112e`; implementación funcional `854180f` y visual `bca2e58`.
+**Estado:** aspecto visual aprobado por la persona usuaria en simulador de iPad. La persona usuaria confirmó la ejecución y aprobación de todos los escenarios de la tabla. **Commit base:** `db312e3592648a3b620d66b2ea22af018396112e`; implementación funcional `854180f` y visual `bca2e58`.
 
-La Iteración 0 tiene confirmación visual de conectividad. Esta lista corresponde al nuevo CU01 y no se marca realizada sin su resultado real.
+La aprobación visual de CU01 se registró por separado. La aprobación funcional de la tabla se basa en la confirmación de la persona usuaria.
 
 ## Ejecutar el código actual
 
@@ -27,14 +27,14 @@ Abrir DeviceHub si la ventana no está visible. Un perfil todavía no creado mue
 
 Probar en vertical y horizontal, con teclado abierto y texto ampliado desde los ajustes de accesibilidad. Revisar la lectura de las tarjetas, el ancho del formulario, el desplazamiento y la ubicación de Guardar y Cancelar. Con VoiceOver, comprobar el orden de lectura, los nombres de los controles para eliminar ítems y el anuncio de los avisos. Registrar el resultado por escenario y commit.
 
-| Caso | Resultado esperado | Resultado manual |
+| Caso | Resultado esperado | Estado y resultado reportado |
 |---|---|---|
-| Alias vacío | Guardar bloqueado y mensaje visible | Pendiente |
-| Alias válido sin contexto | Guardar y navegar a Inicio | Pendiente |
-| Elementos de los tres tipos | Añadir, editar y eliminar individualmente | Pendiente |
-| Duplicado por tipo o valor inválido | Rechazo sin sustituir datos confirmados | Pendiente |
-| Cancelar edición posterior | Regresar al perfil confirmado anterior | Pendiente |
-| Reiniciar cliente/backend | Recuperar el perfil y contexto guardados | Pendiente |
-| Backend no disponible | Informar y conservar borrador si estaba en edición | Pendiente |
+| Alias vacío | Guardar bloqueado y mensaje visible | Ejecutado y aprobado |
+| Alias válido sin contexto | Guardar y navegar a Inicio | Ejecutado y aprobado |
+| Elementos de los tres tipos | Añadir, editar y eliminar individualmente | Ejecutado y aprobado |
+| Duplicado por tipo o valor inválido | Rechazo sin sustituir datos confirmados | Ejecutado y aprobado |
+| Cancelar edición posterior | Regresar al perfil confirmado anterior | Ejecutado y aprobado |
+| Reiniciar cliente/backend | Recuperar el perfil y contexto guardados | Ejecutado y aprobado |
+| Backend no disponible | Informar y conservar borrador si estaba en edición | Ejecutado y aprobado |
 
 Usar datos sintéticos para las capturas de verificación. Asociar las evidencias a CU01, CA y commit real. No registrar datos personales innecesarios ni metadatos temporales.

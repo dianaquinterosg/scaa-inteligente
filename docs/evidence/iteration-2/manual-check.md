@@ -19,12 +19,12 @@ flutter run -d A8EF03DC-81E7-4B9A-AD7E-F9E4235468FC --dart-define=API_BASE_URL=h
 
 Desde Inicio, abrir **Pictogramas**. Usar imágenes sintéticas para la evidencia.
 
-| Prueba | Escenario comprobado | Resultado reportado |
+| Prueba | Escenario comprobado | Estado y resultado reportado |
 |---|---|---|
-| I2-IPAD-01 | Buscar «agua», abrir una alternativa de ARASAAC, revisar imagen, etiqueta y atribución, rechazar y comprobar que no queda guardada | Aprobado |
-| I2-IPAD-02 | Abrir de nuevo una alternativa, aprobar y guardar, y recuperarla como resultado local | Aprobado |
-| I2-IPAD-03 | Descargar `vaso-prueba.png` desde Safari, seleccionarlo en Archivos, revisar la vista previa y guardarlo con etiqueta propia | Aprobado |
-| I2-IPAD-04 | Crear «Higiene», asignarla a un pictograma, filtrar y eliminar la categoría conservando el pictograma | Aprobado |
-| I2-IPAD-05 | Revisar la lectura de tarjetas y el acceso a botones en vertical y horizontal | Aprobado |
+| I2-IPAD-01 | Buscar «agua», abrir una alternativa de ARASAAC, revisar imagen, etiqueta y atribución, rechazar y comprobar que no queda guardada | Ejecutado y aprobado |
+| I2-IPAD-02 | Abrir de nuevo una alternativa, aprobar y guardar, y recuperarla como resultado local | Ejecutado y aprobado |
+| I2-IPAD-03 | Descargar `vaso-prueba.png` desde Safari, seleccionarlo en Archivos, revisar la vista previa y guardarlo con etiqueta propia | Ejecutado y aprobado |
+| I2-IPAD-04 | Crear «Higiene», asignarla a un pictograma, filtrar y eliminar la categoría conservando el pictograma | Ejecutado y aprobado |
+| I2-IPAD-05 | Revisar la lectura de tarjetas y el acceso a botones en vertical y horizontal | Ejecutado y aprobado |
 
 La confirmación corresponde a ese recorrido. JPG/WebP, renombrado, validaciones negativas, recuperación tras reinicio y dependencias SQLite se comprobaron en las pruebas automáticas indicadas en los [resultados](results.md). La verificación de una dependencia con una rutina real queda para CU03.
