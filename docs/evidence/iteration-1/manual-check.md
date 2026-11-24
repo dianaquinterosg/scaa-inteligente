@@ -1,6 +1,6 @@
 # Iteración 1 — aceptación manual pendiente de CU01
 
-**Estado:** pendiente. **Commit base:** `db312e3592648a3b620d66b2ea22af018396112e`; implementación funcional en `854180f`.
+**Estado:** pendiente. **Commit base:** `db312e3592648a3b620d66b2ea22af018396112e`; implementación funcional `854180f` y visual `bca2e58`.
 
 La Iteración 0 tiene confirmación visual de conectividad. Esta lista corresponde al nuevo CU01 y no se marca realizada sin su resultado real.
 
@@ -24,6 +24,8 @@ flutter run -d A8EF03DC-81E7-4B9A-AD7E-F9E4235468FC --dart-define=API_BASE_URL=h
 Abrir DeviceHub si la ventana no está visible. Un perfil todavía no creado muestra «Configurar perfil»; uno guardado muestra Inicio.
 
 ## Escenarios a registrar
+
+Probar en vertical y horizontal, con teclado abierto y texto ampliado desde los ajustes de accesibilidad. Revisar la lectura de las tarjetas, el ancho del formulario, el desplazamiento y la ubicación de Guardar y Cancelar. Con VoiceOver, comprobar el orden de lectura, los nombres de los controles para eliminar ítems y el anuncio de los avisos. Registrar el resultado por escenario y commit.
 
 | Caso | Resultado esperado | Resultado manual |
 |---|---|---|

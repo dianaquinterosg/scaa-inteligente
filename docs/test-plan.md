@@ -51,7 +51,7 @@ El entregable de control debe incluir: SHA de commit, tag (por ejemplo `v0.6.0-m
 | Iteración / funcionalidad | Commit asociado | Pruebas y resultado | Evidencia | Pendiente |
 |---|---|---|---|---|
 | 0 — preparación técnica | `db312e3592648a3b620d66b2ea22af018396112e` | 6 backend, 2 Flutter y sondas reales aprobadas; iPad confirmado por la persona usuaria | [Cierre](evidence/iteration-0/README.md) | Limitaciones del modelo provisional |
-| 1 — CU01 | Implementación en árbol local sobre el commit de Iteración 0 | 45 backend, 15 Flutter, 7 escenarios HTTP reales aprobados; análisis sin incidencias | [Resultados](evidence/iteration-1/results.md) | Aceptación manual en iPad; commit de CU01 pendiente |
+| 1 — CU01 | Implementación funcional `854180f` y adaptación visual `bca2e58` | 45 backend, 17 Flutter y 7 escenarios HTTP reales aprobados. Análisis sin incidencias | [Regresión visual](evidence/iteration-1/visual.md) | Aceptación manual en iPad |
 
 Los registros documentales excluyen metadatos temporales. Los resultados se asocian al alcance y al código real, sin atribuir un commit inexistente.
 

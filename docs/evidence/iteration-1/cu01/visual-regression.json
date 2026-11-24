@@ -1,0 +1,373 @@
+{
+  "iteration": 1,
+  "functionality": "CU01",
+  "commit": "bca2e58",
+  "flutter": {
+    "command": "flutter test --machine",
+    "working_directory": "frontend",
+    "exit_code": 0,
+    "passed": 17,
+    "tests": [
+      {
+        "test": "Muestra carga y confirma la conexión",
+        "result": "passed"
+      },
+      {
+        "test": "Un fallo permite reintentar y recuperar la conexión",
+        "result": "passed"
+      },
+      {
+        "test": "CU01: tablet 820 px y texto ampliado",
+        "result": "passed"
+      },
+      {
+        "test": "CU01: tablet 1180 px y texto ampliado",
+        "result": "passed"
+      },
+      {
+        "test": "Un fallo de guardado queda visible al editar desde el final del formulario",
+        "result": "passed"
+      },
+      {
+        "test": "CA01.3: editar y eliminar interests preserva los otros tipos",
+        "result": "passed"
+      },
+      {
+        "test": "CA01.3: editar y eliminar activities preserva los otros tipos",
+        "result": "passed"
+      },
+      {
+        "test": "CA01.3: editar y eliminar frequent_routines preserva los otros tipos",
+        "result": "passed"
+      },
+      {
+        "test": "CA01.1/4/6: alias obligatorio normalizado y contexto opcional",
+        "result": "passed"
+      },
+      {
+        "test": "CA01.2/3/6/8: añadir, editar, eliminar y recuperar los tres tipos",
+        "result": "passed"
+      },
+      {
+        "test": "CA01.5: vacíos y duplicados normalizados en interests",
+        "result": "passed"
+      },
+      {
+        "test": "CA01.5: vacíos y duplicados normalizados en activities",
+        "result": "passed"
+      },
+      {
+        "test": "CA01.5: vacíos y duplicados normalizados en frequent_routines",
+        "result": "passed"
+      },
+      {
+        "test": "CA01.7: límite 50 para alias y cada tipo, con Unicode",
+        "result": "passed"
+      },
+      {
+        "test": "CA01.9: fallo conserva borrador y datos confirmados, permite reintentar",
+        "result": "passed"
+      },
+      {
+        "test": "CA01.10: cancelar descarta cambios no confirmados",
+        "result": "passed"
+      },
+      {
+        "test": "Un fallo de lectura no permite confundirlo con primer uso",
+        "result": "passed"
+      }
+    ]
+  },
+  "backend": {
+    "command": "../.venv/bin/python -m pytest -q",
+    "working_directory": "backend",
+    "exit_code": 0,
+    "passed": 45,
+    "warning": "Deprecación de HTTPX con Starlette TestClient",
+    "tests": [
+      {
+        "test": "test_health_initializes_profile_schema",
+        "result": "passed"
+      },
+      {
+        "test": "test_database_transactions_and_foreign_keys",
+        "result": "passed"
+      },
+      {
+        "test": "test_environments_use_different_database_files",
+        "result": "passed"
+      },
+      {
+        "test": "test_initialize_preserves_existing_schema_version",
+        "result": "passed"
+      },
+      {
+        "test": "test_settings_read_and_validate_environment",
+        "result": "passed"
+      },
+      {
+        "test": "test_health_does_not_expose_storage_paths",
+        "result": "passed"
+      },
+      {
+        "test": "test_failed_migration_is_atomic",
+        "result": "passed"
+      },
+      {
+        "test": "test_newer_schema_is_not_downgraded",
+        "result": "passed"
+      },
+      {
+        "test": "test_first_use_requires_alias_and_has_no_profile",
+        "result": "passed"
+      },
+      {
+        "test": "test_create_normalize_and_recover_all_context_types",
+        "result": "passed"
+      },
+      {
+        "test": "test_edit_and_delete_individual_items[interests]",
+        "result": "passed"
+      },
+      {
+        "test": "test_edit_and_delete_individual_items[activities]",
+        "result": "passed"
+      },
+      {
+        "test": "test_edit_and_delete_individual_items[frequent_routines]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_alias_does_not_replace_saved_profile[]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_alias_does_not_replace_saved_profile[  ]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_alias_does_not_replace_saved_profile[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_alias_does_not_replace_saved_profile[None]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_alias_does_not_replace_saved_profile[123]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_alias_does_not_replace_saved_profile[\\ud800]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[items0-interests]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[items0-activities]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[items0-frequent_routines]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[items1-interests]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[items1-activities]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[items1-frequent_routines]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[items2-interests]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[items2-activities]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[items2-frequent_routines]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[items3-interests]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[items3-activities]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[items3-frequent_routines]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[items4-interests]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[items4-activities]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[items4-frequent_routines]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[items5-interests]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[items5-activities]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[items5-frequent_routines]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[None-interests]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[None-activities]",
+        "result": "passed"
+      },
+      {
+        "test": "test_invalid_items_are_rejected_per_type[None-frequent_routines]",
+        "result": "passed"
+      },
+      {
+        "test": "test_boundaries_unicode_and_single_profile",
+        "result": "passed"
+      },
+      {
+        "test": "test_database_failure_rolls_back_alias_deletion_and_partial_insert",
+        "result": "passed"
+      },
+      {
+        "test": "test_profile_persists_across_application_restart",
+        "result": "passed"
+      },
+      {
+        "test": "test_only_confirmed_context_is_available",
+        "result": "passed"
+      },
+      {
+        "test": "test_failed_read_is_not_reported_as_first_use",
+        "result": "passed"
+      }
+    ]
+  },
+  "http": {
+    "command": ".venv/bin/python backend/scripts/run_profile_probe.py --output work/cu01-visual/reproduccion.json",
+    "working_directory": "raíz",
+    "passed": 7,
+    "status": "passed",
+    "tests": [
+      {
+        "id": "I1-LIVE-01-perfil-ausente",
+        "result": "passed"
+      },
+      {
+        "id": "I1-LIVE-02-creacion-normalizada",
+        "result": "passed"
+      },
+      {
+        "id": "I1-LIVE-03-recuperacion",
+        "result": "passed"
+      },
+      {
+        "id": "I1-LIVE-04-edicion-eliminacion",
+        "result": "passed"
+      },
+      {
+        "id": "I1-LIVE-05-rechazo-duplicados",
+        "result": "passed"
+      },
+      {
+        "id": "I1-LIVE-06-estado-confirmado-intacto",
+        "result": "passed"
+      },
+      {
+        "id": "I1-LIVE-07-cliente-nuevo",
+        "result": "passed"
+      }
+    ],
+    "exit_code": 0,
+    "isolation": "Proceso local y directorio temporal; perfil real dev/demo sin modificar",
+    "scope": "Cliente Dart real → API FastAPI → SQLite; interfaz visual separada"
+  },
+  "analyze": {
+    "command": "flutter analyze",
+    "working_directory": "frontend",
+    "exit_code": 0,
+    "result": "Sin incidencias"
+  },
+  "palette_contrast_ratios": {
+    "cabecera": 6.77,
+    "guardar": 6.44,
+    "panel informativo": 11.45,
+    "panel de confirmación": 10.35
+  },
+  "criteria": [
+    {
+      "criterion": "CA01.1",
+      "result": "passed",
+      "manual_ipad": "pending"
+    },
+    {
+      "criterion": "CA01.2",
+      "result": "passed",
+      "manual_ipad": "pending"
+    },
+    {
+      "criterion": "CA01.3",
+      "result": "passed",
+      "manual_ipad": "pending"
+    },
+    {
+      "criterion": "CA01.4",
+      "result": "passed",
+      "manual_ipad": "pending"
+    },
+    {
+      "criterion": "CA01.5",
+      "result": "passed",
+      "manual_ipad": "pending"
+    },
+    {
+      "criterion": "CA01.6",
+      "result": "passed",
+      "manual_ipad": "pending"
+    },
+    {
+      "criterion": "CA01.7",
+      "result": "passed",
+      "manual_ipad": "pending"
+    },
+    {
+      "criterion": "CA01.8",
+      "result": "passed",
+      "manual_ipad": "pending"
+    },
+    {
+      "criterion": "CA01.9",
+      "result": "passed",
+      "manual_ipad": "pending"
+    },
+    {
+      "criterion": "CA01.10",
+      "result": "passed",
+      "manual_ipad": "pending"
+    }
+  ]
+}

@@ -43,3 +43,5 @@ Las asociaciones concretas entre criterio y nombre de prueba están en [acceptan
 Reiniciar el backend dev y realizar hot restart del cliente iPad para revisar manualmente primer uso, edición, cancelación y persistencia de CU01. La confirmación visual de Iteración 0 corresponde a la pantalla de salud anterior, no a este formulario. No se recibió captura ni confirmación visual de CU01.
 
 El consumo del perfil confirmado por la personalización IA será probado al integrar CU03. No se midieron indicadores académicos, no se ejecutó el recorrido T16 y no se avanzó a CU02. La implementación de CU01 está versionada localmente.
+
+La [regresión del incremento visual](visual.md) conserva por separado los resultados de las pruebas sobre `bca2e58`, incluida la comprobación de los enlaces entre criterios y pruebas.

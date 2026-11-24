@@ -54,3 +54,5 @@ Por cada subrequisito implementado, registrar **ruta y símbolo reales** (`archi
 - **OE4:** tareas completadas sin asistencia ≥80 % con evaluación de usabilidad.
 
 Estos umbrales son **metas, no resultados**. No afirmar mejora cuantitativa sin protocolo, muestra y evidencia.
+
+Para RF01.1–RF01.3 / CA01.1–CA01.10, la [regresión de CU01 con el diseño SCAA](evidence/iteration-1/visual.md) vincula el tema `6eb2d40` y las pantallas `bca2e58` con los mismos casos de aceptación. La validación visual en iPad y el consumo del contexto por CU03 siguen pendientes.

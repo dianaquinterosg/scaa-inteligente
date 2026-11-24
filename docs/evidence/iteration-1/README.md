@@ -24,6 +24,8 @@ CU02 y CU03 no se implementaron ni se iniciaron. El acceso a contexto confirmado
 - [Diseño y contratos para AINC421](design.md).
 - [Planificado frente a implementado y evidencias para AINC422](results.md).
 - [Comprobación manual pendiente](manual-check.md).
-- [Código entregado](cu01/source-snapshot.json): hashes de los archivos, asociados al árbol de trabajo, sin atribuirles un commit inexistente.
+- [Código entregado](cu01/source-snapshot.json): hashes de la base funcional `854180f`.
+
+El [incremento visual y su regresión](visual.md) están asociados a `44a420c`, `6eb2d40` y `bca2e58`.
 
 Los registros documentales omiten metadatos temporales. Los datos de las pruebas son sintéticos y las bases de prueba se aislaron del perfil dev/demo.

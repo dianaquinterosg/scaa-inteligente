@@ -58,3 +58,5 @@ Ver [evidencias de CU01](docs/evidence/iteration-1/README.md) y [guía de ejecuc
 - **P2:** funcionalidades explícitamente posteriores al 60 %, entre ellas generación de imágenes por IA, CU04, CU05 integral y voz.
 
 La matriz de prioridad y aceptación está en [casos de uso](docs/use-cases.md) y el [plan de iteraciones](docs/iteration-plan.md). **P0 no es sinónimo de 60 % aprobado**: la cobertura final se calcula a partir de evidencia y rubricación académica.
+
+La [referencia visual SCAA](docs/design/README.md) documenta los mockups y su adaptación a CU01 en tablet.

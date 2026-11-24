@@ -17,3 +17,5 @@ Las acciones tienen etiquetas en español. El control compacto de eliminar tiene
 Los flujos de pictogramas y rutinas guiarán CU02 y CU03 según el SRS. Los controles de voz, generación de imágenes y recomendaciones representados en la lámina quedan sujetos al alcance y prioridades del MVP. La confirmación visual en iPad permanece pendiente.
 
 Los cambios se versionan por responsabilidad con Conventional Commits. Las pruebas unitarias y de widgets acompañan a la unidad que validan. Las pruebas de sistema, la evidencia y los incrementos visuales se registran por separado cuando constituyen unidades independientes.
+
+El sistema de diseño está en `frontend/lib/design/`. `ScaaTheme` y `ScaaLayout` centralizan la paleta, tipografía, tamaños y espaciado. `ScaaWidth`, `ScaaSection`, `ScaaNotice` y `ScaaConfirmButton` aplican los patrones compartidos. La [evidencia de CU01](../evidence/iteration-1/visual.md) identifica los commits y las comprobaciones realizadas.
