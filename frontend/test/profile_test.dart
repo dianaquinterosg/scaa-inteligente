@@ -51,6 +51,42 @@ Future<void> add(
 }
 
 void main() {
+  for (final size in [const Size(820, 1180), const Size(1180, 820)]) {
+    testWidgets('CU01: tablet ${size.width.toInt()} px y texto ampliado', (
+      tester,
+    ) async {
+      final store = FakeStore(
+        ProfileData(alias: 'ñ' * 50, interests: ['Música']),
+      );
+      await tester.binding.setSurfaceSize(size);
+      tester.platformDispatcher.textScaleFactorTestValue = 2;
+      addTearDown(() {
+        tester.platformDispatcher.clearTextScaleFactorTestValue();
+        return tester.binding.setSurfaceSize(null);
+      });
+      await tester.pumpWidget(ScaaApp(profileStore: store));
+      await tester.pumpAndSettle();
+      expect(tester.takeException(), isNull);
+      await tester.tap(find.byKey(const ValueKey('edit-profile')));
+      await tester.pumpAndSettle();
+      final form = find.byType(Form);
+      expect(tester.getSize(form).width, lessThanOrEqualTo(760));
+      final remove = find.byTooltip('Eliminar interés 1');
+      await tester.scrollUntilVisible(
+        remove,
+        180,
+        scrollable: find
+            .descendant(of: form, matching: find.byType(Scrollable))
+            .first,
+      );
+      expect(tester.getSize(remove).shortestSide, greaterThanOrEqualTo(48));
+      expect(tester.takeException(), isNull);
+      await tester.tap(find.text('Cancelar'));
+      await tester.pumpAndSettle();
+      expect(store.saves, 0);
+      expect(find.text('Música'), findsOneWidget);
+    });
+  }
   testWidgets(
     'Un fallo de guardado queda visible al editar desde el final del formulario',
     (tester) async {

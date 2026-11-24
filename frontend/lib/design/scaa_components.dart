@@ -7,13 +7,16 @@ class ScaaWidth extends StatelessWidget {
     super.key,
     required this.child,
     this.maxWidth = ScaaLayout.formWidth,
+    this.shrinkHeight = false,
   });
   final Widget child;
   final double maxWidth;
+  final bool shrinkHeight;
 
   @override
   Widget build(BuildContext context) => Align(
     alignment: Alignment.topCenter,
+    heightFactor: shrinkHeight ? 1 : null,
     child: ConstrainedBox(
       constraints: BoxConstraints(maxWidth: maxWidth),
       child: child,

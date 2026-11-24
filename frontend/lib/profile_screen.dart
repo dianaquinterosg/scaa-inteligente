@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'backend_client.dart';
+import 'design/scaa_components.dart';
+import 'design/scaa_theme.dart';
 import 'profile.dart';
 
 class ProfileGate extends StatefulWidget {
@@ -52,20 +54,30 @@ class _ProfileGateState extends State<ProfileGate> {
     if (_loading || _failed) {
       return Scaffold(
         appBar: AppBar(title: const Text('SCAA Inteligente')),
-        body: Center(
-          child: _loading
-              ? const CircularProgressIndicator()
-              : Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Text('No pudimos cargar tu perfil.'),
-                    const SizedBox(height: 16),
-                    FilledButton(
-                      onPressed: _load,
-                      child: const Text('Reintentar'),
-                    ),
-                  ],
-                ),
+        body: SafeArea(
+          child: ScaaWidth(
+            child: ListView(
+              padding: const EdgeInsets.all(ScaaLayout.section),
+              children: [
+                if (_loading) ...[
+                  const ScaaNotice('Cargando tu perfil…'),
+                  const SizedBox(height: ScaaLayout.gap),
+                  const LinearProgressIndicator(),
+                ] else ...[
+                  const ScaaNotice(
+                    'No pudimos cargar tu perfil.',
+                    kind: ScaaNoticeKind.error,
+                  ),
+                  const SizedBox(height: ScaaLayout.gap),
+                  FilledButton.icon(
+                    onPressed: _load,
+                    icon: const Icon(Icons.refresh),
+                    label: const Text('Reintentar'),
+                  ),
+                ],
+              ],
+            ),
+          ),
         ),
       );
     }
@@ -88,65 +100,70 @@ class _ProfileGateState extends State<ProfileGate> {
     }
     final profile = _profile!;
     return Scaffold(
-      appBar: AppBar(title: const Text('Inicio')),
-      body: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 760),
+      appBar: AppBar(title: const Text('SCAA · Inicio')),
+      body: SafeArea(
+        child: ScaaWidth(
+          maxWidth: ScaaLayout.contentWidth,
           child: ListView(
-            padding: const EdgeInsets.all(24),
+            padding: const EdgeInsets.all(ScaaLayout.section),
             children: [
               Text(
                 'Hola, ${profile.alias}',
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
-              if (_saved)
-                const Padding(
-                  padding: EdgeInsets.only(top: 16),
-                  child: Text('Perfil guardado'),
+              const SizedBox(height: ScaaLayout.gap),
+              if (_saved) ...[
+                const ScaaNotice(
+                  'Perfil guardado',
+                  kind: ScaaNoticeKind.success,
                 ),
-              const SizedBox(height: 24),
-              FilledButton.icon(
-                key: const ValueKey('edit-profile'),
-                onPressed: () => setState(() {
-                  _editing = true;
-                  _saved = false;
-                }),
-                icon: const Icon(Icons.person_outline),
-                label: const Text('Perfil y contexto'),
+                const SizedBox(height: ScaaLayout.gap),
+              ],
+              Align(
+                alignment: Alignment.centerLeft,
+                child: FilledButton.icon(
+                  key: const ValueKey('edit-profile'),
+                  onPressed: () => setState(() {
+                    _editing = true;
+                    _saved = false;
+                  }),
+                  icon: const Icon(Icons.person_outline),
+                  label: const Text('Perfil y contexto'),
+                ),
               ),
-              const SizedBox(height: 24),
-              for (final kind in ContextKind.values)
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          kind.title,
-                          style: Theme.of(context).textTheme.titleLarge,
-                        ),
-                        const SizedBox(height: 12),
-                        if (profile.values(kind).isEmpty)
-                          const Text('Sin elementos registrados')
-                        else
-                          Wrap(
-                            spacing: 8,
-                            runSpacing: 8,
-                            children: [
-                              for (final value in profile.values(kind))
-                                Chip(
-                                  label: Text(
-                                    value,
-                                    overflow: TextOverflow.ellipsis,
+              const SizedBox(height: ScaaLayout.section),
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  final width = constraints.maxWidth;
+                  final cardWidth = width >= ScaaLayout.twoColumns
+                      ? (width - ScaaLayout.gap) / 2
+                      : width;
+                  return Wrap(
+                    spacing: ScaaLayout.gap,
+                    runSpacing: ScaaLayout.gap,
+                    children: [
+                      for (final kind in ContextKind.values)
+                        SizedBox(
+                          width: cardWidth,
+                          child: ScaaSection(
+                            title: kind.title,
+                            icon: _contextIcon(kind),
+                            child: profile.values(kind).isEmpty
+                                ? const Text('Sin elementos registrados')
+                                : Wrap(
+                                    spacing: ScaaLayout.small,
+                                    runSpacing: ScaaLayout.small,
+                                    children: [
+                                      for (final value in profile.values(kind))
+                                        Chip(label: Text(value)),
+                                    ],
                                   ),
-                                ),
-                            ],
                           ),
-                      ],
-                    ),
-                  ),
-                ),
+                        ),
+                    ],
+                  );
+                },
+              ),
             ],
           ),
         ),
@@ -154,6 +171,12 @@ class _ProfileGateState extends State<ProfileGate> {
     );
   }
 }
+
+IconData _contextIcon(ContextKind kind) => switch (kind) {
+  ContextKind.interest => Icons.favorite_outline,
+  ContextKind.activity => Icons.directions_walk_outlined,
+  ContextKind.routine => Icons.event_repeat_outlined,
+};
 
 class ProfileEditor extends StatefulWidget {
   const ProfileEditor({
@@ -296,142 +319,142 @@ class _ProfileEditorState extends State<ProfileEditor> {
                 icon: const Icon(Icons.arrow_back),
               ),
       ),
-      body: Center(
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 760),
+      body: SafeArea(
+        bottom: false,
+        child: ScaaWidth(
           child: Form(
             key: _form,
             child: ListView(
               controller: _scroll,
-              padding: const EdgeInsets.all(24),
+              padding: const EdgeInsets.all(ScaaLayout.section),
               children: [
-                Text(
-                  widget.initial == null
-                      ? 'Un alias es suficiente para comenzar.'
-                      : 'Edita tu perfil y contexto.',
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                const SizedBox(height: 20),
-                if (_error != null)
+                if (_error == null)
+                  const SizedBox.shrink()
+                else
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 16),
-                    child: Semantics(
-                      liveRegion: true,
-                      child: Text(
-                        _error!,
-                        key: const ValueKey('save-error'),
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.error,
-                        ),
-                      ),
+                    padding: const EdgeInsets.only(bottom: ScaaLayout.gap),
+                    child: ScaaNotice(
+                      _error!,
+                      key: const ValueKey('save-error'),
+                      kind: ScaaNoticeKind.error,
                     ),
                   ),
-                TextFormField(
-                  key: const ValueKey('alias'),
-                  controller: _alias,
-                  enabled: !_saving,
-                  decoration: const InputDecoration(
-                    labelText: 'Alias',
-                    helperText: 'Obligatorio · de 1 a 50 caracteres',
-                    border: OutlineInputBorder(),
+                if (widget.initial == null) ...[
+                  const ScaaNotice('Un alias es suficiente para comenzar.'),
+                  const SizedBox(height: ScaaLayout.gap),
+                ],
+                ScaaSection(
+                  title: 'Datos del perfil',
+                  icon: Icons.person_outline,
+                  child: TextFormField(
+                    key: const ValueKey('alias'),
+                    controller: _alias,
+                    enabled: !_saving,
+                    decoration: const InputDecoration(
+                      labelText: 'Alias',
+                      helperText: 'Obligatorio · de 1 a 50 caracteres',
+                    ),
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    validator: (value) => _validate(value),
                   ),
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  validator: (value) => _validate(value),
                 ),
-                const SizedBox(height: 24),
-                for (final kind in ContextKind.values)
-                  Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Text(
-                            kind.title,
-                            style: Theme.of(context).textTheme.titleLarge,
-                          ),
-                          const Text(
-                            'Opcional · hasta 50 caracteres por elemento',
-                          ),
-                          for (var i = 0; i < _items[kind]!.length; i++)
-                            Padding(
-                              key: ObjectKey(_items[kind]![i]),
-                              padding: const EdgeInsets.only(top: 16),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: TextFormField(
-                                      key: ValueKey('${kind.field}-$i'),
+                for (final kind in ContextKind.values) ...[
+                  const SizedBox(height: ScaaLayout.gap),
+                  ScaaSection(
+                    title: kind.title,
+                    icon: _contextIcon(kind),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        const Text(
+                          'Opcional · hasta 50 caracteres por elemento',
+                        ),
+                        for (var i = 0; i < _items[kind]!.length; i++)
+                          Padding(
+                            key: ObjectKey(_items[kind]![i]),
+                            padding: const EdgeInsets.only(top: ScaaLayout.gap),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: TextFormField(
+                                    key: ValueKey('${kind.field}-$i'),
+                                    controller: _items[kind]![i],
+                                    enabled: !_saving,
+                                    decoration: InputDecoration(
+                                      labelText: '${kind.itemLabel} ${i + 1}',
+                                    ),
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    validator: (value) => _validate(
+                                      value,
+                                      kind: kind,
                                       controller: _items[kind]![i],
-                                      enabled: !_saving,
-                                      decoration: InputDecoration(
-                                        labelText: '${kind.itemLabel} ${i + 1}',
-                                        border: const OutlineInputBorder(),
-                                      ),
-                                      autovalidateMode:
-                                          AutovalidateMode.onUserInteraction,
-                                      validator: (value) => _validate(
-                                        value,
-                                        kind: kind,
-                                        controller: _items[kind]![i],
-                                      ),
                                     ),
                                   ),
-                                  IconButton(
-                                    key: ValueKey('remove-${kind.field}-$i'),
-                                    tooltip:
-                                        'Eliminar ${kind.itemLabel} ${i + 1}',
-                                    onPressed: _saving
-                                        ? null
-                                        : () => setState(() {
-                                            _items[kind]!.removeAt(i).dispose();
-                                          }),
-                                    icon: const Icon(Icons.delete_outline),
-                                  ),
-                                ],
-                              ),
+                                ),
+                                IconButton(
+                                  key: ValueKey('remove-${kind.field}-$i'),
+                                  tooltip:
+                                      'Eliminar ${kind.itemLabel} ${i + 1}',
+                                  onPressed: _saving
+                                      ? null
+                                      : () => setState(() {
+                                          _items[kind]!.removeAt(i).dispose();
+                                        }),
+                                  color: Theme.of(context).colorScheme.error,
+                                  icon: const Icon(Icons.delete_outline),
+                                ),
+                              ],
                             ),
-                          const SizedBox(height: 12),
-                          OutlinedButton.icon(
-                            key: ValueKey('add-${kind.field}'),
-                            onPressed: _saving
-                                ? null
-                                : () => setState(() {
-                                    _items[kind]!.add(TextEditingController());
-                                  }),
-                            icon: const Icon(Icons.add),
-                            label: Text('Añadir ${kind.itemLabel}'),
                           ),
-                        ],
-                      ),
+                        const SizedBox(height: ScaaLayout.small),
+                        OutlinedButton.icon(
+                          key: ValueKey('add-${kind.field}'),
+                          onPressed: _saving
+                              ? null
+                              : () => setState(() {
+                                  _items[kind]!.add(TextEditingController());
+                                }),
+                          icon: const Icon(Icons.add),
+                          label: Text('Añadir ${kind.itemLabel}'),
+                        ),
+                      ],
                     ),
                   ),
+                ],
               ],
             ),
           ),
         ),
       ),
-      bottomNavigationBar: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            children: [
-              if (widget.onCancel != null) ...[
-                OutlinedButton(
-                  onPressed: _saving ? null : widget.onCancel,
-                  child: const Text('Cancelar'),
-                ),
-                const SizedBox(width: 16),
-              ],
-              Expanded(
-                child: FilledButton(
-                  key: const ValueKey('save-profile'),
-                  onPressed: _saving ? null : _save,
-                  child: Text(_saving ? 'Guardando…' : 'Guardar'),
-                ),
+      bottomNavigationBar: Material(
+        color: Theme.of(context).colorScheme.surface,
+        elevation: 2,
+        child: SafeArea(
+          child: ScaaWidth(
+            shrinkHeight: true,
+            child: Padding(
+              padding: const EdgeInsets.all(ScaaLayout.gap),
+              child: OverflowBar(
+                alignment: MainAxisAlignment.end,
+                overflowAlignment: OverflowBarAlignment.end,
+                spacing: ScaaLayout.small,
+                overflowSpacing: ScaaLayout.small,
+                children: [
+                  if (widget.onCancel != null)
+                    OutlinedButton(
+                      onPressed: _saving ? null : widget.onCancel,
+                      child: const Text('Cancelar'),
+                    ),
+                  ScaaConfirmButton(
+                    key: const ValueKey('save-profile'),
+                    onPressed: _saving ? null : _save,
+                    label: _saving ? 'Guardando…' : 'Guardar',
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
