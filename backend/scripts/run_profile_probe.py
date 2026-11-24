@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[2]
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--flow", choices=("profile", "catalog"), default="profile")
+    parser.add_argument("--flow", choices=("profile", "catalog", "routine"), default="profile")
     args = parser.parse_args()
     if args.output.exists():
         parser.error("Elige una ruta nueva; no se sobrescribe evidencia")
@@ -47,7 +47,7 @@ def main() -> int:
                 else:
                     raise RuntimeError("El backend de prueba no respondió")
                 probe = subprocess.run(["dart", "run", f"tool/check_{args.flow}.dart", base],
-                                       cwd=ROOT / "frontend", capture_output=True, text=True, timeout=60)
+                                       cwd=ROOT / "frontend", capture_output=True, text=True, timeout=540 if args.flow == "routine" else 60)
                 if probe.returncode != 0:
                     lines = probe.stderr.strip().splitlines()
                     raise RuntimeError(next((line for line in lines if line.startswith("Bad state:")), "La sonda Dart falló"))
