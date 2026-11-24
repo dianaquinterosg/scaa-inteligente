@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'design/scaa_theme.dart';
 import 'profile.dart';
 import 'profile_screen.dart';
 
@@ -15,11 +16,7 @@ class ScaaApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
     title: 'SCAA Inteligente',
     debugShowCheckedModeBanner: false,
-    theme: ThemeData(
-      colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF246A73)),
-      scaffoldBackgroundColor: const Color(0xFFF4F7F7),
-      useMaterial3: true,
-    ),
+    theme: ScaaTheme.light,
     home: checkConnection == null
         ? ProfileGate(store: profileStore ?? ProfileApi())
         : ConnectionScreen(check: checkConnection!),
