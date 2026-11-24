@@ -7,6 +7,9 @@ import 'profile.dart';
 import 'pictograms/catalog_api.dart';
 import 'pictograms/pictogram_screen.dart';
 
+import 'routines/routine_api.dart';
+import 'routines/routines_screen.dart';
+
 class ProfileGate extends StatefulWidget {
   const ProfileGate({super.key, required this.store});
   final ProfileStore store;
@@ -144,6 +147,19 @@ class _ProfileGateState extends State<ProfileGate> {
                     ),
                     icon: const Icon(Icons.collections_outlined),
                     label: const Text('Pictogramas'),
+                  ),
+                  OutlinedButton.icon(
+                    onPressed: () => Navigator.push<void>(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => RoutinesScreen(
+                          store: RoutineApi(),
+                          catalog: CatalogApi(),
+                        ),
+                      ),
+                    ),
+                    icon: const Icon(Icons.event_note_outlined),
+                    label: const Text('Rutinas'),
                   ),
                 ],
               ),
