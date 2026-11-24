@@ -4,7 +4,11 @@ from pathlib import Path
 
 from .database import Database
 
-MIGRATIONS = [(1, Path(__file__).parent / "migrations" / "001_profile_context.sql")]
+DIRECTORY = Path(__file__).parent / "migrations"
+MIGRATIONS = [
+    (1, DIRECTORY / "001_profile_context.sql"),
+    (2, DIRECTORY / "002_pictograms.sql"),
+]
 
 
 def migrate(database: Database) -> None:

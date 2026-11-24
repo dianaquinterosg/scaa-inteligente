@@ -16,8 +16,11 @@ def test_health_initializes_profile_schema(tmp_path):
         assert response.json() == {"status": "ok", "database": "ok", "environment": "test"}
     assert settings.database_path.is_file()
     with sqlite3.connect(settings.database_path) as connection:
-        assert set(connection.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()) == {("profile",), ("context_item",)}
-        assert connection.execute("PRAGMA user_version").fetchone() == (1,)
+        assert set(connection.execute("SELECT name FROM sqlite_master WHERE type='table'").fetchall()) == {
+            ("profile",), ("context_item",), ("pictogram",), ("category",),
+            ("pictogram_category",), ("sqlite_sequence",),
+        }
+        assert connection.execute("PRAGMA user_version").fetchone() == (2,)
 
 
 def test_database_transactions_and_foreign_keys(tmp_path):
