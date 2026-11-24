@@ -46,12 +46,32 @@ class _PictogramEditorState extends State<PictogramEditor> {
 
   Future<Uint8List> _loadImage() async {
     final bytes = widget.image ?? await widget.store.preview(widget.item!);
-    final codec = await ui.instantiateImageCodec(bytes, targetWidth: 256);
+    final buffer = await ui.ImmutableBuffer.fromUint8List(bytes);
     try {
-      final frame = await codec.getNextFrame();
-      frame.image.dispose();
+      final descriptor = await ui.ImageDescriptor.encoded(buffer);
+      try {
+        if (descriptor.width * descriptor.height > 16000000) {
+          throw const FormatException('La imagen supera 16 megapíxeles.');
+        }
+        final wide = descriptor.width >= descriptor.height;
+        final codec = await descriptor.instantiateCodec(
+          targetWidth: wide ? descriptor.width.clamp(1, 256) : null,
+          targetHeight: wide ? null : descriptor.height.clamp(1, 256),
+        );
+        try {
+          if (codec.frameCount != 1) {
+            throw const FormatException('Usa una imagen estática.');
+          }
+          final frame = await codec.getNextFrame();
+          frame.image.dispose();
+        } finally {
+          codec.dispose();
+        }
+      } finally {
+        descriptor.dispose();
+      }
     } finally {
-      codec.dispose();
+      buffer.dispose();
     }
     return bytes;
   }
@@ -145,10 +165,10 @@ class _PictogramEditorState extends State<PictogramEditor> {
                             semanticsLabel: 'Cargando imagen',
                           )
                         else if (preview.hasError) ...[
-                          const ScaaNotice(
-                            'No pudimos abrir la imagen. Usa un PNG, JPG o WebP válido.',
-                            kind: ScaaNoticeKind.error,
-                          ),
+                          ScaaNotice(switch (preview.error) {
+                            FormatException(:final message) => message,
+                            _ => 'No pudimos abrir la imagen. Usa un PNG, JPG o WebP válido.',
+                          }, kind: ScaaNoticeKind.error),
                           if (widget.image == null)
                             TextButton(
                               onPressed: () =>
