@@ -9,6 +9,9 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
+from .arasaac import ArasaacClient
+from .catalog import Catalog, CatalogError
+from .catalog_api import router as catalog_router
 from .database import Database
 from .settings import Settings
 from .migrate import migrate
@@ -37,6 +40,19 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app = FastAPI(title="SCAA — preparación técnica", version="0.0.0", lifespan=lifespan)
     app.state.database = database
     app.state.profiles = profiles
+    app.state.catalog = Catalog(database)
+    app.state.arasaac = ArasaacClient()
+    app.include_router(catalog_router)
+
+    @app.exception_handler(CatalogError)
+    async def catalog_error(request, error: CatalogError):
+        return JSONResponse(status_code=error.status, content={"detail": str(error)})
+
+    @app.exception_handler(sqlite3.Error)
+    @app.exception_handler(OSError)
+    async def storage_error(request, error):
+        logger.error("Almacenamiento no disponible", exc_info=error)
+        return JSONResponse(status_code=503, content={"detail": "No pudimos completar la operación. Reintenta."})
 
     @app.exception_handler(RequestValidationError)
     async def validation_error(request, error: RequestValidationError):
