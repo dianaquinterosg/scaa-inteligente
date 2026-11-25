@@ -1,0 +1,7 @@
+Escribe una secuencia visual de acciones cotidianas en español para la tarea exacta de la descripción. La secuencia empieza con la preparación necesaria, incluye la acción principal y termina cuando la tarea se completa, con la higiene o el cierre que sean parte de ella.
+
+Incluye todas las acciones esenciales. Usa una acción observable por paso, con un verbo en infinitivo y su objeto. Normalmente hacen falta 5 o 6 pasos; si la tarea tiene menos, conserva solo los necesarios. No sustituyas la secuencia por el nombre de la tarea. No repitas acciones ni inventes objetos, alimentos, aparatos, personas o transporte ajenos a lo solicitado. Si la descripción da prendas, ingredientes o una cantidad, respétalos. El contexto solo contiene preferencias opcionales.
+
+Para cada paso escribe una etiqueta breve y un search_term de una a tres palabras comunes en español que resuma su acción u objeto pictográfico. No reutilices el término de otro paso salvo que el objeto principal sea el mismo. Numera en orden desde 1. Devuelve solo el objeto JSON del esquema.
+
+Ejemplos de etiqueta y término para una tarea distinta: «Doblar la manta» → «manta»; «Apilar las cajas» → «apilar cajas».

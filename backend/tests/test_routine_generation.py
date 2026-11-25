@@ -118,3 +118,43 @@ def test_association_deduplicates_queries_and_isolates_remote_failure():
     assert steps[0]["selected"]["external_id"] == steps[1]["selected"]["external_id"] == 99
     assert steps[2]["selected"] is None
     assert not any(step["approved"] for step in steps)
+
+
+def test_alternate_profile_selects_lab_prompt_and_keeps_baseline_reversible(monkeypatch, tmp_path):
+    from hashlib import sha256
+    from scaa_backend.main import create_app
+    from scaa_backend.settings import Settings
+
+    def digest(value):
+        return sha256(value.encode("utf-8")).hexdigest()
+
+    def generate_app():
+        app = create_app(Settings.from_env())
+        def respond(request):
+            calls.append(json.loads(request.content))
+            return httpx.Response(200, json={
+                "done": True, "message": {"content": generated("Mochila").model_dump_json()},
+            })
+        app.state.generator.transport = httpx.MockTransport(respond)
+        output = app.state.generator.generate("Preparar mochila", {})
+        assert output.steps[0].order == 1
+
+    monkeypatch.setenv("SCAA_DATA_ROOT", str(tmp_path))
+    monkeypatch.setenv("OLLAMA_MODEL", "qwen3:4b-instruct")
+    monkeypatch.setenv("OLLAMA_PROMPT_PROFILE", "alternate")
+    calls = []
+    generate_app()
+    monkeypatch.delenv("OLLAMA_MODEL")
+    monkeypatch.delenv("OLLAMA_PROMPT_PROFILE")
+    generate_app()
+    alternate, baseline = calls
+    assert [data["model"] for data in calls] == ["qwen3:4b-instruct", "qwen2.5:1.5b"]
+    assert digest(alternate["messages"][0]["content"]) == "c5afb881834bf68a805610787a06db74d2afaec03cab00eca8444950f8f43873"
+    assert digest(baseline["messages"][0]["content"]) == "c38da71d4ef221810b60960b1b2e4ef721e29906e2dfbf90de798f8d154d3d23"
+    for key in ("stream", "format", "options"):
+        assert alternate[key] == baseline[key]
+    assert alternate["options"] == {"temperature": 0, "num_predict": 800}
+    assert alternate["messages"][1] == baseline["messages"][1]
+    monkeypatch.setenv("OLLAMA_PROMPT_PROFILE", "unknown")
+    with pytest.raises(ValueError, match="OLLAMA_PROMPT_PROFILE"):
+        Settings.from_env()

@@ -49,6 +49,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.arasaac = ArasaacClient()
     app.state.generator = OllamaGenerator(
         settings.ollama_base_url, settings.ollama_model, settings.ollama_timeout,
+        prompt_profile=settings.ollama_prompt_profile,
     )
     app.state.routines = RoutineRepository(database, catalog)
     app.include_router(catalog_router)

@@ -127,3 +127,16 @@ Desde la raíz, la sonda usa un proceso HTTP y una base aislados:
 ```
 
 La revisión de la UI se realiza con el [protocolo del simulador](evidence/iteration-3/manual-check.md).
+
+## Perfil provisional de generación para validación
+
+Con Ollama en ejecución y `qwen3:4b-instruct` instalado, inicia otro backend en un entorno aislado. Este comando selecciona una sola inferencia con el prompt alternativo del laboratorio.
+
+```sh
+SCAA_ENV=demo SCAA_DATA_ROOT="$(mktemp -d)" \
+  OLLAMA_MODEL=qwen3:4b-instruct OLLAMA_PROMPT_PROFILE=alternate \
+  .venv/bin/python -m uvicorn scaa_backend.main:app --app-dir backend \
+  --env-file backend/.env.example --host 127.0.0.1 --port 8015
+```
+
+Para probarlo en el simulador, inicia Flutter con `--dart-define=API_BASE_URL=http://localhost:8015` y configura un perfil de prueba. Para volver a la línea base, inicia el backend con `OLLAMA_MODEL=qwen2.5:1.5b` y `OLLAMA_PROMPT_PROFILE=baseline`. Ambas son las opciones predeterminadas. Consulta el [diagnóstico de generación](evidence/iteration-4/generation-quality.md) para conocer los resultados y límites del ensayo.

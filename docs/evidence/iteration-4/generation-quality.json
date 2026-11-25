@@ -1,0 +1,287 @@
+{
+  "historical_comparison": {
+    "before_iteration_4": "c86a635",
+    "verified_iteration_4": "be7d359",
+    "generation_path_changes": false,
+    "active_ollama_environment_readable": false
+  },
+  "active_backend": {
+    "api_origin": "http://127.0.0.1:8014",
+    "health": {
+      "status": "ok",
+      "database": "ok",
+      "environment": "demo"
+    },
+    "description": "Ordenar un escritorio y dejar el cuaderno abierto para estudiar",
+    "context_empty_verified": true,
+    "http_status": 200,
+    "request_seconds_including_association": 12.8354,
+    "ollama_resident_before": [],
+    "ollama_resident_after": [
+      {
+        "model": "qwen2.5:1.5b",
+        "digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+        "context_length": 4096
+      }
+    ],
+    "steps": [
+      {
+        "order": 1,
+        "label": "estirar la sábana",
+        "search_term": "sábana"
+      },
+      {
+        "order": 2,
+        "label": "estirar la sábana",
+        "search_term": "sábana"
+      },
+      {
+        "order": 3,
+        "label": "estirar la sábana",
+        "search_term": "sábana"
+      },
+      {
+        "order": 4,
+        "label": "estirar la sábana",
+        "search_term": "sábana"
+      },
+      {
+        "order": 5,
+        "label": "estirar la sábana",
+        "search_term": "sábana"
+      },
+      {
+        "order": 6,
+        "label": "estirar la sábana",
+        "search_term": "sábana"
+      },
+      {
+        "order": 7,
+        "label": "estirar la sábana",
+        "search_term": "sábana"
+      },
+      {
+        "order": 8,
+        "label": "estirar la sábana",
+        "search_term": "sábana"
+      },
+      {
+        "order": 9,
+        "label": "estirar la sábana",
+        "search_term": "sábana"
+      },
+      {
+        "order": 10,
+        "label": "estirar la sábana",
+        "search_term": "sábana"
+      },
+      {
+        "order": 11,
+        "label": "estirar la sábana",
+        "search_term": "sábana"
+      },
+      {
+        "order": 12,
+        "label": "estirar la sábana",
+        "search_term": "sábana"
+      }
+    ],
+    "same_saved_routines": true
+  },
+  "isolated_backend": {
+    "source": "API del producto con SQLite temporal y transporte instrumentado hacia Ollama real",
+    "transport": "observa y reenvía la solicitud de la API sin modificarla",
+    "arasaac": "adaptador controlado sin resultados",
+    "ollama_version": "0.40.17",
+    "schema_sha256": "fb1baf6b0aafd101ecd2cc28a6ca5ece98aa80fb501905d9e156886673127c5d",
+    "baseline": [
+      {
+        "case": "water-bottle",
+        "request": {
+          "description": "Llenar una botella reutilizable con agua fría y cerrarla",
+          "context": {}
+        },
+        "model": "qwen2.5:1.5b",
+        "model_digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+        "quantization": "Q4_K_M",
+        "prompt_sha256": "c38da71d4ef221810b60960b1b2e4ef721e29906e2dfbf90de798f8d154d3d23",
+        "options": {
+          "temperature": 0,
+          "num_predict": 800
+        },
+        "request_timeout_seconds": 60,
+        "think_explicit": false,
+        "inference_count": 1,
+        "api_status": 200,
+        "proposal_persisted": false,
+        "reference_record": "generation-7090039f3739.json",
+        "candidate_configuration_matches_lab": null,
+        "candidate_output_matches_lab": null,
+        "inference_seconds": 5.3258,
+        "ollama_status": 200,
+        "load_duration_ns": 1350024458,
+        "total_duration_ns": 5322464625,
+        "done_reason": "stop",
+        "ollama_reply": "{\n  \"name\": \"botella\",\n  \"steps\": [\n    {\n      \"order\": 1,\n      \"label\": \"Llenar la botella\",\n      \"search_term\": \"botella\"\n    },\n    {\n      \"order\": 2,\n      \"label\": \"Añadir agua fría\",\n      \"search_term\": \"agua fría\"\n    },\n    {\n      \"order\": 3,\n      \"label\": \"Cerrar la botella\",\n      \"search_term\": \"cerrar\"\n    }\n  ]\n}"
+      },
+      {
+        "case": "library-return",
+        "request": {
+          "description": "Preparar dos libros para devolverlos a la biblioteca",
+          "context": {
+            "activities": [
+              "Devolver libros en la bolsa amarilla"
+            ]
+          }
+        },
+        "model": "qwen2.5:1.5b",
+        "model_digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+        "quantization": "Q4_K_M",
+        "prompt_sha256": "c38da71d4ef221810b60960b1b2e4ef721e29906e2dfbf90de798f8d154d3d23",
+        "options": {
+          "temperature": 0,
+          "num_predict": 800
+        },
+        "request_timeout_seconds": 60,
+        "think_explicit": false,
+        "inference_count": 1,
+        "api_status": 200,
+        "proposal_persisted": false,
+        "reference_record": "generation-af5b8258d8db.json",
+        "candidate_configuration_matches_lab": null,
+        "candidate_output_matches_lab": null,
+        "inference_seconds": 2.6277,
+        "ollama_status": 200,
+        "load_duration_ns": 1224541,
+        "total_duration_ns": 2626389541,
+        "done_reason": "stop",
+        "ollama_reply": "{\"name\": \"Preparar libros\", \"steps\": [{\"order\": 1, \"label\": \"Encuadernar libros\", \"search_term\": \"libros\"}, {\"order\": 2, \"label\": \"Revisar libros\", \"search_term\": \"libros\"}, {\"order\": 3, \"label\": \"Alinear libros\", \"search_term\": \"libros\"}]}"
+      },
+      {
+        "case": "tidy-desk",
+        "request": {
+          "description": "Ordenar un escritorio y dejar el cuaderno abierto para estudiar",
+          "context": {}
+        },
+        "model": "qwen2.5:1.5b",
+        "model_digest": "65ec06548149b04c096a120e4a6da9d4017ea809c91734ea5631e89f96ddc57b",
+        "quantization": "Q4_K_M",
+        "prompt_sha256": "c38da71d4ef221810b60960b1b2e4ef721e29906e2dfbf90de798f8d154d3d23",
+        "options": {
+          "temperature": 0,
+          "num_predict": 800
+        },
+        "request_timeout_seconds": 60,
+        "think_explicit": false,
+        "inference_count": 1,
+        "api_status": 200,
+        "proposal_persisted": false,
+        "reference_record": "generation-8e2906cdd183.json",
+        "candidate_configuration_matches_lab": null,
+        "candidate_output_matches_lab": null,
+        "inference_seconds": 11.3695,
+        "ollama_status": 200,
+        "load_duration_ns": 844500,
+        "total_duration_ns": 11367844542,
+        "done_reason": "stop",
+        "ollama_reply": "{\n  \"name\": \"ordenar escritorio\",\n  \"steps\": [\n    {\n      \"order\": 1,\n      \"label\": \"estirar la sábana\",\n      \"search_term\": \"sábana\"\n    },\n    {\n      \"order\": 2,\n      \"label\": \"estirar la sábana\",\n      \"search_term\": \"sábana\"\n    },\n    {\n      \"order\": 3,\n      \"label\": \"estirar la sábana\",\n      \"search_term\": \"sábana\"\n    },\n    {\n      \"order\": 4,\n      \"label\": \"estirar la sábana\",\n      \"search_term\": \"sábana\"\n    },\n    {\n      \"order\": 5,\n      \"label\": \"estirar la sábana\",\n      \"search_term\": \"sábana\"\n    },\n    {\n      \"order\": 6,\n      \"label\": \"estirar la sábana\",\n      \"search_term\": \"sábana\"\n    },\n    {\n      \"order\": 7,\n      \"label\": \"estirar la sábana\",\n      \"search_term\": \"sábana\"\n    },\n    {\n      \"order\": 8,\n      \"label\": \"estirar la sábana\",\n      \"search_term\": \"sábana\"\n    },\n    {\n      \"order\": 9,\n      \"label\": \"estirar la sábana\",\n      \"search_term\": \"sábana\"\n    },\n    {\n      \"order\": 10,\n      \"label\": \"estirar la sábana\",\n      \"search_term\": \"sábana\"\n    },\n    {\n      \"order\": 11,\n      \"label\": \"estirar la sábana\",\n      \"search_term\": \"sábana\"\n    },\n    {\n      \"order\": 12,\n      \"label\": \"estirar la sábana\",\n      \"search_term\": \"sábana\"\n    }\n  ]\n}"
+      }
+    ],
+    "candidate": [
+      {
+        "case": "water-bottle",
+        "request": {
+          "description": "Llenar una botella reutilizable con agua fría y cerrarla",
+          "context": {}
+        },
+        "model": "qwen3:4b-instruct",
+        "prompt_profile": "alternate",
+        "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+        "quantization": "Q4_K_M",
+        "prompt_sha256": "c5afb881834bf68a805610787a06db74d2afaec03cab00eca8444950f8f43873",
+        "options": {
+          "temperature": 0,
+          "num_predict": 800
+        },
+        "request_timeout_seconds": 60,
+        "think_explicit": false,
+        "inference_count": 1,
+        "api_status": 200,
+        "proposal_persisted": false,
+        "reference_record": "generation-7090039f3739.json",
+        "candidate_configuration_matches_lab": true,
+        "candidate_output_matches_lab": true,
+        "inference_seconds": 11.8665,
+        "ollama_status": 200,
+        "load_duration_ns": 2621717875,
+        "total_duration_ns": 11863391583,
+        "done_reason": "stop",
+        "ollama_reply": "{\n  \"name\": \"llenar botella con agua fría\",\n  \"steps\": [\n    {\n      \"label\": \"abrir botella\",\n      \"order\": 1,\n      \"search_term\": \"abrir botella\"\n    },\n    {\n      \"label\": \"llenar botella con agua fría\",\n      \"order\": 2,\n      \"search_term\": \"llenar botella agua fría\"\n    },\n    {\n      \"label\": \"cerrar botella\",\n      \"order\": 3,\n      \"search_term\": \"cerrar botella\"\n    }\n  ]\n}"
+      },
+      {
+        "case": "library-return",
+        "request": {
+          "description": "Preparar dos libros para devolverlos a la biblioteca",
+          "context": {
+            "activities": [
+              "Devolver libros en la bolsa amarilla"
+            ]
+          }
+        },
+        "model": "qwen3:4b-instruct",
+        "prompt_profile": "alternate",
+        "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+        "quantization": "Q4_K_M",
+        "prompt_sha256": "c5afb881834bf68a805610787a06db74d2afaec03cab00eca8444950f8f43873",
+        "options": {
+          "temperature": 0,
+          "num_predict": 800
+        },
+        "request_timeout_seconds": 60,
+        "think_explicit": false,
+        "inference_count": 1,
+        "api_status": 200,
+        "proposal_persisted": false,
+        "reference_record": "generation-af5b8258d8db.json",
+        "candidate_configuration_matches_lab": true,
+        "candidate_output_matches_lab": true,
+        "inference_seconds": 16.7383,
+        "ollama_status": 200,
+        "load_duration_ns": 1788375,
+        "total_duration_ns": 16736912500,
+        "done_reason": "stop",
+        "ollama_reply": "{\n  \"name\": \"preparar dos libros para devolverlos a la biblioteca\",\n  \"steps\": [\n    {\n      \"label\": \"Sacar los libros de la bolsa\",\n      \"order\": 1,\n      \"search_term\": \"sacar libros bolsa\"\n    },\n    {\n      \"label\": \"Verificar los libros\",\n      \"order\": 2,\n      \"search_term\": \"verificar libros\"\n    },\n    {\n      \"label\": \"Colocar los libros en la mesa\",\n      \"order\": 3,\n      \"search_term\": \"colocar libros mesa\"\n    },\n    {\n      \"label\": \"Abrir la puerta de la biblioteca\",\n      \"order\": 4,\n      \"search_term\": \"abrir puerta biblioteca\"\n    },\n    {\n      \"label\": \"Dejar los libros en la estantería\",\n      \"order\": 5,\n      \"search_term\": \"dejar libros estantería\"\n    },\n    {\n      \"label\": \"Cerrar la puerta de la biblioteca\",\n      \"order\": 6,\n      \"search_term\": \"cerrar puerta biblioteca\"\n    }\n  ]\n}"
+      },
+      {
+        "case": "tidy-desk",
+        "request": {
+          "description": "Ordenar un escritorio y dejar el cuaderno abierto para estudiar",
+          "context": {}
+        },
+        "model": "qwen3:4b-instruct",
+        "prompt_profile": "alternate",
+        "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+        "quantization": "Q4_K_M",
+        "prompt_sha256": "c5afb881834bf68a805610787a06db74d2afaec03cab00eca8444950f8f43873",
+        "options": {
+          "temperature": 0,
+          "num_predict": 800
+        },
+        "request_timeout_seconds": 60,
+        "think_explicit": false,
+        "inference_count": 1,
+        "api_status": 200,
+        "proposal_persisted": false,
+        "reference_record": "generation-8e2906cdd183.json",
+        "candidate_configuration_matches_lab": true,
+        "candidate_output_matches_lab": true,
+        "inference_seconds": 13.7351,
+        "ollama_status": 200,
+        "load_duration_ns": 1061583,
+        "total_duration_ns": 13728307750,
+        "done_reason": "stop",
+        "ollama_reply": "{\n  \"name\": \"ordenar escritorio\",\n  \"steps\": [\n    {\n      \"label\": \"colocar libros\",\n      \"order\": 1,\n      \"search_term\": \"colocar libros\"\n    },\n    {\n      \"label\": \"organizar papel\",\n      \"order\": 2,\n      \"search_term\": \"organizar papel\"\n    },\n    {\n      \"label\": \"colocar cuaderno\",\n      \"order\": 3,\n      \"search_term\": \"colocar cuaderno\"\n    },\n    {\n      \"label\": \"abrir cuaderno\",\n      \"order\": 4,\n      \"search_term\": \"abrir cuaderno\"\n    },\n    {\n      \"label\": \"revisar espacio\",\n      \"order\": 5,\n      \"search_term\": \"revisar espacio\"\n    }\n  ]\n}"
+      }
+    ]
+  }
+}
