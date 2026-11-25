@@ -200,3 +200,65 @@ def test_failed_update_keeps_previously_approved_steps_and_files(app_context):
     assert failed.status_code == 422
     assert client.get(path).json() == routine
     assert set(app.state.catalog.directory.iterdir()) == before
+
+
+def test_linguistic_association_sends_the_exact_label_and_reuses_duplicate_queries(tmp_path):
+    from scaa_backend.routine_generation import LinguisticGeneratedRoutine
+
+    app = create_app(Settings(
+        "test", tmp_path, ollama_model="qwen3:4b-instruct",
+        ollama_prompt_profile="linguistic", routine_external_match="contextual",
+    ))
+    labels = ["Lavar las manos", "ir al baño", "Lavar las manos", "abrir la puerta"]
+
+    class Generator:
+        def generate(self, description, context):
+            return LinguisticGeneratedRoutine(
+                name="Higiene",
+                steps=[{"order": i, "label": label} for i, label in enumerate(labels, 1)],
+            ).to_proposal()
+
+    class RemoteKeywords:
+        def __init__(self):
+            self.calls = []
+
+        def search(self, term):
+            self.calls.append(term)
+            return [] if term == "ir al baño" else [
+                {"external_id": 25, "label": "Primera sugerencia"},
+                {"external_id": 26, "label": "Lavar las manos"},
+            ]
+
+    app.state.generator = Generator()
+    app.state.arasaac = remote = RemoteKeywords()
+    with TestClient(app) as client:
+        assert client.put(PROFILE, json={"alias": "Perfil sintético"}).status_code == 200
+        saved_picture = picture(client, "abrir la puerta")
+        response = client.post(f"{R}/proposals", json={"description": "Higiene"})
+        assert response.status_code == 200
+        steps = response.json()["steps"]
+        assert sorted(remote.calls) == ["Lavar las manos", "ir al baño"]
+        assert [step["search_term"] for step in steps] == labels
+        assert [step["selected"] and step["selected"].get("external_id") for step in steps[:3]] == [
+            25, None, 25,
+        ]
+        assert steps[3]["selected"]["id"] == saved_picture["id"]
+        assert all(not step["approved"] for step in steps)
+        assert client.get(R).json() == []
+        assert client.get(P).json() == [saved_picture]
+
+
+def test_linguistic_profile_keeps_twelve_manual_steps_for_creation_and_editing(tmp_path):
+    app = create_app(Settings("test", tmp_path, ollama_prompt_profile="linguistic"))
+    with TestClient(app) as client:
+        assert client.put(PROFILE, json={"alias": "Perfil sintético"}).status_code == 200
+        item = picture(client)
+        steps = [local(i, item["id"], f"Acción {i}") for i in range(1, 13)]
+        created = client.post(R, json=approval(*steps, description=""))
+        assert created.status_code == 201
+        routine = created.json()
+        edited = client.put(f"{R}/{routine['id']}", json=approval(*steps, name="Rutina editada"))
+        assert edited.status_code == 200
+        assert edited.json()["name"] == "Rutina editada"
+        assert [step["order"] for step in edited.json()["steps"]] == list(range(1, 13))
+        assert client.post(R, json=approval(*steps, local(13, item["id"]))).status_code == 422

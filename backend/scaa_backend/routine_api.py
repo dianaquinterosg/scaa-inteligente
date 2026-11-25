@@ -27,7 +27,9 @@ def propose(payload: ProposalInput, request: Request):
         }[error.kind]
         raise HTTPException(status, message + " Puedes crear la rutina manualmente.") from error
     association = associate(
-        result, state.catalog, state.arasaac, contextual_external=state.contextual_external_match,
+        result, state.catalog, state.arasaac,
+        contextual_external=state.contextual_external_match,
+        exact_label_lookup=state.exact_label_lookup,
     )
     return {"description": payload.description, **association}
 

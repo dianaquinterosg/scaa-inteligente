@@ -34,22 +34,25 @@ def contextual_candidates(term: str, results: list[dict]) -> list[dict]:
     ]
 
 
-def associate(generated, catalog, arasaac, *, contextual_external=False):
+def associate(generated, catalog, arasaac, *, contextual_external=False, exact_label_lookup=False):
+    def lookup_key(step):
+        return step.label if exact_label_lookup else normalize(step.search_term)
+
     pictures = [(normalize(item["label"]), item) for item in catalog.list()]
     queries = {}
     matches = {}
     for step in generated.steps:
-        key = normalize(step.search_term)
+        key = lookup_key(step)
         if key in matches:
             continue
-        level, candidates = best_local(key, pictures)
+        level, candidates = best_local(normalize(key) if exact_label_lookup else key, pictures)
         matches[key] = (level, candidates)
         if key and not candidates:
-            queries[key] = " ".join(step.search_term.split())
+            queries[key] = key if exact_label_lookup else " ".join(step.search_term.split())
 
     def search(term):
         try:
-            if contextual_external:
+            if contextual_external and not exact_label_lookup:
                 return "arasaac", contextual_candidates(term, arasaac.search(term, include_keywords=True))
             return "arasaac", arasaac.search(term)[:8]
         except ArasaacUnavailable:
@@ -61,7 +64,7 @@ def associate(generated, catalog, arasaac, *, contextual_external=False):
 
     steps = []
     for step in generated.steps:
-        level, candidates = matches[normalize(step.search_term)]
+        level, candidates = matches[lookup_key(step)]
         automatic = level == "arasaac" or len(candidates) == 1
         steps.append({
             **step.model_dump(),

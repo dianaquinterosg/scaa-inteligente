@@ -47,6 +47,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.profiles = profiles
     app.state.catalog = catalog
     app.state.arasaac = ArasaacClient()
+    app.state.exact_label_lookup = settings.ollama_prompt_profile == "linguistic"
     app.state.contextual_external_match = settings.routine_external_match == "contextual"
     app.state.generator = OllamaGenerator(
         settings.ollama_base_url, settings.ollama_model, settings.ollama_timeout,
