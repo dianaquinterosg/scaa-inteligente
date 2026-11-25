@@ -133,3 +133,9 @@ El modelo propone palabras/pasos, **no selecciona definitivamente imágenes ni a
 - La guía exacta de instalación **se redactará a partir del procedimiento probado**. El entorno «demo/release» debe distinguirse de desarrollo y de test, con variables de configuración y base de datos propias. No confundir build de demostración con una producción pública desplegada.
 
 La [implementación de CU02](evidence/iteration-2/design.md) incorpora el catálogo, el adaptador ARASAAC y el almacenamiento de imágenes junto a la base de cada entorno.
+
+## Variante lingüística experimental de CU03
+
+El perfil `linguistic` envía un esquema compacto a Ollama con nombre, orden y etiqueta. Valida hasta cuatro posiciones consecutivas y deriva `search_term` de `label`. La respuesta al cliente conserva ambos campos. El límite de edición y confirmación de rutinas es doce.
+
+Este perfil conserva el catálogo aprobado como primera fuente y envía la etiqueta exacta a ARASAAC si falta coincidencia local. Las consultas idénticas se reutilizan y se conserva el límite concurrente de tres. Se sugiere el primer candidato del proveedor y la selección manual sigue disponible. La política se aplica únicamente al perfil `linguistic`, incluso cuando la configuración local de otro ensayo solicita filtro contextual. [Evidencias del ensayo lingüístico](evidence/iteration-4/linguistic-routines.md)

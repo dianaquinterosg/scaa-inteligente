@@ -1,0 +1,555 @@
+{
+  "model": "qwen3:4b-instruct",
+  "ollama_version": "0.40.17",
+  "digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "context_window": 4096,
+  "preloaded": true,
+  "keep_alive": "10m",
+  "results": [
+    {
+      "description": "Lavarse las manos",
+      "status": 200,
+      "steps": [
+        {
+          "order": 1,
+          "label": "lavar las manos",
+          "search_term": "lavar las manos",
+          "arasaac_query": "lavar las manos",
+          "arasaac_query_seconds": 1.852,
+          "arasaac_unavailable": false,
+          "suggestion_id": 8975,
+          "suggestion_label": "lavar las manos",
+          "keywords": [
+            "lavar las manos",
+            "lavado de manos"
+          ]
+        }
+      ],
+      "error": null,
+      "seconds": {
+        "inference": 10.717,
+        "local_catalog": 0.0017,
+        "arasaac_wall": 1.852,
+        "association_including_search": 1.855,
+        "http_total": 12.578,
+        "association_without_search": 0.0013
+      },
+      "ollama_status": 200,
+      "ollama_error": null,
+      "generated_tokens": 23,
+      "model_load_ns": 680125,
+      "raw_model": "{\"name\":\"Lavar las manos\",\"steps\":[{\"label\":\"lavar las manos\",\"order\":1}]}"
+    },
+    {
+      "description": "Cepillarse los dientes",
+      "status": 200,
+      "steps": [
+        {
+          "order": 1,
+          "label": "cepillar los dientes",
+          "search_term": "cepillar los dientes",
+          "arasaac_query": "cepillar los dientes",
+          "arasaac_query_seconds": 1.072,
+          "arasaac_unavailable": false,
+          "suggestion_id": 2326,
+          "suggestion_label": "cepillar los dientes",
+          "keywords": [
+            "cepillar los dientes"
+          ]
+        }
+      ],
+      "error": null,
+      "seconds": {
+        "inference": 1.881,
+        "local_catalog": 0.0011,
+        "arasaac_wall": 1.072,
+        "association_including_search": 1.074,
+        "http_total": 2.959,
+        "association_without_search": 0.0009
+      },
+      "ollama_status": 200,
+      "ollama_error": null,
+      "generated_tokens": 28,
+      "model_load_ns": 1647792,
+      "raw_model": "{\"name\":\"Cepillarse los dientes\",\"steps\":[{\"label\":\"cepillar los dientes\",\"order\":1}]}"
+    },
+    {
+      "description": "Prepararse para dormir",
+      "status": 200,
+      "steps": [
+        {
+          "order": 1,
+          "label": "acostar",
+          "search_term": "acostar",
+          "arasaac_query": "acostar",
+          "arasaac_query_seconds": 0.836,
+          "arasaac_unavailable": false,
+          "suggestion_id": 6027,
+          "suggestion_label": "acostar",
+          "keywords": [
+            "acostar"
+          ]
+        },
+        {
+          "order": 2,
+          "label": "vestir el pijama",
+          "search_term": "vestir el pijama",
+          "arasaac_query": "vestir el pijama",
+          "arasaac_query_seconds": 0.81,
+          "arasaac_unavailable": false,
+          "suggestion_id": 2781,
+          "suggestion_label": "vestir",
+          "keywords": [
+            "vestir"
+          ]
+        },
+        {
+          "order": 3,
+          "label": "ir al baño",
+          "search_term": "ir al baño",
+          "arasaac_query": "ir al baño",
+          "arasaac_query_seconds": 1.073,
+          "arasaac_unavailable": false,
+          "suggestion_id": 27541,
+          "suggestion_label": "quedarse solo",
+          "keywords": [
+            "quedarse solo",
+            "quedarse solo en el baño"
+          ]
+        },
+        {
+          "order": 4,
+          "label": "dormir",
+          "search_term": "dormir",
+          "arasaac_query": "dormir",
+          "arasaac_query_seconds": 0.827,
+          "arasaac_unavailable": false,
+          "suggestion_id": 6479,
+          "suggestion_label": "dormir",
+          "keywords": [
+            "dormir"
+          ]
+        }
+      ],
+      "error": null,
+      "seconds": {
+        "inference": 3.404,
+        "local_catalog": 0.0014,
+        "arasaac_wall": 1.638,
+        "association_including_search": 1.642,
+        "http_total": 5.054,
+        "association_without_search": 0.0026
+      },
+      "ollama_status": 200,
+      "ollama_error": null,
+      "generated_tokens": 56,
+      "model_load_ns": 1260417,
+      "raw_model": "{\"name\":\"Prepararse para dormir\",\"steps\":[{\"label\":\"acostar\",\"order\":1},{\"label\":\"vestir el pijama\",\"order\":2},{\"label\":\"ir al baño\",\"order\":3},{\"label\":\"dormir\",\"order\":4}]}"
+    },
+    {
+      "description": "Ir al baño",
+      "status": 200,
+      "steps": [
+        {
+          "order": 1,
+          "label": "sentar en el váter",
+          "search_term": "sentar en el váter",
+          "arasaac_query": "sentar en el váter",
+          "arasaac_query_seconds": 1.006,
+          "arasaac_unavailable": false,
+          "suggestion_id": 10177,
+          "suggestion_label": "sentar en el váter",
+          "keywords": [
+            "sentar en el váter"
+          ]
+        },
+        {
+          "order": 2,
+          "label": "orinar",
+          "search_term": "orinar",
+          "arasaac_query": "orinar",
+          "arasaac_query_seconds": 0.802,
+          "arasaac_unavailable": false,
+          "suggestion_id": 16713,
+          "suggestion_label": "hacer pis",
+          "keywords": [
+            "hacer pis",
+            "orinar",
+            "pis",
+            "pipí",
+            "hacer pipí"
+          ]
+        },
+        {
+          "order": 3,
+          "label": "defecar",
+          "search_term": "defecar",
+          "arasaac_query": "defecar",
+          "arasaac_query_seconds": 0.793,
+          "arasaac_unavailable": false,
+          "suggestion_id": 39599,
+          "suggestion_label": "defecar",
+          "keywords": [
+            "defecar",
+            "cagar"
+          ]
+        }
+      ],
+      "error": null,
+      "seconds": {
+        "inference": 2.691,
+        "local_catalog": 0.0011,
+        "arasaac_wall": 1.006,
+        "association_including_search": 1.007,
+        "http_total": 3.707,
+        "association_without_search": 0
+      },
+      "ollama_status": 200,
+      "ollama_error": null,
+      "generated_tokens": 43,
+      "model_load_ns": 1579917,
+      "raw_model": "{\"name\":\"Ir al baño\",\"steps\":[{\"label\":\"sentar en el váter\",\"order\":1},{\"label\":\"orinar\",\"order\":2},{\"label\":\"defecar\",\"order\":3}]}"
+    },
+    {
+      "description": "Guardar los juguetes",
+      "status": 200,
+      "steps": [
+        {
+          "order": 1,
+          "label": "guardar los juguetes",
+          "search_term": "guardar los juguetes",
+          "arasaac_query": "guardar los juguetes",
+          "arasaac_query_seconds": 1.064,
+          "arasaac_unavailable": false,
+          "suggestion_id": 11363,
+          "suggestion_label": "saco de juguetes",
+          "keywords": [
+            "saco de juguetes"
+          ]
+        }
+      ],
+      "error": null,
+      "seconds": {
+        "inference": 1.959,
+        "local_catalog": 0.0014,
+        "arasaac_wall": 1.064,
+        "association_including_search": 1.066,
+        "http_total": 3.032,
+        "association_without_search": 0.0006
+      },
+      "ollama_status": 200,
+      "ollama_error": null,
+      "generated_tokens": 26,
+      "model_load_ns": 1264708,
+      "raw_model": "{\"name\":\"Guardar los juguetes\",\"steps\":[{\"label\":\"guardar los juguetes\",\"order\":1}]}"
+    }
+  ],
+  "prompt_sha256": "4821150b728a628956328a7d7c4430fcd7e393d710a54c6c0c90716e73048be0",
+  "preliminary_attempts": {
+    "numeric_labels": [
+      {
+        "description": "Lavarse las manos",
+        "status": 502,
+        "steps": [],
+        "error": "La IA devolvió una propuesta con estructura inválida. Puedes crear la rutina manualmente.",
+        "seconds": {
+          "inference": 4.033,
+          "local_catalog": 0.0,
+          "arasaac_wall": 0.0,
+          "association_including_search": 0,
+          "http_total": 4.04
+        },
+        "generated_tokens": 43,
+        "model_load_ns": 2642959,
+        "raw_model": "{ \"name\": \"Lavar las manos\", \"steps\": [ { \"label\": \"1\", \"order\": 1 }, { \"label\": \"2\", \"order\": 2 } ] }"
+      },
+      {
+        "description": "Cepillarse los dientes",
+        "status": 502,
+        "steps": [],
+        "error": "La IA devolvió una propuesta con estructura inválida. Puedes crear la rutina manualmente.",
+        "seconds": {
+          "inference": 3.321,
+          "local_catalog": 0.0,
+          "arasaac_wall": 0.0,
+          "association_including_search": 0,
+          "http_total": 3.331
+        },
+        "generated_tokens": 46,
+        "model_load_ns": 1134709,
+        "raw_model": "{ \"name\": \"Cepillarse los dientes\", \"steps\": [ { \"label\": \"1\", \"order\": 1 }, { \"label\": \"2\", \"order\": 2 } ] }"
+      },
+      {
+        "description": "Prepararse para dormir",
+        "status": 502,
+        "steps": [],
+        "error": "La IA devolvió una propuesta con estructura inválida. Puedes crear la rutina manualmente.",
+        "seconds": {
+          "inference": 4.952,
+          "local_catalog": 0.0,
+          "arasaac_wall": 0.0,
+          "association_including_search": 0,
+          "http_total": 4.958
+        },
+        "generated_tokens": 71,
+        "model_load_ns": 1153291,
+        "raw_model": "{ \"name\": \"Rutina de dormir\", \"steps\": [ { \"label\": \"1\", \"order\": 1 }, { \"label\": \"2\", \"order\": 2 }, { \"label\": \"3\", \"order\": 3 }, { \"label\": \"4\", \"order\": 4 } ] }"
+      },
+      {
+        "description": "Ir al baño",
+        "status": 502,
+        "steps": [],
+        "error": "La IA devolvió una propuesta con estructura inválida. Puedes crear la rutina manualmente.",
+        "seconds": {
+          "inference": 2.837,
+          "local_catalog": 0.0,
+          "arasaac_wall": 0.0,
+          "association_including_search": 0,
+          "http_total": 2.843
+        },
+        "generated_tokens": 42,
+        "model_load_ns": 1544209,
+        "raw_model": "{ \"name\": \"Ir al baño\", \"steps\": [ { \"label\": \"1\", \"order\": 1 }, { \"label\": \"2\", \"order\": 2 } ] }"
+      },
+      {
+        "description": "Guardar los juguetes",
+        "status": 502,
+        "steps": [],
+        "error": "La IA devolvió una propuesta con estructura inválida. Puedes crear la rutina manualmente.",
+        "seconds": {
+          "inference": 2.849,
+          "local_catalog": 0.0,
+          "arasaac_wall": 0.0,
+          "association_including_search": 0,
+          "http_total": 2.853
+        },
+        "generated_tokens": 44,
+        "model_load_ns": 1047542,
+        "raw_model": "{ \"name\": \"Guardar los juguetes\", \"steps\": [ { \"label\": \"1\", \"order\": 1 }, { \"label\": \"2\", \"order\": 2 } ] }"
+      }
+    ],
+    "regex_in_schema_interrupted": [
+      {
+        "description": "Lavarse las manos",
+        "status": 503,
+        "steps": [],
+        "error": "Ollama no está disponible o el modelo no pudo iniciarse. Puedes crear la rutina manualmente.",
+        "seconds": {
+          "inference": 53.881,
+          "local_catalog": 0.0,
+          "arasaac_wall": 0.0,
+          "association_including_search": 0,
+          "http_total": 53.887
+        },
+        "generated_tokens": null,
+        "model_load_ns": null,
+        "raw_model": null
+      }
+    ],
+    "more_explicit_sequence_prompt": [
+      {
+        "description": "Lavarse las manos",
+        "status": 502,
+        "steps": [],
+        "error": "La IA devolvió una propuesta con estructura inválida. Puedes crear la rutina manualmente.",
+        "seconds": {
+          "inference": 4.339,
+          "local_catalog": 0.0,
+          "arasaac_wall": 0.0,
+          "association_including_search": 0,
+          "http_total": 4.343
+        },
+        "ollama_status": 200,
+        "ollama_error": null,
+        "generated_tokens": 52,
+        "model_load_ns": 1363541,
+        "raw_model": "{\"name\":\"Lavarse las manos\",\"steps\":[{\"label\":\"lavar las manos con agua y jabón\",\"order\":1},{\"label\":\"enjuagar bien\",\"order\":2},{\"label\":\"secar con toalla\",\"order\":3}]}"
+      },
+      {
+        "description": "Cepillarse los dientes",
+        "status": 200,
+        "steps": [
+          {
+            "order": 1,
+            "label": "cepillar los dientes",
+            "search_term": "cepillar los dientes",
+            "arasaac_query": "cepillar los dientes",
+            "arasaac_query_seconds": 1.131,
+            "arasaac_unavailable": false,
+            "suggestion_id": 2326,
+            "suggestion_label": "cepillar los dientes",
+            "keywords": [
+              "cepillar los dientes"
+            ]
+          }
+        ],
+        "error": null,
+        "seconds": {
+          "inference": 1.768,
+          "local_catalog": 0.0008,
+          "arasaac_wall": 1.131,
+          "association_including_search": 1.133,
+          "http_total": 2.906
+        },
+        "ollama_status": 200,
+        "ollama_error": null,
+        "generated_tokens": 28,
+        "model_load_ns": 1656417,
+        "raw_model": "{\"name\":\"Cepillarse los dientes\",\"steps\":[{\"label\":\"cepillar los dientes\",\"order\":1}]}"
+      },
+      {
+        "description": "Prepararse para dormir",
+        "status": 200,
+        "steps": [
+          {
+            "order": 1,
+            "label": "acostar",
+            "search_term": "acostar",
+            "arasaac_query": "acostar",
+            "arasaac_query_seconds": 0.924,
+            "arasaac_unavailable": false,
+            "suggestion_id": 6027,
+            "suggestion_label": "acostar",
+            "keywords": [
+              "acostar"
+            ]
+          },
+          {
+            "order": 2,
+            "label": "abrir la luz",
+            "search_term": "abrir la luz",
+            "arasaac_query": "abrir la luz",
+            "arasaac_query_seconds": 1.218,
+            "arasaac_unavailable": false,
+            "suggestion_id": 8027,
+            "suggestion_label": "apagar la luz",
+            "keywords": [
+              "apagar la luz"
+            ]
+          },
+          {
+            "order": 3,
+            "label": "apagar el ordenador",
+            "search_term": "apagar el ordenador",
+            "arasaac_query": "apagar el ordenador",
+            "arasaac_query_seconds": 0.979,
+            "arasaac_unavailable": false,
+            "suggestion_id": 37514,
+            "suggestion_label": "ordenador con pulsador",
+            "keywords": [
+              "ordenador con pulsador"
+            ]
+          },
+          {
+            "order": 4,
+            "label": "defecar",
+            "search_term": "defecar",
+            "arasaac_query": "defecar",
+            "arasaac_query_seconds": 0.81,
+            "arasaac_unavailable": false,
+            "suggestion_id": 39599,
+            "suggestion_label": "defecar",
+            "keywords": [
+              "defecar",
+              "cagar"
+            ]
+          }
+        ],
+        "error": null,
+        "seconds": {
+          "inference": 3.177,
+          "local_catalog": 0.0008,
+          "arasaac_wall": 1.733,
+          "association_including_search": 1.735,
+          "http_total": 4.916
+        },
+        "ollama_status": 200,
+        "ollama_error": null,
+        "generated_tokens": 57,
+        "model_load_ns": 1098500,
+        "raw_model": "{\"name\":\"Prepararse para dormir\",\"steps\":[{\"label\":\"acostar\",\"order\":1},{\"label\":\"abrir la luz\",\"order\":2},{\"label\":\"apagar el ordenador\",\"order\":3},{\"label\":\"defecar\",\"order\":4}]}"
+      },
+      {
+        "description": "Ir al baño",
+        "status": 200,
+        "steps": [
+          {
+            "order": 1,
+            "label": "sentar en el váter",
+            "search_term": "sentar en el váter",
+            "arasaac_query": "sentar en el váter",
+            "arasaac_query_seconds": 1.185,
+            "arasaac_unavailable": false,
+            "suggestion_id": 10177,
+            "suggestion_label": "sentar en el váter",
+            "keywords": [
+              "sentar en el váter"
+            ]
+          },
+          {
+            "order": 2,
+            "label": "orinar",
+            "search_term": "orinar",
+            "arasaac_query": "orinar",
+            "arasaac_query_seconds": 1.157,
+            "arasaac_unavailable": false,
+            "suggestion_id": 16713,
+            "suggestion_label": "hacer pis",
+            "keywords": [
+              "hacer pis",
+              "orinar",
+              "pis",
+              "pipí",
+              "hacer pipí"
+            ]
+          },
+          {
+            "order": 3,
+            "label": "defecar",
+            "search_term": "defecar",
+            "arasaac_query": "defecar",
+            "arasaac_query_seconds": 0.945,
+            "arasaac_unavailable": false,
+            "suggestion_id": 39599,
+            "suggestion_label": "defecar",
+            "keywords": [
+              "defecar",
+              "cagar"
+            ]
+          }
+        ],
+        "error": null,
+        "seconds": {
+          "inference": 3.377,
+          "local_catalog": 0.0012,
+          "arasaac_wall": 1.185,
+          "association_including_search": 1.187,
+          "http_total": 4.572
+        },
+        "ollama_status": 200,
+        "ollama_error": null,
+        "generated_tokens": 43,
+        "model_load_ns": 2529458,
+        "raw_model": "{\"name\":\"Ir al baño\",\"steps\":[{\"label\":\"sentar en el váter\",\"order\":1},{\"label\":\"orinar\",\"order\":2},{\"label\":\"defecar\",\"order\":3}]}"
+      },
+      {
+        "description": "Guardar los juguetes",
+        "status": 502,
+        "steps": [],
+        "error": "La IA devolvió una propuesta con estructura inválida. Puedes crear la rutina manualmente.",
+        "seconds": {
+          "inference": 2.614,
+          "local_catalog": 0.0,
+          "arasaac_wall": 0.0,
+          "association_including_search": 0,
+          "http_total": 2.619
+        },
+        "ollama_status": 200,
+        "ollama_error": null,
+        "generated_tokens": 43,
+        "model_load_ns": 1708125,
+        "raw_model": "{\"name\":\"Guardar los juguetes\",\"steps\":[{\"label\":\"acostar los juguetes\",\"order\":1},{\"label\":\"colocarlos en el cajón\",\"order\":2}]}"
+      }
+    ]
+  }
+}

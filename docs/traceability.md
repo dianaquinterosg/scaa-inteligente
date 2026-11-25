@@ -67,3 +67,11 @@ Por cada subrequisito implementado, registrar **ruta y símbolo reales** (`archi
 Estos umbrales son **metas, no resultados**. No afirmar mejora cuantitativa sin protocolo, muestra y evidencia.
 
 Para RF01.1–RF01.3 / CA01.1–CA01.10, la [regresión de CU01 con el diseño SCAA](evidence/iteration-1/visual.md) vincula el tema `6eb2d40` y las pantallas `bca2e58` con los mismos casos de aceptación. La persona usuaria aprobó el aspecto visual en el simulador de iPad. Los escenarios funcionales manuales constan como aprobados en el [registro de CU01](evidence/iteration-1/manual-check.md). La exclusión de un borrador y el uso del contexto confirmado por CU03 se probaron a través del contrato de generación.
+
+## Ensayo lingüístico de CU03
+
+| Requisito | Criterio | Componente | Evidencia |
+|---|---|---|---|
+| RF-I4.5 | CA-I4.6 | `LinguisticStep`, `LinguisticGeneratedRoutine`, `OllamaGenerator`, `RoutineApproval` | `test_linguistic_generation.py` y regresión de creación y edición de doce pasos |
+| RF-I4.6 | CA-I4.7 | `routine_api.propose`, `routine_association.associate`, `ArasaacClient.search` | Prueba HTTP controlada de consulta exacta, candidatos, aprobación y deduplicación |
+| RF-I4.5–RF-I4.6 | CA-I4.8 | Sonda de propuesta con Ollama y ARASAAC reales | [Resultados del ensayo lingüístico](evidence/iteration-4/linguistic-routines.md). Pertinencia visual pendiente |

@@ -208,3 +208,11 @@ Los criterios mantienen los IDs de v0.1. Un criterio en **P1** no se elimina del
 | CA-I4.5 | RF-I4.4 / CU02–CU03 | Se conserva la prohibición de borrar referencias activas y se admite el borrado después de retirar la última dependencia. Las pruebas de regresión cubren los flujos de CU01–CU03. |
 
 La experiencia de visualización permite consultar secuencias guardadas. El alcance de esta iteración se limita a navegación y lectura y excluye seguimiento de ejecución.
+
+## Criterios del ensayo lingüístico de CU03
+
+| Criterio | Requisito | Resultado observable |
+|---|---|---|
+| CA-I4.6 | RF-I4.5 | Una inferencia produce entre uno y cuatro pasos consecutivos. Los pasos contienen orden y etiqueta. Pydantic valida la estructura y el servidor conserva la etiqueta intacta en `search_term`. Las etiquetas se revisan según las reglas lingüísticas del SRS. El editor y la confirmación de rutinas admiten doce pasos. |
+| CA-I4.7 | RF-I4.6 | Una coincidencia local pertinente tiene prioridad. Si falta, se consulta por la etiqueta exacta con artículos y preposiciones, una vez por texto idéntico. El primer resultado de ARASAAC se sugiere para aprobación humana. Una búsqueda vacía deja el paso pendiente. |
+| CA-I4.8 | RF-I4.5–RF-I4.6 | Para cinco rutinas cotidianas, se registran tiempos de inferencia, consulta local, ARASAAC, asociación y respuesta total, además de etiquetas, consultas, IDs y palabras clave. La pertinencia visual se confirma durante la revisión manual. |
