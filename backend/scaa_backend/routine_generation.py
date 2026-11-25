@@ -8,7 +8,7 @@ from typing import Annotated
 from urllib.parse import urlsplit
 
 import httpx
-from pydantic import BaseModel, ConfigDict, Field, StringConstraints, ValidationError, model_validator
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints, ValidationError, field_validator, model_validator
 
 from .settings import OLLAMA_PROMPT_PROFILES
 
@@ -56,13 +56,59 @@ class GeneratedRoutine(StrictInput):
 
     @model_validator(mode="after")
     def sequential_steps(self):
-        if any(step.order != index for index, step in enumerate(self.steps, 1)):
-            raise ValueError("Los pasos deben tener posiciones consecutivas en el orden de la lista.")
+        check_step_order(self.steps)
         return self
 
 
 class ConciseGeneratedRoutine(GeneratedRoutine):
     steps: list[GeneratedStep] = Field(min_length=1, max_length=CONCISE_MAX_STEPS)
+
+
+def check_step_order(steps):
+    if any(step.order != index for index, step in enumerate(steps, 1)):
+        raise ValueError("Los pasos deben tener posiciones consecutivas en el orden de la lista.")
+
+
+class LinguisticStep(StrictInput):
+    order: int = Field(ge=1, le=CONCISE_MAX_STEPS)
+    label: ShortText = Field(description="Acción escrita en español, por ejemplo, abrir la mochila.")
+
+    @field_validator("label")
+    @classmethod
+    def label_uses_infinitive(cls, label):
+        verb, *rest = label.lower().split()
+        if not re.fullmatch(r"[^\W\d_]*(?:ar|er|ir|ír)", verb):
+            raise ValueError("La etiqueta debe comenzar con un infinitivo sin pronombres unidos.")
+        if not rest and verb in {"mojar", "colocar", "poner", "abrir", "guardar"}:
+            raise ValueError("Indica el objeto de la acción.")
+        if rest and rest[0] not in {
+            "el", "la", "lo", "los", "las", "un", "una", "unos", "unas",
+            "a", "al", "ante", "bajo", "con", "contra", "de", "del", "desde", "en",
+            "entre", "hacia", "hasta", "para", "por", "sin", "sobre", "tras",
+        }:
+            raise ValueError("Escribe el artículo o la preposición necesaria.")
+        if {"inodoro", "computador", "jugo"} & set(rest):
+            raise ValueError("Usa la variante del español de España.")
+        return label
+
+
+class LinguisticGeneratedRoutine(StrictInput):
+    name: ShortText
+    steps: list[LinguisticStep] = Field(min_length=1, max_length=CONCISE_MAX_STEPS)
+
+    @model_validator(mode="after")
+    def sequential_steps(self):
+        check_step_order(self.steps)
+        return self
+
+    def to_proposal(self) -> GeneratedRoutine:
+        return GeneratedRoutine(
+            name=self.name,
+            steps=[
+                GeneratedStep(order=step.order, label=step.label, search_term=step.label)
+                for step in self.steps
+            ],
+        )
 
 
 class GenerationError(Exception):
@@ -104,14 +150,15 @@ class OllamaGenerator:
         self.timeout = timeout
         self.transport = transport
         if prompt_profile not in OLLAMA_PROMPT_PROFILES:
-            raise ValueError("OLLAMA_PROMPT_PROFILE debe ser baseline, alternate o concise")
+            raise ValueError("OLLAMA_PROMPT_PROFILE debe ser baseline, alternate, concise o linguistic")
         self.prompt = (
             BASELINE_PROMPT if prompt_profile == "baseline"
             else Path(__file__).with_name(f"routine-{prompt_profile}.txt").read_text(encoding="utf-8")
         )
-        self.response_model = (
-            ConciseGeneratedRoutine if prompt_profile == "concise" else GeneratedRoutine
-        )
+        self.response_model = {
+            "concise": ConciseGeneratedRoutine,
+            "linguistic": LinguisticGeneratedRoutine,
+        }.get(prompt_profile, GeneratedRoutine)
 
     def generate(self, description: str, context: dict) -> GeneratedRoutine:
         payload = {
@@ -126,6 +173,8 @@ class OllamaGenerator:
                 )},
             ],
         }
+        if self.response_model is LinguisticGeneratedRoutine:
+            payload["keep_alive"] = "10m"
         try:
             with httpx.Client(
                 transport=self.transport, trust_env=False,
@@ -141,6 +190,7 @@ class OllamaGenerator:
             data = response.json()
             if data.get("done") is not True or data.get("done_reason") == "length":
                 raise ValueError
-            return self.response_model.model_validate_json(data["message"]["content"])
+            routine = self.response_model.model_validate_json(data["message"]["content"])
+            return routine.to_proposal() if isinstance(routine, LinguisticGeneratedRoutine) else routine
         except (ValueError, ValidationError, KeyError, TypeError, AttributeError) as error:
             raise GenerationError("invalid_output") from error

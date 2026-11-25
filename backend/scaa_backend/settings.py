@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-OLLAMA_PROMPT_PROFILES = ("baseline", "alternate", "concise")
+OLLAMA_PROMPT_PROFILES = ("baseline", "alternate", "concise", "linguistic")
 
 
 @dataclass(frozen=True)
@@ -24,7 +24,7 @@ class Settings:
         if not 1 <= self.ollama_timeout <= 120:
             raise ValueError("OLLAMA_TIMEOUT debe estar entre 1 y 120 segundos")
         if self.ollama_prompt_profile not in OLLAMA_PROMPT_PROFILES:
-            raise ValueError("OLLAMA_PROMPT_PROFILE debe ser baseline, alternate o concise")
+            raise ValueError("OLLAMA_PROMPT_PROFILE debe ser baseline, alternate, concise o linguistic")
         if self.routine_external_match not in {"provider", "contextual"}:
             raise ValueError("SCAA_ROUTINE_EXTERNAL_MATCH debe ser provider o contextual")
         root = self.data_root.expanduser()
