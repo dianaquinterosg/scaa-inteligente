@@ -1,5 +1,15 @@
 # Registro de cambios
 
+## v0.3.0 — Incremento de Iteración 4
+
+- Bienvenida adaptada a iPad y separación entre visualización y administración.
+- Catálogo de consulta y visor horizontal de rutinas. El borrado protegido informa las rutinas dependientes.
+- Demo con Qwen3 4B Instruct y perfil `linguistic`. Incluye de tres a cinco pasos por propuesta y revisión de candidatos de ARASAAC.
+- 135 pruebas de backend y 36 de Flutter aprobadas, análisis estático sin incidencias y validación final aprobada en Device Hub.
+- Instalación en iPad físico pendiente para la siguiente iteración. La línea base documental se conserva en v0.2.
+
+[Notas de la versión](docs/releases/v0.3.0.md) · [Evidencias de Iteración 4](docs/evidence/iteration-4/README.md)
+
 ## Desarrollo local — Iteración 3 CU03
 
 - Generación estructurada con Ollama y contexto de perfil confirmado. Asociación determinística y revisión humana por paso.

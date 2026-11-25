@@ -1,6 +1,49 @@
 # Preparación y ejecución de desarrollo
 
-Flutter iOS → FastAPI → SQLite. CU01 implementado y probado automáticamente; aspecto aprobado por la persona usuaria en el simulador de iPad; pruebas funcionales manuales aprobadas según la persona usuaria. CU02 está implementado y el recorrido manual en el simulador de iPad fue confirmado por la persona usuaria. CU03 está implementado con Ollama local y creación manual. La persona usuaria confirmó la aprobación de los escenarios de CU03 en el simulador de iPad. La persona usuaria reportó 16 comprobaciones aprobadas de la [Iteración 4 en Device Hub](evidence/iteration-4/manual-check.md). La documentación mantiene su identificación v0.2; el valor de desarrollo `0.0.0` del código no representa una release.
+## Demo v0.3.0 en el simulador de iPad
+
+El recorrido utiliza FastAPI y SQLite en el Mac, Ollama con Qwen3 4B Instruct y el cliente Flutter en Device Hub. El entorno de la regresión usó Python 3.13.7, Flutter 3.47.1, Dart 3.13.1, Xcode 27.2 y Ollama 0.40.17, con el runtime de iPad instalado. ARASAAC requiere conexión a Internet.
+
+### Preparar el código y las dependencias
+
+```sh
+git clone --branch v0.3.0 --single-branch https://github.com/dianaquinterosg/scaa-inteligente.git
+cd scaa-inteligente
+python3.13 -m venv .venv
+.venv/bin/python -m pip install -r backend/requirements-lock.txt
+(cd frontend && flutter pub get)
+```
+
+### Terminal 1 · Ollama y FastAPI
+
+Inicia Ollama en el Mac. Si el modelo aún no está instalado, ejecuta `ollama pull qwen3:4b-instruct`. Desde la raíz del proyecto, precarga el modelo y arranca el backend con el perfil validado.
+
+```sh
+curl -fsS http://127.0.0.1:11434/api/generate \
+  -H 'Content-Type: application/json' \
+  -d '{"model":"qwen3:4b-instruct","keep_alive":"10m"}'
+
+SCAA_ENV=demo SCAA_DATA_ROOT=.localdata \
+  OLLAMA_BASE_URL=http://127.0.0.1:11434 \
+  OLLAMA_MODEL=qwen3:4b-instruct OLLAMA_PROMPT_PROFILE=linguistic OLLAMA_TIMEOUT=60 \
+  .venv/bin/python -m uvicorn scaa_backend.main:app --app-dir backend \
+  --env-file backend/.env.example --host 127.0.0.1 --port 8015
+```
+
+La base queda en `.localdata/demo/scaa.sqlite3`. En otra terminal, `curl -fsS http://127.0.0.1:8015/api/v1/health` debe devolver `status=ok`, `database=ok` y `environment=demo`.
+
+### Terminal 2 · Flutter y Device Hub
+
+En Xcode, abre Device Hub, selecciona **iPad (A16)** y pulsa **Start** si está apagado. Desde la raíz del proyecto, entra a `frontend`, identifica el simulador con `flutter devices` y usa su identificador.
+
+```sh
+cd frontend
+flutter devices
+flutter run -d "<ID del simulador iPad>" \
+  --dart-define=API_BASE_URL=http://localhost:8015
+```
+
+La app abre en visualización. Para crear el perfil de demo y probar una rutina, confirma el acceso a administración, guarda un alias y entra en **Rutinas → Crear rutina → Generar propuesta**. Revisa la secuencia, selecciona los pictogramas pendientes y confirma antes de guardar. El [registro de Iteración 4](evidence/iteration-4/README.md) reúne el recorrido y su aprobación final en Device Hub. La instalación en iPad físico queda para la siguiente iteración.
 
 ## Estructura
 
@@ -37,7 +80,7 @@ Durante la comprobación inicial se utilizó `backend/.env.example` directamente
 
 `SCAA_ENV` admite `dev`, `test` o `demo`. Bajo `SCAA_DATA_ROOT` se crea un directorio por entorno y una base `scaa.sqlite3` distinta. Por defecto se utiliza `.localdata/` en la raíz. Al iniciar se aplican las migraciones 001 de perfil, 002 de catálogo y 003 de rutinas, según la versión de la base. Las conexiones activan claves foráneas y cierran la transacción con commit o rollback.
 
-Para una configuración de demo, establecer explícitamente `SCAA_ENV=demo`; eso separa sus archivos, pero no certifica una instalación de liberación. Las pruebas utilizan directorios temporales aislados.
+La demo usa `SCAA_ENV=demo` y las pruebas utilizan directorios temporales aislados.
 
 ```sh
 cd backend
@@ -128,7 +171,7 @@ Desde la raíz, la sonda usa un proceso HTTP y una base aislados:
 
 La revisión de la UI se realiza con el [protocolo del simulador](evidence/iteration-3/manual-check.md).
 
-## Perfil provisional de generación para validación
+## Perfiles de ensayo anteriores
 
 Con Ollama en ejecución y `qwen3:4b-instruct` instalado, inicia otro backend en un entorno aislado. Este comando selecciona una sola inferencia con el prompt alternativo del laboratorio.
 
@@ -155,7 +198,7 @@ SCAA_ENV=demo SCAA_DATA_ROOT="$(mktemp -d)" \
 
 Reutiliza la ejecución de Flutter apuntada a `http://localhost:8015` y configura un alias de prueba si usas un directorio temporal nuevo. Para comparar solo la longitud, usa `SCAA_ROUTINE_EXTERNAL_MATCH=provider`. Para volver a la configuración del ensayo anterior, usa `OLLAMA_PROMPT_PROFILE=alternate` y `SCAA_ROUTINE_EXTERNAL_MATCH=provider`. Los [resultados de propuestas breves](evidence/iteration-4/concise-routines.md) detallan las omisiones y los pasos que quedaron pendientes de imagen.
 
-### Ensayo de etiquetas exactas en ARASAAC
+### Perfil lingüístico con datos temporales
 
 Para ejecutar el perfil experimental en el backend de prueba del puerto `8015`:
 

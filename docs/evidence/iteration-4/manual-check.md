@@ -43,4 +43,4 @@
 
 I4-M01–I4-M13 se vinculan con la implementación `0fbf0dc`. I4-M14–I4-M16 se vinculan con `0849ffb`.
 
-Quedan sin confirmación manual específica la cancelación del diálogo, el reinicio desde administración, el visor de una rutina de un paso y el cotejo de IDs y cantidad de dependencias. Esos casos conservan su [evidencia automatizada](README.md). La liberación permanece pendiente de aprobación.
+Quedan sin confirmación manual específica la cancelación del diálogo, el reinicio desde administración, el visor de una rutina de un paso y el cotejo de IDs y cantidad de dependencias. Esos casos conservan su [evidencia automatizada](README.md). La persona usuaria aprobó la validación final del incremento en Device Hub. La instalación en iPad físico se realizará en la siguiente iteración.

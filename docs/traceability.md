@@ -1,6 +1,6 @@
 # Matriz de trazabilidad — requisitos v0.2 e implementación
 
-**Línea base:** los requisitos y prioridades proceden del SRS v0.2. **Estado de implementación:** Existe una base técnica y se ejecutaron sondas de servicios y pruebas de infraestructura; CU01 está implementado con pruebas automáticas aprobadas y aprobación visual confirmada por la persona usuaria; CU02 está implementado y probado automáticamente. La persona usuaria confirmó el recorrido manual en el simulador de iPad. CU03 está implementado y probado por API, widgets e integración real. La persona usuaria confirmó los escenarios manuales del incremento anterior en [CU01](evidence/iteration-1/manual-check.md), [CU02](evidence/iteration-2/manual-check.md) y [CU03](evidence/iteration-3/manual-check.md). La persona usuaria reportó 16 comprobaciones aprobadas de la [Iteración 4 en Device Hub](evidence/iteration-4/manual-check.md). La aceptación de calidad del modelo sigue pendiente. No hay release de software verificada. `P0/P1/P2` son prioridades, **no resultados**.
+**Línea base:** SRS v0.2. **Incremento liberado:** v0.3.0. CU01–CU03 cuentan con evidencia automatizada y validación final en Device Hub aprobada por la persona usuaria. Los refinamientos de la Iteración 4 incluyen RF-I4.1–RF-I4.6 y CA-I4.1–CA-I4.8. La demo aplica el perfil `linguistic`, con revisión humana de propuestas. [Cierre y regresión](evidence/iteration-4/README.md)
 
 | Requisito | CU | CA vinculados | Prioridad | Componente implementado o planificado | Verificación prevista o ejecutada | Estado y evidencia vinculada |
 |---|---|---|---|---|---|---|
@@ -74,6 +74,6 @@ Para RF01.1–RF01.3 / CA01.1–CA01.10, la [regresión de CU01 con el diseño S
 |---|---|---|---|
 | RF-I4.5 | CA-I4.6 | `LinguisticStep`, `LinguisticGeneratedRoutine`, `OllamaGenerator`, `RoutineApproval` | `test_linguistic_generation.py` y regresión de creación y edición de doce pasos |
 | RF-I4.6 | CA-I4.7 | `routine_api.propose`, `routine_association.associate`, `ArasaacClient.search` | Prueba HTTP controlada de consulta exacta, candidatos, aprobación y deduplicación |
-| RF-I4.5–RF-I4.6 | CA-I4.8 | Sonda de propuesta con Ollama y ARASAAC reales | [Resultados del ensayo lingüístico](evidence/iteration-4/linguistic-routines.md). Pertinencia visual pendiente |
+| RF-I4.5–RF-I4.6 | CA-I4.8 | Sonda de propuesta con Ollama y ARASAAC reales | [Regla de candidatos y latencias](evidence/iteration-4/routine-label-fallback.md). Validación final en Device Hub aprobada según la persona usuaria |
 
 La [regresión del rango 3–5 y revisión de candidatos](evidence/iteration-4/routine-label-fallback.md) amplía CA-I4.6–CA-I4.8. Conserva la verificación de la edición manual de doce pasos y la trazabilidad de las propuestas y sugerencias que requieren revisión.

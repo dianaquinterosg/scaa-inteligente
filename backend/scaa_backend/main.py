@@ -42,7 +42,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         catalog.recover_files()
         yield
 
-    app = FastAPI(title="SCAA — preparación técnica", version="0.0.0", lifespan=lifespan)
+    app = FastAPI(title="SCAA Inteligente", version="0.3.0", lifespan=lifespan)
     app.state.database = database
     app.state.profiles = profiles
     app.state.catalog = catalog

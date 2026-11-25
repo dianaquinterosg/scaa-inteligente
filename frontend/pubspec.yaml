@@ -1,8 +1,7 @@
 name: scaa_inteligente
-description: Base técnica de SCAA Inteligente para tablet e iPad.
+description: SCAA Inteligente para tablet e iPad.
 publish_to: none
-# Versión de desarrollo; no corresponde a una release ni a docs-v0.2.
-version: 0.0.0+0
+version: 0.3.0+1
 
 environment:
   sdk: ^3.13.1

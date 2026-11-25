@@ -1,0 +1,39 @@
+{
+  "version": "0.3.0",
+  "requirements_baseline": "0.2",
+  "validated_functional_revision": "bc0256fdd4cd71f52eb010dd09e15fa258f2c6fb",
+  "backend": {
+    "command": ".venv/bin/python -m pytest backend -q",
+    "passed": 135,
+    "failed": 0,
+    "warnings": [
+      {
+        "source": "Starlette TestClient",
+        "detail": "Aviso de deprecación del cliente httpx para Starlette TestClient"
+      }
+    ]
+  },
+  "flutter": {
+    "command": "flutter test --no-pub --reporter expanded",
+    "passed": 36,
+    "failed": 0,
+    "dependency_resolution": "flutter pub get --offline"
+  },
+  "static_analysis": {
+    "command": "flutter analyze --no-pub",
+    "issues": 0
+  },
+  "demo": {
+    "environment": "demo",
+    "health_http": 200,
+    "sqlite_schema": 3,
+    "sqlite_quick_check": "ok",
+    "openapi_version": "0.3.0",
+    "ollama_model": "qwen3:4b-instruct",
+    "ollama_prompt_profile": "linguistic"
+  },
+  "manual": {
+    "device_hub": "Aprobada según confirmación de la persona usuaria",
+    "physical_ipad": "Siguiente iteración"
+  }
+}

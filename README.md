@@ -2,7 +2,7 @@
 
 **Proyecto:** Sistema inteligente para la personalización asistida de Sistemas de Comunicación Aumentativa y Alternativa mediante inteligencia artificial.
 
-**Línea base de requisitos:** v0.2. **Implementación:** CU01–CU03 implementados, con los niveles de verificación detallados en el registro de implementación.
+**Versión del incremento:** [v0.3.0](docs/releases/v0.3.0.md). **Línea base de requisitos:** v0.2. CU01–CU03 se validaron en el simulador de iPad.
 
 La v0.2 es la primera línea base documental publicada en Git, consolidada tras revisiones locales que incluyeron una versión de trabajo v0.1.
 
@@ -41,15 +41,15 @@ Flutter (cliente) → FastAPI (API REST y reglas de negocio) → SQLite y archiv
 - [Decisiones y cambios](docs/decisions.md)
 - [Matriz de trazabilidad](docs/traceability.md)
 - [Plan de pruebas y evidencias](docs/test-plan.md)
-- [Preparación y ejecución del entorno de desarrollo](docs/development-setup.md)
+- [Instalación y ejecución de la demo v0.3.0](docs/development-setup.md#demo-v030-en-el-simulador-de-ipad)
 - [Registro de implementación](docs/evidence/iteration-0/implementation-log.md)
 - [Registro de cambios documentales](CHANGELOG.md)
 
 ## Estado de implementación
 
-La Iteración 0 cerró funcionalmente en `db312e3592648a3b620d66b2ea22af018396112e`. CU01–CU03 cuentan con pruebas automatizadas y recorridos manuales aprobados por la persona usuaria en el simulador para el incremento anterior. La calidad semántica del modelo local continúa bajo evaluación independiente. La Iteración 4 añadió controles de administración y visualización básica de recursos aprobados como avance parcial de CU05. La persona usuaria reportó 16 comprobaciones manuales aprobadas en iPad mediante Device Hub. La liberación permanece pendiente.
+La Iteración 4 incorpora la bienvenida y los modos de visualización y administración, la consulta de pictogramas, el visor horizontal de rutinas, y el detalle de dependencias al intentar eliminar un pictograma. La demo utiliza Qwen3 4B Instruct con el perfil `linguistic`, que propone de tres a cinco pasos con revisión humana.
 
-Consulta las [evidencias por iteración](docs/evidence/README.md) y la [guía de ejecución](docs/development-setup.md).
+La regresión final aprobó **135 pruebas de backend y 36 de Flutter**. `flutter analyze` quedó sin incidencias y la persona usuaria aprobó la validación final en Device Hub. La instalación en iPad físico pasa a la siguiente iteración. [Evidencias de Iteración 4](docs/evidence/iteration-4/README.md)
 
 ## Prioridades de implementación
 
@@ -64,5 +64,3 @@ La [referencia visual SCAA](docs/design/README.md) documenta los mockups y su ad
 El [registro de Iteración 2](docs/evidence/iteration-2/README.md) reúne el diseño, las pruebas y el recorrido confirmado de CU02 en el simulador de iPad.
 
 El [registro de Iteración 3](docs/evidence/iteration-3/README.md) documenta CU03 y sus verificaciones.
-
-El [registro de Iteración 4](docs/evidence/iteration-4/README.md) describe el modo visualización predeterminado, la administración deliberada, el visor de rutinas y el detalle de dependencias al eliminar pictogramas. La navegación de contenido aprobado es un avance parcial de CU05. CU04, CU05 integral y la liberación permanecen pendientes.
