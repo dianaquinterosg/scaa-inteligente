@@ -47,7 +47,7 @@ Flutter (cliente) → FastAPI (API REST y reglas de negocio) → SQLite y archiv
 
 ## Estado de implementación
 
-La Iteración 0 cerró funcionalmente en `db312e3592648a3b620d66b2ea22af018396112e`. CU01–CU03 cuentan con pruebas automatizadas y recorridos manuales aprobados por la persona usuaria en el simulador para el incremento anterior. La calidad semántica del modelo local continúa bajo evaluación independiente. La Iteración 4 añadió controles de administración y visualización básica de recursos aprobados como avance parcial de CU05. Su recorrido manual en iPad y la liberación están pendientes.
+La Iteración 0 cerró funcionalmente en `db312e3592648a3b620d66b2ea22af018396112e`. CU01–CU03 cuentan con pruebas automatizadas y recorridos manuales aprobados por la persona usuaria en el simulador para el incremento anterior. La calidad semántica del modelo local continúa bajo evaluación independiente. La Iteración 4 añadió controles de administración y visualización básica de recursos aprobados como avance parcial de CU05. La persona usuaria reportó 16 comprobaciones manuales aprobadas en iPad mediante Device Hub. La liberación permanece pendiente.
 
 Consulta las [evidencias por iteración](docs/evidence/README.md) y la [guía de ejecución](docs/development-setup.md).
 

@@ -1,6 +1,6 @@
 # Matriz de trazabilidad — requisitos v0.2 e implementación
 
-**Línea base:** los requisitos y prioridades proceden del SRS v0.2. **Estado de implementación:** Existe una base técnica y se ejecutaron sondas de servicios y pruebas de infraestructura; CU01 está implementado con pruebas automáticas aprobadas y aprobación visual confirmada por la persona usuaria; CU02 está implementado y probado automáticamente. La persona usuaria confirmó el recorrido manual en el simulador de iPad. CU03 está implementado y probado por API, widgets e integración real. La persona usuaria confirmó los escenarios manuales del incremento anterior en [CU01](evidence/iteration-1/manual-check.md), [CU02](evidence/iteration-2/manual-check.md) y [CU03](evidence/iteration-3/manual-check.md). La aceptación de calidad del modelo y el recorrido en iPad de Iteración 4 siguen pendientes. No hay release de software verificada. `P0/P1/P2` son prioridades, **no resultados**.
+**Línea base:** los requisitos y prioridades proceden del SRS v0.2. **Estado de implementación:** Existe una base técnica y se ejecutaron sondas de servicios y pruebas de infraestructura; CU01 está implementado con pruebas automáticas aprobadas y aprobación visual confirmada por la persona usuaria; CU02 está implementado y probado automáticamente. La persona usuaria confirmó el recorrido manual en el simulador de iPad. CU03 está implementado y probado por API, widgets e integración real. La persona usuaria confirmó los escenarios manuales del incremento anterior en [CU01](evidence/iteration-1/manual-check.md), [CU02](evidence/iteration-2/manual-check.md) y [CU03](evidence/iteration-3/manual-check.md). La persona usuaria reportó 16 comprobaciones aprobadas de la [Iteración 4 en Device Hub](evidence/iteration-4/manual-check.md). La aceptación de calidad del modelo sigue pendiente. No hay release de software verificada. `P0/P1/P2` son prioridades, **no resultados**.
 
 | Requisito | CU | CA vinculados | Prioridad | Componente implementado o planificado | Verificación prevista o ejecutada | Estado y evidencia vinculada |
 |---|---|---|---|---|---|---|
@@ -33,10 +33,10 @@
 
 | Requisito | CU / CA | Código | Prueba |
 |---|---|---|---|
-| RF-I4.1 | CU01–CU03 / CA-I4.1–CA-I4.3 | `ProfileGate`, `ScaaModeBanner`, `PictogramScreen`, `RoutinesScreen` | I4-01, I4-02 |
-| RF-I4.2 | CU02, CU05 parcial / CA-I4.2 | `PictogramScreen`, `Catalog.list` | I4-02 |
-| RF-I4.3 | CU03, CU05 parcial / CA-I4.3 | `RoutinesScreen`, `RoutineViewer`, `RoutineEditor` | I4-03 |
-| RF-I4.4 | CU02–CU03 / CA-I4.4–CA-I4.5 | `Catalog.delete`, `CatalogApi.delete`, `PictogramEditor`, FK de `routine_step` | I4-04, I4-05 · `0849ffb` |
+| RF-I4.1 | CU01–CU03 / CA-I4.1–CA-I4.3 | `ProfileGate`, `ScaaModeBanner`, `PictogramScreen`, `RoutinesScreen` | I4-01, I4-02 · I4-M01–I4-M07 |
+| RF-I4.2 | CU02, CU05 parcial / CA-I4.2 | `PictogramScreen`, `Catalog.list` | I4-02 · I4-M02, I4-M03, I4-M06, I4-M07 |
+| RF-I4.3 | CU03, CU05 parcial / CA-I4.3 | `RoutinesScreen`, `RoutineViewer`, `RoutineEditor` | I4-03 · I4-M07–I4-M13 |
+| RF-I4.4 | CU02–CU03 / CA-I4.4–CA-I4.5 | `Catalog.delete`, `CatalogApi.delete`, `PictogramEditor`, FK de `routine_step` | I4-04, I4-05 · I4-M14–I4-M16 · `0849ffb` |
 
 Los resultados y commits funcionales se mantienen en las [evidencias de Iteración 4](evidence/iteration-4/README.md).
 

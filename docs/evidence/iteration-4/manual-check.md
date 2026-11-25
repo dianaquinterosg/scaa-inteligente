@@ -1,6 +1,6 @@
 # Iteración 4 · Validación manual en iPad
 
-**Estado:** pendiente de verificación y aprobación. Utiliza datos de prueba. Los tamaños de tablet verificados en widgets están documentados en [las evidencias](README.md).
+**Estado:** 16 comprobaciones ejecutadas y aprobadas en el simulador de iPad mediante Device Hub, según el reporte de la persona usuaria. La [regresión automatizada](README.md) se registra por separado.
 
 1. Inicia el backend desde la raíz del proyecto. Ejecuta Flutter en otra terminal con el simulador de iPad abierto.
 
@@ -20,9 +20,27 @@
 6. Vincula un pictograma a dos rutinas de prueba e intenta eliminarlo desde el catálogo. Comprueba el mensaje con ambos nombres e identificadores y vuelve a abrir las dos rutinas.
 7. Usa «Volver a visualización» y comprueba que los controles de modificación queden ocultos. Reinicia la aplicación y comprueba que inicia en visualización.
 
-| Escenario | Resultado |
-|---|---|
-| Arranque, acceso, cancelación y salida | Pendiente |
-| Catálogo aprobado y filtro | Pendiente |
-| Visor en ambas orientaciones con 1 y 12 pasos | Pendiente |
-| Edición administrativa y conflicto con dependencias | Pendiente |
+## Resultados manuales reportados
+
+| Prueba | Criterio relacionado | Comprobación | Resultado |
+|---|---|---|---|
+| I4-M01 | CA-I4.1 | La aplicación inicia en modo visualización. | Ejecutada y aprobada |
+| I4-M02 | CA-I4.1–CA-I4.2 | En visualización se ocultan los botones de creación, edición y eliminación. | Ejecutada y aprobada |
+| I4-M03 | CA-I4.2 | Se consultan pictogramas y se filtran por categoría. | Ejecutada y aprobada |
+| I4-M04 | CA-I4.1 | El acceso a administración solicita confirmación. | Ejecutada y aprobada |
+| I4-M05 | CA-I4.1 | Se puede regresar a visualización desde administración. | Ejecutada y aprobada |
+| I4-M06 | CA-I4.2 | Se mantienen las operaciones de gestión del perfil. | Ejecutada y aprobada |
+| I4-M07 | CA-I4.2–CA-I4.3 | Se mantienen los editores de pictogramas y rutinas. | Ejecutada y aprobada |
+| I4-M08 | CA-I4.3 | Los pasos aparecen horizontalmente y en orden. | Ejecutada y aprobada |
+| I4-M09 | CA-I4.3 | Las imágenes y etiquetas son legibles. | Ejecutada y aprobada |
+| I4-M10 | CA-I4.3 | El visor funciona en orientación vertical. | Ejecutada y aprobada |
+| I4-M11 | CA-I4.3 | El visor funciona en orientación horizontal. | Ejecutada y aprobada |
+| I4-M12 | CA-I4.3 | Es posible desplazarse hasta el paso 12. | Ejecutada y aprobada |
+| I4-M13 | RF-I4.3 | El visor se limita a presentar los pasos, con ausencia de controles de seguimiento de progreso. | Ejecutada y aprobada |
+| I4-M14 | CA-I4.4 | Al intentar eliminar un pictograma utilizado, se muestran las rutinas dependientes. | Ejecutada y aprobada |
+| I4-M15 | CA-I4.4–CA-I4.5 | Tras el rechazo, el pictograma y su imagen permanecen disponibles. | Ejecutada y aprobada |
+| I4-M16 | CA-I4.5 | El pictograma se puede eliminar después de retirar sus referencias. | Ejecutada y aprobada |
+
+I4-M01–I4-M13 se vinculan con la implementación `0fbf0dc`. I4-M14–I4-M16 se vinculan con `0849ffb`.
+
+Quedan sin confirmación manual específica la cancelación del diálogo, el reinicio desde administración, el visor de una rutina de un paso y el cotejo de IDs y cantidad de dependencias. Esos casos conservan su [evidencia automatizada](README.md). La liberación permanece pendiente de aprobación.

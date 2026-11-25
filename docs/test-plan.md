@@ -66,7 +66,7 @@ El registro de gestión de configuración debe incluir SHA de commit, tag (por e
 | 1 — CU01 | Implementación funcional `854180f` y adaptación visual `bca2e58` | 45 backend, 17 Flutter y 7 escenarios HTTP reales aprobados. Análisis sin incidencias | [Regresión visual](evidence/iteration-1/visual.md) | Aspecto y escenarios funcionales aprobados en simulador según reporte |
 | 2 — CU02 | `c311854`, `7a0acd5`, `3e256e8` | 68 backend, 21 Flutter, 4 escenarios HTTP y recorrido de iPad confirmado | [Iteración 2](evidence/iteration-2/README.md) | CA02.12 resuelto en Iteración 3 |
 | 3 — CU03 | `51c191b`, `0212ce4`, `c3ad225` | 95 backend, 25 Flutter, 11 verificaciones HTTP CU03 y regresiones HTTP CU01/CU02 | [Iteración 3](evidence/iteration-3/results.md) | Calidad semántica provisional. Escenarios en simulador aprobados según reporte. T16 pendiente |
-| 4 — Usabilidad y estabilización | `0849ffb`, `0fbf0dc` | 95 backend, 33 Flutter, análisis estático y verificación HTTP de dependencias | [Iteración 4](evidence/iteration-4/README.md) | Validación manual de los refinamientos y liberación pendientes |
+| 4 — Usabilidad y estabilización | `0849ffb`, `0fbf0dc` | 95 backend, 33 Flutter, análisis estático, verificación HTTP de dependencias y 16 comprobaciones aprobadas en Device Hub según reporte | [Iteración 4](evidence/iteration-4/README.md) | Liberación pendiente |
 
 Los registros documentales excluyen metadatos temporales. Los resultados se asocian al alcance y al código real, sin atribuir un commit inexistente.
 

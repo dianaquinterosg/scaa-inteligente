@@ -7,7 +7,7 @@ Los cambios responden a la [validación del incremento anterior](../iteration-3/
 | Proteger CU01–CU03 frente a cambios accidentales | Inicio en visualización, confirmación de acceso a administración y salida visible. El control reside en Flutter. `0fbf0dc` |
 | Navegar por recursos aprobados | Catálogo de solo lectura con categorías y visor horizontal de pasos guardados, con el editor vertical disponible en administración. Avance parcial de CU05. `0fbf0dc` |
 | Informar dependencias al eliminar pictogramas | HTTP 409 con código, mensaje e IDs y nombres de las rutinas deduplicados. Flutter muestra las dependencias y SQLite conserva su restricción. `0849ffb` |
-| Estabilizar el incremento | Regresión automatizada de CU01–CU03 y prueba de la API por HTTP real. Validación en simulador y liberación pendientes. |
+| Estabilizar el incremento | Regresión automatizada de CU01–CU03 y prueba de la API por HTTP real. 16 comprobaciones manuales aprobadas en Device Hub según la persona usuaria. Liberación pendiente. |
 
 ## Resultados verificados
 
@@ -30,6 +30,6 @@ flutter test --no-pub --reporter expanded
 
 La prueba HTTP usó Uvicorn y almacenamiento temporal aislado. Los widgets usaron almacenes de prueba. El modelo provisional de Ollama y el algoritmo de asociación continúan vigentes. CU04 y CU05 integral siguen planificados.
 
-## Verificación pendiente
+## Validación manual en Device Hub
 
-La consulta a CoreSimulator falló desde la sesión restringida. El [recorrido manual en iPad](manual-check.md) queda pendiente de aprobación. La liberación permanece pendiente.
+La persona usuaria informó 16 comprobaciones ejecutadas y aprobadas. El [registro manual](manual-check.md) detalla cada resultado y los casos con evidencia automatizada que quedaron sin confirmación manual específica. La liberación permanece pendiente.
