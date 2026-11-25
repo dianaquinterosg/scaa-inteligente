@@ -146,7 +146,7 @@ El estado de administración vive en memoria del cliente. El incremento incorpor
 
 | Referencia | Relación con v0.2 | Comportamiento requerido |
 |---|---|---|
-| RF-I4.5 | RF03.1, RF03.2, RF03.4 | En el perfil experimental, una inferencia de `qwen3:4b-instruct` propone hasta cuatro acciones esenciales en orden. El modelo entrega nombre, orden y etiqueta. El servidor copia cada etiqueta a `search_term` y conserva el máximo de doce en edición manual. |
-| RF-I4.6 | RF03.3, RF03.5, RF03.6 | Buscar primero en recursos locales aprobados. Ante ausencia de coincidencia local, enviar la etiqueta exacta a ARASAAC y sugerir el primer resultado. Si falta un resultado, permitir elegir manualmente. Mantener la aprobación humana antes de guardar. |
+| RF-I4.5 | RF03.1, RF03.2, RF03.4 | En el perfil experimental, una inferencia de `qwen3:4b-instruct` propone de tres a cinco acciones esenciales en orden. El modelo entrega nombre, orden y etiqueta. El servidor copia cada etiqueta a `search_term` y conserva el máximo de doce en edición manual. |
+| RF-I4.6 | RF03.3, RF03.5, RF03.6 | Buscar primero en recursos locales aprobados. Ante ausencia de coincidencia local, enviar la etiqueta exacta a ARASAAC y sugerir el primer resultado si su etiqueta coincide exactamente. Si difiere, revisar los siguientes candidatos por etiqueta o palabras clave. Si falta una coincidencia pertinente, permitir elegir manualmente. Mantener la aprobación humana antes de guardar. |
 
 En el ensayo, la etiqueta usa español de España y un infinitivo sin pronombres enclíticos. Contiene solo el verbo cuando basta por sí mismo. En los demás casos, conserva el artículo, sustantivo y las preposiciones necesarias. El objetivo experimental de latencia es menos de diez segundos con el modelo precargado. La pertinencia visual requiere revisión manual.

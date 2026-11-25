@@ -75,3 +75,5 @@ Para RF01.1–RF01.3 / CA01.1–CA01.10, la [regresión de CU01 con el diseño S
 | RF-I4.5 | CA-I4.6 | `LinguisticStep`, `LinguisticGeneratedRoutine`, `OllamaGenerator`, `RoutineApproval` | `test_linguistic_generation.py` y regresión de creación y edición de doce pasos |
 | RF-I4.6 | CA-I4.7 | `routine_api.propose`, `routine_association.associate`, `ArasaacClient.search` | Prueba HTTP controlada de consulta exacta, candidatos, aprobación y deduplicación |
 | RF-I4.5–RF-I4.6 | CA-I4.8 | Sonda de propuesta con Ollama y ARASAAC reales | [Resultados del ensayo lingüístico](evidence/iteration-4/linguistic-routines.md). Pertinencia visual pendiente |
+
+La [regresión del rango 3–5 y revisión de candidatos](evidence/iteration-4/routine-label-fallback.md) amplía CA-I4.6–CA-I4.8. Conserva la verificación de la edición manual de doce pasos y la trazabilidad de las propuestas y sugerencias que requieren revisión.

@@ -5,7 +5,7 @@ from pydantic import ValidationError
 import pytest
 
 from scaa_backend.arasaac import ArasaacUnavailable
-from scaa_backend.routine_association import associate
+from scaa_backend.routine_association import associate, label_candidates
 from scaa_backend.routine_generation import GeneratedRoutine, GenerationError, OllamaGenerator
 
 
@@ -210,3 +210,28 @@ def test_contextual_external_selection_keeps_local_and_skips_unrelated_images():
     assert steps[2]["selected"] == {"external_id": 3, "label": "higiene dental"}
     assert not any(step["approved"] for step in steps)
     assert sorted(remote.calls) == ["cepillar dientes", "mojar manos"]
+
+
+def test_label_candidates_prefer_exact_first_label_then_pertinent_later_aliases():
+    first = {"external_id": 1, "label": "echar el jabón", "keywords": ["jabón"]}
+    unrelated = {"external_id": 2, "label": "burbuja", "keywords": ["echar el jabón"]}
+    later = {"external_id": 3, "label": "echar jabón", "keywords": ["echar jabón"]}
+    assert label_candidates("echar el jabón", [first, later])[0]["external_id"] == 1
+    assert label_candidates("echar el jabón", [unrelated, later]) == [
+        {"external_id": 3, "label": "echar jabón"},
+    ]
+    assert label_candidates("echar el jabón", [unrelated]) == []
+    assert label_candidates("echar el jabón", []) == []
+    assert label_candidates("orinar", [
+        {"external_id": 4, "label": "hacer pis"},
+        {"external_id": 5, "label": "hacer pipí", "keywords": ["orinar"]},
+    ]) == [{"external_id": 5, "label": "hacer pipí"}]
+
+
+def test_later_labels_preserve_the_action_and_its_prepositions():
+    assert label_candidates("ir al baño", [
+        {"external_id": 1, "label": "quedarse solo"},
+        {"external_id": 2, "label": "baño"},
+        {"external_id": 3, "label": "ir desde el baño"},
+        {"external_id": 4, "label": "ir a el baño"},
+    ]) == [{"external_id": 4, "label": "ir a el baño"}]

@@ -213,6 +213,6 @@ La experiencia de visualización permite consultar secuencias guardadas. El alca
 
 | Criterio | Requisito | Resultado observable |
 |---|---|---|
-| CA-I4.6 | RF-I4.5 | Una inferencia produce entre uno y cuatro pasos consecutivos. Los pasos contienen orden y etiqueta. Pydantic valida la estructura y el servidor conserva la etiqueta intacta en `search_term`. Las etiquetas se revisan según las reglas lingüísticas del SRS. El editor y la confirmación de rutinas admiten doce pasos. |
-| CA-I4.7 | RF-I4.6 | Una coincidencia local pertinente tiene prioridad. Si falta, se consulta por la etiqueta exacta con artículos y preposiciones, una vez por texto idéntico. El primer resultado de ARASAAC se sugiere para aprobación humana. Una búsqueda vacía deja el paso pendiente. |
+| CA-I4.6 | RF-I4.5 | Una inferencia produce entre tres y cinco pasos consecutivos. Los pasos contienen orden y etiqueta. Pydantic valida la estructura y el servidor conserva la etiqueta intacta en `search_term`. Las etiquetas se revisan según las reglas lingüísticas del SRS. El editor y la confirmación de rutinas admiten doce pasos. |
+| CA-I4.7 | RF-I4.6 | Una coincidencia local pertinente tiene prioridad. Si falta, se consulta por la etiqueta exacta con artículos y preposiciones, una vez por texto idéntico. El primer resultado se sugiere si su etiqueta coincide exactamente. Si difiere, se revisan los siguientes en orden. La ausencia de coincidencia deja el paso pendiente de aprobación y selección manual. |
 | CA-I4.8 | RF-I4.5–RF-I4.6 | Para cinco rutinas cotidianas, se registran tiempos de inferencia, consulta local, ARASAAC, asociación y respuesta total, además de etiquetas, consultas, IDs y palabras clave. La pertinencia visual se confirma durante la revisión manual. |

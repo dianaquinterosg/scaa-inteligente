@@ -78,18 +78,18 @@ def run(output):
 
         class RecordedArasaac(ArasaacClient):
             def search(self, term, *, include_keywords=False):
-                assert not include_keywords
+                assert include_keywords
                 started = perf_counter()
                 candidates = []
                 unavailable = False
                 try:
                     candidates = super().search(term, include_keywords=True)
-                    return [{k: v for k, v in item.items() if k != "keywords"} for item in candidates]
+                    return candidates
                 except ArasaacUnavailable:
                     unavailable = True
                     raise
                 finally:
-                    queries[term] = (started, perf_counter(), candidates[0] if candidates else None, unavailable)
+                    queries[term] = (started, perf_counter(), candidates, unavailable)
 
         app.state.arasaac = RecordedArasaac()
         app.state.catalog.list = capture_list
@@ -131,9 +131,16 @@ def run(output):
                             assert step["label"] == step["search_term"] and not step["approved"]
                             query = queries.get(step["label"])
                             chosen = step["selected"]
-                            first = query[2] if query else None
-                            if query:
-                                assert (chosen or {}).get("external_id") == (first or {}).get("external_id")
+                            results = query[2] if query else []
+                            first = results[0] if results else None
+                            selected = next(
+                                (item for item in results if item["external_id"] == (chosen or {}).get("external_id")),
+                                None,
+                            )
+                            if first and first["label"] == step["label"]:
+                                assert selected is first
+                            elif first and selected:
+                                assert selected is not first
                             steps.append({
                                 "order": step["order"], "label": step["label"], "search_term": step["search_term"],
                                 "arasaac_query": step["label"] if query else None,
@@ -141,7 +148,9 @@ def run(output):
                                 "arasaac_unavailable": query[3] if query else False,
                                 "suggestion_id": (chosen or {}).get("external_id"),
                                 "suggestion_label": (chosen or {}).get("label"),
-                                "keywords": (first or {}).get("keywords", []),
+                                "provider_first_id": (first or {}).get("external_id"),
+                                "provider_first_label": (first or {}).get("label"),
+                                "keywords": (selected or {}).get("keywords", []),
                             })
                         assert measurements["inferences"] == 1
                         assert api.get("/routines").json() == []

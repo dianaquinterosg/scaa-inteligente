@@ -222,10 +222,13 @@ def test_linguistic_association_sends_the_exact_label_and_reuses_duplicate_queri
         def __init__(self):
             self.calls = []
 
-        def search(self, term):
+        def search(self, term, *, include_keywords=False):
+            assert include_keywords
             self.calls.append(term)
-            return [] if term == "ir al baño" else [
-                {"external_id": 25, "label": "Primera sugerencia"},
+            if term == "ir al baño":
+                return [{"external_id": 27, "label": "quedarse solo"}]
+            return [
+                {"external_id": 25, "label": "Primera sugerencia", "keywords": ["Lavar las manos"]},
                 {"external_id": 26, "label": "Lavar las manos"},
             ]
 
@@ -240,7 +243,7 @@ def test_linguistic_association_sends_the_exact_label_and_reuses_duplicate_queri
         assert sorted(remote.calls) == ["Lavar las manos", "ir al baño"]
         assert [step["search_term"] for step in steps] == labels
         assert [step["selected"] and step["selected"].get("external_id") for step in steps[:3]] == [
-            25, None, 25,
+            26, None, 26,
         ]
         assert steps[3]["selected"]["id"] == saved_picture["id"]
         assert all(not step["approved"] for step in steps)

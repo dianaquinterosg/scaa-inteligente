@@ -174,4 +174,4 @@ curl -fsS http://127.0.0.1:11434/api/generate \
   -d '{"model":"qwen3:4b-instruct","keep_alive":"10m"}'
 ```
 
-Conserva Flutter apuntando al mismo puerto. Para regresar al ensayo breve anterior, usa `OLLAMA_PROMPT_PROFILE=concise` y `SCAA_ROUTINE_EXTERNAL_MATCH=contextual`. Para regresar a los valores predeterminados usa `OLLAMA_MODEL=qwen2.5:1.5b`, `OLLAMA_PROMPT_PROFILE=baseline` y `SCAA_ROUTINE_EXTERNAL_MATCH=provider`.
+Conserva Flutter apuntando al mismo puerto. El perfil genera de tres a cinco pasos. Comprueba si el primer pictograma coincide o si se seleccionó una alternativa. Para regresar al ensayo breve anterior, usa `OLLAMA_PROMPT_PROFILE=concise` y `SCAA_ROUTINE_EXTERNAL_MATCH=contextual`. Para regresar a los valores predeterminados usa `OLLAMA_MODEL=qwen2.5:1.5b`, `OLLAMA_PROMPT_PROFILE=baseline` y `SCAA_ROUTINE_EXTERNAL_MATCH=provider`.
