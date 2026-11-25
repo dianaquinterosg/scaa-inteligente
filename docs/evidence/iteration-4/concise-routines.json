@@ -1,0 +1,994 @@
+{
+  "alternate": {
+    "model": "qwen3:4b-instruct",
+    "prompt_profile": "alternate",
+    "arasaac": "real",
+    "median_seconds": {
+      "inference": 12.273,
+      "backend": 14.77
+    },
+    "results": [
+      {
+        "description": "Lavarse las manos",
+        "status": 200,
+        "inference_seconds": 14.887,
+        "ollama_load_ms": 21.004,
+        "backend_seconds": 17.469,
+        "after_inference_seconds": 2.582,
+        "steps": [
+          {
+            "order": 1,
+            "label": "abrir el agua",
+            "search_term": "abrir agua",
+            "association": "arasaac",
+            "selected": {
+              "id": 16745,
+              "label": "jugar con el agua"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 2,
+            "label": "mojar las manos",
+            "search_term": "mojar manos",
+            "association": "arasaac",
+            "selected": {
+              "id": 6149,
+              "label": "mojar"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 3,
+            "label": "aplicar jabón",
+            "search_term": "aplicar jabón",
+            "association": "arasaac",
+            "selected": {
+              "id": 6945,
+              "label": "burbujas"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 4,
+            "label": "lavar las manos",
+            "search_term": "lavar manos",
+            "association": "arasaac",
+            "selected": {
+              "id": 10384,
+              "label": "educación física"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 5,
+            "label": "enjuagar las manos",
+            "search_term": "enjuagar manos",
+            "association": "arasaac",
+            "selected": {
+              "id": 10384,
+              "label": "educación física"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 6,
+            "label": "secar las manos",
+            "search_term": "secar manos",
+            "association": "arasaac",
+            "selected": {
+              "id": 38469,
+              "label": "secar el pie"
+            },
+            "approved": false,
+            "candidate_count": 8
+          }
+        ]
+      },
+      {
+        "description": "Cepillarse los dientes",
+        "status": 200,
+        "inference_seconds": 12.273,
+        "ollama_load_ms": 3.949,
+        "backend_seconds": 15.067,
+        "after_inference_seconds": 2.794,
+        "steps": [
+          {
+            "order": 1,
+            "label": "Sacar el cepillo de dientes",
+            "search_term": "cepillo dientes",
+            "association": "arasaac",
+            "selected": {
+              "id": 11961,
+              "label": "echar pasta de dientes"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 2,
+            "label": "Colocar el cepillo en la boca",
+            "search_term": "cepillar dientes",
+            "association": "arasaac",
+            "selected": {
+              "id": 11963,
+              "label": "limpiar el cepillo de dientes"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 3,
+            "label": "Lavar el cepillo con agua",
+            "search_term": "lavar cepillo",
+            "association": "arasaac",
+            "selected": {
+              "id": 6971,
+              "label": "cepillar los dientes"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 4,
+            "label": "Enjuagar la boca",
+            "search_term": "enjuagar boca",
+            "association": "arasaac",
+            "selected": {
+              "id": 34848,
+              "label": "meter la mano en la boca"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 5,
+            "label": "Guardar el cepillo",
+            "search_term": "guardar cepillo",
+            "association": "arasaac",
+            "selected": {
+              "id": 37189,
+              "label": "guardar el cuaderno de comunicación"
+            },
+            "approved": false,
+            "candidate_count": 8
+          }
+        ]
+      },
+      {
+        "description": "Prepararse para dormir",
+        "status": 200,
+        "inference_seconds": 11.124,
+        "ollama_load_ms": 3.228,
+        "backend_seconds": 13.102,
+        "after_inference_seconds": 1.978,
+        "steps": [
+          {
+            "order": 1,
+            "label": "Despertar de la cama",
+            "search_term": "despertar cama",
+            "association": "arasaac",
+            "selected": {
+              "id": 8988,
+              "label": "despertar"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 2,
+            "label": "Apagar la luz",
+            "search_term": "apagar luz",
+            "association": "arasaac",
+            "selected": {
+              "id": 36455,
+              "label": "teatro de luz negra"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 3,
+            "label": "Quitar las ropas",
+            "search_term": "quitar ropas",
+            "association": "arasaac",
+            "selected": {
+              "id": 7233,
+              "label": "ropa"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 4,
+            "label": "Cerrarse la puerta",
+            "search_term": "cerrar puerta",
+            "association": "arasaac",
+            "selected": {
+              "id": 4687,
+              "label": "llamar a la puerta"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 5,
+            "label": "Dormirse",
+            "search_term": "dormirse",
+            "association": "arasaac",
+            "selected": null,
+            "approved": false,
+            "candidate_count": 0
+          }
+        ]
+      },
+      {
+        "description": "Ir al baño",
+        "status": 200,
+        "inference_seconds": 11.342,
+        "ollama_load_ms": 4.861,
+        "backend_seconds": 13.379,
+        "after_inference_seconds": 2.037,
+        "steps": [
+          {
+            "order": 1,
+            "label": "abrir la puerta",
+            "search_term": "abrir puerta",
+            "association": "arasaac",
+            "selected": {
+              "id": 4687,
+              "label": "llamar a la puerta"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 2,
+            "label": "sentarse en el inodoro",
+            "search_term": "sentarse inodoro",
+            "association": "arasaac",
+            "selected": {
+              "id": 27268,
+              "label": "sentar en el borde"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 3,
+            "label": "realizar la acción de defecación",
+            "search_term": "defecar",
+            "association": "arasaac",
+            "selected": {
+              "id": 39599,
+              "label": "defecar"
+            },
+            "approved": false,
+            "candidate_count": 7
+          },
+          {
+            "order": 4,
+            "label": "lavar las manos",
+            "search_term": "lavar manos",
+            "association": "arasaac",
+            "selected": {
+              "id": 10384,
+              "label": "educación física"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 5,
+            "label": "cerrar la puerta",
+            "search_term": "cerrar puerta",
+            "association": "arasaac",
+            "selected": {
+              "id": 4687,
+              "label": "llamar a la puerta"
+            },
+            "approved": false,
+            "candidate_count": 8
+          }
+        ]
+      },
+      {
+        "description": "Guardar los juguetes",
+        "status": 200,
+        "inference_seconds": 12.951,
+        "ollama_load_ms": 1.642,
+        "backend_seconds": 14.77,
+        "after_inference_seconds": 1.819,
+        "steps": [
+          {
+            "order": 1,
+            "label": "Recoger los juguetes",
+            "search_term": "recoger juguetes",
+            "association": "arasaac",
+            "selected": {
+              "id": 32663,
+              "label": "recoger"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 2,
+            "label": "Lavar los juguetes",
+            "search_term": "lavar juguetes",
+            "association": "arasaac",
+            "selected": {
+              "id": 6971,
+              "label": "cepillar los dientes"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 3,
+            "label": "Ordenar los juguetes",
+            "search_term": "ordenar juguetes",
+            "association": "arasaac",
+            "selected": {
+              "id": 6474,
+              "label": "devolver un libro"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 4,
+            "label": "Colocar los juguetes en el estante",
+            "search_term": "colocar juguetes estante",
+            "association": "arasaac",
+            "selected": {
+              "id": 8680,
+              "label": "recoger los juguetes"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 5,
+            "label": "Cerrar el estante",
+            "search_term": "cerrar estante",
+            "association": "arasaac",
+            "selected": {
+              "id": 37937,
+              "label": "estante para libros"
+            },
+            "approved": false,
+            "candidate_count": 8
+          }
+        ]
+      }
+    ]
+  },
+  "concise-before-association": {
+    "model": "qwen3:4b-instruct",
+    "prompt_profile": "concise",
+    "arasaac": "real",
+    "median_seconds": {
+      "inference": 7.982,
+      "backend": 9.581
+    },
+    "results": [
+      {
+        "description": "Lavarse las manos",
+        "status": 200,
+        "inference_seconds": 8.807,
+        "ollama_load_ms": 2.284,
+        "backend_seconds": 11.077,
+        "after_inference_seconds": 2.27,
+        "steps": [
+          {
+            "order": 1,
+            "label": "abrir",
+            "search_term": "abrir manos",
+            "association": "arasaac",
+            "selected": {
+              "id": 10384,
+              "label": "educación física"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 2,
+            "label": "mojar",
+            "search_term": "mojar manos",
+            "association": "arasaac",
+            "selected": {
+              "id": 6149,
+              "label": "mojar"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 3,
+            "label": "aplicar",
+            "search_term": "aplicar jabón",
+            "association": "arasaac",
+            "selected": {
+              "id": 6945,
+              "label": "burbujas"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 4,
+            "label": "lavar",
+            "search_term": "lavar manos",
+            "association": "arasaac",
+            "selected": {
+              "id": 10384,
+              "label": "educación física"
+            },
+            "approved": false,
+            "candidate_count": 8
+          }
+        ]
+      },
+      {
+        "description": "Cepillarse los dientes",
+        "status": 200,
+        "inference_seconds": 7.717,
+        "ollama_load_ms": 1.995,
+        "backend_seconds": 9.576,
+        "after_inference_seconds": 1.859,
+        "steps": [
+          {
+            "order": 1,
+            "label": "abrir",
+            "search_term": "abrir boca",
+            "association": "arasaac",
+            "selected": {
+              "id": 7266,
+              "label": "tapar la boca"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 2,
+            "label": "colocar",
+            "search_term": "colocar cepillo",
+            "association": "arasaac",
+            "selected": {
+              "id": 37356,
+              "label": "colocar los pies en la mesa"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 3,
+            "label": "cepillar",
+            "search_term": "cepillar dientes",
+            "association": "arasaac",
+            "selected": {
+              "id": 11963,
+              "label": "limpiar el cepillo de dientes"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 4,
+            "label": "enjuagar",
+            "search_term": "enjuagar boca",
+            "association": "arasaac",
+            "selected": {
+              "id": 34848,
+              "label": "meter la mano en la boca"
+            },
+            "approved": false,
+            "candidate_count": 8
+          }
+        ]
+      },
+      {
+        "description": "Prepararse para dormir",
+        "status": 200,
+        "inference_seconds": 7.982,
+        "ollama_load_ms": 4.809,
+        "backend_seconds": 9.581,
+        "after_inference_seconds": 1.599,
+        "steps": [
+          {
+            "order": 1,
+            "label": "encender luz",
+            "search_term": "encender luz",
+            "association": "arasaac",
+            "selected": {
+              "id": 8027,
+              "label": "apagar la luz"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 2,
+            "label": "desvestirse",
+            "search_term": "desvestirse",
+            "association": "arasaac",
+            "selected": null,
+            "approved": false,
+            "candidate_count": 0
+          },
+          {
+            "order": 3,
+            "label": "acostarse",
+            "search_term": "acostarse",
+            "association": "arasaac",
+            "selected": null,
+            "approved": false,
+            "candidate_count": 0
+          },
+          {
+            "order": 4,
+            "label": "apagar luz",
+            "search_term": "apagar luz",
+            "association": "arasaac",
+            "selected": {
+              "id": 36455,
+              "label": "teatro de luz negra"
+            },
+            "approved": false,
+            "candidate_count": 8
+          }
+        ]
+      },
+      {
+        "description": "Ir al baño",
+        "status": 200,
+        "inference_seconds": 7.784,
+        "ollama_load_ms": 2.104,
+        "backend_seconds": 9.849,
+        "after_inference_seconds": 2.065,
+        "steps": [
+          {
+            "order": 1,
+            "label": "acercarse",
+            "search_term": "acercarse al baño",
+            "association": "arasaac",
+            "selected": {
+              "id": 27541,
+              "label": "quedarse solo"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 2,
+            "label": "abrir puerta",
+            "search_term": "abrir puerta del baño",
+            "association": "arasaac",
+            "selected": {
+              "id": 4687,
+              "label": "llamar a la puerta"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 3,
+            "label": "sentarse",
+            "search_term": "sentarse en inodoro",
+            "association": "arasaac",
+            "selected": {
+              "id": 27268,
+              "label": "sentar en el borde"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 4,
+            "label": "lavar manos",
+            "search_term": "lavar manos después",
+            "association": "arasaac",
+            "selected": {
+              "id": 10384,
+              "label": "educación física"
+            },
+            "approved": false,
+            "candidate_count": 8
+          }
+        ]
+      },
+      {
+        "description": "Guardar los juguetes",
+        "status": 200,
+        "inference_seconds": 8.575,
+        "ollama_load_ms": 2.287,
+        "backend_seconds": 9.566,
+        "after_inference_seconds": 0.991,
+        "steps": [
+          {
+            "order": 1,
+            "label": "ordenar",
+            "search_term": "ordenar juguetes",
+            "association": "arasaac",
+            "selected": {
+              "id": 6474,
+              "label": "devolver un libro"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 2,
+            "label": "colocar",
+            "search_term": "colocar juguetes en caja",
+            "association": "arasaac",
+            "selected": {
+              "id": 8680,
+              "label": "recoger los juguetes"
+            },
+            "approved": false,
+            "candidate_count": 8
+          },
+          {
+            "order": 3,
+            "label": "cerrar",
+            "search_term": "cerrar caja juguetes",
+            "association": "arasaac",
+            "selected": {
+              "id": 8680,
+              "label": "recoger los juguetes"
+            },
+            "approved": false,
+            "candidate_count": 8
+          }
+        ]
+      }
+    ]
+  },
+  "verified": {
+    "model": "qwen3:4b-instruct",
+    "prompt_profile": "concise",
+    "arasaac": "real",
+    "external_match": "contextual",
+    "median_seconds": {
+      "inference": 7.826,
+      "backend": 9.467
+    },
+    "results": [
+      {
+        "description": "Lavarse las manos",
+        "status": 200,
+        "inference_seconds": 10.649,
+        "ollama_load_ms": 2.35,
+        "backend_seconds": 13.024,
+        "after_inference_seconds": 2.375,
+        "steps": [
+          {
+            "order": 1,
+            "label": "Mojar manos",
+            "search_term": "mojar manos",
+            "association": "arasaac",
+            "selected": null,
+            "approved": false,
+            "candidate_count": 0
+          },
+          {
+            "order": 2,
+            "label": "Aplicar jabón",
+            "search_term": "aplicar jabón",
+            "association": "arasaac",
+            "selected": null,
+            "approved": false,
+            "candidate_count": 0
+          },
+          {
+            "order": 3,
+            "label": "Lavar palmas y dorso",
+            "search_term": "lavar palmas y dorso",
+            "association": "arasaac",
+            "selected": null,
+            "approved": false,
+            "candidate_count": 0
+          },
+          {
+            "order": 4,
+            "label": "Enjuagar manos",
+            "search_term": "enjuagar manos",
+            "association": "arasaac",
+            "selected": null,
+            "approved": false,
+            "candidate_count": 0
+          }
+        ]
+      },
+      {
+        "description": "Cepillarse los dientes",
+        "status": 200,
+        "inference_seconds": 5.824,
+        "ollama_load_ms": 2.305,
+        "backend_seconds": 7.745,
+        "after_inference_seconds": 1.921,
+        "steps": [
+          {
+            "order": 1,
+            "label": "mojar dientes",
+            "search_term": "mojar dientes",
+            "association": "arasaac",
+            "selected": null,
+            "approved": false,
+            "candidate_count": 0
+          },
+          {
+            "order": 2,
+            "label": "cepillar dientes",
+            "search_term": "cepillar dientes",
+            "association": "arasaac",
+            "selected": {
+              "id": 6971,
+              "label": "cepillar los dientes"
+            },
+            "approved": false,
+            "candidate_count": 4
+          },
+          {
+            "order": 3,
+            "label": "enjuagar boca",
+            "search_term": "enjuagar boca",
+            "association": "arasaac",
+            "selected": {
+              "id": 8559,
+              "label": "enjuagar la boca"
+            },
+            "approved": false,
+            "candidate_count": 3
+          }
+        ]
+      },
+      {
+        "description": "Prepararse para dormir",
+        "status": 200,
+        "inference_seconds": 7.996,
+        "ollama_load_ms": 3.061,
+        "backend_seconds": 11.016,
+        "after_inference_seconds": 3.02,
+        "steps": [
+          {
+            "order": 1,
+            "label": "Lavar cara",
+            "search_term": "lavar cara",
+            "association": "arasaac",
+            "selected": {
+              "id": 34777,
+              "label": "lavar la cara"
+            },
+            "approved": false,
+            "candidate_count": 2
+          },
+          {
+            "order": 2,
+            "label": "Cepillar dientes",
+            "search_term": "cepillar dientes",
+            "association": "arasaac",
+            "selected": {
+              "id": 6971,
+              "label": "cepillar los dientes"
+            },
+            "approved": false,
+            "candidate_count": 4
+          },
+          {
+            "order": 3,
+            "label": "Enjuagar boca",
+            "search_term": "enjuagar boca",
+            "association": "arasaac",
+            "selected": {
+              "id": 8559,
+              "label": "enjuagar la boca"
+            },
+            "approved": false,
+            "candidate_count": 3
+          },
+          {
+            "order": 4,
+            "label": "Cerrar ojos",
+            "search_term": "cerrar ojos",
+            "association": "arasaac",
+            "selected": {
+              "id": 10146,
+              "label": "cerrar"
+            },
+            "approved": false,
+            "candidate_count": 1
+          }
+        ]
+      },
+      {
+        "description": "Ir al baño",
+        "status": 200,
+        "inference_seconds": 7.826,
+        "ollama_load_ms": 1.937,
+        "backend_seconds": 9.447,
+        "after_inference_seconds": 1.621,
+        "steps": [
+          {
+            "order": 1,
+            "label": "abrir puerta",
+            "search_term": "abrir puerta",
+            "association": "arasaac",
+            "selected": {
+              "id": 24597,
+              "label": "abrir la puerta"
+            },
+            "approved": false,
+            "candidate_count": 2
+          },
+          {
+            "order": 2,
+            "label": "quedarse de pie",
+            "search_term": "quedarse de pie",
+            "association": "arasaac",
+            "selected": null,
+            "approved": false,
+            "candidate_count": 0
+          },
+          {
+            "order": 3,
+            "label": "sentarse en inodoro",
+            "search_term": "sentarse en inodoro",
+            "association": "arasaac",
+            "selected": null,
+            "approved": false,
+            "candidate_count": 0
+          },
+          {
+            "order": 4,
+            "label": "enjuagar boca",
+            "search_term": "enjuagar boca",
+            "association": "arasaac",
+            "selected": {
+              "id": 8559,
+              "label": "enjuagar la boca"
+            },
+            "approved": false,
+            "candidate_count": 3
+          }
+        ]
+      },
+      {
+        "description": "Guardar los juguetes",
+        "status": 200,
+        "inference_seconds": 7.724,
+        "ollama_load_ms": 3.528,
+        "backend_seconds": 9.467,
+        "after_inference_seconds": 1.743,
+        "steps": [
+          {
+            "order": 1,
+            "label": "ordenar juguetes",
+            "search_term": "ordenar juguetes",
+            "association": "arasaac",
+            "selected": null,
+            "approved": false,
+            "candidate_count": 0
+          },
+          {
+            "order": 2,
+            "label": "colocar juguetes",
+            "search_term": "colocar juguetes",
+            "association": "arasaac",
+            "selected": null,
+            "approved": false,
+            "candidate_count": 0
+          },
+          {
+            "order": 3,
+            "label": "cerrar caja",
+            "search_term": "cerrar caja",
+            "association": "arasaac",
+            "selected": null,
+            "approved": false,
+            "candidate_count": 0
+          },
+          {
+            "order": 4,
+            "label": "verificar caja",
+            "search_term": "verificar caja",
+            "association": "arasaac",
+            "selected": null,
+            "approved": false,
+            "candidate_count": 0
+          }
+        ]
+      }
+    ]
+  },
+  "same_provider_responses": [
+    {
+      "term": "mojar manos",
+      "provider_first": {
+        "id": 6149,
+        "label": "mojar"
+      },
+      "contextual_first": null,
+      "contextual_candidates": []
+    },
+    {
+      "term": "colocar cepillo",
+      "provider_first": {
+        "id": 37356,
+        "label": "colocar los pies en la mesa"
+      },
+      "contextual_first": {
+        "id": 11744,
+        "label": "poner el cepillo"
+      },
+      "contextual_candidates": [
+        {
+          "id": 11744,
+          "label": "poner el cepillo"
+        }
+      ]
+    },
+    {
+      "term": "cepillar dientes",
+      "provider_first": {
+        "id": 11963,
+        "label": "limpiar el cepillo de dientes"
+      },
+      "contextual_first": {
+        "id": 6971,
+        "label": "cepillar los dientes"
+      },
+      "contextual_candidates": [
+        {
+          "id": 6971,
+          "label": "cepillar los dientes"
+        },
+        {
+          "id": 2326,
+          "label": "cepillar los dientes"
+        },
+        {
+          "id": 27489,
+          "label": "cepillar los dientes"
+        },
+        {
+          "id": 31880,
+          "label": "cepillar los dientes"
+        }
+      ]
+    },
+    {
+      "term": "enjuagar boca",
+      "provider_first": {
+        "id": 34848,
+        "label": "meter la mano en la boca"
+      },
+      "contextual_first": {
+        "id": 8559,
+        "label": "enjuagar la boca"
+      },
+      "contextual_candidates": [
+        {
+          "id": 8559,
+          "label": "enjuagar la boca"
+        },
+        {
+          "id": 8560,
+          "label": "enjuagar la boca"
+        },
+        {
+          "id": 30032,
+          "label": "enjuagar la boca"
+        }
+      ]
+    }
+  ]
+}

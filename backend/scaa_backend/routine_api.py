@@ -26,7 +26,10 @@ def propose(payload: ProposalInput, request: Request):
             "invalid_output": (502, "La IA devolvió una propuesta con estructura inválida."),
         }[error.kind]
         raise HTTPException(status, message + " Puedes crear la rutina manualmente.") from error
-    return {"description": payload.description, **associate(result, state.catalog, state.arasaac)}
+    association = associate(
+        result, state.catalog, state.arasaac, contextual_external=state.contextual_external_match,
+    )
+    return {"description": payload.description, **association}
 
 
 @router.get("")

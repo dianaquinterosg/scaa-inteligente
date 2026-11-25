@@ -3,7 +3,7 @@
 from concurrent.futures import ThreadPoolExecutor
 
 from .arasaac import ArasaacUnavailable
-from .routine_generation import normalize
+from .routine_generation import keywords, normalize
 
 
 def best_local(term: str, pictures: list[tuple[str, dict]]) -> tuple[str, list[dict]]:
@@ -19,7 +19,22 @@ def best_local(term: str, pictures: list[tuple[str, dict]]) -> tuple[str, list[d
     return "unmatched", []
 
 
-def associate(generated, catalog, arasaac):
+def contextual_candidates(term: str, results: list[dict]) -> list[dict]:
+    required = keywords(term)
+    if len(required) < 2:
+        return []
+
+    matches = [
+        item for item in results
+        if any(required == keywords(alias) for alias in [item["label"], *item.get("keywords", [])])
+    ]
+    return [
+        {key: value for key, value in item.items() if key != "keywords"}
+        for item in matches[:8]
+    ]
+
+
+def associate(generated, catalog, arasaac, *, contextual_external=False):
     pictures = [(normalize(item["label"]), item) for item in catalog.list()]
     queries = {}
     matches = {}
@@ -34,6 +49,8 @@ def associate(generated, catalog, arasaac):
 
     def search(term):
         try:
+            if contextual_external:
+                return "arasaac", contextual_candidates(term, arasaac.search(term, include_keywords=True))
             return "arasaac", arasaac.search(term)[:8]
         except ArasaacUnavailable:
             return "unavailable", []

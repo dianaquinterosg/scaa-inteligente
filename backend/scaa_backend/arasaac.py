@@ -37,7 +37,7 @@ class ArasaacClient:
         except httpx.HTTPError as error:
             raise ArasaacUnavailable from error
 
-    def search(self, query: str) -> list[dict]:
+    def search(self, query: str, *, include_keywords: bool = False) -> list[dict]:
         try:
             data = json.loads(self._get(
                 f"https://api.arasaac.org/api/pictograms/es/search/{quote(query, safe='')}",
@@ -69,6 +69,7 @@ class ArasaacClient:
                 "label": (keywords[0] if keywords else f"Pictograma {identifier}")[:100],
                 "image_url": f"/api/v1/pictograms/arasaac/{identifier}/image",
                 "attribution": ATTRIBUTION,
+                **({"keywords": keywords} if include_keywords else {}),
             })
             if len(results) == 24:
                 break

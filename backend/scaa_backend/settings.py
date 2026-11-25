@@ -16,6 +16,7 @@ class Settings:
     ollama_model: str = "qwen2.5:1.5b"
     ollama_timeout: float = 60
     ollama_prompt_profile: str = "baseline"
+    routine_external_match: str = "provider"
 
     def __post_init__(self) -> None:
         if self.environment not in {"dev", "test", "demo"}:
@@ -24,6 +25,8 @@ class Settings:
             raise ValueError("OLLAMA_TIMEOUT debe estar entre 1 y 120 segundos")
         if self.ollama_prompt_profile not in OLLAMA_PROMPT_PROFILES:
             raise ValueError("OLLAMA_PROMPT_PROFILE debe ser baseline, alternate o concise")
+        if self.routine_external_match not in {"provider", "contextual"}:
+            raise ValueError("SCAA_ROUTINE_EXTERNAL_MATCH debe ser provider o contextual")
         root = self.data_root.expanduser()
         if not root.is_absolute():
             root = PROJECT_ROOT / root
@@ -38,6 +41,7 @@ class Settings:
             ollama_model=os.getenv("OLLAMA_MODEL", "qwen2.5:1.5b"),
             ollama_timeout=float(os.getenv("OLLAMA_TIMEOUT", "60")),
             ollama_prompt_profile=os.getenv("OLLAMA_PROMPT_PROFILE", "baseline"),
+            routine_external_match=os.getenv("SCAA_ROUTINE_EXTERNAL_MATCH", "provider"),
         )
 
     @property

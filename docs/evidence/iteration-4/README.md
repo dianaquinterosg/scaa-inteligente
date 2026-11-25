@@ -38,3 +38,4 @@ La persona usuaria informó 16 comprobaciones ejecutadas y aprobadas. El [regist
 
 - [Diagnóstico y perfil provisional de generación](generation-quality.md). Comparación real con Ollama sobre los casos reservados.
 - [Pantalla de bienvenida](welcome.md). Resultados de orientación, legibilidad y navegación mediante widgets. Aprobación visual en Device Hub pendiente.
+- [Propuestas breves y filtro contextual de pictogramas](concise-routines.md). Comparación de las cinco rutinas cotidianas con Ollama y ARASAAC reales. Revisión en Device Hub pendiente.

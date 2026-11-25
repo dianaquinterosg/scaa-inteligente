@@ -180,3 +180,33 @@ def test_concise_profile_constrains_only_ai_generated_proposals():
         concise.generate("Lavarse las manos", {})
     assert len(calls) == 2
     assert GeneratedRoutine.model_json_schema()["properties"]["steps"]["maxItems"] == 12
+
+
+def test_contextual_external_selection_keeps_local_and_skips_unrelated_images():
+    class RemoteKeywords:
+        def __init__(self):
+            self.calls = []
+
+        def search(self, term, *, include_keywords=False):
+            self.calls.append(term)
+            assert include_keywords
+            return {
+                "mojar manos": [{"external_id": 1, "label": "mojar el pelo", "keywords": ["mojar"]}],
+                "cepillar dientes": [
+                    {"external_id": 2, "label": "poner los pies en la mesa", "keywords": ["poner"]},
+                    {"external_id": 4, "label": "cepillar los dientes del perro", "keywords": []},
+                    {"external_id": 3, "label": "higiene dental", "keywords": ["cepillar los dientes"]},
+                ],
+            }[term]
+
+    remote = RemoteKeywords()
+    result = associate(
+        generated("agua", "mojar manos", "cepillar dientes", "mojar manos"),
+        CatalogFixture(), remote, contextual_external=True,
+    )
+    steps = result["steps"]
+    assert steps[0]["selected"]["id"] == 1
+    assert steps[1]["selected"] is None and steps[1]["candidates"] == []
+    assert steps[2]["selected"] == {"external_id": 3, "label": "higiene dental"}
+    assert not any(step["approved"] for step in steps)
+    assert sorted(remote.calls) == ["cepillar dientes", "mojar manos"]

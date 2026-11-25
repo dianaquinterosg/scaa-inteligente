@@ -140,3 +140,17 @@ SCAA_ENV=demo SCAA_DATA_ROOT="$(mktemp -d)" \
 ```
 
 Para probarlo en el simulador, inicia Flutter con `--dart-define=API_BASE_URL=http://localhost:8015` y configura un perfil de prueba. Para volver a la línea base, inicia el backend con `OLLAMA_MODEL=qwen2.5:1.5b` y `OLLAMA_PROMPT_PROFILE=baseline`. Ambas son las opciones predeterminadas. Consulta el [diagnóstico de generación](evidence/iteration-4/generation-quality.md) para conocer los resultados y límites del ensayo.
+
+### Ensayo opcional con hasta cuatro pasos y filtro de ARASAAC
+
+Para repetir la validación con propuestas breves en el puerto `8015`, detén el backend de prueba y arráncalo desde la raíz:
+
+```sh
+SCAA_ENV=demo SCAA_DATA_ROOT="$(mktemp -d)" \
+  OLLAMA_MODEL=qwen3:4b-instruct OLLAMA_PROMPT_PROFILE=concise \
+  SCAA_ROUTINE_EXTERNAL_MATCH=contextual \
+  .venv/bin/python -m uvicorn scaa_backend.main:app --app-dir backend \
+  --env-file backend/.env.example --host 127.0.0.1 --port 8015
+```
+
+Reutiliza la ejecución de Flutter apuntada a `http://localhost:8015` y configura un alias de prueba si usas un directorio temporal nuevo. Para comparar solo la longitud, usa `SCAA_ROUTINE_EXTERNAL_MATCH=provider`. Para volver a la configuración del ensayo anterior, usa `OLLAMA_PROMPT_PROFILE=alternate` y `SCAA_ROUTINE_EXTERNAL_MATCH=provider`. Los [resultados de propuestas breves](evidence/iteration-4/concise-routines.md) detallan las omisiones y los pasos que quedaron pendientes de imagen.
