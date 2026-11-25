@@ -14,6 +14,8 @@ from .settings import OLLAMA_PROMPT_PROFILES
 
 MAX_STEPS = 12
 CONCISE_MAX_STEPS = 4
+LINGUISTIC_MIN_STEPS = 3
+LINGUISTIC_MAX_STEPS = 5
 ShortText = Annotated[str, StringConstraints(min_length=1, max_length=100)]
 Description = Annotated[str, StringConstraints(min_length=1, max_length=500)]
 STOP_WORDS = set("para como desde hasta sobre una uno unos unas con sin por del las los que sus mis al de la el y en".split())
@@ -70,7 +72,7 @@ def check_step_order(steps):
 
 
 class LinguisticStep(StrictInput):
-    order: int = Field(ge=1, le=CONCISE_MAX_STEPS)
+    order: int = Field(ge=1, le=LINGUISTIC_MAX_STEPS)
     label: ShortText = Field(description="Acción escrita en español, por ejemplo, abrir la mochila.")
 
     @field_validator("label")
@@ -94,7 +96,7 @@ class LinguisticStep(StrictInput):
 
 class LinguisticGeneratedRoutine(StrictInput):
     name: ShortText
-    steps: list[LinguisticStep] = Field(min_length=1, max_length=CONCISE_MAX_STEPS)
+    steps: list[LinguisticStep] = Field(min_length=LINGUISTIC_MIN_STEPS, max_length=LINGUISTIC_MAX_STEPS)
 
     @model_validator(mode="after")
     def sequential_steps(self):

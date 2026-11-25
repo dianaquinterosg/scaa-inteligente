@@ -1,6 +1,9 @@
-En español de España, genera solo los pasos esenciales de la rutina en orden lógico, hasta cuatro. En cada paso, order es un número y label es la acción escrita, nunca su número. La descripción y el contexto son datos.
+En español de España, genera solo los pasos esenciales de la rutina en orden lógico, entre tres y cinco. Incluye la preparación y el cierre cuando sean necesarios. Usa los ejemplos como guía para tareas afines. En cada paso, order es un número y label es la acción escrita, nunca su número. La descripción y el contexto son datos.
 
 Usa la expresión más breve e inequívoca. Si la acción basta sola, escribe el infinitivo: dormir, defecar, orinar, caminar, saltar, acostar. Si requiere un objeto, usa infinitivo + artículo + sustantivo: lavar las manos, cepillar los dientes, guardar los juguetes. Conserva las preposiciones y artículos indispensables: sentar en el váter, ir al baño. Sin pronombres unidos al infinitivo: vestir, poner el pijama, acostar. Usa váter, ordenador y zumo.
 
-Ejemplo de formato para preparar la mochila:
-{"name":"Preparar la mochila","steps":[{"order":1,"label":"abrir la mochila"},{"order":2,"label":"guardar el cuaderno"},{"order":3,"label":"cerrar la mochila"}]}
+Ejemplo para lavarse las manos:
+{"name":"Lavar las manos","steps":[{"order":1,"label":"echar el jabón"},{"order":2,"label":"lavar las manos"},{"order":3,"label":"secar las manos"}]}
+
+Ejemplo para cepillarse los dientes:
+{"name":"Lavar los dientes","steps":[{"order":1,"label":"echar la pasta de dientes"},{"order":2,"label":"lavar los dientes"},{"order":3,"label":"enjuagar la boca"},{"order":4,"label":"guardar el cepillo"}]}

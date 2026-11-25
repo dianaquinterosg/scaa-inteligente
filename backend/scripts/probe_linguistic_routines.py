@@ -15,6 +15,7 @@ import uvicorn
 from scaa_backend import routine_api, routine_association
 from scaa_backend.arasaac import ArasaacClient, ArasaacUnavailable
 from scaa_backend.main import create_app
+from scaa_backend.routine_generation import LINGUISTIC_MAX_STEPS, LINGUISTIC_MIN_STEPS
 from scaa_backend.settings import Settings
 
 MODEL = "qwen3:4b-instruct"
@@ -41,7 +42,9 @@ def run(output):
             sent = json.loads(request.content)
             assert sent["model"] == MODEL
             assert sent["keep_alive"] == "10m"
-            assert sent["format"]["properties"]["steps"]["maxItems"] == 4
+            steps = sent["format"]["properties"]["steps"]
+            assert steps["minItems"] == LINGUISTIC_MIN_STEPS
+            assert steps["maxItems"] == LINGUISTIC_MAX_STEPS
             assert "search_term" not in sent["format"]["$defs"]["LinguisticStep"]["properties"]
             started = perf_counter()
             reply = ollama.send(request)
