@@ -13,6 +13,7 @@ from pydantic import BaseModel, ConfigDict, Field, StringConstraints, Validation
 from .settings import OLLAMA_PROMPT_PROFILES
 
 MAX_STEPS = 12
+CONCISE_MAX_STEPS = 4
 ShortText = Annotated[str, StringConstraints(min_length=1, max_length=100)]
 Description = Annotated[str, StringConstraints(min_length=1, max_length=500)]
 STOP_WORDS = set("para como desde hasta sobre una uno unos unas con sin por del las los que sus mis al de la el y en".split())
@@ -60,6 +61,10 @@ class GeneratedRoutine(StrictInput):
         return self
 
 
+class ConciseGeneratedRoutine(GeneratedRoutine):
+    steps: list[GeneratedStep] = Field(min_length=1, max_length=CONCISE_MAX_STEPS)
+
+
 class GenerationError(Exception):
     def __init__(self, kind: str):
         self.kind = kind
@@ -99,17 +104,20 @@ class OllamaGenerator:
         self.timeout = timeout
         self.transport = transport
         if prompt_profile not in OLLAMA_PROMPT_PROFILES:
-            raise ValueError("OLLAMA_PROMPT_PROFILE debe ser baseline o alternate")
+            raise ValueError("OLLAMA_PROMPT_PROFILE debe ser baseline, alternate o concise")
         self.prompt = (
-            Path(__file__).with_name("routine-alternate.txt").read_text(encoding="utf-8")
-            if prompt_profile == "alternate" else BASELINE_PROMPT
+            BASELINE_PROMPT if prompt_profile == "baseline"
+            else Path(__file__).with_name(f"routine-{prompt_profile}.txt").read_text(encoding="utf-8")
+        )
+        self.response_model = (
+            ConciseGeneratedRoutine if prompt_profile == "concise" else GeneratedRoutine
         )
 
     def generate(self, description: str, context: dict) -> GeneratedRoutine:
         payload = {
             "model": self.model,
             "stream": False,
-            "format": GeneratedRoutine.model_json_schema(),
+            "format": self.response_model.model_json_schema(),
             "options": {"temperature": 0, "num_predict": 800},
             "messages": [
                 {"role": "system", "content": self.prompt},
@@ -133,6 +141,6 @@ class OllamaGenerator:
             data = response.json()
             if data.get("done") is not True or data.get("done_reason") == "length":
                 raise ValueError
-            return GeneratedRoutine.model_validate_json(data["message"]["content"])
+            return self.response_model.model_validate_json(data["message"]["content"])
         except (ValueError, ValidationError, KeyError, TypeError, AttributeError) as error:
             raise GenerationError("invalid_output") from error

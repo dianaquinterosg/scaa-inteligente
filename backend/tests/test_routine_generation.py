@@ -158,3 +158,25 @@ def test_alternate_profile_selects_lab_prompt_and_keeps_baseline_reversible(monk
     monkeypatch.setenv("OLLAMA_PROMPT_PROFILE", "unknown")
     with pytest.raises(ValueError, match="OLLAMA_PROMPT_PROFILE"):
         Settings.from_env()
+
+
+def test_concise_profile_constrains_only_ai_generated_proposals():
+    calls = []
+
+    def respond(request):
+        payload = json.loads(request.content)
+        calls.append(payload)
+        assert payload["format"]["properties"]["steps"]["maxItems"] == 4
+        return httpx.Response(200, json={
+            "done": True,
+            "message": {"content": generated(*["paso"] * (4 if len(calls) == 1 else 5)).model_dump_json()},
+        })
+
+    concise = OllamaGenerator(
+        "http://127.0.0.1:11434", "test", 10, httpx.MockTransport(respond), prompt_profile="concise",
+    )
+    assert len(concise.generate("Lavarse las manos", {}).steps) == 4
+    with pytest.raises(GenerationError, match="invalid_output"):
+        concise.generate("Lavarse las manos", {})
+    assert len(calls) == 2
+    assert GeneratedRoutine.model_json_schema()["properties"]["steps"]["maxItems"] == 12

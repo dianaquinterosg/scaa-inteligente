@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-OLLAMA_PROMPT_PROFILES = ("baseline", "alternate")
+OLLAMA_PROMPT_PROFILES = ("baseline", "alternate", "concise")
 
 
 @dataclass(frozen=True)
@@ -23,7 +23,7 @@ class Settings:
         if not 1 <= self.ollama_timeout <= 120:
             raise ValueError("OLLAMA_TIMEOUT debe estar entre 1 y 120 segundos")
         if self.ollama_prompt_profile not in OLLAMA_PROMPT_PROFILES:
-            raise ValueError("OLLAMA_PROMPT_PROFILE debe ser baseline o alternate")
+            raise ValueError("OLLAMA_PROMPT_PROFILE debe ser baseline, alternate o concise")
         root = self.data_root.expanduser()
         if not root.is_absolute():
             root = PROJECT_ROOT / root
