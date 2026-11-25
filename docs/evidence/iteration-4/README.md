@@ -33,3 +33,8 @@ La prueba HTTP usó Uvicorn y almacenamiento temporal aislado. Los widgets usaro
 ## Validación manual en Device Hub
 
 La persona usuaria informó 16 comprobaciones ejecutadas y aprobadas. El [registro manual](manual-check.md) detalla cada resultado y los casos con evidencia automatizada que quedaron sin confirmación manual específica. La liberación permanece pendiente.
+
+## Refinamientos previos a publicación
+
+- [Diagnóstico y perfil provisional de generación](generation-quality.md). Comparación real con Ollama sobre los casos reservados.
+- [Pantalla de bienvenida](welcome.md). Resultados de orientación, legibilidad y navegación mediante widgets. Aprobación visual en Device Hub pendiente.

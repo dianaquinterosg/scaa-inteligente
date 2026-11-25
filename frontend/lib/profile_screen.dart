@@ -113,32 +113,59 @@ class _ProfileGateState extends State<ProfileGate> {
         }),
       );
     }
+    return LayoutBuilder(
+      builder: (context, constraints) => _buildHome(
+        context,
+        compactHeader: constraints.maxWidth < ScaaLayout.twoColumns,
+      ),
+    );
+  }
+
+  Widget _buildHome(BuildContext context, {required bool compactHeader}) {
     final profile = _profile;
     final administration = _administration;
+    final theme = Theme.of(context);
+    final modeAction = administration
+        ? 'Volver a visualización'
+        : 'Acceso de administración';
+    final modeIcon = Icon(
+      administration ? Icons.visibility_outlined : Icons.lock_outline,
+    );
+    final changeMode = administration
+        ? _exitAdministration
+        : _enterAdministration;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SCAA · Inicio'),
+        centerTitle: false,
+        title: const Row(
+          children: [
+            Icon(Icons.chat_bubble_outline),
+            SizedBox(width: ScaaLayout.small),
+            Flexible(child: Text('SCAA Inteligente')),
+          ],
+        ),
         actions: [
           Padding(
             padding: const EdgeInsetsDirectional.only(end: ScaaLayout.small),
-            child: TextButton.icon(
-              style: TextButton.styleFrom(
-                foregroundColor: Theme.of(context).colorScheme.onPrimary,
-              ),
-              onPressed: _administration
-                  ? _exitAdministration
-                  : _enterAdministration,
-              icon: Icon(
-                _administration
-                    ? Icons.visibility_outlined
-                    : Icons.lock_outline,
-              ),
-              label: Text(
-                _administration
-                    ? 'Volver a visualización'
-                    : 'Acceso de administración',
-              ),
-            ),
+            child: compactHeader
+                ? IconButton(
+                    icon: modeIcon,
+                    tooltip: modeAction,
+                    onPressed: changeMode,
+                  )
+                : TextButton.icon(
+                    style: TextButton.styleFrom(
+                      foregroundColor: theme.colorScheme.onPrimary,
+                      minimumSize: const Size(
+                        ScaaLayout.touch,
+                        ScaaLayout.touch,
+                      ),
+                    ),
+                    onPressed: changeMode,
+                    icon: modeIcon,
+                    label: Text(modeAction),
+                  ),
           ),
         ],
       ),
@@ -148,20 +175,36 @@ class _ProfileGateState extends State<ProfileGate> {
           child: ListView(
             padding: const EdgeInsets.all(ScaaLayout.section),
             children: [
-              ScaaModeBanner(administration: _administration),
-              const SizedBox(height: ScaaLayout.gap),
-              if (profile != null) ...[
-                Text(
-                  'Hola, ${profile.alias}',
-                  style: Theme.of(context).textTheme.headlineMedium,
+              const SizedBox(height: ScaaLayout.section),
+              Semantics(
+                header: true,
+                child: Text(
+                  profile == null ? '¡Hola!' : '¡Hola, ${profile.alias}!',
+                  textAlign: TextAlign.center,
+                  style:
+                      (compactHeader
+                              ? theme.textTheme.displaySmall
+                              : theme.textTheme.displayMedium)
+                          ?.copyWith(
+                            color: theme.colorScheme.onPrimaryContainer,
+                            fontWeight: FontWeight.w700,
+                          ),
                 ),
-                const SizedBox(height: ScaaLayout.gap),
-              ],
-              if (_administration && _loading)
+              ),
+              const SizedBox(height: ScaaLayout.small),
+              Text(
+                'Tu espacio de comunicación',
+                textAlign: TextAlign.center,
+                style: theme.textTheme.headlineSmall?.copyWith(
+                  color: theme.colorScheme.onSurfaceVariant,
+                ),
+              ),
+              const SizedBox(height: ScaaLayout.section),
+              if (administration && _loading)
                 const LinearProgressIndicator(
                   semanticsLabel: 'Cargando perfil',
                 ),
-              if (_administration && _failed) ...[
+              if (administration && _failed) ...[
                 const ScaaNotice(
                   'No pudimos cargar tu perfil.',
                   kind: ScaaNoticeKind.error,
@@ -175,54 +218,83 @@ class _ProfileGateState extends State<ProfileGate> {
                 ),
                 const SizedBox(height: ScaaLayout.gap),
               ],
-              Wrap(
-                spacing: ScaaLayout.small,
-                runSpacing: ScaaLayout.small,
-                children: [
-                  if (_administration && !_loading && !_failed)
-                    FilledButton.icon(
-                      key: const ValueKey('edit-profile'),
-                      onPressed: () => setState(() {
-                        _editing = true;
-                        _saved = false;
-                      }),
-                      icon: const Icon(Icons.person_outline),
-                      label: Text(
-                        profile == null
-                            ? 'Configurar perfil'
-                            : 'Perfil y contexto',
-                      ),
+              if (administration && !_loading && !_failed) ...[
+                Center(
+                  child: FilledButton.icon(
+                    key: const ValueKey('edit-profile'),
+                    onPressed: () => setState(() {
+                      _editing = true;
+                      _saved = false;
+                    }),
+                    icon: const Icon(Icons.person_outline),
+                    label: Text(
+                      profile == null
+                          ? 'Configurar perfil'
+                          : 'Perfil y contexto',
                     ),
-                  OutlinedButton.icon(
-                    onPressed: () => Navigator.push<void>(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => PictogramScreen(
-                          store: widget.catalog,
-                          administration: administration,
-                          onExitAdministration: _exitAdministration,
+                  ),
+                ),
+                const SizedBox(height: ScaaLayout.gap),
+              ],
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  final sideBySide =
+                      constraints.maxWidth >= ScaaLayout.twoColumns;
+                  final gap = sideBySide ? ScaaLayout.section : ScaaLayout.gap;
+                  final cardWidth = sideBySide
+                      ? (constraints.maxWidth - gap) / 2
+                      : constraints.maxWidth;
+                  return Wrap(
+                    spacing: gap,
+                    runSpacing: gap,
+                    children: [
+                      SizedBox(
+                        width: cardWidth,
+                        child: _WelcomeDestination(
+                          label: 'Pictogramas',
+                          icon: Icons.collections_outlined,
+                          expanded: sideBySide,
+                          onTap: () => Navigator.push<void>(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PictogramScreen(
+                                store: widget.catalog,
+                                administration: administration,
+                                onExitAdministration: _exitAdministration,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                    icon: const Icon(Icons.collections_outlined),
-                    label: const Text('Pictogramas'),
-                  ),
-                  OutlinedButton.icon(
-                    onPressed: () => Navigator.push<void>(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => RoutinesScreen(
-                          store: widget.routines,
-                          catalog: widget.catalog,
-                          administration: administration,
-                          onExitAdministration: _exitAdministration,
+                      SizedBox(
+                        width: cardWidth,
+                        child: _WelcomeDestination(
+                          label: 'Rutinas',
+                          icon: Icons.format_list_numbered,
+                          expanded: sideBySide,
+                          onTap: () => Navigator.push<void>(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => RoutinesScreen(
+                                store: widget.routines,
+                                catalog: widget.catalog,
+                                administration: administration,
+                                onExitAdministration: _exitAdministration,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                    icon: const Icon(Icons.event_note_outlined),
-                    label: const Text('Rutinas'),
-                  ),
-                ],
+                    ],
+                  );
+                },
+              ),
+              const SizedBox(height: ScaaLayout.section),
+              Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 340),
+                  child: ScaaModeBanner(administration: administration),
+                ),
               ),
               const SizedBox(height: ScaaLayout.section),
               if (_administration && profile != null)
@@ -261,6 +333,71 @@ class _ProfileGateState extends State<ProfileGate> {
                   },
                 ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _WelcomeDestination extends StatelessWidget {
+  const _WelcomeDestination({
+    required this.label,
+    required this.icon,
+    required this.expanded,
+    required this.onTap,
+  });
+
+  final String label;
+  final IconData icon;
+  final bool expanded;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colors = theme.colorScheme;
+    return Card(
+      elevation: 4,
+      shadowColor: colors.primary.withValues(alpha: 0.22),
+      clipBehavior: Clip.antiAlias,
+      child: Semantics(
+        button: true,
+        child: InkWell(
+          onTap: onTap,
+          child: Container(
+            constraints: BoxConstraints(minHeight: expanded ? 256 : 208),
+            padding: const EdgeInsets.all(ScaaLayout.section),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ExcludeSemantics(
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      color: colors.primaryContainer,
+                      borderRadius: BorderRadius.circular(ScaaLayout.radius),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(ScaaLayout.gap),
+                      child: Icon(
+                        icon,
+                        size: expanded ? 72 : 56,
+                        color: colors.primary,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: ScaaLayout.gap),
+                Text(
+                  label,
+                  textAlign: TextAlign.center,
+                  style: theme.textTheme.headlineMedium?.copyWith(
+                    color: colors.onPrimaryContainer,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -40,6 +40,13 @@ Future<void> openApp(WidgetTester tester, FakeStore store) async {
   await enterAdministration(tester);
 }
 
+Future<void> openProfileEditor(WidgetTester tester) async {
+  final target = find.byKey(const ValueKey('edit-profile'));
+  await tester.scrollUntilVisible(target, 160);
+  await tester.tap(target);
+  await tester.pumpAndSettle();
+}
+
 Future<void> save(WidgetTester tester) async {
   await tester.tap(find.byKey(const ValueKey('save-profile')));
   await tester.pumpAndSettle();
@@ -76,8 +83,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
       await enterAdministration(tester);
-      await tester.tap(find.byKey(const ValueKey('edit-profile')));
-      await tester.pumpAndSettle();
+      await openProfileEditor(tester);
       final form = find.byType(Form);
       expect(tester.getSize(form).width, lessThanOrEqualTo(760));
       final remove = find.byTooltip('Eliminar interés 1');
@@ -93,6 +99,7 @@ void main() {
       await tester.tap(find.text('Cancelar'));
       await tester.pumpAndSettle();
       expect(store.saves, 0);
+      await tester.scrollUntilVisible(find.text('Música'), 160);
       expect(find.text('Música'), findsOneWidget);
     });
   }
@@ -104,8 +111,7 @@ void main() {
       )..failSave = true;
       await openApp(tester, store);
       await tester.binding.setSurfaceSize(const Size(800, 500));
-      await tester.tap(find.byKey(const ValueKey('edit-profile')));
-      await tester.pumpAndSettle();
+      await openProfileEditor(tester);
       await tester.scrollUntilVisible(
         find.byKey(const ValueKey('add-frequent_routines')),
         200,
@@ -137,8 +143,7 @@ void main() {
           ),
         );
         await openApp(tester, store);
-        await tester.tap(find.byKey(const ValueKey('edit-profile')));
-        await tester.pumpAndSettle();
+        await openProfileEditor(tester);
         await tester.enterText(
           find.byKey(ValueKey('${kind.field}-0')),
           'Editado',
@@ -148,8 +153,7 @@ void main() {
         for (final other in ContextKind.values.where((item) => item != kind)) {
           expect(store.current!.values(other), ['Original']);
         }
-        await tester.tap(find.byKey(const ValueKey('edit-profile')));
-        await tester.pumpAndSettle();
+        await openProfileEditor(tester);
         await tester.tap(find.byKey(ValueKey('remove-${kind.field}-0')));
         await tester.pump();
         await save(tester);
@@ -174,7 +178,7 @@ void main() {
     await save(tester);
     expect(store.current!.alias, 'Ana');
     expect(store.current!.interests, isEmpty);
-    expect(find.text('Hola, Ana'), findsOneWidget);
+    expect(find.text('¡Hola, Ana!'), findsOneWidget);
     expect(find.text('Perfil guardado'), findsOneWidget);
     expect(find.byType(AlertDialog), findsNothing);
   });
@@ -199,8 +203,7 @@ void main() {
       expect(store.current!.interests, ['Música']);
       expect(store.current!.activities, ['Caminar']);
       expect(store.current!.frequentRoutines, ['Lectura']);
-      await tester.tap(find.byKey(const ValueKey('edit-profile')));
-      await tester.pumpAndSettle();
+      await openProfileEditor(tester);
       expect(find.widgetWithText(TextFormField, 'Música'), findsOneWidget);
       await tester.tap(find.byKey(const ValueKey('remove-interests-0')));
       await tester.pump();
@@ -265,8 +268,7 @@ void main() {
         ProfileData(alias: 'Guardado', interests: ['Confirmado']),
       )..failSave = true;
       await openApp(tester, store);
-      await tester.tap(find.byKey(const ValueKey('edit-profile')));
-      await tester.pumpAndSettle();
+      await openProfileEditor(tester);
       await tester.enterText(find.byKey(const ValueKey('alias')), 'Borrador');
       await save(tester);
       expect(find.text('No se pudo guardar el perfil'), findsOneWidget);
@@ -274,7 +276,7 @@ void main() {
       expect(store.current!.alias, 'Guardado');
       store.failSave = false;
       await save(tester);
-      expect(find.text('Hola, Borrador'), findsOneWidget);
+      expect(find.text('¡Hola, Borrador!'), findsOneWidget);
     },
   );
 
@@ -297,7 +299,7 @@ void main() {
     );
     await tester.tap(find.text('Cancelar'));
     await tester.pumpAndSettle();
-    expect(find.text('Hola, Guardado'), findsOneWidget);
+    expect(find.text('¡Hola, Guardado!'), findsOneWidget);
     expect(find.text('Confirmado'), findsOneWidget);
     expect(store.saves, 0);
     await tester.tap(find.byKey(const ValueKey('edit-profile')));
@@ -316,6 +318,6 @@ void main() {
     store.failLoad = false;
     await tester.tap(find.text('Reintentar'));
     await tester.pumpAndSettle();
-    expect(find.text('Hola, Ana'), findsOneWidget);
+    expect(find.text('¡Hola, Ana!'), findsOneWidget);
   });
 }

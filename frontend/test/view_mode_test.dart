@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:scaa_inteligente/main.dart';
 import 'package:scaa_inteligente/pictograms/catalog_api.dart';
+import 'package:scaa_inteligente/profile.dart';
 import 'package:scaa_inteligente/pictograms/pictogram_image.dart';
 import 'package:scaa_inteligente/routines/routine_api.dart';
 import 'package:scaa_inteligente/routines/routine_editor.dart';
@@ -35,6 +36,63 @@ Future<void> press(WidgetTester tester, String text) async {
 }
 
 void main() {
+  for (final size in [
+    const Size(1180, 820),
+    const Size(820, 1180),
+    const Size(420, 980),
+  ]) {
+    testWidgets('Bienvenida: saludo, tarjetas táctiles y navegación en $size', (
+      tester,
+    ) async {
+      await tester.binding.setSurfaceSize(size);
+      tester.platformDispatcher.textScaleFactorTestValue = 2;
+      addTearDown(() async {
+        tester.platformDispatcher.clearTextScaleFactorTestValue();
+        await tester.binding.setSurfaceSize(null);
+      });
+      await tester.pumpWidget(
+        ScaaApp(
+          profileStore: FakeStore(ProfileData(alias: 'Sol del Valle')),
+          catalogStore: FakeCatalog(),
+          routineStore: FakeRoutines(),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('¡Hola, Sol del Valle!'), findsOneWidget);
+      expect(find.text('Tu espacio de comunicación'), findsOneWidget);
+      expect(find.text('Perfil y contexto'), findsNothing);
+
+      Finder destination(String label) =>
+          find.ancestor(of: find.text(label), matching: find.byType(InkWell));
+      final pictures = tester.getRect(destination('Pictogramas'));
+      final routines = tester.getRect(destination('Rutinas'));
+      expect(pictures.shortestSide, greaterThanOrEqualTo(192));
+      expect(routines.shortestSide, greaterThanOrEqualTo(192));
+      if (size.width < 680) {
+        expect(pictures.bottom, lessThan(routines.top));
+        expect(find.byTooltip('Acceso de administración'), findsOneWidget);
+      } else {
+        expect(pictures.top, routines.top);
+        expect(pictures.right, lessThan(routines.left));
+      }
+      await tester.ensureVisible(destination('Pictogramas'));
+      await tester.tapAt(
+        tester.getTopLeft(destination('Pictogramas')) + const Offset(35, 35),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('SCAA · Pictogramas'), findsOneWidget);
+      await tester.pageBack();
+      await tester.pumpAndSettle();
+      await tester.ensureVisible(destination('Rutinas'));
+      await tester.tapAt(
+        tester.getTopLeft(destination('Rutinas')) + const Offset(35, 35),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('SCAA · Rutinas'), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    });
+  }
+
   testWidgets(
     'Primer inicio: acceso deliberado, salida y nuevo inicio en visualización',
     (tester) async {
@@ -50,6 +108,7 @@ void main() {
       await tester.pumpWidget(app());
       await tester.pumpAndSettle();
       expect(find.text('Modo visualización'), findsOneWidget);
+      expect(find.text('¡Hola!'), findsOneWidget);
       expect(find.text('Configurar perfil'), findsNothing);
       await press(tester, 'Acceso de administración');
       await press(tester, 'Cancelar');
