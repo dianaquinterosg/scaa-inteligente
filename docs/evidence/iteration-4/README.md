@@ -40,4 +40,4 @@ La persona usuaria informó 16 comprobaciones ejecutadas y aprobadas. El [regist
 - [Pantalla de bienvenida](welcome.md). Resultados de orientación, legibilidad y navegación mediante widgets. Aprobación visual en Device Hub pendiente.
 - [Propuestas breves y filtro contextual de pictogramas](concise-routines.md). Comparación de las cinco rutinas cotidianas con Ollama y ARASAAC reales. Revisión en Device Hub pendiente.
 - [Ensayo lingüístico con etiquetas exactas](linguistic-routines.md). Compara las cinco rutinas y las primeras sugerencias de ARASAAC. Incluye latencias por componente. Pertinencia visual pendiente.
-- [Rango de tres a cinco pasos y revisión de candidatos](routine-label-fallback.md). Registra los ejemplos aportados y el contraste con los primeros resultados de ARASAAC.
+- [Rango de tres a cinco pasos y revisión de candidatos](routine-label-fallback.md). Registra el contraste con los primeros resultados de ARASAAC y la ejecución manual confirmada por la persona usuaria. Las oportunidades de mejora pasan a la siguiente iteración.

@@ -17,3 +17,8 @@ Se conserva la consulta literal a ARASAAC y la prioridad local. Se sugiere el pr
 Se sugirieron doce pictogramas para catorce pasos. Quedaron pendientes «poner el pijama» y «levantar el váter». Para «echar el jabón» se descartó «burbuja» y se encontró «echar jabón» (37409). Para «echar la pasta de dientes» se descartó «ensalada de pasta» y se encontró «echar pasta de dientes» (30087). La pertinencia visual y la calidad semántica requieren revisión humana.
 
 Pasaron 135 pruebas de backend. El [registro JSON](routine-label-fallback.json) conserva las consultas, etiquetas, sugerencias originales, resoluciones y latencias. El [ensayo anterior](linguistic-routines.md) guarda los resultados obtenidos con la política anterior y el máximo de cuatro pasos.
+
+
+## Validación manual en Device Hub
+
+La persona usuaria confirmó que probó los casos del perfil con propuestas de tres a cinco pasos y revisión de candidatos de ARASAAC. El reporte identifica oportunidades de mejora para la siguiente iteración. El resultado individual por caso y la pertinencia visual de cada pictograma quedan sin calificación en este registro.
